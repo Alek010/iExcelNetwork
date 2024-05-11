@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iExcelNetwork", "iExcelNetwork\iExcelNetwork.csproj", "{24D661B1-51BF-42E1-981B-0AD27B3B9FAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24D661B1-51BF-42E1-981B-0AD27B3B9FAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D661B1-51BF-42E1-981B-0AD27B3B9FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D661B1-51BF-42E1-981B-0AD27B3B9FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D661B1-51BF-42E1-981B-0AD27B3B9FAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54C24944-7FB8-4226-AC88-A54FACCB9709}
+	EndGlobalSection
+EndGlobal
