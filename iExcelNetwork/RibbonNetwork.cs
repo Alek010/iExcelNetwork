@@ -7,6 +7,8 @@ namespace iExcelNetwork
 {
     public partial class RibbonNetwork
     {
+        private string _selectedRangeAsJSON;
+
         private void RibbonNetwork_Load(object sender, RibbonUIEventArgs e)
         {
 
@@ -25,7 +27,7 @@ namespace iExcelNetwork
                     // Do something with the selected range
                     MessageBox.Show("Selected range: " + selectedRange.Address);
 
-                    //_selectedRangeAsJSON = DataFrame.ConvertRangeToJson(selectedRange);
+                    _selectedRangeAsJSON = ExcelRange.ConvertToJson(selectedRange);
                 }
             }
             catch (Exception ex)
