@@ -58,6 +58,7 @@
             // 
             this.btn_SelectRange.Label = "Select Range";
             this.btn_SelectRange.Name = "btn_SelectRange";
+            this.btn_SelectRange.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_SelectRange_Click);
             // 
             // RibbonNetwork
             // 
