@@ -40,5 +40,22 @@ namespace iExcelNetwork
                     System.Runtime.InteropServices.Marshal.ReleaseComObject(selectedRange);
             }
         }
+
+        private void btn_saveJson_Click(object sender, RibbonControlEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+                FilterIndex = 1,
+                RestoreDirectory = true
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                ExcelRange.SaveAsJson(_selectedRangeAsJSON, filePath);
+            }
+        }
     }
 }

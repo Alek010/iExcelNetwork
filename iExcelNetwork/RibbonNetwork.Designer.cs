@@ -37,6 +37,7 @@
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
             this.btn_SelectRange = this.Factory.CreateRibbonButton();
+            this.btn_saveJson = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.SuspendLayout();
@@ -51,6 +52,7 @@
             // group1
             // 
             this.group1.Items.Add(this.btn_SelectRange);
+            this.group1.Items.Add(this.btn_saveJson);
             this.group1.Label = "group1";
             this.group1.Name = "group1";
             // 
@@ -59,6 +61,12 @@
             this.btn_SelectRange.Label = "Select Range";
             this.btn_SelectRange.Name = "btn_SelectRange";
             this.btn_SelectRange.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_SelectRange_Click);
+            // 
+            // btn_saveJson
+            // 
+            this.btn_saveJson.Label = "Range To JSON";
+            this.btn_saveJson.Name = "btn_saveJson";
+            this.btn_saveJson.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_saveJson_Click);
             // 
             // RibbonNetwork
             // 
@@ -79,6 +87,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_SelectRange;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_saveJson;
     }
 
     partial class ThisRibbonCollection
