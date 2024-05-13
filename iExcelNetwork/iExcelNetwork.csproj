@@ -188,10 +188,14 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Edge.cs" />
     <Compile Include="ExcelRange.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="VisJsNetworkBuilder.cs" />
+    <Compile Include="VisJsNetworkData.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -214,6 +218,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="RangeData.cs" />
     <Compile Include="RibbonNetwork.cs">
       <SubType>Component</SubType>
     </Compile>

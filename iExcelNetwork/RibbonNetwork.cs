@@ -1,4 +1,5 @@
 ﻿using Microsoft.Office.Tools.Ribbon;
+using Newtonsoft.Json;
 using System;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -24,7 +25,6 @@ namespace iExcelNetwork
                 selectedRange = excelApp.InputBox("Select a range of cells:", Type: 8);
                 if (selectedRange != null)
                 {
-                    // Do something with the selected range
                     MessageBox.Show("Selected range: " + selectedRange.Address);
 
                     _selectedRangeAsJSON = ExcelRange.ConvertToJson(selectedRange);
@@ -56,6 +56,28 @@ namespace iExcelNetwork
 
                 ExcelRange.SaveAsJson(_selectedRangeAsJSON, filePath);
             }
+        }
+
+        private void btn_buildNetwork_Click(object sender, RibbonControlEventArgs e)
+        {
+            OpenVisJsNetwork();
+        }
+
+        private void OpenVisJsNetwork()
+        {
+            VisJsNetworkData visJsNetwork = new VisJsNetworkData(_selectedRangeAsJSON);
+
+            visJsNetwork.ProcessJson();
+
+            var nodes = visJsNetwork.GetNodes();
+            var edges = visJsNetwork.GetEdges();
+
+            string nodesJson = JsonConvert.SerializeObject(nodes, Formatting.Indented);
+            string edgesJson = JsonConvert.SerializeObject(edges, Formatting.Indented);
+
+            VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(nodesJson, edgesJson);
+            visJsNetworkBuilder.ShowNetwork();
+
         }
     }
 }
