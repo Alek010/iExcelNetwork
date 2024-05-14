@@ -60,20 +60,29 @@
             // 
             // btn_SelectRange
             // 
+            this.btn_SelectRange.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btn_SelectRange.Image = global::iExcelNetwork.Properties.Resources.select1;
             this.btn_SelectRange.Label = "Select Range";
             this.btn_SelectRange.Name = "btn_SelectRange";
+            this.btn_SelectRange.ShowImage = true;
             this.btn_SelectRange.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_SelectRange_Click);
             // 
             // btn_saveJson
             // 
+            this.btn_saveJson.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btn_saveJson.Image = global::iExcelNetwork.Properties.Resources.toJson;
             this.btn_saveJson.Label = "Range To JSON";
             this.btn_saveJson.Name = "btn_saveJson";
+            this.btn_saveJson.ShowImage = true;
             this.btn_saveJson.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_saveJson_Click);
             // 
             // btn_buildNetwork
             // 
+            this.btn_buildNetwork.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btn_buildNetwork.Image = global::iExcelNetwork.Properties.Resources.buildNetwork;
             this.btn_buildNetwork.Label = "Build Network";
             this.btn_buildNetwork.Name = "btn_buildNetwork";
+            this.btn_buildNetwork.ShowImage = true;
             this.btn_buildNetwork.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_buildNetwork_Click);
             // 
             // RibbonNetwork
