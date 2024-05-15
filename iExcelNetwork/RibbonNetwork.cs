@@ -22,7 +22,9 @@ namespace iExcelNetwork
 
             try
             {
-                object result = excelApp.InputBox("Select a range of cells:", Type: 8);
+                object result = excelApp.InputBox(Prompt: "Select a range:", 
+                                                  Default: excelApp.Selection.Address,
+                                                  Type: 8);
 
                 if (result is bool && (bool)result == false)
                 {
