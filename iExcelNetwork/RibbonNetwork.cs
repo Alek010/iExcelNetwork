@@ -54,19 +54,27 @@ namespace iExcelNetwork
 
         private void btn_saveJson_Click(object sender, RibbonControlEventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
+            if(_selectedRangeAsJSON != null)
             {
-                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
-                FilterIndex = 1,
-                RestoreDirectory = true
-            };
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+                    FilterIndex = 1,
+                    RestoreDirectory = true
+                };
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = saveFileDialog.FileName;
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog.FileName;
 
-                ExcelRange.SaveAsJson(_selectedRangeAsJSON, filePath);
+                    ExcelRange.SaveAsJson(_selectedRangeAsJSON, filePath);
+                }
             }
+            else
+            {
+                MessageBox.Show("Select a range!");
+            }
+
         }
 
         private void btn_buildNetwork_Click(object sender, RibbonControlEventArgs e)
