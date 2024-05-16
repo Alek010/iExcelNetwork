@@ -25,7 +25,7 @@ namespace iExcelNetwork
             string[] columnNames = new string[colCount];
             for (int col = 1; col <= colCount; col++)
             {
-                columnNames[col - 1] = values[1, col]?.ToString() ?? $"Column{col}";
+                columnNames[col - 1] = values[1, col]?.ToString().Trim() ?? $"Column{col}";
             }
 
             // Create a DataTable and populate it with data from Excel range

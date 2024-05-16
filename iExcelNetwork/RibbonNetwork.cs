@@ -22,13 +22,24 @@ namespace iExcelNetwork
 
             try
             {
-                selectedRange = excelApp.InputBox("Select a range of cells:", Type: 8);
-                if (selectedRange != null)
-                {
-                    MessageBox.Show("Selected range: " + selectedRange.Address);
+                object result = excelApp.InputBox(Prompt: "Select a range:", 
+                                                  Default: excelApp.Selection.Address,
+                                                  Type: 8);
 
-                    _selectedRangeAsJSON = ExcelRange.ConvertToJson(selectedRange);
+                if (result is bool && (bool)result == false)
+                {
+                    //MessageBox.Show("You canceled the range selection.");
                 }
+                else
+                {
+                    selectedRange = (Excel.Range)result;
+
+                    if (selectedRange != null)
+                    {
+                        _selectedRangeAsJSON = ExcelRange.ConvertToJson(selectedRange);
+                    }
+                }
+
             }
             catch (Exception ex)
             {
