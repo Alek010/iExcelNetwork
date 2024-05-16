@@ -36,8 +36,6 @@ namespace iExcelNetwork
 
                     if (selectedRange != null)
                     {
-                        MessageBox.Show("Selected range: " + selectedRange.Address);
-
                         _selectedRangeAsJSON = ExcelRange.ConvertToJson(selectedRange);
                     }
                 }
