@@ -26,10 +26,17 @@ namespace iExcelNetwork
 
         public void ProcessJson()
         {
-            List<RangeData> FromToRange = JsonConvert.DeserializeObject<List<RangeData>>(_jsonFromToRange);
+            if (_jsonFromToRange == null)
+            {
+                throw new Exception("Range is not selected!");
+            }
+            else
+            {
+                List<RangeData> FromToRange = JsonConvert.DeserializeObject<List<RangeData>>(_jsonFromToRange);
 
-            FromNodesLabels = FromToRange.Select(range => range.From).ToList();
-            ToNodesLabels = FromToRange.Select(range => range.To).ToList();
+                FromNodesLabels = FromToRange.Select(range => range.From).ToList();
+                ToNodesLabels = FromToRange.Select(range => range.To).ToList();
+            }
         }
 
         public List<Node> GetNodes()
