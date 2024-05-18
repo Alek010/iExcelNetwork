@@ -64,8 +64,14 @@ namespace iExcelNetwork
 
         private void btn_saveJson_Click(object sender, RibbonControlEventArgs e)
         {
-            if(_selectedRangeAsJSON != null)
+            try
             {
+                if (_selectedRangeAsJSON == null)
+                    throw new Exception("Range is not selected!");
+
+                if (!VisJsDataValidator.HasRecords(_selectedRangeAsJSON))
+                    throw new Exception("Selected range, has only one row as column names. Please select more than one row.");
+
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
                     Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
@@ -80,10 +86,11 @@ namespace iExcelNetwork
                     ExcelRange.SaveAsJson(_selectedRangeAsJSON, filePath);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Select a range!");
+                MessageBox.Show("Error: " + ex.Message);
             }
+
 
         }
 

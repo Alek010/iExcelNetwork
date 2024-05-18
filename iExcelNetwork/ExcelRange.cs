@@ -54,15 +54,13 @@ namespace iExcelNetwork
 
         public static void SaveAsJson(string json, string filePath)
         {
-            // Check if JSON string is provided
+
             if (string.IsNullOrEmpty(json))
                 throw new ArgumentException("JSON string cannot be null or empty.", nameof(json));
 
-            // Check if file path is provided
             if (string.IsNullOrEmpty(filePath))
                 throw new ArgumentException("File path cannot be null or empty.", nameof(filePath));
 
-            // Save JSON string to file
             File.WriteAllText(filePath, json);
         }
     }
