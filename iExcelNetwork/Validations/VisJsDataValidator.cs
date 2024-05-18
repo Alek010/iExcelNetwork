@@ -44,11 +44,10 @@ namespace iExcelNetwork
 
         private static bool HasValidFieldNames(string jsonString)
         {
-            JArray jsonArray = JArray.Parse(jsonString);
-
-            var jsonObject = jsonArray.OfType<JObject>().ToList();
-
-            foreach (var property in jsonObject.Properties())
+            foreach (var property in JArray.Parse(jsonString)
+                                           .OfType<JObject>()
+                                           .ToList()
+                                           .Properties())
             {
                 if (!ValidFieldNames.Contains(property.Name.ToLower().Trim()))
                 {
@@ -60,11 +59,10 @@ namespace iExcelNetwork
 
         private static bool HasRecords(string jsonString)
         {
-            JArray jsonArray = JArray.Parse(jsonString);
-
-            var jsonObject = jsonArray.OfType<JObject>().ToList();
-
-           return(jsonObject.Count > 0);
+           return JArray.Parse(jsonString)
+                        .OfType<JObject>()
+                        .ToList()
+                        .Count > 0;
         }
     }
 
