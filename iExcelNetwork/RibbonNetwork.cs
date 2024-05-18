@@ -1,5 +1,5 @@
-﻿using iExcelNetwork.Exceptions;
-using iExcelNetwork.Validations;
+﻿using iExcelNetwork.Validations;
+using iExcelNetwork.VisJsNetwork;
 using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
@@ -84,31 +84,27 @@ namespace iExcelNetwork
 
         private void btn_buildNetwork_Click(object sender, RibbonControlEventArgs e)
         {
-            OpenVisJsNetwork();
-        }
-
-        private void OpenVisJsNetwork()
-        {
             try
             {
-                VisJsNetworkData visJsNetwork = new VisJsNetworkData(_selectedRangeJSON);
+                VisJsDataValidator.JsonIsNotNull(_selectedRangeJSON);
+                VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeJSON);
+                VisJsDataValidator.JsonHasData(_selectedRangeJSON);
 
-                visJsNetwork.ProcessJson();
+                FromToRangeData fromToRangeData = new FromToRangeData(_selectedRangeJSON);
+                fromToRangeData.ProcessData();
 
-                var nodes = visJsNetwork.GetNodes();
-                var edges = visJsNetwork.GetEdges();
+                VisJsNetworkData visJsNetwork = new VisJsNetworkData(fromToRangeData.FromNodesLabels, fromToRangeData.ToNodesLabels);
 
-                string nodesJson = JsonConvert.SerializeObject(nodes, Formatting.Indented);
-                string edgesJson = JsonConvert.SerializeObject(edges, Formatting.Indented);
+                string nodesJson = JsonConvert.SerializeObject(visJsNetwork.GetNodes(), Formatting.Indented);
+                string edgesJson = JsonConvert.SerializeObject(visJsNetwork.GetEdges(), Formatting.Indented);
 
                 VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(nodesJson, edgesJson);
                 visJsNetworkBuilder.ShowNetwork();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
     }
 }

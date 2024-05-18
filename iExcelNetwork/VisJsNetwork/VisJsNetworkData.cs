@@ -1,7 +1,5 @@
 ﻿// Ignore Spelling: Json
 
-using iExcelNetwork.Exceptions;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,31 +7,16 @@ namespace iExcelNetwork
 {
     public class VisJsNetworkData
     {
-        private string _jsonFromToRange;
-        private List<string> FromNodesLabels;
-        private List<string> ToNodesLabels;
+        private readonly List<string> _fromNodesLabels;
+        private readonly List<string> _toNodesLabels;
 
-        private List<Node> NodesList = new List<Node>();
-        private List<Edge> EdgesList = new List<Edge>();
+        private readonly List<Node> NodesList = new List<Node>();
+        private readonly List<Edge> EdgesList = new List<Edge>();
 
-        public VisJsNetworkData(string jsonFromToRange)
+        public VisJsNetworkData(List<string> fromNodesLabels, List<string> toNodesLabels)
         {
-            _jsonFromToRange = jsonFromToRange;
-        }
-
-        public void ProcessJson()
-        {
-            VisJsDataValidator.JsonIsNotNull(_jsonFromToRange);
-            VisJsDataValidator.JsonFieldNamesAreValid(_jsonFromToRange);
-            VisJsDataValidator.JsonHasData(_jsonFromToRange);
-
-            List<RangeData> FromToRange = JsonConvert.DeserializeObject<List<RangeData>>(_jsonFromToRange);
-
-            FromNodesLabels = FromToRange.Select(range => range.From = string.IsNullOrWhiteSpace(range.From) ? "" : range.From)
-                                         .ToList();
-
-            ToNodesLabels = FromToRange.Select(range => range.To =string.IsNullOrWhiteSpace(range.To) ? "" : range.To)
-                                       .ToList();
+            _fromNodesLabels = fromNodesLabels;
+            _toNodesLabels = toNodesLabels;
         }
 
         public List<Node> GetNodes()
@@ -56,9 +39,9 @@ namespace iExcelNetwork
 
         public List<Edge> GetEdges()
         {
-            var fromEdgeId = GetEdgesIds(FromNodesLabels, NodesList);
+            var fromEdgeId = GetEdgesIds(_fromNodesLabels, NodesList);
 
-            var toEdgeId = GetEdgesIds(ToNodesLabels, NodesList);
+            var toEdgeId = GetEdgesIds(_toNodesLabels, NodesList);
 
             VisJsDataValidator.ValidateFromToEdgesIdsCount(fromEdgeId.Count, toEdgeId.Count);
 
@@ -82,8 +65,8 @@ namespace iExcelNetwork
         {
             List<string> nodesLabels = new List<string>();
 
-            nodesLabels.AddRange(FromNodesLabels);
-            nodesLabels.AddRange(ToNodesLabels);
+            nodesLabels.AddRange(_fromNodesLabels);
+            nodesLabels.AddRange(_toNodesLabels);
 
             List<string> uniqueNodesLabels = nodesLabels.Distinct().ToList();
 
