@@ -31,12 +31,12 @@ namespace iExcelNetwork
                 throw new Exception("Range is not selected!");
             }
 
-            if(!VisJsDataFieldsValidator.ValidateFieldNames(_jsonFromToRange))
+            if(!VisJsDataValidator.HasValidFieldNames(_jsonFromToRange))
             {
                 throw new Exception($@"Column names are not correct. Change ColumnName1 = 'from', ColumnName2 = 'to'. Select Range again!");
             }
 
-            if (!VisJsDataFieldsValidator.HasRecords(_jsonFromToRange))
+            if (!VisJsDataValidator.HasRecords(_jsonFromToRange))
             {
                 throw new Exception("Selected range, has only one row as column names. Please select more than one row.");
             }

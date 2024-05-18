@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace iExcelNetwork
 {
-    public static class VisJsDataFieldsValidator
+    public static class VisJsDataValidator
     {
         private static readonly List<string> ValidFieldNames = new List<string>
     {
@@ -15,7 +15,7 @@ namespace iExcelNetwork
         "to"
     };
 
-        public static bool ValidateFieldNames(string jsonString)
+        public static bool HasValidFieldNames(string jsonString)
         {
             JArray jsonArray = JArray.Parse(jsonString);
 
