@@ -30,6 +30,15 @@ namespace iExcelNetwork
             }
             return true;
         }
+
+        public static bool HasRecords(string jsonString)
+        {
+            JArray jsonArray = JArray.Parse(jsonString);
+
+            var jsonObject = jsonArray.OfType<JObject>().ToList();
+
+           return(jsonObject.Count > 0);
+        }
     }
 
 
