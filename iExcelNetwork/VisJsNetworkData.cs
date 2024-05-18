@@ -28,7 +28,7 @@ namespace iExcelNetwork
         {
             if (_jsonFromToRange == null)
             {
-                throw new SelectedRangeJsonIsNullException(ExceptionMessage.RangeIsNotSelected());
+                throw new SelectedRangeIsNullException(ExceptionMessage.RangeIsNotSelected());
             }
 
             if(!VisJsDataValidator.HasValidFieldNames(_jsonFromToRange))

@@ -195,7 +195,7 @@
     <Compile Include="Exceptions\SelectedCellNotRangeException.cs" />
     <Compile Include="Exceptions\SelectedEmptyCellException.cs" />
     <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
-    <Compile Include="Exceptions\SelectedRangeJsonIsNullException.cs" />
+    <Compile Include="Exceptions\SelectedRangeIsNullException.cs" />
     <Compile Include="Exceptions\SelectedRangeJsonColumnNamesNotCorrectException.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -206,6 +206,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Validations\SelectedRangeValidator.cs" />
     <Compile Include="VisJsDataValidator.cs" />
     <Compile Include="VisJsNetworkBuilder.cs" />
     <Compile Include="VisJsNetworkData.cs" />

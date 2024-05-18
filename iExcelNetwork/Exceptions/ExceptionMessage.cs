@@ -7,6 +7,11 @@
             return "Range is not selected!";
         }
 
+        public static string SelectedRangeIsNull()
+        {
+            return "Selected range is NULL!";
+        }
+
         public static string RangeHasNoRecords()
         {
             return "Selected range, has only one row as column names. Please select more than one row.";

@@ -1,4 +1,5 @@
 ﻿using iExcelNetwork.Exceptions;
+using iExcelNetwork.Validations;
 using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
@@ -35,20 +36,11 @@ namespace iExcelNetwork
                 {
                     selectedRange = (Excel.Range)result;
 
-                    if(selectedRange.Value == null)
-                    {
-                        throw new SelectedEmptyCellException(ExceptionMessage.SelectedEmptyCell());
-                    }
+                    SelectedRangeValidator.ValidateRangeIsNotEmptyCell(selectedRange);
+                    SelectedRangeValidator.ValidateRangeIsNotCell(selectedRange);
+                    SelectedRangeValidator.ValidateSelectedRangeIsNotNull(selectedRange);
 
-                    if (selectedRange.Value.GetType() != typeof(object[,]))
-                    {
-                        throw new SelectedCellNotRangeException(ExceptionMessage.SelectedCellNotRange());
-                    }
-
-                    if (selectedRange != null)
-                    {
-                        _selectedRangeAsJSON = ExcelRange.ConvertToJson(selectedRange);
-                    }
+                    _selectedRangeAsJSON = ExcelRange.ConvertToJson(selectedRange);
                 }
 
             }
@@ -68,7 +60,7 @@ namespace iExcelNetwork
             try
             {
                 if (_selectedRangeAsJSON == null)
-                    throw new SelectedRangeJsonIsNullException(ExceptionMessage.RangeIsNotSelected());
+                    throw new SelectedRangeIsNullException(ExceptionMessage.RangeIsNotSelected());
 
                 if (!VisJsDataValidator.HasRecords(_selectedRangeAsJSON))
                     throw new SelectedRangeJsonHasNoRecordsException(ExceptionMessage.RangeHasNoRecords());
