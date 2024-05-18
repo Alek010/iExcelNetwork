@@ -34,6 +34,16 @@ namespace iExcelNetwork
                 {
                     selectedRange = (Excel.Range)result;
 
+                    if(selectedRange.Value == null)
+                    {
+                        throw new Exception("You have selected an empty cell. Select a range of cells!");
+                    }
+
+                    if (selectedRange.Value.GetType() != typeof(object[,]))
+                    {
+                        throw new Exception("You have selected a cell. Select a range of cells!");
+                    }
+
                     if (selectedRange != null)
                     {
                         _selectedRangeAsJSON = ExcelRange.ConvertToJson(selectedRange);
