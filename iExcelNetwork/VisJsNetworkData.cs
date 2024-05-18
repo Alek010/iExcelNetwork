@@ -1,5 +1,6 @@
 ﻿// Ignore Spelling: Json
 
+using iExcelNetwork.Exceptions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -27,17 +28,17 @@ namespace iExcelNetwork
         {
             if (_jsonFromToRange == null)
             {
-                throw new Exception("Range is not selected!");
+                throw new SelectedRangeJsonIsNullException(ExceptionMessage.RangeIsNotSelected());
             }
 
             if(!VisJsDataValidator.HasValidFieldNames(_jsonFromToRange))
             {
-                throw new Exception($@"Column names are not correct. Change ColumnName1 = 'from', ColumnName2 = 'to'. Select Range again!");
+                throw new SelectedRangeJsonColumnNamesNotCorrectException(ExceptionMessage.RangeColumnNamesAreNotCorrect());
             }
 
             if (!VisJsDataValidator.HasRecords(_jsonFromToRange))
             {
-                throw new Exception("Selected range, has only one row as column names. Please select more than one row.");
+                throw new SelectedRangeJsonHasNoRecordsException(ExceptionMessage.RangeHasNoRecords());
             }
 
             List<RangeData> FromToRange = JsonConvert.DeserializeObject<List<RangeData>>(_jsonFromToRange);
@@ -78,7 +79,7 @@ namespace iExcelNetwork
 
             if (fromEdgeId.Count != toEdgeId.Count)
             {
-                throw new Exception("From and To Edges count is not equal.");
+                throw new FromNodesEdgeNodesCountNotEqualException(ExceptionMessage.FromToNodesCountNotEqual());
             }
             else
             {

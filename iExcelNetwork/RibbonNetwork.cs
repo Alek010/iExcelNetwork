@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Tools.Ribbon;
+﻿using iExcelNetwork.Exceptions;
+using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
 using System.Windows.Forms;
@@ -36,12 +37,12 @@ namespace iExcelNetwork
 
                     if(selectedRange.Value == null)
                     {
-                        throw new Exception("You have selected an empty cell. Select a range of cells!");
+                        throw new SelectedEmptyCellException(ExceptionMessage.SelectedEmptyCell());
                     }
 
                     if (selectedRange.Value.GetType() != typeof(object[,]))
                     {
-                        throw new Exception("You have selected a cell. Select a range of cells!");
+                        throw new SelectedCellNotRangeException(ExceptionMessage.SelectedCellNotRange());
                     }
 
                     if (selectedRange != null)
@@ -67,10 +68,10 @@ namespace iExcelNetwork
             try
             {
                 if (_selectedRangeAsJSON == null)
-                    throw new Exception("Range is not selected!");
+                    throw new SelectedRangeJsonIsNullException(ExceptionMessage.RangeIsNotSelected());
 
                 if (!VisJsDataValidator.HasRecords(_selectedRangeAsJSON))
-                    throw new Exception("Selected range, has only one row as column names. Please select more than one row.");
+                    throw new SelectedRangeJsonHasNoRecordsException(ExceptionMessage.RangeHasNoRecords());
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {

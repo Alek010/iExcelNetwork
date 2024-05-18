@@ -190,6 +190,13 @@
   <ItemGroup>
     <Compile Include="Edge.cs" />
     <Compile Include="ExcelRange.cs" />
+    <Compile Include="Exceptions\ExceptionMessage.cs" />
+    <Compile Include="Exceptions\FromNodesEdgeNodesCountNotEqualException.cs" />
+    <Compile Include="Exceptions\SelectedCellNotRangeException.cs" />
+    <Compile Include="Exceptions\SelectedEmptyCellException.cs" />
+    <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
+    <Compile Include="Exceptions\SelectedRangeJsonIsNullException.cs" />
+    <Compile Include="Exceptions\SelectedRangeJsonColumnNamesNotCorrectException.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
