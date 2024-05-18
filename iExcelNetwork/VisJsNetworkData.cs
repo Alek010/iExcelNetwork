@@ -26,10 +26,26 @@ namespace iExcelNetwork
 
         public void ProcessJson()
         {
+            if (_jsonFromToRange == null)
+            {
+                throw new Exception("Range is not selected!");
+            }
+
+            if(!VisJsDataValidator.HasValidFieldNames(_jsonFromToRange))
+            {
+                throw new Exception($@"Column names are not correct. Change ColumnName1 = 'from', ColumnName2 = 'to'. Select Range again!");
+            }
+
+            if (!VisJsDataValidator.HasRecords(_jsonFromToRange))
+            {
+                throw new Exception("Selected range, has only one row as column names. Please select more than one row.");
+            }
+
             List<RangeData> FromToRange = JsonConvert.DeserializeObject<List<RangeData>>(_jsonFromToRange);
 
             FromNodesLabels = FromToRange.Select(range => range.From).ToList();
             ToNodesLabels = FromToRange.Select(range => range.To).ToList();
+
         }
 
         public List<Node> GetNodes()

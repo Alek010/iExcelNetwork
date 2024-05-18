@@ -86,16 +86,23 @@ namespace iExcelNetwork
         {
             VisJsNetworkData visJsNetwork = new VisJsNetworkData(_selectedRangeAsJSON);
 
-            visJsNetwork.ProcessJson();
+            try
+            {
+                visJsNetwork.ProcessJson();
 
-            var nodes = visJsNetwork.GetNodes();
-            var edges = visJsNetwork.GetEdges();
+                var nodes = visJsNetwork.GetNodes();
+                var edges = visJsNetwork.GetEdges();
 
-            string nodesJson = JsonConvert.SerializeObject(nodes, Formatting.Indented);
-            string edgesJson = JsonConvert.SerializeObject(edges, Formatting.Indented);
+                string nodesJson = JsonConvert.SerializeObject(nodes, Formatting.Indented);
+                string edgesJson = JsonConvert.SerializeObject(edges, Formatting.Indented);
 
-            VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(nodesJson, edgesJson);
-            visJsNetworkBuilder.ShowNetwork();
+                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(nodesJson, edgesJson);
+                visJsNetworkBuilder.ShowNetwork();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
     }
