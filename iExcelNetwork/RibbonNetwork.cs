@@ -1,4 +1,6 @@
-﻿using Microsoft.Office.Tools.Ribbon;
+﻿using iExcelNetwork.Exceptions;
+using iExcelNetwork.Validations;
+using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
 using System.Windows.Forms;
@@ -8,7 +10,7 @@ namespace iExcelNetwork
 {
     public partial class RibbonNetwork
     {
-        private string _selectedRangeAsJSON;
+        private string _selectedRangeJSON;
 
         private void RibbonNetwork_Load(object sender, RibbonUIEventArgs e)
         {
@@ -34,20 +36,11 @@ namespace iExcelNetwork
                 {
                     selectedRange = (Excel.Range)result;
 
-                    if(selectedRange.Value == null)
-                    {
-                        throw new Exception("You have selected an empty cell. Select a range of cells!");
-                    }
+                    SelectedRangeValidator.ValidateRangeIsNotEmptyCell(selectedRange);
+                    SelectedRangeValidator.ValidateRangeIsNotCell(selectedRange);
+                    SelectedRangeValidator.ValidateSelectedRangeIsNotNull(selectedRange);
 
-                    if (selectedRange.Value.GetType() != typeof(object[,]))
-                    {
-                        throw new Exception("You have selected a cell. Select a range of cells!");
-                    }
-
-                    if (selectedRange != null)
-                    {
-                        _selectedRangeAsJSON = ExcelRange.ConvertToJson(selectedRange);
-                    }
+                    _selectedRangeJSON = ExcelRange.ConvertToJson(selectedRange);
                 }
 
             }
@@ -66,11 +59,8 @@ namespace iExcelNetwork
         {
             try
             {
-                if (_selectedRangeAsJSON == null)
-                    throw new Exception("Range is not selected!");
-
-                if (!VisJsDataValidator.HasRecords(_selectedRangeAsJSON))
-                    throw new Exception("Selected range, has only one row as column names. Please select more than one row.");
+                VisJsDataValidator.JsonIsNotNull(_selectedRangeJSON);
+                VisJsDataValidator.JsonHasData(_selectedRangeJSON);
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
@@ -83,15 +73,13 @@ namespace iExcelNetwork
                 {
                     string filePath = saveFileDialog.FileName;
 
-                    ExcelRange.SaveAsJson(_selectedRangeAsJSON, filePath);
+                    ExcelRange.SaveAsJson(_selectedRangeJSON, filePath);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-
-
         }
 
         private void btn_buildNetwork_Click(object sender, RibbonControlEventArgs e)
@@ -101,10 +89,10 @@ namespace iExcelNetwork
 
         private void OpenVisJsNetwork()
         {
-            VisJsNetworkData visJsNetwork = new VisJsNetworkData(_selectedRangeAsJSON);
-
             try
             {
+                VisJsNetworkData visJsNetwork = new VisJsNetworkData(_selectedRangeJSON);
+
                 visJsNetwork.ProcessJson();
 
                 var nodes = visJsNetwork.GetNodes();

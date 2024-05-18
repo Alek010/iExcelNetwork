@@ -1,7 +1,7 @@
 ﻿// Ignore Spelling: Json
 
+using iExcelNetwork.Exceptions;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,14 +9,12 @@ namespace iExcelNetwork
 {
     public class VisJsNetworkData
     {
-
         private string _jsonFromToRange;
         private List<string> FromNodesLabels;
         private List<string> ToNodesLabels;
 
         private List<Node> NodesList = new List<Node>();
         private List<Edge> EdgesList = new List<Edge>();
-
 
         public VisJsNetworkData(string jsonFromToRange)
         {
@@ -25,20 +23,9 @@ namespace iExcelNetwork
 
         public void ProcessJson()
         {
-            if (_jsonFromToRange == null)
-            {
-                throw new Exception("Range is not selected!");
-            }
-
-            if(!VisJsDataValidator.HasValidFieldNames(_jsonFromToRange))
-            {
-                throw new Exception($@"Column names are not correct. Change ColumnName1 = 'from', ColumnName2 = 'to'. Select Range again!");
-            }
-
-            if (!VisJsDataValidator.HasRecords(_jsonFromToRange))
-            {
-                throw new Exception("Selected range, has only one row as column names. Please select more than one row.");
-            }
+            VisJsDataValidator.JsonIsNotNull(_jsonFromToRange);
+            VisJsDataValidator.JsonFieldNamesAreValid(_jsonFromToRange);
+            VisJsDataValidator.JsonHasData(_jsonFromToRange);
 
             List<RangeData> FromToRange = JsonConvert.DeserializeObject<List<RangeData>>(_jsonFromToRange);
 
@@ -47,7 +34,6 @@ namespace iExcelNetwork
 
             ToNodesLabels = FromToRange.Select(range => range.To =string.IsNullOrWhiteSpace(range.To) ? "" : range.To)
                                        .ToList();
-
         }
 
         public List<Node> GetNodes()
@@ -74,16 +60,9 @@ namespace iExcelNetwork
 
             var toEdgeId = GetEdgesIds(ToNodesLabels, NodesList);
 
-            int count;
+            VisJsDataValidator.ValidateFromToEdgesIdsCount(fromEdgeId.Count, toEdgeId.Count);
 
-            if (fromEdgeId.Count != toEdgeId.Count)
-            {
-                throw new Exception("From and To Edges count is not equal.");
-            }
-            else
-            {
-                count = fromEdgeId.Count;
-            }
+            int count = fromEdgeId.Count;
 
             for (int i = 0; i < count; i++)
             {
