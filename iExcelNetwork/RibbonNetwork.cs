@@ -10,7 +10,7 @@ namespace iExcelNetwork
 {
     public partial class RibbonNetwork
     {
-        private string _selectedRangeAsJSON;
+        private string _selectedRangeJSON;
 
         private void RibbonNetwork_Load(object sender, RibbonUIEventArgs e)
         {
@@ -40,7 +40,7 @@ namespace iExcelNetwork
                     SelectedRangeValidator.ValidateRangeIsNotCell(selectedRange);
                     SelectedRangeValidator.ValidateSelectedRangeIsNotNull(selectedRange);
 
-                    _selectedRangeAsJSON = ExcelRange.ConvertToJson(selectedRange);
+                    _selectedRangeJSON = ExcelRange.ConvertToJson(selectedRange);
                 }
 
             }
@@ -59,11 +59,8 @@ namespace iExcelNetwork
         {
             try
             {
-                if (_selectedRangeAsJSON == null)
-                    throw new SelectedRangeIsNullException(ExceptionMessage.RangeIsNotSelected());
-
-                if (!VisJsDataValidator.HasRecords(_selectedRangeAsJSON))
-                    throw new SelectedRangeJsonHasNoRecordsException(ExceptionMessage.RangeHasNoRecords());
+                VisJsDataValidator.JsonIsNotNull(_selectedRangeJSON);
+                VisJsDataValidator.JsonHasData(_selectedRangeJSON);
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
@@ -76,15 +73,13 @@ namespace iExcelNetwork
                 {
                     string filePath = saveFileDialog.FileName;
 
-                    ExcelRange.SaveAsJson(_selectedRangeAsJSON, filePath);
+                    ExcelRange.SaveAsJson(_selectedRangeJSON, filePath);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-
-
         }
 
         private void btn_buildNetwork_Click(object sender, RibbonControlEventArgs e)
@@ -94,10 +89,10 @@ namespace iExcelNetwork
 
         private void OpenVisJsNetwork()
         {
-            VisJsNetworkData visJsNetwork = new VisJsNetworkData(_selectedRangeAsJSON);
-
             try
             {
+                VisJsNetworkData visJsNetwork = new VisJsNetworkData(_selectedRangeJSON);
+
                 visJsNetwork.ProcessJson();
 
                 var nodes = visJsNetwork.GetNodes();

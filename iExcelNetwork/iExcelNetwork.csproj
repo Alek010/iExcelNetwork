@@ -207,7 +207,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Validations\SelectedRangeValidator.cs" />
-    <Compile Include="VisJsDataValidator.cs" />
+    <Compile Include="Validations\VisJsDataValidator.cs" />
     <Compile Include="VisJsNetworkBuilder.cs" />
     <Compile Include="VisJsNetworkData.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
