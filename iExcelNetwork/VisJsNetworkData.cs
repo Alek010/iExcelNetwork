@@ -30,13 +30,17 @@ namespace iExcelNetwork
             {
                 throw new Exception("Range is not selected!");
             }
-            else
-            {
-                List<RangeData> FromToRange = JsonConvert.DeserializeObject<List<RangeData>>(_jsonFromToRange);
 
-                FromNodesLabels = FromToRange.Select(range => range.From).ToList();
-                ToNodesLabels = FromToRange.Select(range => range.To).ToList();
+            if(!VisJsDataFieldsValidator.ValidateFieldNames(_jsonFromToRange))
+            {
+                throw new Exception($@"Column names are not correct. Change ColumnName1 = 'from', ColumnName2 = 'to'. Select Range again!");
             }
+
+            List<RangeData> FromToRange = JsonConvert.DeserializeObject<List<RangeData>>(_jsonFromToRange);
+
+            FromNodesLabels = FromToRange.Select(range => range.From).ToList();
+            ToNodesLabels = FromToRange.Select(range => range.To).ToList();
+
         }
 
         public List<Node> GetNodes()
