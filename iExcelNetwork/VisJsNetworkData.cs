@@ -10,7 +10,6 @@ namespace iExcelNetwork
     public class VisJsNetworkData
     {
 
-
         private string _jsonFromToRange;
         private List<string> FromNodesLabels;
         private List<string> ToNodesLabels;
@@ -43,8 +42,11 @@ namespace iExcelNetwork
 
             List<RangeData> FromToRange = JsonConvert.DeserializeObject<List<RangeData>>(_jsonFromToRange);
 
-            FromNodesLabels = FromToRange.Select(range => range.From).ToList();
-            ToNodesLabels = FromToRange.Select(range => range.To).ToList();
+            FromNodesLabels = FromToRange.Select(range => range.From = string.IsNullOrWhiteSpace(range.From) ? "" : range.From)
+                                         .ToList();
+
+            ToNodesLabels = FromToRange.Select(range => range.To =string.IsNullOrWhiteSpace(range.To) ? "" : range.To)
+                                       .ToList();
 
         }
 
