@@ -188,8 +188,8 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="Edge.cs" />
-    <Compile Include="ExcelRange.cs" />
+    <Compile Include="VisJsNetwork\Models\Edge.cs" />
+    <Compile Include="Helpers\ExcelRange.cs" />
     <Compile Include="Exceptions\ExceptionMessage.cs" />
     <Compile Include="Exceptions\FromNodesEdgeNodesCountNotEqualException.cs" />
     <Compile Include="Exceptions\SelectedCellNotRangeException.cs" />
@@ -197,7 +197,7 @@
     <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
     <Compile Include="Exceptions\SelectedRangeIsNullException.cs" />
     <Compile Include="Exceptions\SelectedRangeJsonColumnNamesNotCorrectException.cs" />
-    <Compile Include="Node.cs" />
+    <Compile Include="VisJsNetwork\Models\Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -208,8 +208,9 @@
     </Compile>
     <Compile Include="Validations\SelectedRangeValidator.cs" />
     <Compile Include="Validations\VisJsDataValidator.cs" />
-    <Compile Include="VisJsNetworkBuilder.cs" />
-    <Compile Include="VisJsNetworkData.cs" />
+    <Compile Include="VisJsNetwork\VisJsNetworkBuilder.cs" />
+    <Compile Include="VisJsNetwork\VisJsNetworkData.cs" />
+    <Compile Include="VisJsNetwork\FromToRangeData.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -228,7 +229,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="RangeData.cs" />
+    <Compile Include="VisJsNetwork\Models\FromToRange.cs" />
     <Compile Include="RibbonNetwork.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -255,6 +256,7 @@
   <ItemGroup>
     <None Include="Resources\select1.png" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
