@@ -2,6 +2,7 @@
 
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 
 namespace iExcelNetwork
 {
@@ -13,6 +14,8 @@ namespace iExcelNetwork
         private string HtmlContent { get; set; }
         private string TempFilePath { get; set; }
 
+        private string VisJsScript { get; set; }
+
         public VisJsNetworkBuilder(string nodesJson, string edgesJson)
         {
             _nodesJson = nodesJson;
@@ -21,6 +24,8 @@ namespace iExcelNetwork
 
         public void ShowNetwork()
         {
+            VisJsScript = GetEmbeddedResource("iExcelNetwork.Resources.vis-network.min.js");
+
             CreateHtmlContent();
             CreateTempFilePath();
             WriteHtmlContentToFile();
@@ -35,7 +40,9 @@ namespace iExcelNetwork
                 <html>
                 <head>
                     <title>Vis.js Network</title>
-                    <script src='https://unpkg.com/vis-network/standalone/umd/vis-network.min.js'></script>
+                    <script type='text/javascript'>
+                        {VisJsScript}
+                    </script>
                     <style type='text/css'>
                         html, body {{height: 100%;
                             margin: 0;
@@ -81,7 +88,15 @@ namespace iExcelNetwork
             Process.Start(TempFilePath);
         }
 
-
+        private string GetEmbeddedResource(string resourceName)
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                return reader.ReadToEnd();
+            }
+        }
 
 
     }
