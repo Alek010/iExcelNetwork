@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace iExcelNetwork
+namespace iExcelNetwork.VisJsNetwork.Model
 {
     public class Node
     {

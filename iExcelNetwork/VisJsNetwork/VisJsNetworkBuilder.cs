@@ -2,8 +2,9 @@
 
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 
-namespace iExcelNetwork
+namespace iExcelNetwork.VisJsNetwork
 {
     public class VisJsNetworkBuilder
     {
@@ -29,40 +30,14 @@ namespace iExcelNetwork
 
         private void CreateHtmlContent()
         {
-            // Prepare the HTML content with Vis.js network graph
-            HtmlContent = $@"
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>Vis.js Network</title>
-                    <script src='https://unpkg.com/vis-network/standalone/umd/vis-network.min.js'></script>
-                    <style type='text/css'>
-                        html, body {{height: 100%;
-                            margin: 0;
-                            overflow: hidden; /* Prevent scrollbars */
-                        }}
-                        #networkContainer {{
-                            width: 100%;
-                            height: 100%;
-                            border: 1px solid lightgray;
-                        }}
-                    </style>
-                </head>
-                <body>
-                    <div id='networkContainer'></div>
-                    <script type='text/javascript'>
-                        // Define nodes and edges variables
-                        var nodes = {_nodesJson};
-                        var edges = {_edgesJson};
+            string VisJsScript = GetEmbeddedResource("iExcelNetwork.Resources.vis-network.min.js");
 
-                        // Create Vis.js network graph
-                        var container = document.getElementById('networkContainer');
-                        var data = {{ nodes: nodes, edges: edges }};
-                        var options = {{}};
-                        var network = new vis.Network(container, data, options);
-                    </script>
-                </body>
-                </html>";
+            string htmlTemplate = GetEmbeddedResource("iExcelNetwork.Resources.VisJsNetworkTemplate.html");
+
+            HtmlContent = htmlTemplate
+                .Replace("{{VisJsScript}}", VisJsScript)
+                .Replace("{{nodesJson}}", _nodesJson)
+                .Replace("{{edgesJson}}", _edgesJson);
         }
 
         private void CreateTempFilePath()
@@ -81,7 +56,15 @@ namespace iExcelNetwork
             Process.Start(TempFilePath);
         }
 
-
+        private string GetEmbeddedResource(string resourceName)
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                return reader.ReadToEnd();
+            }
+        }
 
 
     }

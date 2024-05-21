@@ -1,9 +1,11 @@
 ﻿// Ignore Spelling: Json
 
+using iExcelNetwork.Validations;
+using iExcelNetwork.VisJsNetwork.Model;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace iExcelNetwork
+namespace iExcelNetwork.VisJsNetwork
 {
     public class VisJsNetworkData
     {

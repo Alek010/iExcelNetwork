@@ -6,7 +6,7 @@ using System.Data;
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 
-namespace iExcelNetwork
+namespace iExcelNetwork.Helpers
 {
     public static class ExcelRange
     {
