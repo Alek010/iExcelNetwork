@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace iExcelNetwork
+namespace iExcelNetwork.Validations
 {
     public static class VisJsDataValidator
     {

@@ -1,4 +1,4 @@
-﻿namespace iExcelNetwork
+﻿namespace iExcelNetwork.VisJsNetwork.Model
 {
     public class FromToRange
     {

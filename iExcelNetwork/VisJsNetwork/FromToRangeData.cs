@@ -1,5 +1,6 @@
 ﻿// Ignore Spelling: json
 
+using iExcelNetwork.VisJsNetwork.Model;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
