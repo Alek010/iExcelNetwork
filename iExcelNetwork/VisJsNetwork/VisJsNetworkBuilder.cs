@@ -3,6 +3,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Windows.Forms.VisualStyles;
 
 namespace iExcelNetwork
 {
@@ -14,8 +15,6 @@ namespace iExcelNetwork
         private string HtmlContent { get; set; }
         private string TempFilePath { get; set; }
 
-        private string VisJsScript { get; set; }
-
         public VisJsNetworkBuilder(string nodesJson, string edgesJson)
         {
             _nodesJson = nodesJson;
@@ -24,8 +23,6 @@ namespace iExcelNetwork
 
         public void ShowNetwork()
         {
-            VisJsScript = GetEmbeddedResource("iExcelNetwork.Resources.vis-network.min.js");
-
             CreateHtmlContent();
             CreateTempFilePath();
             WriteHtmlContentToFile();
@@ -34,42 +31,14 @@ namespace iExcelNetwork
 
         private void CreateHtmlContent()
         {
-            // Prepare the HTML content with Vis.js network graph
-            HtmlContent = $@"
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>Vis.js Network</title>
-                    <script type='text/javascript'>
-                        {VisJsScript}
-                    </script>
-                    <style type='text/css'>
-                        html, body {{height: 100%;
-                            margin: 0;
-                            overflow: hidden; /* Prevent scrollbars */
-                        }}
-                        #networkContainer {{
-                            width: 100%;
-                            height: 100%;
-                            border: 1px solid lightgray;
-                        }}
-                    </style>
-                </head>
-                <body>
-                    <div id='networkContainer'></div>
-                    <script type='text/javascript'>
-                        // Define nodes and edges variables
-                        var nodes = {_nodesJson};
-                        var edges = {_edgesJson};
+            string VisJsScript = GetEmbeddedResource("iExcelNetwork.Resources.vis-network.min.js");
 
-                        // Create Vis.js network graph
-                        var container = document.getElementById('networkContainer');
-                        var data = {{ nodes: nodes, edges: edges }};
-                        var options = {{}};
-                        var network = new vis.Network(container, data, options);
-                    </script>
-                </body>
-                </html>";
+            string htmlTemplate = GetEmbeddedResource("iExcelNetwork.Resources.VisJsNetworkTemplate.html");
+
+            HtmlContent = htmlTemplate
+                .Replace("{{VisJsScript}}", VisJsScript)
+                .Replace("{{nodesJson}}", _nodesJson)
+                .Replace("{{edgesJson}}", _edgesJson);
         }
 
         private void CreateTempFilePath()
