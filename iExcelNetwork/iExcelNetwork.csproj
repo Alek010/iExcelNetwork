@@ -262,6 +262,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\VisJsNetworkTemplate.html" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\how_it_works_22.png" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

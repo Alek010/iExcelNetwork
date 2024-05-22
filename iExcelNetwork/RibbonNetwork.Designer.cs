@@ -39,6 +39,7 @@
             this.btn_SelectRange = this.Factory.CreateRibbonButton();
             this.btn_saveJson = this.Factory.CreateRibbonButton();
             this.btn_buildNetwork = this.Factory.CreateRibbonButton();
+            this.btn_howItWorks = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +56,7 @@
             this.group1.Items.Add(this.btn_SelectRange);
             this.group1.Items.Add(this.btn_saveJson);
             this.group1.Items.Add(this.btn_buildNetwork);
+            this.group1.Items.Add(this.btn_howItWorks);
             this.group1.Label = "Basic";
             this.group1.Name = "group1";
             // 
@@ -85,6 +87,14 @@
             this.btn_buildNetwork.ShowImage = true;
             this.btn_buildNetwork.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_buildNetwork_Click);
             // 
+            // btn_howItWorks
+            // 
+            this.btn_howItWorks.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btn_howItWorks.Image = global::iExcelNetwork.Properties.Resources.how_it_works_22;
+            this.btn_howItWorks.Label = "How It Works";
+            this.btn_howItWorks.Name = "btn_howItWorks";
+            this.btn_howItWorks.ShowImage = true;
+            // 
             // RibbonNetwork
             // 
             this.Name = "RibbonNetwork";
@@ -106,6 +116,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_SelectRange;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_saveJson;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_buildNetwork;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_howItWorks;
     }
 
     partial class ThisRibbonCollection
