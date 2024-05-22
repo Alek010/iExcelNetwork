@@ -4,6 +4,7 @@ using iExcelNetwork.VisJsNetwork;
 using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -105,6 +106,39 @@ namespace iExcelNetwork
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_howItWorks_Click(object sender, RibbonControlEventArgs e)
+        {
+            CreateNewSheet();
+        }
+
+        private void CreateNewSheet()
+        {
+            try
+            {
+                // Get the current Excel application
+                Excel.Application excelApp = Globals.ThisAddIn.Application;
+
+                // Get the active workbook
+                Excel.Workbook activeWorkbook = excelApp.ActiveWorkbook;
+
+                // Add a new worksheet
+                Excel.Worksheet newWorksheet = activeWorkbook.Worksheets.Add();
+
+                // Set the name of the new worksheet
+                newWorksheet.Name = "How It Works";
+
+                // Set the tab color of the new worksheet
+                newWorksheet.Tab.Color = ColorTranslator.ToOle(Color.Red);
+
+                // Optionally, activate the new worksheet
+                newWorksheet.Activate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
     }

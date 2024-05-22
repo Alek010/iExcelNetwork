@@ -94,6 +94,7 @@
             this.btn_howItWorks.Label = "How It Works";
             this.btn_howItWorks.Name = "btn_howItWorks";
             this.btn_howItWorks.ShowImage = true;
+            this.btn_howItWorks.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_howItWorks_Click);
             // 
             // RibbonNetwork
             // 
