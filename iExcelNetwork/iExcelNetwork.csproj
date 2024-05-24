@@ -188,6 +188,9 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Helpers\ExcelWorkbook.cs" />
+    <Compile Include="SheetDataWriter\DataWriter.cs" />
+    <Compile Include="SheetDataWriter\HowItWorksData.cs" />
     <Compile Include="VisJsNetwork\Models\Edge.cs" />
     <Compile Include="Helpers\ExcelRange.cs" />
     <Compile Include="Exceptions\ExceptionMessage.cs" />

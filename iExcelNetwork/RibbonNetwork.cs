@@ -1,4 +1,5 @@
 ﻿using iExcelNetwork.Helpers;
+using iExcelNetwork.SheetDataWriter;
 using iExcelNetwork.Validations;
 using iExcelNetwork.VisJsNetwork;
 using Microsoft.Office.Tools.Ribbon;
@@ -118,23 +119,28 @@ namespace iExcelNetwork
         {
             try
             {
-                // Get the current Excel application
                 Excel.Application excelApp = Globals.ThisAddIn.Application;
 
-                // Get the active workbook
                 Excel.Workbook activeWorkbook = excelApp.ActiveWorkbook;
 
-                // Add a new worksheet
-                Excel.Worksheet newWorksheet = activeWorkbook.Worksheets.Add();
+                string sheetName = "How It Works";
 
-                // Set the name of the new worksheet
-                newWorksheet.Name = "How It Works";
+                if (!ExcelWorkbook.SheetNameExists(activeWorkbook, sheetName))
+                {
+                    Excel.Worksheet newWorksheet = activeWorkbook.Worksheets.Add();
 
-                // Set the tab color of the new worksheet
-                newWorksheet.Tab.Color = ColorTranslator.ToOle(Color.Red);
+                    newWorksheet.Name = "How It Works";
 
-                // Optionally, activate the new worksheet
-                newWorksheet.Activate();
+                    newWorksheet.Tab.Color = ColorTranslator.ToOle(Color.Red);
+
+                    newWorksheet.Activate();
+
+                    DataWriter dataWriter = new DataWriter();
+
+                    dataWriter.PopulateData(HowItWorksData.FromToTable, newWorksheet.Cells[1, 1]);
+                    dataWriter.PopulateData(HowItWorksData.InstructionsToBuildNetwork, newWorksheet.Cells[1, 4]);
+                    dataWriter.PopulateData(HowItWorksData.InstructionsToSaveJson, newWorksheet.Cells[9, 4]);
+                }
             }
             catch (Exception ex)
             {
