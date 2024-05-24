@@ -1,9 +1,11 @@
 ﻿using iExcelNetwork.Helpers;
+using iExcelNetwork.SheetDataWriter;
 using iExcelNetwork.Validations;
 using iExcelNetwork.VisJsNetwork;
 using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -105,6 +107,44 @@ namespace iExcelNetwork
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_howItWorks_Click(object sender, RibbonControlEventArgs e)
+        {
+            CreateNewSheet();
+        }
+
+        private void CreateNewSheet()
+        {
+            try
+            {
+                Excel.Application excelApp = Globals.ThisAddIn.Application;
+
+                Excel.Workbook activeWorkbook = excelApp.ActiveWorkbook;
+
+                string sheetName = "How It Works";
+
+                if (!ExcelWorkbook.SheetNameExists(activeWorkbook, sheetName))
+                {
+                    Excel.Worksheet newWorksheet = activeWorkbook.Worksheets.Add();
+
+                    newWorksheet.Name = "How It Works";
+
+                    newWorksheet.Tab.Color = ColorTranslator.ToOle(Color.Red);
+
+                    newWorksheet.Activate();
+
+                    DataWriter dataWriter = new DataWriter();
+
+                    dataWriter.PopulateData(HowItWorksData.FromToTable, newWorksheet.Cells[1, 1]);
+                    dataWriter.PopulateData(HowItWorksData.InstructionsToBuildNetwork, newWorksheet.Cells[1, 4]);
+                    dataWriter.PopulateData(HowItWorksData.InstructionsToSaveJson, newWorksheet.Cells[9, 4]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
     }

@@ -188,6 +188,9 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Helpers\ExcelWorkbook.cs" />
+    <Compile Include="SheetDataWriter\DataWriter.cs" />
+    <Compile Include="SheetDataWriter\HowItWorksData.cs" />
     <Compile Include="VisJsNetwork\Models\Edge.cs" />
     <Compile Include="Helpers\ExcelRange.cs" />
     <Compile Include="Exceptions\ExceptionMessage.cs" />
@@ -261,6 +264,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\VisJsNetworkTemplate.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\how_it_works_22.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
