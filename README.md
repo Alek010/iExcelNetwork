@@ -12,6 +12,12 @@ The capabilities of the iExecNetwork PoC can be extended. [See](https://visjs.gi
 
   ![image](https://github.com/Alek010/iExcelNetwork/assets/77459555/d3dd18b1-2b6d-475e-8daa-be7bb63859fe)
 
+## Install
+* Download a zip file *iExcelNetwork_PoC_ver_1.zip*.
+* The zip file's sha256 is 4725336befd9aea96d47708b98ebc990c197dee522140b5a8b5bfd130e0f1805.
+* Extract.
+* Install iExcelNetwork by executing setup.exe.
+
 ## How It Works
 * Press the "How it Works" button to see instructions on how to use iExcelNetwork.
 * A new Excel sheet named "How It Works" will open.
