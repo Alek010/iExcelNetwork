@@ -5,6 +5,7 @@ using iExcelNetwork.VisJsNetwork;
 using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -140,6 +141,9 @@ namespace iExcelNetwork
                     dataWriter.PopulateData(HowItWorksData.FromToTable, newWorksheet.Cells[1, 1]);
                     dataWriter.PopulateData(HowItWorksData.InstructionsToBuildNetwork, newWorksheet.Cells[1, 4]);
                     dataWriter.PopulateData(HowItWorksData.InstructionsToSaveJson, newWorksheet.Cells[9, 4]);
+                    dataWriter.PopulateData(HowItWorksData.FromToRandomNumbersAsLatvianPhoneNumbers, newWorksheet.Cells[20, 1]);
+                    dataWriter.PopulateData(HowItWorksData.FromToRandomNumberBetweenOneAndHundred, newWorksheet.Cells[20, 4]);
+
                 }
             }
             catch (Exception ex)

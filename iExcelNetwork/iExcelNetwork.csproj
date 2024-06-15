@@ -188,6 +188,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Helpers\DataGenerator.cs" />
     <Compile Include="Helpers\ExcelWorkbook.cs" />
     <Compile Include="SheetDataWriter\DataWriter.cs" />
     <Compile Include="SheetDataWriter\HowItWorksData.cs" />
