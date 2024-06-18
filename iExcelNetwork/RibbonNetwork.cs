@@ -1,4 +1,5 @@
 ﻿using iExcelNetwork.Helpers;
+using iExcelNetwork.NetworkProperty;
 using iExcelNetwork.SheetDataWriter;
 using iExcelNetwork.Validations;
 using iExcelNetwork.VisJsNetwork;
@@ -145,6 +146,19 @@ namespace iExcelNetwork
                     dataWriter.PopulateData(HowItWorksData.FromToRandomNumberBetweenOneAndHundred, newWorksheet.Cells[20, 4]);
 
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void btn_networkProperties_Click(object sender, RibbonControlEventArgs e)
+        {
+            try
+            {
+                NetworkPropertiesForm form = new NetworkPropertiesForm();
+                form.Show();
             }
             catch (Exception ex)
             {
