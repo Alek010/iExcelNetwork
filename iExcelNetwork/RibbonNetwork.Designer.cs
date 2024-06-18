@@ -34,11 +34,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RibbonNetwork));
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
             this.btn_SelectRange = this.Factory.CreateRibbonButton();
             this.btn_saveJson = this.Factory.CreateRibbonButton();
             this.btn_buildNetwork = this.Factory.CreateRibbonButton();
+            this.btn_networkProperties = this.Factory.CreateRibbonButton();
             this.btn_howItWorks = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
@@ -56,6 +58,7 @@
             this.group1.Items.Add(this.btn_SelectRange);
             this.group1.Items.Add(this.btn_saveJson);
             this.group1.Items.Add(this.btn_buildNetwork);
+            this.group1.Items.Add(this.btn_networkProperties);
             this.group1.Items.Add(this.btn_howItWorks);
             this.group1.Label = "Basic";
             this.group1.Name = "group1";
@@ -86,6 +89,14 @@
             this.btn_buildNetwork.Name = "btn_buildNetwork";
             this.btn_buildNetwork.ShowImage = true;
             this.btn_buildNetwork.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_buildNetwork_Click);
+            // 
+            // btn_networkProperties
+            // 
+            this.btn_networkProperties.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btn_networkProperties.Image = ((System.Drawing.Image)(resources.GetObject("btn_networkProperties.Image")));
+            this.btn_networkProperties.Label = "Network Properties";
+            this.btn_networkProperties.Name = "btn_networkProperties";
+            this.btn_networkProperties.ShowImage = true;
             // 
             // btn_howItWorks
             // 
@@ -118,6 +129,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_saveJson;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_buildNetwork;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_howItWorks;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_networkProperties;
     }
 
     partial class ThisRibbonCollection
