@@ -16,6 +16,7 @@ namespace iExcelNetwork
     public partial class RibbonNetwork
     {
         private string _selectedRangeJSON;
+        private NetworkProperties networkProperties = new NetworkProperties();
 
         private void RibbonNetwork_Load(object sender, RibbonUIEventArgs e)
         {
@@ -157,7 +158,7 @@ namespace iExcelNetwork
         {
             try
             {
-                NetworkPropertiesForm form = new NetworkPropertiesForm();
+                NetworkPropertiesForm form = new NetworkPropertiesForm(networkProperties);
                 form.Show();
             }
             catch (Exception ex)

@@ -61,7 +61,7 @@ namespace iExcelNetwork.NetworkProperty
             this.lb_networkOutputFolderPath.Name = "lb_networkOutputFolderPath";
             this.lb_networkOutputFolderPath.Size = new System.Drawing.Size(190, 13);
             this.lb_networkOutputFolderPath.TabIndex = 2;
-            this.lb_networkOutputFolderPath.Text = "C:\\Users\\Alek\\AppData\\Local\\Temp\\";
+            this.lb_networkOutputFolderPath.Text = "C:\\path\\to\\output\\folder\\";
             // 
             // NetworkPropertiesForm
             // 
