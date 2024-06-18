@@ -104,7 +104,7 @@ namespace iExcelNetwork
                 string nodesJson = JsonConvert.SerializeObject(visJsNetwork.GetNodes(), Formatting.Indented);
                 string edgesJson = JsonConvert.SerializeObject(visJsNetwork.GetEdges(), Formatting.Indented);
 
-                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(nodesJson, edgesJson);
+                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(networkProperties.OutputFolder, nodesJson, edgesJson);
                 visJsNetworkBuilder.ShowNetwork();
             }
             catch (Exception ex)
