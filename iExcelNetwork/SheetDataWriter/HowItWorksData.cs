@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿// Ignore Spelling: Json
+
+using iExcelNetwork.Helpers;
+using System;
+using System.Collections.Generic;
 
 namespace iExcelNetwork.SheetDataWriter
 {
@@ -34,5 +38,10 @@ namespace iExcelNetwork.SheetDataWriter
             new string[] { "3. Press the Range To JSON button." },
             new string[] { "4. Select pass where file will be saved." },
         };
+
+        public static readonly List<string[]> FromToRandomNumbersAsLatvianPhoneNumbers = DataGenerator.GenerateFromToListOfNumbers(500, 20000000, 29999999);
+        
+        public static readonly List<string[]> FromToRandomNumberBetweenOneAndHundred = DataGenerator.GenerateFromToListOfNumbers(500, 1, 100);
+
     }
 }

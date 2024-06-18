@@ -21,14 +21,41 @@
     <div id='networkContainer'></div>
     <script type='text/javascript'>
         // Define nodes and edges variables
-    var nodes = new vis.DataSet({{nodesJson}});
-    var edges = new vis.DataSet({{edgesJson}});
+        var nodes = new vis.DataSet({{nodesJson}});
+        var edges = new vis.DataSet({{edgesJson}});
 
         // Create Vis.js network graph
         var container = document.getElementById('networkContainer');
         var data = { nodes: nodes, edges: edges };
-        var options = {};
+
+        var options = {
+
+            nodes: {
+                shape: "dot",
+                size: 16,
+            },
+            layout: {
+                randomSeed: 34,
+            },
+            physics: {
+                forceAtlas2Based: {
+                    gravitationalConstant: -26,
+                    centralGravity: 0.005,
+                    springLength: 230,
+                    springConstant: 0.18,
+                },
+                maxVelocity: 146,
+                solver: "forceAtlas2Based",
+                timestep: 0.35,
+                stabilization: {
+                    enabled: false,
+                },
+            },
+        };
+
         var network = new vis.Network(container, data, options);
+
+
     </script>
 </body>
 </html>
