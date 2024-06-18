@@ -97,6 +97,7 @@
             this.btn_networkProperties.Label = "Network Properties";
             this.btn_networkProperties.Name = "btn_networkProperties";
             this.btn_networkProperties.ShowImage = true;
+            this.btn_networkProperties.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_networkProperties_Click);
             // 
             // btn_howItWorks
             // 

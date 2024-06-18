@@ -190,6 +190,12 @@
   <ItemGroup>
     <Compile Include="Helpers\DataGenerator.cs" />
     <Compile Include="Helpers\ExcelWorkbook.cs" />
+    <Compile Include="NetworkProperty\NetworkPropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NetworkProperty\NetworkPropertiesForm.Designer.cs">
+      <DependentUpon>NetworkPropertiesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
