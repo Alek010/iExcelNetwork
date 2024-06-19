@@ -16,6 +16,7 @@ namespace iExcelNetwork
     public partial class RibbonNetwork
     {
         private string _selectedRangeJSON;
+        private NetworkProperties networkProperties = new NetworkProperties();
 
         private void RibbonNetwork_Load(object sender, RibbonUIEventArgs e)
         {
@@ -103,7 +104,7 @@ namespace iExcelNetwork
                 string nodesJson = JsonConvert.SerializeObject(visJsNetwork.GetNodes(), Formatting.Indented);
                 string edgesJson = JsonConvert.SerializeObject(visJsNetwork.GetEdges(), Formatting.Indented);
 
-                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(nodesJson, edgesJson);
+                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(networkProperties.OutputFolder, nodesJson, edgesJson);
                 visJsNetworkBuilder.ShowNetwork();
             }
             catch (Exception ex)
@@ -157,7 +158,7 @@ namespace iExcelNetwork
         {
             try
             {
-                NetworkPropertiesForm form = new NetworkPropertiesForm();
+                NetworkPropertiesForm form = new NetworkPropertiesForm(networkProperties);
                 form.Show();
             }
             catch (Exception ex)

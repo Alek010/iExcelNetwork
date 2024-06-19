@@ -10,14 +10,16 @@ namespace iExcelNetwork.VisJsNetwork
     {
         private string _nodesJson { get; set; }
         private string _edgesJson { get; set; }
+        private string _networkOutputFolder { get; set; }
 
         private string HtmlContent { get; set; }
-        private string TempFilePath { get; set; }
+        private string FilePath { get; set; }
 
-        public VisJsNetworkBuilder(string nodesJson, string edgesJson)
+        public VisJsNetworkBuilder(string networkOutputFolder, string nodesJson, string edgesJson)
         {
             _nodesJson = nodesJson;
             _edgesJson = edgesJson;
+            _networkOutputFolder = networkOutputFolder;
         }
 
         public void ShowNetwork()
@@ -42,18 +44,18 @@ namespace iExcelNetwork.VisJsNetwork
 
         private void CreateTempFilePath()
         {
-            TempFilePath = Path.Combine(Path.GetTempPath(), "visjs_network.html");
+            FilePath = Path.Combine(_networkOutputFolder, "visjs_network.html");
         }
 
         private void WriteHtmlContentToFile()
         {
-            File.WriteAllText(TempFilePath, HtmlContent);
+            File.WriteAllText(FilePath, HtmlContent);
         }
 
         private void OpenHtmlFile()
         {
             // Open the temporary HTML file in the default web browser
-            Process.Start(TempFilePath);
+            Process.Start(FilePath);
         }
 
         private string GetEmbeddedResource(string resourceName)
