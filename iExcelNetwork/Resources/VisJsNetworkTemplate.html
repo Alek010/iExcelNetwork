@@ -28,14 +28,14 @@
         var container = document.getElementById('networkContainer');
         var data = { nodes: nodes, edges: edges };
 
-        var options = {
+    var options = {
 
-            nodes: {
-                shape: "dot",
-                size: 16,
-            },
-            edges: {
-                arrows: 'to',
+        nodes: {
+            shape: "dot",
+            size: 16,
+        },
+        edges: {
+            arrows: "selectedEdgesDirection",
             },
             layout: {
                 randomSeed: 34,
