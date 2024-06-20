@@ -1,5 +1,6 @@
 ﻿// Ignore Spelling: Json
 
+using iExcelNetwork.NetworkProperty;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -10,16 +11,16 @@ namespace iExcelNetwork.VisJsNetwork
     {
         private string _nodesJson { get; set; }
         private string _edgesJson { get; set; }
-        private string _networkOutputFolder { get; set; }
+        private NetworkProperties _networkProperties { get; set; }
 
         private string HtmlContent { get; set; }
         private string FilePath { get; set; }
 
-        public VisJsNetworkBuilder(string networkOutputFolder, string nodesJson, string edgesJson)
+        public VisJsNetworkBuilder(NetworkProperties networkProperties, string nodesJson, string edgesJson)
         {
             _nodesJson = nodesJson;
             _edgesJson = edgesJson;
-            _networkOutputFolder = networkOutputFolder;
+            _networkProperties = networkProperties;
         }
 
         public void ShowNetwork()
@@ -39,12 +40,13 @@ namespace iExcelNetwork.VisJsNetwork
             HtmlContent = htmlTemplate
                 .Replace("{{VisJsScript}}", VisJsScript)
                 .Replace("{{nodesJson}}", _nodesJson)
-                .Replace("{{edgesJson}}", _edgesJson);
+                .Replace("{{edgesJson}}", _edgesJson)
+                .Replace("selectedEdgesDirection", _networkProperties.EdgeProperty.SelectedDirection);
         }
 
         private void CreateTempFilePath()
         {
-            FilePath = Path.Combine(_networkOutputFolder, "visjs_network.html");
+            FilePath = Path.Combine(_networkProperties.OutputFolder, "visjs_network.html");
         }
 
         private void WriteHtmlContentToFile()

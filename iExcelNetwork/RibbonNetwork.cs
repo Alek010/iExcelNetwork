@@ -6,7 +6,6 @@ using iExcelNetwork.VisJsNetwork;
 using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -16,7 +15,7 @@ namespace iExcelNetwork
     public partial class RibbonNetwork
     {
         private string _selectedRangeJSON;
-        private NetworkProperties networkProperties = new NetworkProperties();
+        private NetworkProperties networkProperties = new NetworkProperties(new EdgeProperty());
 
         private void RibbonNetwork_Load(object sender, RibbonUIEventArgs e)
         {
@@ -104,7 +103,7 @@ namespace iExcelNetwork
                 string nodesJson = JsonConvert.SerializeObject(visJsNetwork.GetNodes(), Formatting.Indented);
                 string edgesJson = JsonConvert.SerializeObject(visJsNetwork.GetEdges(), Formatting.Indented);
 
-                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(networkProperties.OutputFolder, nodesJson, edgesJson);
+                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(networkProperties, nodesJson, edgesJson);
                 visJsNetworkBuilder.ShowNetwork();
             }
             catch (Exception ex)

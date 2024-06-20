@@ -13,13 +13,27 @@ namespace iExcelNetwork.NetworkProperty
 {
     public partial class NetworkPropertiesForm : Form
     {
+        private bool isFormLoaded = false;
         private NetworkProperties _networkProperties;
 
         public NetworkPropertiesForm(NetworkProperties networkProperties)
         {
             InitializeComponent();
-            lb_networkOutputFolderPath.Text = networkProperties.OutputFolder;
+
             _networkProperties = networkProperties;
+        }
+
+        private void NetworkPropertiesForm_Load(object sender, EventArgs e)
+        {
+            lb_networkOutputFolderPath.Text = _networkProperties.OutputFolder;
+
+            cmBox_setEdgesDirection.DataSource = new BindingSource(_networkProperties.EdgeProperty.EdgeDirectionOptions(), null);
+            cmBox_setEdgesDirection.DisplayMember = "Key";
+            cmBox_setEdgesDirection.ValueMember = "Value";
+
+            cmBox_setEdgesDirection.SelectedValue = _networkProperties.EdgeProperty.SelectedDirection;
+
+            isFormLoaded = true;
         }
 
         private void btn_selectFolder_Click(object sender, EventArgs e)
@@ -38,6 +52,14 @@ namespace iExcelNetwork.NetworkProperty
                     _networkProperties.OutputFolder = folderBrowserDialog.SelectedPath;
                 }
             }
+        }
+
+        private void cmBox_setEdgesDirection_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (!isFormLoaded)
+                return;
+
+            _networkProperties.EdgeProperty.SelectedDirection = cmBox_setEdgesDirection.SelectedValue.ToString();
         }
     }
 }
