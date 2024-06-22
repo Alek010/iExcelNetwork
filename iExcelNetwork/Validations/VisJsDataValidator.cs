@@ -39,7 +39,8 @@ namespace iExcelNetwork.Validations
         private static readonly List<string> ValidFieldNames = new List<string>
         {
             "from",
-            "to"
+            "to",
+            "count"
         };
 
         private static bool HasValidFieldNames(string jsonString)

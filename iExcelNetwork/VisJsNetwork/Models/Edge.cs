@@ -9,5 +9,8 @@ namespace iExcelNetwork.VisJsNetwork.Model
 
         [JsonProperty("to")]
         public int To { get; set; }
+
+        [JsonProperty("label")]
+        public string Count { get; set; }
     }
 }

@@ -1,6 +1,8 @@
 ﻿// Ignore Spelling: Validator
 
 using iExcelNetwork.Exceptions;
+using System.Collections.Generic;
+using System.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace iExcelNetwork.Validations
@@ -23,7 +25,12 @@ namespace iExcelNetwork.Validations
         {
             if (selectedRange == null)
                 throw new SelectedRangeIsNullException(ExceptionMessage.SelectedRangeIsNull());
- 
+         }
+
+        public static void ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(List<string> listofIntegersAsStrings)
+        {
+            if(listofIntegersAsStrings.Any(value => !int.TryParse(value, out _)))
+                throw new ListOfIntegersAsStringsContainsNonIntegerValuesException(ExceptionMessage.NotAllValuesAreIntegersInCountColumn());
         }
     }
 }

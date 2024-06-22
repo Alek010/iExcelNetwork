@@ -2,6 +2,7 @@
 
 using iExcelNetwork.Validations;
 using iExcelNetwork.VisJsNetwork.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,14 +12,16 @@ namespace iExcelNetwork.VisJsNetwork
     {
         private readonly List<string> _fromNodesLabels;
         private readonly List<string> _toNodesLabels;
+        private readonly List<string> _linksCount;
 
         private readonly List<Node> NodesList = new List<Node>();
         private readonly List<Edge> EdgesList = new List<Edge>();
 
-        public VisJsNetworkData(List<string> fromNodesLabels, List<string> toNodesLabels)
+        public VisJsNetworkData(List<string> fromNodesLabels, List<string> toNodesLabels, List<string> linksCount)
         {
             _fromNodesLabels = fromNodesLabels;
             _toNodesLabels = toNodesLabels;
+            _linksCount = linksCount;
         }
 
         public List<Node> GetNodes()
@@ -47,14 +50,15 @@ namespace iExcelNetwork.VisJsNetwork
 
             VisJsDataValidator.ValidateFromToEdgesIdsCount(fromEdgeId.Count, toEdgeId.Count);
 
-            int count = fromEdgeId.Count;
+            int count = _linksCount.Count;
 
             for (int i = 0; i < count; i++)
             {
                 Edge edge = new Edge()
                 {
                     From = fromEdgeId[i],
-                    To = toEdgeId[i]
+                    To = toEdgeId[i],
+                    Count = _linksCount[i]
                 };
 
                 EdgesList.Add(edge);
