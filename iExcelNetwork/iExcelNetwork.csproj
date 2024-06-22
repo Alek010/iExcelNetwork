@@ -188,6 +188,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Exceptions\ListOfIntegersAsStringsContainsNonIntegerValuesException.cs" />
     <Compile Include="Helpers\DataGenerator.cs" />
     <Compile Include="Helpers\ExcelWorkbook.cs" />
     <Compile Include="NetworkProperty\EdgeProperty.cs" />

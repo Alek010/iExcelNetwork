@@ -36,5 +36,10 @@
         {
             return "You have selected a cell. Select a range of cells!";
         }
+
+        public static string NotAllValuesAreIntegersInCountColumn()
+        {
+            return "Selected Count column has non integers values! All values should to be whole numbers.";
+        }
     }
 }
