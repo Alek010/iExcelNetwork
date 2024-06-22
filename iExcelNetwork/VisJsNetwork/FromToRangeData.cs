@@ -50,6 +50,26 @@ namespace iExcelNetwork.VisJsNetwork
         {
             LinksCount = _fromToRangeList.Select(range => range.Count = string.IsNullOrWhiteSpace(range.Count) ? "" : range.Count)
                         .ToList();
+
+            if (LinksCountAreEmptyStrings())
+            {
+                LinksCount = GetFromToOccurrences();
+            }
+        }
+
+        private List<string> GetFromToOccurrences()
+        {
+            return _fromToRangeList
+                    .GroupBy(_fromToRangeList => new { _fromToRangeList.From, _fromToRangeList.To })
+                    .Select(group => group.Count().ToString())
+                    .ToList();
+        }
+
+        private bool LinksCountAreEmptyStrings()
+        {
+            var uniqueValues = LinksCount.Distinct().ToList();
+
+            return(uniqueValues.Count == 1 && string.IsNullOrWhiteSpace(uniqueValues.FirstOrDefault()));
         }
     }
 }

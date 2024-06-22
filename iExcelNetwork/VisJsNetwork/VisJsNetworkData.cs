@@ -50,7 +50,7 @@ namespace iExcelNetwork.VisJsNetwork
 
             VisJsDataValidator.ValidateFromToEdgesIdsCount(fromEdgeId.Count, toEdgeId.Count);
 
-            int count = fromEdgeId.Count;
+            int count = _linksCount.Count;
 
             for (int i = 0; i < count; i++)
             {
