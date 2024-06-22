@@ -98,7 +98,7 @@ namespace iExcelNetwork
                 FromToRangeData fromToRangeData = new FromToRangeData(_selectedRangeJSON);
                 fromToRangeData.ProcessData();
 
-                VisJsNetworkData visJsNetwork = new VisJsNetworkData(fromToRangeData.FromNodesLabels, fromToRangeData.ToNodesLabels);
+                VisJsNetworkData visJsNetwork = new VisJsNetworkData(fromToRangeData.FromNodesLabels, fromToRangeData.ToNodesLabels, fromToRangeData.LinksCount);
 
                 string nodesJson = JsonConvert.SerializeObject(visJsNetwork.GetNodes(), Formatting.Indented);
                 string edgesJson = JsonConvert.SerializeObject(visJsNetwork.GetEdges(), Formatting.Indented);

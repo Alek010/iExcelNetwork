@@ -14,6 +14,7 @@ namespace iExcelNetwork.VisJsNetwork
 
         public List<string> FromNodesLabels;
         public List<string> ToNodesLabels;
+        public List<string> LinksCount;
 
         public FromToRangeData(string jsonFromToRange)
         {
@@ -25,6 +26,7 @@ namespace iExcelNetwork.VisJsNetwork
             DeserializeJson();
             GetFromValues();
             GetToValues();
+            GetLinksCount();
         }
 
         private void DeserializeJson()
@@ -42,6 +44,12 @@ namespace iExcelNetwork.VisJsNetwork
         {
             ToNodesLabels = _fromToRangeList.Select(range => range.To = string.IsNullOrWhiteSpace(range.To) ? "" : range.To)
                            .ToList();
+        }
+
+        private void GetLinksCount()
+        {
+            LinksCount = _fromToRangeList.Select(range => range.Count = string.IsNullOrWhiteSpace(range.Count) ? "" : range.Count)
+                        .ToList();
         }
     }
 }
