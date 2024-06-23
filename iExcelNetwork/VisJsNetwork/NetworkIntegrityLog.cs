@@ -16,18 +16,25 @@ namespace iExcelNetwork.VisJsNetwork
             _networkProperties = networkProperties;
         }
 
-        private string ComputeSha256HashFromFile()
+        public void WriteLog()
         {
-            // Read the file as bytes
-            byte[] fileBytes = File.ReadAllBytes(Path.Combine(_networkProperties.OutputFolder, _networkProperties.OutputFileName));
+            string networkHtmlFileSha256 = ComputeSha256HashFromFile(_networkProperties.OutputFolder, _networkProperties.OutputFileName);
+            
+            string networkHtmlFilePath = BuildFullFilePath(_networkProperties.OutputFolder,_networkProperties.OutputFileName);
 
-            // Create a SHA256 instance
+            string logFilePath = SubstituteFileExtention(networkHtmlFilePath, ".txt");
+
+            File.WriteAllText(logFilePath, networkHtmlFileSha256);
+        }
+
+        private string ComputeSha256HashFromFile(string pathToFolder, string fileName)
+        {
+            byte[] fileBytes = File.ReadAllBytes(BuildFullFilePath(pathToFolder, fileName));
+
             using (SHA256 sha256Hash = SHA256.Create())
             {
-                // Compute the hash
                 byte[] bytes = sha256Hash.ComputeHash(fileBytes);
 
-                // Convert byte array to a string
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
                 {
@@ -35,6 +42,16 @@ namespace iExcelNetwork.VisJsNetwork
                 }
                 return builder.ToString();
             }
+        }
+
+        private string SubstituteFileExtention(string filePath, string fileExtention)
+        {
+            return Path.ChangeExtension(filePath, fileExtention);
+        }
+
+        private string BuildFullFilePath(string folderPath, string fileName)
+        {
+            return Path.Combine(folderPath, fileName);
         }
     }
 }

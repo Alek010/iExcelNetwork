@@ -105,6 +105,10 @@ namespace iExcelNetwork
 
                 VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(networkProperties, nodesJson, edgesJson);
                 visJsNetworkBuilder.ShowNetwork();
+
+                NetworkIntegrityLog networkIntegrityLog = new NetworkIntegrityLog(networkProperties);
+
+                networkIntegrityLog.WriteLog();
             }
             catch (Exception ex)
             {
