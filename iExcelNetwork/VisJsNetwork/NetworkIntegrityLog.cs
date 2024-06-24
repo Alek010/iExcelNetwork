@@ -2,6 +2,7 @@
 
 using iExcelNetwork.NetworkProperty;
 using System.IO;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -24,7 +25,7 @@ namespace iExcelNetwork.VisJsNetwork
 
             string logFilePath = SubstituteFileExtention(networkHtmlFilePath, ".txt");
 
-            string[] lodFileContent = LogFileContent("1.0.0-poc", _networkProperties.OutputFileName, networkHtmlFileSha256);
+            string[] lodFileContent = LogFileContent(GetAssamblyInformationalVersion(), _networkProperties.OutputFileName, networkHtmlFileSha256);
 
             File.WriteAllLines(logFilePath, lodFileContent);
         }
@@ -69,6 +70,15 @@ namespace iExcelNetwork.VisJsNetwork
         private string BuildFullFilePath(string folderPath, string fileName)
         {
             return Path.Combine(folderPath, fileName);
+        }
+
+        private string GetAssamblyInformationalVersion()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+
+            var informationalVersionAttribute = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
+
+            return informationalVersionAttribute?.InformationalVersion ?? "N/A";
         }
     }
 }
