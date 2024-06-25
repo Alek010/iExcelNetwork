@@ -37,12 +37,14 @@ namespace iExcelNetwork.NetworkProperty
             this.lb_OutputProperties = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.bt_Ok = new System.Windows.Forms.Button();
+            this.lb_NetworkFileName = new System.Windows.Forms.Label();
+            this.txBox_fileName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btn_selectFolder
             // 
             this.btn_selectFolder.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_selectFolder.Location = new System.Drawing.Point(33, 142);
+            this.btn_selectFolder.Location = new System.Drawing.Point(24, 179);
             this.btn_selectFolder.Name = "btn_selectFolder";
             this.btn_selectFolder.Size = new System.Drawing.Size(101, 30);
             this.btn_selectFolder.TabIndex = 1;
@@ -54,8 +56,8 @@ namespace iExcelNetwork.NetworkProperty
             // 
             this.lb_networkOutputFolderPath.AutoSize = true;
             this.lb_networkOutputFolderPath.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_networkOutputFolderPath.Location = new System.Drawing.Point(164, 142);
-            this.lb_networkOutputFolderPath.MaximumSize = new System.Drawing.Size(200, 50);
+            this.lb_networkOutputFolderPath.Location = new System.Drawing.Point(137, 179);
+            this.lb_networkOutputFolderPath.MaximumSize = new System.Drawing.Size(150, 50);
             this.lb_networkOutputFolderPath.Name = "lb_networkOutputFolderPath";
             this.lb_networkOutputFolderPath.Size = new System.Drawing.Size(147, 15);
             this.lb_networkOutputFolderPath.TabIndex = 2;
@@ -104,7 +106,7 @@ namespace iExcelNetwork.NetworkProperty
             // bt_Ok
             // 
             this.bt_Ok.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_Ok.Location = new System.Drawing.Point(132, 209);
+            this.bt_Ok.Location = new System.Drawing.Point(131, 227);
             this.bt_Ok.Name = "bt_Ok";
             this.bt_Ok.Size = new System.Drawing.Size(97, 31);
             this.bt_Ok.TabIndex = 7;
@@ -112,12 +114,32 @@ namespace iExcelNetwork.NetworkProperty
             this.bt_Ok.UseVisualStyleBackColor = true;
             this.bt_Ok.Click += new System.EventHandler(this.bt_Ok_Click);
             // 
+            // lb_NetworkFileName
+            // 
+            this.lb_NetworkFileName.AutoSize = true;
+            this.lb_NetworkFileName.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_NetworkFileName.Location = new System.Drawing.Point(33, 149);
+            this.lb_NetworkFileName.Name = "lb_NetworkFileName";
+            this.lb_NetworkFileName.Size = new System.Drawing.Size(74, 19);
+            this.lb_NetworkFileName.TabIndex = 8;
+            this.lb_NetworkFileName.Text = "File Name";
+            // 
+            // txBox_fileName
+            // 
+            this.txBox_fileName.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txBox_fileName.Location = new System.Drawing.Point(140, 141);
+            this.txBox_fileName.Name = "txBox_fileName";
+            this.txBox_fileName.Size = new System.Drawing.Size(144, 27);
+            this.txBox_fileName.TabIndex = 9;
+            // 
             // NetworkPropertiesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 252);
+            this.ClientSize = new System.Drawing.Size(302, 270);
             this.ControlBox = false;
+            this.Controls.Add(this.txBox_fileName);
+            this.Controls.Add(this.lb_NetworkFileName);
             this.Controls.Add(this.bt_Ok);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lb_OutputProperties);
@@ -144,5 +166,7 @@ namespace iExcelNetwork.NetworkProperty
         private System.Windows.Forms.Label lb_OutputProperties;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bt_Ok;
+        private System.Windows.Forms.Label lb_NetworkFileName;
+        private System.Windows.Forms.TextBox txBox_fileName;
     }
 }

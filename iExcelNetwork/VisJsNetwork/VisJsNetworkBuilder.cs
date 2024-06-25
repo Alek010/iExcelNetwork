@@ -46,7 +46,7 @@ namespace iExcelNetwork.VisJsNetwork
 
         private void CreateTempFilePath()
         {
-            FilePath = Path.Combine(_networkProperties.OutputFolder, _networkProperties.OutputFileName);
+            FilePath = Path.Combine(_networkProperties.OutputFolder, _networkProperties.OutputFileName) + ".html";
         }
 
         private void WriteHtmlContentToFile()
