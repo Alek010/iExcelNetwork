@@ -6,7 +6,7 @@ namespace iExcelNetwork.NetworkProperty
     {
         public string OutputFolder { get; set; } = Path.GetTempPath();
 
-        public string OutputFileName { get; set; } = "visjs_network";
+        public string OutputFileName { get; set; } = "iExcelNetwork";
 
         public EdgeProperty EdgeProperty;
 
