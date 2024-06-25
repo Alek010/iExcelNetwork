@@ -61,5 +61,10 @@ namespace iExcelNetwork.NetworkProperty
 
             _networkProperties.EdgeProperty.SelectedDirection = cmBox_setEdgesDirection.SelectedValue.ToString();
         }
+
+        private void bt_Ok_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
