@@ -162,7 +162,7 @@ namespace iExcelNetwork
             try
             {
                 NetworkPropertiesForm form = new NetworkPropertiesForm(networkProperties);
-                form.Show();
+                form.ShowDialog();
             }
             catch (Exception ex)
             {

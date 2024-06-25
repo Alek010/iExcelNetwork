@@ -33,6 +33,8 @@ namespace iExcelNetwork.NetworkProperty
 
             cmBox_setEdgesDirection.SelectedValue = _networkProperties.EdgeProperty.SelectedDirection;
 
+            txBox_fileName.Text = _networkProperties.OutputFileName;
+
             isFormLoaded = true;
         }
 
@@ -60,6 +62,13 @@ namespace iExcelNetwork.NetworkProperty
                 return;
 
             _networkProperties.EdgeProperty.SelectedDirection = cmBox_setEdgesDirection.SelectedValue.ToString();
+        }
+
+        private void bt_Ok_Click(object sender, EventArgs e)
+        {
+            _networkProperties.OutputFileName = txBox_fileName.Text;
+
+            this.Close();
         }
     }
 }

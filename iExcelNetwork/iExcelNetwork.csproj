@@ -227,6 +227,7 @@
     <Compile Include="VisJsNetwork\FromToRangeData.cs" />
     <EmbeddedResource Include="NetworkProperty\NetworkPropertiesForm.resx">
       <DependentUpon>NetworkPropertiesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
