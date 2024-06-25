@@ -30,6 +30,7 @@ namespace iExcelNetwork.NetworkProperty
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NetworkPropertiesForm));
             this.btn_selectFolder = new System.Windows.Forms.Button();
             this.lb_networkOutputFolderPath = new System.Windows.Forms.Label();
             this.lb_EdgesDirection = new System.Windows.Forms.Label();
@@ -137,7 +138,6 @@ namespace iExcelNetwork.NetworkProperty
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 270);
-            this.ControlBox = false;
             this.Controls.Add(this.txBox_fileName);
             this.Controls.Add(this.lb_NetworkFileName);
             this.Controls.Add(this.bt_Ok);
@@ -148,6 +148,7 @@ namespace iExcelNetwork.NetworkProperty
             this.Controls.Add(this.lb_networkOutputFolderPath);
             this.Controls.Add(this.btn_selectFolder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NetworkPropertiesForm";
