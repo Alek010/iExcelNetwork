@@ -12,11 +12,12 @@ The current PoC has basic functionality:
   
 The capabilities of the iExecNetwork PoC can be extended. [See](https://visjs.github.io/vis-network/examples/) Vis.js Network examples.
 
-  ![image](https://github.com/Alek010/iExcelNetwork/assets/77459555/d3dd18b1-2b6d-475e-8daa-be7bb63859fe)
+![image](https://github.com/Alek010/iExcelNetwork/assets/77459555/609f1724-d722-495a-ab78-2412e981015e)
+
 
 ## Install
-* Download a zip file *iExcelNetwork_PoC_ver_1.zip*. The zip file is included in release [files](https://github.com/Alek010/iExcelNetwork/releases/tag/v1.0.0-poc)
-* The zip file's sha256 is 4725336befd9aea96d47708b98ebc990c197dee522140b5a8b5bfd130e0f1805.
+* Download a zip file *iExcelNetwork_PoC_ver_1_1_0.zip*. The zip file is included in release.
+* The zip file's sha256 is a770539a8501f745b0ba27555fea957cba368bd43d410a028f822fa64efbf3c5.
 * Extract.
 * Install iExcelNetwork by executing setup.exe.
 
@@ -24,12 +25,19 @@ The capabilities of the iExecNetwork PoC can be extended. [See](https://visjs.gi
 * Press the "How it Works" button to see instructions on how to use iExcelNetwork.
 * A new Excel sheet named "How It Works" will open.
 
-![image](https://github.com/Alek010/iExcelNetwork/assets/77459555/d30e56f4-00fd-47bc-8330-e345deb9df26)
-
-
 ## Build Network
-* Select a range and press the "Build Network" button.
-* An HTML file named visjs_network.html will be generated in the user's temp folder.
-* The HTML file will open in your preferred browser.
+![image](https://github.com/Alek010/iExcelNetwork/assets/77459555/a76e10cf-584b-43ef-a68a-f5e8775a2192)
 
-![image](https://github.com/Alek010/iExcelNetwork/assets/77459555/36785bac-e14d-4cc3-bcd9-c17d4530c0ce)
+* Select a range and press the "Build Network" button.
+* An HTML file named iExcelnetwork.html will be generated in the user's temp folder.
+* The HTML file will open in your default browser.
+  
+![image](https://github.com/Alek010/iExcelNetwork/assets/77459555/29dfaad0-e848-4484-bac6-97a0b5b5db4e)
+
+### Network Properties Button
+* Set direction of thearrow.
+* Set HTML file's name and output folder.
+  
+![image](https://github.com/Alek010/iExcelNetwork/assets/77459555/d822f198-582c-4a1a-91ea-d82d25e7a49c)
+
+

@@ -1,4 +1,5 @@
 ﻿using iExcelNetwork.Helpers;
+using iExcelNetwork.NetworkProperty;
 using iExcelNetwork.SheetDataWriter;
 using iExcelNetwork.Validations;
 using iExcelNetwork.VisJsNetwork;
@@ -14,6 +15,7 @@ namespace iExcelNetwork
     public partial class RibbonNetwork
     {
         private string _selectedRangeJSON;
+        private NetworkProperties networkProperties = new NetworkProperties(new EdgeProperty());
 
         private void RibbonNetwork_Load(object sender, RibbonUIEventArgs e)
         {
@@ -96,13 +98,17 @@ namespace iExcelNetwork
                 FromToRangeData fromToRangeData = new FromToRangeData(_selectedRangeJSON);
                 fromToRangeData.ProcessData();
 
-                VisJsNetworkData visJsNetwork = new VisJsNetworkData(fromToRangeData.FromNodesLabels, fromToRangeData.ToNodesLabels);
+                VisJsNetworkData visJsNetwork = new VisJsNetworkData(fromToRangeData.FromNodesLabels, fromToRangeData.ToNodesLabels, fromToRangeData.LinksCount);
 
                 string nodesJson = JsonConvert.SerializeObject(visJsNetwork.GetNodes(), Formatting.Indented);
                 string edgesJson = JsonConvert.SerializeObject(visJsNetwork.GetEdges(), Formatting.Indented);
 
-                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(nodesJson, edgesJson);
+                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(networkProperties, nodesJson, edgesJson);
                 visJsNetworkBuilder.ShowNetwork();
+
+                NetworkIntegrityLog networkIntegrityLog = new NetworkIntegrityLog(networkProperties);
+
+                networkIntegrityLog.WriteLog();
             }
             catch (Exception ex)
             {
@@ -138,9 +144,28 @@ namespace iExcelNetwork
                     DataWriter dataWriter = new DataWriter();
 
                     dataWriter.PopulateData(HowItWorksData.FromToTable, newWorksheet.Cells[1, 1]);
-                    dataWriter.PopulateData(HowItWorksData.InstructionsToBuildNetwork, newWorksheet.Cells[1, 4]);
-                    dataWriter.PopulateData(HowItWorksData.InstructionsToSaveJson, newWorksheet.Cells[9, 4]);
+                    dataWriter.PopulateData(HowItWorksData.InstructionsToBuildNetwork, newWorksheet.Cells[1, 5]);
+                    dataWriter.PopulateData(HowItWorksData.FromToCountTable, newWorksheet.Cells[16, 1]);
+                    dataWriter.PopulateData(HowItWorksData.InstructionsToBuildNetworkWithCountColumn, newWorksheet.Cells[16, 5]);
+                    dataWriter.PopulateData(HowItWorksData.InstructionsToSaveJson, newWorksheet.Cells[34, 1]);
+                    dataWriter.PopulateData(HowItWorksData.FromToGeneratedNumbersDescription, newWorksheet.Cells[1, 14]);
+                    dataWriter.PopulateData(HowItWorksData.FromToRandomNumbersAsLatvianPhoneNumbers, newWorksheet.Cells[5, 14]);
+                    dataWriter.PopulateData(HowItWorksData.FromToRandomNumberBetweenOneAndHundred, newWorksheet.Cells[4, 18]);
+
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void btn_networkProperties_Click(object sender, RibbonControlEventArgs e)
+        {
+            try
+            {
+                NetworkPropertiesForm form = new NetworkPropertiesForm(networkProperties);
+                form.ShowDialog();
             }
             catch (Exception ex)
             {

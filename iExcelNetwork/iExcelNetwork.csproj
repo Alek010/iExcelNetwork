@@ -188,7 +188,22 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Exceptions\ListOfIntegersAsStringsContainsNonIntegerValuesException.cs" />
+    <Compile Include="Helpers\DataGenerator.cs" />
     <Compile Include="Helpers\ExcelWorkbook.cs" />
+    <Compile Include="NetworkProperty\EdgeProperty.cs" />
+    <Compile Include="NetworkProperty\NetworkProperties.cs" />
+    <Compile Include="NetworkProperty\NetworkPropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NetworkProperty\NetworkPropertiesForm.Designer.cs">
+      <DependentUpon>NetworkPropertiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SheetDataWriter\DataWriter.cs" />
     <Compile Include="SheetDataWriter\HowItWorksData.cs" />
     <Compile Include="VisJsNetwork\Models\Edge.cs" />
@@ -204,16 +219,16 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Validations\SelectedRangeValidator.cs" />
     <Compile Include="Validations\VisJsDataValidator.cs" />
+    <Compile Include="VisJsNetwork\NetworkIntegrityLog.cs" />
     <Compile Include="VisJsNetwork\VisJsNetworkBuilder.cs" />
     <Compile Include="VisJsNetwork\VisJsNetworkData.cs" />
     <Compile Include="VisJsNetwork\FromToRangeData.cs" />
+    <EmbeddedResource Include="NetworkProperty\NetworkPropertiesForm.resx">
+      <DependentUpon>NetworkPropertiesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -267,6 +282,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\how_it_works_22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Network_Properties2.bmp" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

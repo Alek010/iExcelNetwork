@@ -1,5 +1,6 @@
 ﻿// Ignore Spelling: Json
 
+using iExcelNetwork.NetworkProperty;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -10,14 +11,16 @@ namespace iExcelNetwork.VisJsNetwork
     {
         private string _nodesJson { get; set; }
         private string _edgesJson { get; set; }
+        private NetworkProperties _networkProperties { get; set; }
 
         private string HtmlContent { get; set; }
-        private string TempFilePath { get; set; }
+        private string FilePath { get; set; }
 
-        public VisJsNetworkBuilder(string nodesJson, string edgesJson)
+        public VisJsNetworkBuilder(NetworkProperties networkProperties, string nodesJson, string edgesJson)
         {
             _nodesJson = nodesJson;
             _edgesJson = edgesJson;
+            _networkProperties = networkProperties;
         }
 
         public void ShowNetwork()
@@ -37,23 +40,24 @@ namespace iExcelNetwork.VisJsNetwork
             HtmlContent = htmlTemplate
                 .Replace("{{VisJsScript}}", VisJsScript)
                 .Replace("{{nodesJson}}", _nodesJson)
-                .Replace("{{edgesJson}}", _edgesJson);
+                .Replace("{{edgesJson}}", _edgesJson)
+                .Replace("selectedEdgesDirection", _networkProperties.EdgeProperty.SelectedDirection);
         }
 
         private void CreateTempFilePath()
         {
-            TempFilePath = Path.Combine(Path.GetTempPath(), "visjs_network.html");
+            FilePath = Path.Combine(_networkProperties.OutputFolder, _networkProperties.OutputFileName) + ".html";
         }
 
         private void WriteHtmlContentToFile()
         {
-            File.WriteAllText(TempFilePath, HtmlContent);
+            File.WriteAllText(FilePath, HtmlContent);
         }
 
         private void OpenHtmlFile()
         {
             // Open the temporary HTML file in the default web browser
-            Process.Start(TempFilePath);
+            Process.Start(FilePath);
         }
 
         private string GetEmbeddedResource(string resourceName)
