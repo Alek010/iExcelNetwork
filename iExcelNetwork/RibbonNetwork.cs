@@ -144,10 +144,13 @@ namespace iExcelNetwork
                     DataWriter dataWriter = new DataWriter();
 
                     dataWriter.PopulateData(HowItWorksData.FromToTable, newWorksheet.Cells[1, 1]);
-                    dataWriter.PopulateData(HowItWorksData.InstructionsToBuildNetwork, newWorksheet.Cells[1, 4]);
-                    dataWriter.PopulateData(HowItWorksData.InstructionsToSaveJson, newWorksheet.Cells[9, 4]);
-                    dataWriter.PopulateData(HowItWorksData.FromToRandomNumbersAsLatvianPhoneNumbers, newWorksheet.Cells[20, 1]);
-                    dataWriter.PopulateData(HowItWorksData.FromToRandomNumberBetweenOneAndHundred, newWorksheet.Cells[20, 4]);
+                    dataWriter.PopulateData(HowItWorksData.InstructionsToBuildNetwork, newWorksheet.Cells[1, 5]);
+                    dataWriter.PopulateData(HowItWorksData.FromToCountTable, newWorksheet.Cells[16, 1]);
+                    dataWriter.PopulateData(HowItWorksData.InstructionsToBuildNetworkWithCountColumn, newWorksheet.Cells[16, 5]);
+                    dataWriter.PopulateData(HowItWorksData.InstructionsToSaveJson, newWorksheet.Cells[34, 1]);
+                    dataWriter.PopulateData(HowItWorksData.FromToGeneratedNumbersDescription, newWorksheet.Cells[1, 14]);
+                    dataWriter.PopulateData(HowItWorksData.FromToRandomNumbersAsLatvianPhoneNumbers, newWorksheet.Cells[5, 14]);
+                    dataWriter.PopulateData(HowItWorksData.FromToRandomNumberBetweenOneAndHundred, newWorksheet.Cells[4, 18]);
 
                 }
             }
