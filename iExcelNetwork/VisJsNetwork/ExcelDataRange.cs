@@ -1,9 +1,6 @@
 ﻿// Ignore Spelling: json
 
-using iExcelNetwork.Exceptions;
 using iExcelNetwork.VisJsNetwork.Model;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,67 +8,51 @@ namespace iExcelNetwork.VisJsNetwork
 {
     public class ExcelDataRange
     {
-        private string _jsonFromToRange;
-        private List<Range> _fromToRangeList = new List<Range>();
+        private List<Range> _dataRange = new List<Range>();
 
-        public List<string> FromNodesLabels;
-        public List<string> ToNodesLabels;
-        public List<string> LinksCount;
-
-        public ExcelDataRange(string jsonFromToRange)
+        public ExcelDataRange(List<Range> dataRange)
         {
-            _jsonFromToRange = jsonFromToRange;
+           _dataRange = dataRange;
         }
 
-        public void ProcessData()
+        public List<string> GetFromColumnValues()
         {
-            DeserializeJson();
-            GetFromValues();
-            GetToValues();
-            GetLinksCount();
-        }
-
-        private void DeserializeJson()
-        {
-            _fromToRangeList = JsonConvert.DeserializeObject<List<Range>>(_jsonFromToRange);
-        }
-
-        private void GetFromValues()
-        {
-            FromNodesLabels = _fromToRangeList.Select(range => range.From = string.IsNullOrWhiteSpace(range.From) ? "" : range.From)
+            return _dataRange.Select(range => range.From = string.IsNullOrWhiteSpace(range.From) ? "" : range.From)
                              .ToList();
         }
 
-        private void GetToValues()
+        public List<string> GetToColumnValues()
         {
-            ToNodesLabels = _fromToRangeList.Select(range => range.To = string.IsNullOrWhiteSpace(range.To) ? "" : range.To)
+            return _dataRange.Select(range => range.To = string.IsNullOrWhiteSpace(range.To) ? "" : range.To)
                            .ToList();
         }
 
-        private void GetLinksCount()
+        public List<string> GetLinksCount()
         {
-            LinksCount = _fromToRangeList.Select(range => range.Count = string.IsNullOrWhiteSpace(range.Count) ? "" : range.Count)
+            List<string> LinksCount = _dataRange.Select(range => range.Count = string.IsNullOrWhiteSpace(range.Count) ? "" : range.Count)
                         .ToList();
 
-            if (LinksCountAreEmptyStrings())
+            if (LinksCountAreEmptyStrings(LinksCount))
             {
                 LinksCount = GetFromToOccurrences();
             }
 
             Validations.SelectedRangeValidator.ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(LinksCount);
+
+            return LinksCount;
         }
 
         private List<string> GetFromToOccurrences()
         {
-            return _fromToRangeList
+            return _dataRange
                     .GroupBy(_fromToRangeList => new { _fromToRangeList.From, _fromToRangeList.To })
                     .Select(group => group.Count().ToString())
                     .ToList();
         }
 
-        private bool LinksCountAreEmptyStrings()
+        private bool LinksCountAreEmptyStrings(List<string> linksCount)
         {
-            var uniqueValues = LinksCount.Distinct().ToList();
+            var uniqueValues = linksCount.Distinct().ToList();
 
             return(uniqueValues.Count == 1 && string.IsNullOrWhiteSpace(uniqueValues.FirstOrDefault()));
         }

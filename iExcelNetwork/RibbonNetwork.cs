@@ -3,9 +3,11 @@ using iExcelNetwork.NetworkProperty;
 using iExcelNetwork.SheetDataWriter;
 using iExcelNetwork.Validations;
 using iExcelNetwork.VisJsNetwork;
+using iExcelNetwork.VisJsNetwork.Model;
 using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -14,8 +16,8 @@ namespace iExcelNetwork
 {
     public partial class RibbonNetwork
     {
-        private string _selectedRangeJSON;
-        private NetworkProperties networkProperties = new NetworkProperties(new EdgeProperty());
+        private string _selectedRangeAsJSON;
+        private readonly NetworkProperties networkProperties = new NetworkProperties(new EdgeProperty());
 
         private void RibbonNetwork_Load(object sender, RibbonUIEventArgs e)
         {
@@ -45,7 +47,7 @@ namespace iExcelNetwork
                     SelectedRangeValidator.ValidateRangeIsNotCell(selectedRange);
                     SelectedRangeValidator.ValidateSelectedRangeIsNotNull(selectedRange);
 
-                    _selectedRangeJSON = ExcelRange.ConvertToJson(selectedRange);
+                    _selectedRangeAsJSON = ExcelRange.ConvertToJson(selectedRange);
                 }
 
             }
@@ -64,8 +66,8 @@ namespace iExcelNetwork
         {
             try
             {
-                VisJsDataValidator.JsonIsNotNull(_selectedRangeJSON);
-                VisJsDataValidator.JsonHasData(_selectedRangeJSON);
+                VisJsDataValidator.JsonIsNotNull(_selectedRangeAsJSON);
+                VisJsDataValidator.JsonHasData(_selectedRangeAsJSON);
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
@@ -78,7 +80,7 @@ namespace iExcelNetwork
                 {
                     string filePath = saveFileDialog.FileName;
 
-                    ExcelRange.SaveAsJson(_selectedRangeJSON, filePath);
+                    ExcelRange.SaveAsJson(_selectedRangeAsJSON, filePath);
                 }
             }
             catch (Exception ex)
@@ -91,14 +93,17 @@ namespace iExcelNetwork
         {
             try
             {
-                VisJsDataValidator.JsonIsNotNull(_selectedRangeJSON);
-                VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeJSON);
-                VisJsDataValidator.JsonHasData(_selectedRangeJSON);
+                VisJsDataValidator.JsonIsNotNull(_selectedRangeAsJSON);
+                VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeAsJSON);
+                VisJsDataValidator.JsonHasData(_selectedRangeAsJSON);
 
-                ExcelDataRange excelDataRange = new ExcelDataRange(_selectedRangeJSON);
-                excelDataRange.ProcessData();
+                List <Range> dataRange = JsonConvert.DeserializeObject<List<Range>>(_selectedRangeAsJSON);
 
-                VisJsNetworkData visJsNetwork = new VisJsNetworkData(excelDataRange.FromNodesLabels, excelDataRange.ToNodesLabels, excelDataRange.LinksCount);
+                ExcelDataRange excelDataRange = new ExcelDataRange(dataRange);
+
+                VisJsNetworkData visJsNetwork = new VisJsNetworkData(excelDataRange.GetFromColumnValues(),
+                                                                     excelDataRange.GetToColumnValues(),
+                                                                     excelDataRange.GetLinksCount());
 
                 string nodesJson = JsonConvert.SerializeObject(visJsNetwork.GetNodes(), Formatting.Indented);
                 string edgesJson = JsonConvert.SerializeObject(visJsNetwork.GetEdges(), Formatting.Indented);
