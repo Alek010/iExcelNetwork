@@ -278,16 +278,14 @@
     <None Include="Resources\select1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\vis-network.min.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\VisJsNetworkTemplate.html" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\how_it_works_22.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Network_Properties2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="VisJsNetwork\Resources\vis-network.min.js" />
+    <EmbeddedResource Include="VisJsNetwork\Resources\VisJsNetworkTemplate.html" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

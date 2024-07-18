@@ -34,9 +34,9 @@ namespace iExcelNetwork.VisJsNetwork
 
         private void CreateHtmlContent()
         {
-            string VisJsScript = GetEmbeddedResource("iExcelNetwork.Resources.vis-network.min.js");
+            string VisJsScript = GetEmbeddedResource("iExcelNetwork.VisJsNetwork.Resources.vis-network.min.js");
 
-            string htmlTemplate = GetEmbeddedResource("iExcelNetwork.Resources.VisJsNetworkTemplate.html");
+            string htmlTemplate = GetEmbeddedResource("iExcelNetwork.VisJsNetwork.Resources.VisJsNetworkTemplate.html");
 
             HtmlContent = htmlTemplate
                 .Replace("{{VisJsScript}}", VisJsScript)
