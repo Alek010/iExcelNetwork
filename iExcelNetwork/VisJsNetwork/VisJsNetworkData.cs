@@ -17,11 +17,11 @@ namespace iExcelNetwork.VisJsNetwork
         private readonly List<Node> NodesList = new List<Node>();
         private readonly List<Edge> EdgesList = new List<Edge>();
 
-        public VisJsNetworkData(List<string> fromNodesLabels, List<string> toNodesLabels, List<string> linksCount)
+        public VisJsNetworkData(DataRange dataRange)
         {
-            _fromNodesLabels = fromNodesLabels;
-            _toNodesLabels = toNodesLabels;
-            _linksCount = linksCount;
+            _fromNodesLabels = dataRange.GetFromColumnValues();
+            _toNodesLabels = dataRange.GetToColumnValues();
+            _linksCount = dataRange.GetLinksCount();
         }
 
         public List<Node> GetNodes()
