@@ -102,10 +102,7 @@ namespace iExcelNetwork
 
                 VisJsNetworkData visJsNetworkData = new VisJsNetworkData(dataRange);
 
-                string nodesJson = JsonConvert.SerializeObject(visJsNetworkData.GetNodes(), Formatting.Indented);
-                string edgesJson = JsonConvert.SerializeObject(visJsNetworkData.GetEdges(), Formatting.Indented);
-
-                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(networkProperties, nodesJson, edgesJson);
+                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(networkProperties, visJsNetworkData);
                 visJsNetworkBuilder.ShowNetwork();
 
                 NetworkIntegrityLog networkIntegrityLog = new NetworkIntegrityLog(networkProperties);

@@ -1,6 +1,7 @@
 ﻿// Ignore Spelling: Json
 
 using iExcelNetwork.NetworkProperty;
+using Newtonsoft.Json;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -16,10 +17,10 @@ namespace iExcelNetwork.VisJsNetwork
         private string HtmlContent { get; set; }
         private string FilePath { get; set; }
 
-        public VisJsNetworkBuilder(NetworkProperties networkProperties, string nodesJson, string edgesJson)
+        public VisJsNetworkBuilder(NetworkProperties networkProperties, VisJsNetworkData visJsNetworkData)
         {
-            _nodesJson = nodesJson;
-            _edgesJson = edgesJson;
+            _nodesJson = JsonConvert.SerializeObject(visJsNetworkData.GetNodes(), Formatting.Indented);
+            _edgesJson = JsonConvert.SerializeObject(visJsNetworkData.GetEdges(), Formatting.Indented);
             _networkProperties = networkProperties;
         }
 
