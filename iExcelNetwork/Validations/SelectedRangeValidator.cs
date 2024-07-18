@@ -27,9 +27,9 @@ namespace iExcelNetwork.Validations
                 throw new SelectedRangeIsNullException(ExceptionMessage.SelectedRangeIsNull());
         }
 
-        public static void ValidateSelectedRangeIsNotNull(string selectedRangeAsJson)
+        public static void ValidateSelectedRangeIsNotNull(string selectedRange)
         {
-            if (selectedRangeAsJson == null)
+            if (selectedRange == null)
                 throw new SelectedRangeIsNullException(ExceptionMessage.SelectedRangeIsNull());
         }
 

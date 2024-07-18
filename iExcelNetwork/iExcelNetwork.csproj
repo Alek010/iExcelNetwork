@@ -188,9 +188,12 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="Exceptions\ListOfIntegersAsStringsContainsNonIntegerValuesException.cs" />
+    <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
+    <Compile Include="VisJsNetwork\Exceptions\ListOfIntegersAsStringsContainsNonIntegerValuesException.cs" />
     <Compile Include="Helpers\DataGenerator.cs" />
     <Compile Include="Helpers\ExcelWorkbook.cs" />
+    <Compile Include="VisJsNetwork\Exceptions\ExceptionMessage.cs" />
+    <Compile Include="VisJsNetwork\Exceptions\SelectedRangeIsNullException.cs" />
     <Compile Include="VisJsNetwork\NetworkProperty\EdgeProperty.cs" />
     <Compile Include="VisJsNetwork\NetworkProperty\NetworkProperties.cs" />
     <Compile Include="NetworkProperty\NetworkPropertiesForm.cs">
@@ -209,12 +212,12 @@
     <Compile Include="VisJsNetwork\Models\Edge.cs" />
     <Compile Include="Helpers\ExcelRange.cs" />
     <Compile Include="Exceptions\ExceptionMessage.cs" />
-    <Compile Include="Exceptions\FromNodesEdgeNodesCountNotEqualException.cs" />
+    <Compile Include="VisJsNetwork\Exceptions\FromNodesEdgeNodesCountNotEqualException.cs" />
     <Compile Include="Exceptions\SelectedCellNotRangeException.cs" />
     <Compile Include="Exceptions\SelectedEmptyCellException.cs" />
-    <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
+    <Compile Include="VisJsNetwork\Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
     <Compile Include="Exceptions\SelectedRangeIsNullException.cs" />
-    <Compile Include="Exceptions\SelectedRangeJsonColumnNamesNotCorrectException.cs" />
+    <Compile Include="VisJsNetwork\Exceptions\SelectedRangeJsonColumnNamesNotCorrectException.cs" />
     <Compile Include="VisJsNetwork\Models\Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

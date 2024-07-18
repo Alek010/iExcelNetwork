@@ -1,6 +1,6 @@
 ﻿// Ignore Spelling: Json Validator
 
-using iExcelNetwork.Exceptions;
+using iExcelNetwork.VisJsNetwork.Exceptions;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace iExcelNetwork.VisJsNetwork.Validations
         public static void JsonStringIsNotNull(string jsonString)
         {
             if (jsonString == null)
-                throw new SelectedRangeIsNullException(ExceptionMessage.RangeIsNotSelected());
+                throw new JsonStringIsNullException(ExceptionMessage.RangeIsNotSelected());
         }
 
         public static void JsonFieldNamesAreValid(string jsonString)
@@ -36,9 +36,9 @@ namespace iExcelNetwork.VisJsNetwork.Validations
             }
         }
 
-        public static void ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(List<string> listofIntegersAsStrings)
+        public static void ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(List<string> listOfIntegersAsStrings)
         {
-            if (listofIntegersAsStrings.Any(value => !int.TryParse(value, out _)))
+            if (listOfIntegersAsStrings.Any(value => !int.TryParse(value, out _)))
                 throw new ListOfIntegersAsStringsContainsNonIntegerValuesException(ExceptionMessage.NotAllValuesAreIntegersInCountColumn());
         }
 

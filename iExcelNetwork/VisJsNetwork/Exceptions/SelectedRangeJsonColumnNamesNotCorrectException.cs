@@ -1,7 +1,7 @@
 ﻿// Ignore Spelling: Json
 using System;
 
-namespace iExcelNetwork.Exceptions
+namespace iExcelNetwork.VisJsNetwork.Exceptions
 {
     public class SelectedRangeJsonColumnNamesNotCorrectException : Exception
     {
