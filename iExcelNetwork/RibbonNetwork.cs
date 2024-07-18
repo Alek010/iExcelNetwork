@@ -97,7 +97,6 @@ namespace iExcelNetwork
                 VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeAsJSON);
                 VisJsDataValidator.JsonHasData(_selectedRangeAsJSON);
 
-
                 DataRange dataRange = new DataRange(JsonConvert.DeserializeObject<List<Range>>(_selectedRangeAsJSON));
 
                 VisJsNetworkData visJsNetworkData = new VisJsNetworkData(dataRange);

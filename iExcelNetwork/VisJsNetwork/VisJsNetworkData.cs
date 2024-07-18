@@ -9,8 +9,8 @@ namespace iExcelNetwork.VisJsNetwork
 {
     public class VisJsNetworkData
     {
-        private readonly List<string> _fromNodesLabels;
-        private readonly List<string> _toNodesLabels;
+        private readonly List<string> _fromColumnValues;
+        private readonly List<string> _toColumnValues;
         private readonly List<string> _linksCount;
 
         private readonly List<Node> NodesList = new List<Node>();
@@ -18,8 +18,8 @@ namespace iExcelNetwork.VisJsNetwork
 
         public VisJsNetworkData(DataRange dataRange)
         {
-            _fromNodesLabels = dataRange.GetFromColumnValues();
-            _toNodesLabels = dataRange.GetToColumnValues();
+            _fromColumnValues = dataRange.GetFromColumnValues();
+            _toColumnValues = dataRange.GetToColumnValues();
             _linksCount = dataRange.GetLinksCount();
         }
 
@@ -43,9 +43,9 @@ namespace iExcelNetwork.VisJsNetwork
 
         public List<Edge> GetEdges()
         {
-            var fromEdgeId = GetEdgesIds(_fromNodesLabels, NodesList);
+            var fromEdgeId = GetEdgesIds(_fromColumnValues, NodesList);
 
-            var toEdgeId = GetEdgesIds(_toNodesLabels, NodesList);
+            var toEdgeId = GetEdgesIds(_toColumnValues, NodesList);
 
             VisJsDataValidator.ValidateFromToEdgesIdsCount(fromEdgeId.Count, toEdgeId.Count);
 
@@ -70,8 +70,8 @@ namespace iExcelNetwork.VisJsNetwork
         {
             List<string> nodesLabels = new List<string>();
 
-            nodesLabels.AddRange(_fromNodesLabels);
-            nodesLabels.AddRange(_toNodesLabels);
+            nodesLabels.AddRange(_fromColumnValues);
+            nodesLabels.AddRange(_toColumnValues);
 
             List<string> uniqueNodesLabels = nodesLabels.Distinct().ToList();
 

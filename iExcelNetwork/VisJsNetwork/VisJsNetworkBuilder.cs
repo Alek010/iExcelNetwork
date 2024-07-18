@@ -27,7 +27,7 @@ namespace iExcelNetwork.VisJsNetwork
         public void ShowNetwork()
         {
             CreateHtmlContent();
-            CreateTempFilePath();
+            CreateNetworkFilePath();
             WriteHtmlContentToFile();
             OpenHtmlFile();
         }
@@ -45,7 +45,7 @@ namespace iExcelNetwork.VisJsNetwork
                 .Replace("selectedEdgesDirection", _networkProperties.EdgeProperty.SelectedDirection);
         }
 
-        private void CreateTempFilePath()
+        private void CreateNetworkFilePath()
         {
             FilePath = Path.Combine(_networkProperties.OutputFolder, _networkProperties.OutputFileName) + ".html";
         }
@@ -57,7 +57,6 @@ namespace iExcelNetwork.VisJsNetwork
 
         private void OpenHtmlFile()
         {
-            // Open the temporary HTML file in the default web browser
             Process.Start(FilePath);
         }
 
@@ -70,7 +69,5 @@ namespace iExcelNetwork.VisJsNetwork
                 return reader.ReadToEnd();
             }
         }
-
-
     }
 }
