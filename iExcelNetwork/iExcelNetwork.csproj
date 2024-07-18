@@ -267,6 +267,12 @@
   <ItemGroup>
     <None Include="Resources\Network_Properties2.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VisJsNetworkLibrary\VisJsNetworkLibrary.csproj">
+      <Project>{81843931-0e64-4ac5-9909-db60239b6dc3}</Project>
+      <Name>VisJsNetworkLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

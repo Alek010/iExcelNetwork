@@ -1,6 +1,8 @@
 ﻿// Ignore Spelling: Json Validator
 
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Linq;
 using VisJsNetworkLibrary.Exceptions;
 
 

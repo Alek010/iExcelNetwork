@@ -2,10 +2,9 @@
 using iExcelNetwork.NetworkProperty;
 using iExcelNetwork.SheetDataWriter;
 using iExcelNetwork.Validations;
-using iExcelNetwork.VisJsNetwork;
-using iExcelNetwork.VisJsNetwork.Model;
-using iExcelNetwork.VisJsNetwork.NetworkProperty;
-using iExcelNetwork.VisJsNetwork.Validations;
+using VisJsNetworkLibrary;
+using VisJsNetworkLibrary.NetworkProperty;
+using VisJsNetworkLibrary.Validations;
 using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
@@ -13,6 +12,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using VisJsNetworkLibrary.Models;
 
 namespace iExcelNetwork
 {
@@ -99,7 +99,7 @@ namespace iExcelNetwork
                 VisJsDataValidator.JsonStringHasData(_selectedRangeAsJSON);
                 VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeAsJSON);
 
-                DataRange dataRange = new DataRange(JsonConvert.DeserializeObject<List<Range>>(_selectedRangeAsJSON));
+                DataRange dataRange = new DataRange(JsonConvert.DeserializeObject<List<SelectedRange>>(_selectedRangeAsJSON));
 
                 VisJsNetworkData visJsNetworkData = new VisJsNetworkData(dataRange);
 

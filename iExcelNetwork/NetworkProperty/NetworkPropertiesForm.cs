@@ -1,4 +1,4 @@
-﻿using iExcelNetwork.VisJsNetwork.NetworkProperty;
+﻿using VisJsNetworkLibrary.NetworkProperty;
 using System;
 using System.Windows.Forms;
 
