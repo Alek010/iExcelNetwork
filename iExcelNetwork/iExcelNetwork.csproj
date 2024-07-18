@@ -278,10 +278,10 @@
     <None Include="Resources\select1.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\vis-network.min.js" />
+    <None Include="Resources\vis-network.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\VisJsNetworkTemplate.html" />
+    <None Include="Resources\VisJsNetworkTemplate.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\how_it_works_22.png" />
