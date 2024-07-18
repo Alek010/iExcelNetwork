@@ -95,10 +95,10 @@ namespace iExcelNetwork
                 VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeJSON);
                 VisJsDataValidator.JsonHasData(_selectedRangeJSON);
 
-                FromToRangeData fromToRangeData = new FromToRangeData(_selectedRangeJSON);
-                fromToRangeData.ProcessData();
+                ExcelDataRange excelDataRange = new ExcelDataRange(_selectedRangeJSON);
+                excelDataRange.ProcessData();
 
-                VisJsNetworkData visJsNetwork = new VisJsNetworkData(fromToRangeData.FromNodesLabels, fromToRangeData.ToNodesLabels, fromToRangeData.LinksCount);
+                VisJsNetworkData visJsNetwork = new VisJsNetworkData(excelDataRange.FromNodesLabels, excelDataRange.ToNodesLabels, excelDataRange.LinksCount);
 
                 string nodesJson = JsonConvert.SerializeObject(visJsNetwork.GetNodes(), Formatting.Indented);
                 string edgesJson = JsonConvert.SerializeObject(visJsNetwork.GetEdges(), Formatting.Indented);

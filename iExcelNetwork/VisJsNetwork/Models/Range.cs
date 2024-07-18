@@ -1,6 +1,6 @@
 ﻿namespace iExcelNetwork.VisJsNetwork.Model
 {
-    public class FromToRange
+    public class Range
     {
         public string From { get; set; }
         public string To { get; set; }

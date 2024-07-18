@@ -9,16 +9,16 @@ using System.Linq;
 
 namespace iExcelNetwork.VisJsNetwork
 {
-    public class FromToRangeData
+    public class ExcelDataRange
     {
         private string _jsonFromToRange;
-        private List<FromToRange> _fromToRangeList = new List<FromToRange>();
+        private List<Range> _fromToRangeList = new List<Range>();
 
         public List<string> FromNodesLabels;
         public List<string> ToNodesLabels;
         public List<string> LinksCount;
 
-        public FromToRangeData(string jsonFromToRange)
+        public ExcelDataRange(string jsonFromToRange)
         {
             _jsonFromToRange = jsonFromToRange;
         }
@@ -33,7 +33,7 @@ namespace iExcelNetwork.VisJsNetwork
 
         private void DeserializeJson()
         {
-            _fromToRangeList = JsonConvert.DeserializeObject<List<FromToRange>>(_jsonFromToRange);
+            _fromToRangeList = JsonConvert.DeserializeObject<List<Range>>(_jsonFromToRange);
         }
 
         private void GetFromValues()

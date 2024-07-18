@@ -224,7 +224,7 @@
     <Compile Include="VisJsNetwork\NetworkIntegrityLog.cs" />
     <Compile Include="VisJsNetwork\VisJsNetworkBuilder.cs" />
     <Compile Include="VisJsNetwork\VisJsNetworkData.cs" />
-    <Compile Include="VisJsNetwork\FromToRangeData.cs" />
+    <Compile Include="VisJsNetwork\ExcelDataRange.cs" />
     <EmbeddedResource Include="NetworkProperty\NetworkPropertiesForm.resx">
       <DependentUpon>NetworkPropertiesForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -247,7 +247,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="VisJsNetwork\Models\FromToRange.cs" />
+    <Compile Include="VisJsNetwork\Models\Range.cs" />
     <Compile Include="RibbonNetwork.cs">
       <SubType>Component</SubType>
     </Compile>
