@@ -1,12 +1,12 @@
 ﻿// Ignore Spelling: Json
 
-using iExcelNetwork.VisJsNetwork.NetworkProperty;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using VisJsNetworkLibrary.NetworkProperty;
 
-namespace iExcelNetwork.VisJsNetwork
+namespace VisJsNetworkLibrary
 {
     public class VisJsNetworkBuilder
     {
@@ -34,9 +34,9 @@ namespace iExcelNetwork.VisJsNetwork
 
         private void CreateHtmlContent()
         {
-            string VisJsScript = GetEmbeddedResource("iExcelNetwork.VisJsNetwork.Resources.vis-network.min.js");
+            string VisJsScript = GetEmbeddedResource("VisJsNetworkLibrary.Resources.vis-network.min.js");
 
-            string htmlTemplate = GetEmbeddedResource("iExcelNetwork.VisJsNetwork.Resources.VisJsNetworkTemplate.html");
+            string htmlTemplate = GetEmbeddedResource("VisJsNetworkLibrary.Resources.VisJsNetworkTemplate.html");
 
             HtmlContent = htmlTemplate
                 .Replace("{{VisJsScript}}", VisJsScript)

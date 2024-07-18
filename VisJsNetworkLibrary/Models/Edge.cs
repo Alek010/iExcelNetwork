@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace iExcelNetwork.VisJsNetwork.Model
+namespace VisJsNetworkLibrary.Models
 {
     public class Edge
     {

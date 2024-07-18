@@ -1,4 +1,4 @@
-﻿namespace iExcelNetwork.VisJsNetwork.Exceptions
+﻿namespace VisJsNetworkLibrary.Exceptions
 {
     public static class ExceptionMessage
     {
