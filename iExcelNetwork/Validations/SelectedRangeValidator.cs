@@ -1,7 +1,7 @@
-﻿// Ignore Spelling: Validator
+﻿// Ignore Spelling: Validator Json
 
 using iExcelNetwork.Exceptions;
-using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using System.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -25,12 +25,26 @@ namespace iExcelNetwork.Validations
         {
             if (selectedRange == null)
                 throw new SelectedRangeIsNullException(ExceptionMessage.SelectedRangeIsNull());
-         }
+        }
 
-        public static void ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(List<string> listofIntegersAsStrings)
+        public static void ValidateSelectedRangeIsNotNull(string selectedRangeAsJson)
         {
-            if(listofIntegersAsStrings.Any(value => !int.TryParse(value, out _)))
-                throw new ListOfIntegersAsStringsContainsNonIntegerValuesException(ExceptionMessage.NotAllValuesAreIntegersInCountColumn());
+            if (selectedRangeAsJson == null)
+                throw new SelectedRangeIsNullException(ExceptionMessage.SelectedRangeIsNull());
+        }
+
+        public static void JsonStringHasData(string jsonString)
+        {
+            if (!HasRecords(jsonString))
+                throw new SelectedRangeJsonHasNoRecordsException(ExceptionMessage.RangeHasNoRecords());
+        }
+
+        private static bool HasRecords(string jsonString)
+        {
+            return JArray.Parse(jsonString)
+                         .OfType<JObject>()
+                         .ToList()
+                         .Count > 0;
         }
     }
 }

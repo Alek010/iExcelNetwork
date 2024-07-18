@@ -1,6 +1,7 @@
 ﻿// Ignore Spelling: json
 
 using iExcelNetwork.VisJsNetwork.Model;
+using iExcelNetwork.VisJsNetwork.Validations;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -37,7 +38,7 @@ namespace iExcelNetwork.VisJsNetwork
                 LinksCount = GetFromToOccurrences();
             }
 
-            Validations.SelectedRangeValidator.ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(LinksCount);
+            VisJsDataValidator.ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(LinksCount);
 
             return LinksCount;
         }

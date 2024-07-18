@@ -2,6 +2,7 @@
 
 using iExcelNetwork.Validations;
 using iExcelNetwork.VisJsNetwork.Model;
+using iExcelNetwork.VisJsNetwork.Validations;
 using System.Collections.Generic;
 using System.Linq;
 

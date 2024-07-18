@@ -220,7 +220,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Validations\SelectedRangeValidator.cs" />
-    <Compile Include="Validations\VisJsDataValidator.cs" />
+    <Compile Include="VisJsNetwork\Validations\VisJsDataValidator.cs" />
     <Compile Include="VisJsNetwork\NetworkIntegrityLog.cs" />
     <Compile Include="VisJsNetwork\VisJsNetworkBuilder.cs" />
     <Compile Include="VisJsNetwork\VisJsNetworkData.cs" />

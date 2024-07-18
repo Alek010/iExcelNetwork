@@ -5,6 +5,7 @@ using iExcelNetwork.Validations;
 using iExcelNetwork.VisJsNetwork;
 using iExcelNetwork.VisJsNetwork.Model;
 using iExcelNetwork.VisJsNetwork.NetworkProperty;
+using iExcelNetwork.VisJsNetwork.Validations;
 using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
@@ -67,8 +68,8 @@ namespace iExcelNetwork
         {
             try
             {
-                VisJsDataValidator.JsonIsNotNull(_selectedRangeAsJSON);
-                VisJsDataValidator.JsonHasData(_selectedRangeAsJSON);
+                SelectedRangeValidator.ValidateSelectedRangeIsNotNull(_selectedRangeAsJSON);
+                SelectedRangeValidator.JsonStringHasData(_selectedRangeAsJSON);
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
@@ -94,9 +95,9 @@ namespace iExcelNetwork
         {
             try
             {
-                VisJsDataValidator.JsonIsNotNull(_selectedRangeAsJSON);
+                VisJsDataValidator.JsonStringIsNotNull(_selectedRangeAsJSON);
+                VisJsDataValidator.JsonStringHasData(_selectedRangeAsJSON);
                 VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeAsJSON);
-                VisJsDataValidator.JsonHasData(_selectedRangeAsJSON);
 
                 DataRange dataRange = new DataRange(JsonConvert.DeserializeObject<List<Range>>(_selectedRangeAsJSON));
 
