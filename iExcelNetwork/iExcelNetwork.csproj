@@ -224,7 +224,7 @@
     <Compile Include="VisJsNetwork\NetworkIntegrityLog.cs" />
     <Compile Include="VisJsNetwork\VisJsNetworkBuilder.cs" />
     <Compile Include="VisJsNetwork\VisJsNetworkData.cs" />
-    <Compile Include="VisJsNetwork\ExcelDataRange.cs" />
+    <Compile Include="VisJsNetwork\DataRange.cs" />
     <EmbeddedResource Include="NetworkProperty\NetworkPropertiesForm.resx">
       <DependentUpon>NetworkPropertiesForm.cs</DependentUpon>
       <SubType>Designer</SubType>

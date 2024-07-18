@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace iExcelNetwork.VisJsNetwork
 {
-    public class ExcelDataRange
+    public class DataRange
     {
         private List<Range> _dataRange = new List<Range>();
 
-        public ExcelDataRange(List<Range> dataRange)
+        public DataRange(List<Range> dataRange)
         {
            _dataRange = dataRange;
         }
