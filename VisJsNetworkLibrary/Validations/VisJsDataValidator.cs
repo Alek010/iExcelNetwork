@@ -1,12 +1,10 @@
 ﻿// Ignore Spelling: Json Validator
 
-using iExcelNetwork.VisJsNetwork.Exceptions;
 using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System.Linq;
+using VisJsNetworkLibrary.Exceptions;
 
 
-namespace iExcelNetwork.VisJsNetwork.Validations
+namespace VisJsNetworkLibrary.Validations
 {
     public static class VisJsDataValidator
     {
@@ -25,7 +23,7 @@ namespace iExcelNetwork.VisJsNetwork.Validations
         public static void JsonStringHasData(string jsonString)
         {
             if (!HasRecords(jsonString))
-                  throw new SelectedRangeJsonHasNoRecordsException(ExceptionMessage.RangeHasNoRecords());
+                throw new SelectedRangeJsonHasNoRecordsException(ExceptionMessage.RangeHasNoRecords());
         }
 
         public static void ValidateFromToEdgesIdsCount(int fromNodesIdsCount, int toNodesIdsCount)
@@ -66,10 +64,10 @@ namespace iExcelNetwork.VisJsNetwork.Validations
 
         private static bool HasRecords(string jsonString)
         {
-           return JArray.Parse(jsonString)
-                        .OfType<JObject>()
-                        .ToList()
-                        .Count > 0;
+            return JArray.Parse(jsonString)
+                         .OfType<JObject>()
+                         .ToList()
+                         .Count > 0;
         }
     }
 }

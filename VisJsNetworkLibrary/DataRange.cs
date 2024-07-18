@@ -1,19 +1,17 @@
 ﻿// Ignore Spelling: json
 
-using iExcelNetwork.VisJsNetwork.Model;
-using iExcelNetwork.VisJsNetwork.Validations;
-using System.Collections.Generic;
-using System.Linq;
+using VisJsNetworkLibrary.Models;
+using VisJsNetworkLibrary.Validations;
 
-namespace iExcelNetwork.VisJsNetwork
+namespace VisJsNetworkLibrary
 {
     public class DataRange
     {
-        private List<Range> _data = new List<Range>();
+        private List<SelectedRange> _data = new List<SelectedRange>();
 
-        public DataRange(List<Range> data)
+        public DataRange(List<SelectedRange> data)
         {
-           _data = data;
+            _data = data;
         }
 
         public List<string> GetFromColumnValues()
@@ -55,7 +53,7 @@ namespace iExcelNetwork.VisJsNetwork
         {
             var uniqueValues = linksCount.Distinct().ToList();
 
-            return(uniqueValues.Count == 1 && string.IsNullOrWhiteSpace(uniqueValues.FirstOrDefault()));
+            return uniqueValues.Count == 1 && string.IsNullOrWhiteSpace(uniqueValues.FirstOrDefault());
         }
     }
 }

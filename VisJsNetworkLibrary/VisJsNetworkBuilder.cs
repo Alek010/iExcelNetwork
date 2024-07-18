@@ -1,12 +1,12 @@
 ﻿// Ignore Spelling: Json
 
-using iExcelNetwork.VisJsNetwork.NetworkProperty;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using VisJsNetworkLibrary.NetworkProperty;
 
-namespace iExcelNetwork.VisJsNetwork
+namespace VisJsNetworkLibrary
 {
     public class VisJsNetworkBuilder
     {

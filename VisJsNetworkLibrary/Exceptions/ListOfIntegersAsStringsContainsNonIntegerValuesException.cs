@@ -1,5 +1,5 @@
 ﻿using System;
-namespace iExcelNetwork.VisJsNetwork.Exceptions
+namespace VisJsNetworkLibrary.Exceptions
 {
     internal class ListOfIntegersAsStringsContainsNonIntegerValuesException : Exception
     {

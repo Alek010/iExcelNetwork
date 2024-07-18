@@ -1,13 +1,11 @@
 ﻿// Ignore Spelling: Sha
 
-using iExcelNetwork.NetworkProperty;
-using iExcelNetwork.VisJsNetwork.NetworkProperty;
-using System.IO;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using VisJsNetworkLibrary.NetworkProperty;
 
-namespace iExcelNetwork.VisJsNetwork
+namespace VisJsNetworkLibrary
 {
     public class NetworkIntegrityLog
     {
@@ -21,8 +19,8 @@ namespace iExcelNetwork.VisJsNetwork
         public void WriteLog()
         {
             string networkHtmlFileSha256 = ComputeSha256HashFromFile(_networkProperties.OutputFolder, _networkProperties.OutputFileName);
-            
-            string networkHtmlFilePath = BuildFullFilePath(_networkProperties.OutputFolder,_networkProperties.OutputFileName);
+
+            string networkHtmlFilePath = BuildFullFilePath(_networkProperties.OutputFolder, _networkProperties.OutputFileName);
 
             string logFilePath = SubstituteFileExtention(networkHtmlFilePath, ".txt");
 
