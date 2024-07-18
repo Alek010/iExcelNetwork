@@ -1,6 +1,7 @@
 ﻿// Ignore Spelling: Sha
 
 using iExcelNetwork.NetworkProperty;
+using iExcelNetwork.VisJsNetwork.NetworkProperty;
 using System.IO;
 using System.Reflection;
 using System.Security.Cryptography;

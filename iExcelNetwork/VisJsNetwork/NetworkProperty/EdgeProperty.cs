@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace iExcelNetwork.NetworkProperty
+namespace iExcelNetwork.VisJsNetwork.NetworkProperty
 {
     public class EdgeProperty
     {

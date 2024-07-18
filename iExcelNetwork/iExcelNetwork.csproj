@@ -188,11 +188,14 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="Exceptions\ListOfIntegersAsStringsContainsNonIntegerValuesException.cs" />
+    <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
+    <Compile Include="VisJsNetwork\Exceptions\ListOfIntegersAsStringsContainsNonIntegerValuesException.cs" />
     <Compile Include="Helpers\DataGenerator.cs" />
     <Compile Include="Helpers\ExcelWorkbook.cs" />
-    <Compile Include="NetworkProperty\EdgeProperty.cs" />
-    <Compile Include="NetworkProperty\NetworkProperties.cs" />
+    <Compile Include="VisJsNetwork\Exceptions\ExceptionMessage.cs" />
+    <Compile Include="VisJsNetwork\Exceptions\SelectedRangeIsNullException.cs" />
+    <Compile Include="VisJsNetwork\NetworkProperty\EdgeProperty.cs" />
+    <Compile Include="VisJsNetwork\NetworkProperty\NetworkProperties.cs" />
     <Compile Include="NetworkProperty\NetworkPropertiesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,22 +212,22 @@
     <Compile Include="VisJsNetwork\Models\Edge.cs" />
     <Compile Include="Helpers\ExcelRange.cs" />
     <Compile Include="Exceptions\ExceptionMessage.cs" />
-    <Compile Include="Exceptions\FromNodesEdgeNodesCountNotEqualException.cs" />
+    <Compile Include="VisJsNetwork\Exceptions\FromNodesEdgeNodesCountNotEqualException.cs" />
     <Compile Include="Exceptions\SelectedCellNotRangeException.cs" />
     <Compile Include="Exceptions\SelectedEmptyCellException.cs" />
-    <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
+    <Compile Include="VisJsNetwork\Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
     <Compile Include="Exceptions\SelectedRangeIsNullException.cs" />
-    <Compile Include="Exceptions\SelectedRangeJsonColumnNamesNotCorrectException.cs" />
+    <Compile Include="VisJsNetwork\Exceptions\SelectedRangeJsonColumnNamesNotCorrectException.cs" />
     <Compile Include="VisJsNetwork\Models\Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Validations\SelectedRangeValidator.cs" />
-    <Compile Include="Validations\VisJsDataValidator.cs" />
+    <Compile Include="VisJsNetwork\Validations\VisJsDataValidator.cs" />
     <Compile Include="VisJsNetwork\NetworkIntegrityLog.cs" />
     <Compile Include="VisJsNetwork\VisJsNetworkBuilder.cs" />
     <Compile Include="VisJsNetwork\VisJsNetworkData.cs" />
-    <Compile Include="VisJsNetwork\FromToRangeData.cs" />
+    <Compile Include="VisJsNetwork\DataRange.cs" />
     <EmbeddedResource Include="NetworkProperty\NetworkPropertiesForm.resx">
       <DependentUpon>NetworkPropertiesForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -247,7 +250,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="VisJsNetwork\Models\FromToRange.cs" />
+    <Compile Include="VisJsNetwork\Models\Range.cs" />
     <Compile Include="RibbonNetwork.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -275,16 +278,14 @@
     <None Include="Resources\select1.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\vis-network.min.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\VisJsNetworkTemplate.html" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\how_it_works_22.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Network_Properties2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="VisJsNetwork\Resources\vis-network.min.js" />
+    <EmbeddedResource Include="VisJsNetwork\Resources\VisJsNetworkTemplate.html" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

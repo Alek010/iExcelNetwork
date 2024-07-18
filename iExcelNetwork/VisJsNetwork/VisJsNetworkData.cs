@@ -2,7 +2,7 @@
 
 using iExcelNetwork.Validations;
 using iExcelNetwork.VisJsNetwork.Model;
-using System;
+using iExcelNetwork.VisJsNetwork.Validations;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,18 +10,18 @@ namespace iExcelNetwork.VisJsNetwork
 {
     public class VisJsNetworkData
     {
-        private readonly List<string> _fromNodesLabels;
-        private readonly List<string> _toNodesLabels;
+        private readonly List<string> _fromColumnValues;
+        private readonly List<string> _toColumnValues;
         private readonly List<string> _linksCount;
 
         private readonly List<Node> NodesList = new List<Node>();
         private readonly List<Edge> EdgesList = new List<Edge>();
 
-        public VisJsNetworkData(List<string> fromNodesLabels, List<string> toNodesLabels, List<string> linksCount)
+        public VisJsNetworkData(DataRange dataRange)
         {
-            _fromNodesLabels = fromNodesLabels;
-            _toNodesLabels = toNodesLabels;
-            _linksCount = linksCount;
+            _fromColumnValues = dataRange.GetFromColumnValues();
+            _toColumnValues = dataRange.GetToColumnValues();
+            _linksCount = dataRange.GetLinksCount();
         }
 
         public List<Node> GetNodes()
@@ -44,9 +44,9 @@ namespace iExcelNetwork.VisJsNetwork
 
         public List<Edge> GetEdges()
         {
-            var fromEdgeId = GetEdgesIds(_fromNodesLabels, NodesList);
+            var fromEdgeId = GetEdgesIds(_fromColumnValues, NodesList);
 
-            var toEdgeId = GetEdgesIds(_toNodesLabels, NodesList);
+            var toEdgeId = GetEdgesIds(_toColumnValues, NodesList);
 
             VisJsDataValidator.ValidateFromToEdgesIdsCount(fromEdgeId.Count, toEdgeId.Count);
 
@@ -71,8 +71,8 @@ namespace iExcelNetwork.VisJsNetwork
         {
             List<string> nodesLabels = new List<string>();
 
-            nodesLabels.AddRange(_fromNodesLabels);
-            nodesLabels.AddRange(_toNodesLabels);
+            nodesLabels.AddRange(_fromColumnValues);
+            nodesLabels.AddRange(_toColumnValues);
 
             List<string> uniqueNodesLabels = nodesLabels.Distinct().ToList();
 

@@ -1,6 +1,7 @@
 ﻿// Ignore Spelling: Json
 
-using iExcelNetwork.NetworkProperty;
+using iExcelNetwork.VisJsNetwork.NetworkProperty;
+using Newtonsoft.Json;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -16,26 +17,26 @@ namespace iExcelNetwork.VisJsNetwork
         private string HtmlContent { get; set; }
         private string FilePath { get; set; }
 
-        public VisJsNetworkBuilder(NetworkProperties networkProperties, string nodesJson, string edgesJson)
+        public VisJsNetworkBuilder(NetworkProperties networkProperties, VisJsNetworkData visJsNetworkData)
         {
-            _nodesJson = nodesJson;
-            _edgesJson = edgesJson;
+            _nodesJson = JsonConvert.SerializeObject(visJsNetworkData.GetNodes(), Formatting.Indented);
+            _edgesJson = JsonConvert.SerializeObject(visJsNetworkData.GetEdges(), Formatting.Indented);
             _networkProperties = networkProperties;
         }
 
         public void ShowNetwork()
         {
             CreateHtmlContent();
-            CreateTempFilePath();
+            CreateNetworkFilePath();
             WriteHtmlContentToFile();
             OpenHtmlFile();
         }
 
         private void CreateHtmlContent()
         {
-            string VisJsScript = GetEmbeddedResource("iExcelNetwork.Resources.vis-network.min.js");
+            string VisJsScript = GetEmbeddedResource("iExcelNetwork.VisJsNetwork.Resources.vis-network.min.js");
 
-            string htmlTemplate = GetEmbeddedResource("iExcelNetwork.Resources.VisJsNetworkTemplate.html");
+            string htmlTemplate = GetEmbeddedResource("iExcelNetwork.VisJsNetwork.Resources.VisJsNetworkTemplate.html");
 
             HtmlContent = htmlTemplate
                 .Replace("{{VisJsScript}}", VisJsScript)
@@ -44,7 +45,7 @@ namespace iExcelNetwork.VisJsNetwork
                 .Replace("selectedEdgesDirection", _networkProperties.EdgeProperty.SelectedDirection);
         }
 
-        private void CreateTempFilePath()
+        private void CreateNetworkFilePath()
         {
             FilePath = Path.Combine(_networkProperties.OutputFolder, _networkProperties.OutputFileName) + ".html";
         }
@@ -56,7 +57,6 @@ namespace iExcelNetwork.VisJsNetwork
 
         private void OpenHtmlFile()
         {
-            // Open the temporary HTML file in the default web browser
             Process.Start(FilePath);
         }
 
@@ -69,7 +69,5 @@ namespace iExcelNetwork.VisJsNetwork
                 return reader.ReadToEnd();
             }
         }
-
-
     }
 }

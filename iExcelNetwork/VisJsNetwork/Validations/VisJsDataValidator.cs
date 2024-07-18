@@ -1,19 +1,19 @@
 ﻿// Ignore Spelling: Json Validator
 
-using iExcelNetwork.Exceptions;
+using iExcelNetwork.VisJsNetwork.Exceptions;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 
 
-namespace iExcelNetwork.Validations
+namespace iExcelNetwork.VisJsNetwork.Validations
 {
     public static class VisJsDataValidator
     {
-        public static void JsonIsNotNull(string jsonString)
+        public static void JsonStringIsNotNull(string jsonString)
         {
             if (jsonString == null)
-                throw new SelectedRangeIsNullException(ExceptionMessage.RangeIsNotSelected());
+                throw new JsonStringIsNullException(ExceptionMessage.RangeIsNotSelected());
         }
 
         public static void JsonFieldNamesAreValid(string jsonString)
@@ -22,7 +22,7 @@ namespace iExcelNetwork.Validations
                 throw new SelectedRangeJsonColumnNamesNotCorrectException(ExceptionMessage.RangeColumnNamesAreNotCorrect());
         }
 
-        public static void JsonHasData(string jsonString)
+        public static void JsonStringHasData(string jsonString)
         {
             if (!HasRecords(jsonString))
                   throw new SelectedRangeJsonHasNoRecordsException(ExceptionMessage.RangeHasNoRecords());
@@ -34,6 +34,12 @@ namespace iExcelNetwork.Validations
             {
                 throw new FromNodesEdgeNodesCountNotEqualException(ExceptionMessage.FromToNodesCountNotEqual());
             }
+        }
+
+        public static void ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(List<string> listOfIntegersAsStrings)
+        {
+            if (listOfIntegersAsStrings.Any(value => !int.TryParse(value, out _)))
+                throw new ListOfIntegersAsStringsContainsNonIntegerValuesException(ExceptionMessage.NotAllValuesAreIntegersInCountColumn());
         }
 
         private static readonly List<string> ValidFieldNames = new List<string>
@@ -66,6 +72,4 @@ namespace iExcelNetwork.Validations
                         .Count > 0;
         }
     }
-
-
 }
