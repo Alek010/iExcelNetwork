@@ -1,6 +1,6 @@
 ﻿// Ignore Spelling: Json
 
-using iExcelNetwork.NetworkProperty;
+using iExcelNetwork.VisJsNetwork.NetworkProperty;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.IO;

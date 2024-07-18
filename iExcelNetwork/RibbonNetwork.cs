@@ -4,6 +4,7 @@ using iExcelNetwork.SheetDataWriter;
 using iExcelNetwork.Validations;
 using iExcelNetwork.VisJsNetwork;
 using iExcelNetwork.VisJsNetwork.Model;
+using iExcelNetwork.VisJsNetwork.NetworkProperty;
 using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
