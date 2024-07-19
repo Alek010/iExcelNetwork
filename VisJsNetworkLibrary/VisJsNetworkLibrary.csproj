@@ -60,7 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validations\VisJsDataValidator.cs" />
     <Compile Include="VisJsNetworkBuilder.cs" />
-    <Compile Include="VisJsNetworkData.cs" />
+    <Compile Include="NetworkData.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\vis-network.min.js" />

@@ -17,7 +17,7 @@ namespace VisJsNetworkLibrary
         private string HtmlContent { get; set; }
         private string FilePath { get; set; }
 
-        public VisJsNetworkBuilder(NetworkProperties networkProperties, VisJsNetworkData visJsNetworkData)
+        public VisJsNetworkBuilder(NetworkProperties networkProperties, NetworkData visJsNetworkData)
         {
             _nodesJson = JsonConvert.SerializeObject(visJsNetworkData.GetNodes(), Formatting.Indented);
             _edgesJson = JsonConvert.SerializeObject(visJsNetworkData.GetEdges(), Formatting.Indented);

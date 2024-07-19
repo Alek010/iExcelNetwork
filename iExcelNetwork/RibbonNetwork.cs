@@ -13,7 +13,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using VisJsNetworkLibrary.Models;
-using System.Reflection;
 
 namespace iExcelNetwork
 {
@@ -102,14 +101,14 @@ namespace iExcelNetwork
 
                 DataRange dataRange = new DataRange(JsonConvert.DeserializeObject<List<SelectedRange>>(_selectedRangeAsJSON));
 
-                VisJsNetworkData visJsNetworkData = new VisJsNetworkData(dataRange);
+                NetworkData networkData = new NetworkData(dataRange);
 
-                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(networkProperties, visJsNetworkData);
+                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(networkProperties, networkData);
                 visJsNetworkBuilder.ShowNetwork();
 
                 NetworkIntegrityLog networkIntegrityLog = new NetworkIntegrityLog(networkProperties);
 
-                networkIntegrityLog.WriteLog(GetAssamblyInformationalVersion());
+                networkIntegrityLog.WriteLog();
             }
             catch (Exception ex)
             {
@@ -172,15 +171,6 @@ namespace iExcelNetwork
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-        }
-
-        private string GetAssamblyInformationalVersion()
-        {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-
-            var informationalVersionAttribute = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
-
-            return informationalVersionAttribute?.InformationalVersion ?? "N/A";
         }
     }
 }
