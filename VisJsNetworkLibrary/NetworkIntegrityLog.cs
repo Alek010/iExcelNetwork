@@ -17,7 +17,7 @@ namespace VisJsNetworkLibrary
             _networkProperties = networkProperties;
         }
 
-        public void WriteLog()
+        public void WriteLog(string iExcelNetworkVersion)
         {
             string networkHtmlFileSha256 = ComputeSha256HashFromFile(_networkProperties.OutputFolder, _networkProperties.OutputFileName);
 
@@ -25,7 +25,7 @@ namespace VisJsNetworkLibrary
 
             string logFilePath = SubstituteFileExtention(networkHtmlFilePath, ".txt");
 
-            string[] lodFileContent = LogFileContent(GetAssamblyInformationalVersion(), _networkProperties.OutputFileName, networkHtmlFileSha256);
+            string[] lodFileContent = LogFileContent(iExcelNetworkVersion, _networkProperties.OutputFileName, networkHtmlFileSha256);
 
             File.WriteAllLines(logFilePath, lodFileContent);
         }
@@ -72,13 +72,6 @@ namespace VisJsNetworkLibrary
             return Path.Combine(folderPath, fileName) + ".html";
         }
 
-        private string GetAssamblyInformationalVersion()
-        {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-
-            var informationalVersionAttribute = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
-
-            return informationalVersionAttribute?.InformationalVersion ?? "N/A";
-        }
+ 
     }
 }

@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using VisJsNetworkLibrary.Models;
+using System.Reflection;
 
 namespace iExcelNetwork
 {
@@ -108,7 +109,7 @@ namespace iExcelNetwork
 
                 NetworkIntegrityLog networkIntegrityLog = new NetworkIntegrityLog(networkProperties);
 
-                networkIntegrityLog.WriteLog();
+                networkIntegrityLog.WriteLog(GetAssamblyInformationalVersion());
             }
             catch (Exception ex)
             {
@@ -171,6 +172,15 @@ namespace iExcelNetwork
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        private string GetAssamblyInformationalVersion()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+
+            var informationalVersionAttribute = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
+
+            return informationalVersionAttribute?.InformationalVersion ?? "N/A";
         }
     }
 }
