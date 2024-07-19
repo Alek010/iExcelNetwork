@@ -1,7 +1,6 @@
 ﻿// Ignore Spelling: Sha
 
 using System.IO;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using VisJsNetworkLibrary.NetworkProperty;
@@ -17,7 +16,7 @@ namespace VisJsNetworkLibrary
             _networkProperties = networkProperties;
         }
 
-        public void WriteLog()
+        public void WriteLog(string iExcelNetworkVersion)
         {
             string networkHtmlFileSha256 = ComputeSha256HashFromFile(_networkProperties.OutputFolder, _networkProperties.OutputFileName);
 
@@ -25,9 +24,9 @@ namespace VisJsNetworkLibrary
 
             string logFilePath = SubstituteFileExtention(networkHtmlFilePath, ".txt");
 
-            string[] lodFileContent = LogFileContent(GetAssamblyInformationalVersion(), _networkProperties.OutputFileName, networkHtmlFileSha256);
+            string[] logFileContent = LogFileContent(iExcelNetworkVersion, _networkProperties.OutputFileName, networkHtmlFileSha256);
 
-            File.WriteAllLines(logFilePath, lodFileContent);
+            File.WriteAllLines(logFilePath, logFileContent);
         }
 
         private string[] LogFileContent(string iExcelNetworkVersion, string networkFileName, string fileSha256checksum)
@@ -70,15 +69,6 @@ namespace VisJsNetworkLibrary
         private string BuildFullFilePath(string folderPath, string fileName)
         {
             return Path.Combine(folderPath, fileName) + ".html";
-        }
-
-        private string GetAssamblyInformationalVersion()
-        {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-
-            var informationalVersionAttribute = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
-
-            return informationalVersionAttribute?.InformationalVersion ?? "N/A";
         }
     }
 }
