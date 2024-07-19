@@ -1,7 +1,6 @@
 ﻿// Ignore Spelling: Sha
 
 using System.IO;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using VisJsNetworkLibrary.NetworkProperty;
@@ -25,9 +24,9 @@ namespace VisJsNetworkLibrary
 
             string logFilePath = SubstituteFileExtention(networkHtmlFilePath, ".txt");
 
-            string[] lodFileContent = LogFileContent(iExcelNetworkVersion, _networkProperties.OutputFileName, networkHtmlFileSha256);
+            string[] logFileContent = LogFileContent(iExcelNetworkVersion, _networkProperties.OutputFileName, networkHtmlFileSha256);
 
-            File.WriteAllLines(logFilePath, lodFileContent);
+            File.WriteAllLines(logFilePath, logFileContent);
         }
 
         private string[] LogFileContent(string iExcelNetworkVersion, string networkFileName, string fileSha256checksum)
@@ -71,7 +70,5 @@ namespace VisJsNetworkLibrary
         {
             return Path.Combine(folderPath, fileName) + ".html";
         }
-
- 
     }
 }
