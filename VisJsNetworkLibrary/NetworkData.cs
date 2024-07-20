@@ -8,7 +8,7 @@ using VisJsNetworkLibrary.Validations;
 
 namespace VisJsNetworkLibrary
 {
-    public class VisJsNetworkData
+    public class NetworkData
     {
         private readonly List<string> _fromColumnValues;
         private readonly List<string> _toColumnValues;
@@ -17,7 +17,7 @@ namespace VisJsNetworkLibrary
         private readonly List<Node> NodesList = new List<Node>();
         private readonly List<Edge> EdgesList = new List<Edge>();
 
-        public VisJsNetworkData(DataRange dataRange)
+        public NetworkData(DataRange dataRange)
         {
             _fromColumnValues = dataRange.GetFromColumnValues();
             _toColumnValues = dataRange.GetToColumnValues();

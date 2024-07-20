@@ -102,14 +102,16 @@ namespace iExcelNetwork
 
                 DataRange dataRange = new DataRange(JsonConvert.DeserializeObject<List<SelectedRange>>(_selectedRangeAsJSON));
 
-                VisJsNetworkData visJsNetworkData = new VisJsNetworkData(dataRange);
+                NetworkHtml networkHtml = new NetworkHtml(networkProperties, new NetworkData(dataRange));
 
-                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(networkProperties, visJsNetworkData);
-                visJsNetworkBuilder.ShowNetwork();
+                FileProcessor fileProcessor = new FileProcessor(networkHtml);
+                fileProcessor.WriteFile();
+                fileProcessor.OpenFile();
 
-                NetworkIntegrityLog networkIntegrityLog = new NetworkIntegrityLog(networkProperties);
-
-                networkIntegrityLog.WriteLog(GetAssamblyInformationalVersion());
+                NetworkIntegrityLog networkIntegrityLog = new NetworkIntegrityLog(networkProperties, GetAssamblyInformationalVersion());
+                FileProcessor logWriter = new FileProcessor(networkIntegrityLog);
+                logWriter.WriteFile();
+                
             }
             catch (Exception ex)
             {
