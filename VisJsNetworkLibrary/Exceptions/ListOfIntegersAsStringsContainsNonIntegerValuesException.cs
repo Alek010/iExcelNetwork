@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-namespace iExcelNetwork.Exceptions
+namespace VisJsNetworkLibrary.Exceptions
 {
     internal class ListOfIntegersAsStringsContainsNonIntegerValuesException : Exception
     {

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace iExcelNetwork.NetworkProperty
+namespace VisJsNetworkLibrary.NetworkProperty
 {
     public class NetworkProperties
     {

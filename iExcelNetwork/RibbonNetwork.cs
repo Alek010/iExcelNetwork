@@ -2,20 +2,25 @@
 using iExcelNetwork.NetworkProperty;
 using iExcelNetwork.SheetDataWriter;
 using iExcelNetwork.Validations;
-using iExcelNetwork.VisJsNetwork;
+using VisJsNetworkLibrary;
+using VisJsNetworkLibrary.NetworkProperty;
+using VisJsNetworkLibrary.Validations;
 using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using VisJsNetworkLibrary.Models;
+using System.Reflection;
 
 namespace iExcelNetwork
 {
     public partial class RibbonNetwork
     {
-        private string _selectedRangeJSON;
-        private NetworkProperties networkProperties = new NetworkProperties(new EdgeProperty());
+        private string _selectedRangeAsJSON;
+        private readonly NetworkProperties networkProperties = new NetworkProperties(new EdgeProperty());
 
         private void RibbonNetwork_Load(object sender, RibbonUIEventArgs e)
         {
@@ -45,7 +50,7 @@ namespace iExcelNetwork
                     SelectedRangeValidator.ValidateRangeIsNotCell(selectedRange);
                     SelectedRangeValidator.ValidateSelectedRangeIsNotNull(selectedRange);
 
-                    _selectedRangeJSON = ExcelRange.ConvertToJson(selectedRange);
+                    _selectedRangeAsJSON = ExcelRange.ConvertToJson(selectedRange);
                 }
 
             }
@@ -64,8 +69,8 @@ namespace iExcelNetwork
         {
             try
             {
-                VisJsDataValidator.JsonIsNotNull(_selectedRangeJSON);
-                VisJsDataValidator.JsonHasData(_selectedRangeJSON);
+                SelectedRangeValidator.ValidateSelectedRangeIsNotNull(_selectedRangeAsJSON);
+                SelectedRangeValidator.JsonStringHasData(_selectedRangeAsJSON);
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
@@ -78,7 +83,7 @@ namespace iExcelNetwork
                 {
                     string filePath = saveFileDialog.FileName;
 
-                    ExcelRange.SaveAsJson(_selectedRangeJSON, filePath);
+                    ExcelRange.SaveAsJson(_selectedRangeAsJSON, filePath);
                 }
             }
             catch (Exception ex)
@@ -91,24 +96,22 @@ namespace iExcelNetwork
         {
             try
             {
-                VisJsDataValidator.JsonIsNotNull(_selectedRangeJSON);
-                VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeJSON);
-                VisJsDataValidator.JsonHasData(_selectedRangeJSON);
+                VisJsDataValidator.JsonStringIsNotNull(_selectedRangeAsJSON);
+                VisJsDataValidator.JsonStringHasData(_selectedRangeAsJSON);
+                VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeAsJSON);
 
-                FromToRangeData fromToRangeData = new FromToRangeData(_selectedRangeJSON);
-                fromToRangeData.ProcessData();
+                DataRange dataRange = new DataRange(JsonConvert.DeserializeObject<List<SelectedRange>>(_selectedRangeAsJSON));
 
-                VisJsNetworkData visJsNetwork = new VisJsNetworkData(fromToRangeData.FromNodesLabels, fromToRangeData.ToNodesLabels, fromToRangeData.LinksCount);
+                NetworkHtml networkHtml = new NetworkHtml(networkProperties, new NetworkData(dataRange));
 
-                string nodesJson = JsonConvert.SerializeObject(visJsNetwork.GetNodes(), Formatting.Indented);
-                string edgesJson = JsonConvert.SerializeObject(visJsNetwork.GetEdges(), Formatting.Indented);
+                FileProcessor fileProcessor = new FileProcessor(networkHtml);
+                fileProcessor.WriteFile();
+                fileProcessor.OpenFile();
 
-                VisJsNetworkBuilder visJsNetworkBuilder = new VisJsNetworkBuilder(networkProperties, nodesJson, edgesJson);
-                visJsNetworkBuilder.ShowNetwork();
-
-                NetworkIntegrityLog networkIntegrityLog = new NetworkIntegrityLog(networkProperties);
-
-                networkIntegrityLog.WriteLog();
+                NetworkIntegrityLog networkIntegrityLog = new NetworkIntegrityLog(networkProperties, GetAssamblyInformationalVersion());
+                FileProcessor logWriter = new FileProcessor(networkIntegrityLog);
+                logWriter.WriteFile();
+                
             }
             catch (Exception ex)
             {
@@ -171,6 +174,15 @@ namespace iExcelNetwork
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        private string GetAssamblyInformationalVersion()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+
+            var informationalVersionAttribute = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
+
+            return informationalVersionAttribute?.InformationalVersion ?? "N/A";
         }
     }
 }

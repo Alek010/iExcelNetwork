@@ -1,19 +1,19 @@
 ﻿// Ignore Spelling: Json Validator
 
-using iExcelNetwork.Exceptions;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
+using VisJsNetworkLibrary.Exceptions;
 
 
-namespace iExcelNetwork.Validations
+namespace VisJsNetworkLibrary.Validations
 {
     public static class VisJsDataValidator
     {
-        public static void JsonIsNotNull(string jsonString)
+        public static void JsonStringIsNotNull(string jsonString)
         {
             if (jsonString == null)
-                throw new SelectedRangeIsNullException(ExceptionMessage.RangeIsNotSelected());
+                throw new JsonStringIsNullException(ExceptionMessage.RangeIsNotSelected());
         }
 
         public static void JsonFieldNamesAreValid(string jsonString)
@@ -22,10 +22,10 @@ namespace iExcelNetwork.Validations
                 throw new SelectedRangeJsonColumnNamesNotCorrectException(ExceptionMessage.RangeColumnNamesAreNotCorrect());
         }
 
-        public static void JsonHasData(string jsonString)
+        public static void JsonStringHasData(string jsonString)
         {
             if (!HasRecords(jsonString))
-                  throw new SelectedRangeJsonHasNoRecordsException(ExceptionMessage.RangeHasNoRecords());
+                throw new SelectedRangeJsonHasNoRecordsException(ExceptionMessage.RangeHasNoRecords());
         }
 
         public static void ValidateFromToEdgesIdsCount(int fromNodesIdsCount, int toNodesIdsCount)
@@ -34,6 +34,12 @@ namespace iExcelNetwork.Validations
             {
                 throw new FromNodesEdgeNodesCountNotEqualException(ExceptionMessage.FromToNodesCountNotEqual());
             }
+        }
+
+        public static void ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(List<string> listOfIntegersAsStrings)
+        {
+            if (listOfIntegersAsStrings.Any(value => !int.TryParse(value, out _)))
+                throw new ListOfIntegersAsStringsContainsNonIntegerValuesException(ExceptionMessage.NotAllValuesAreIntegersInCountColumn());
         }
 
         private static readonly List<string> ValidFieldNames = new List<string>
@@ -60,12 +66,10 @@ namespace iExcelNetwork.Validations
 
         private static bool HasRecords(string jsonString)
         {
-           return JArray.Parse(jsonString)
-                        .OfType<JObject>()
-                        .ToList()
-                        .Count > 0;
+            return JArray.Parse(jsonString)
+                         .OfType<JObject>()
+                         .ToList()
+                         .Count > 0;
         }
     }
-
-
 }

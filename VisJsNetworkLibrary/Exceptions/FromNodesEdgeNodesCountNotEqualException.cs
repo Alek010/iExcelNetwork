@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace iExcelNetwork.Exceptions
+namespace VisJsNetworkLibrary.Exceptions
 {
     public class FromNodesEdgeNodesCountNotEqualException : Exception
     {
