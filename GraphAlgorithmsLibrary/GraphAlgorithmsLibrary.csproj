@@ -47,11 +47,5 @@
     <Compile Include="GraphBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\VisJsNetworkLibrary\VisJsNetworkLibrary.csproj">
-      <Project>{81843931-0E64-4AC5-9909-DB60239B6DC3}</Project>
-      <Name>VisJsNetworkLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

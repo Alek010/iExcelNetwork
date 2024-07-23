@@ -55,6 +55,7 @@
     <Compile Include="Models\Edge.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\SelectedRange.cs" />
+    <Compile Include="NetworkAnalytics.cs" />
     <Compile Include="NetworkHtml.cs" />
     <Compile Include="NetworkIntegrityLog.cs" />
     <Compile Include="NetworkProperty\EdgeProperty.cs" />
@@ -70,6 +71,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GraphAlgorithmsLibrary\GraphAlgorithmsLibrary.csproj">
+      <Project>{f2b1b7b8-8e92-4ba4-8d1a-0d6329134633}</Project>
+      <Name>GraphAlgorithmsLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
