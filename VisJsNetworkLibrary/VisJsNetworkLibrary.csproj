@@ -51,11 +51,13 @@
     <Compile Include="Exceptions\SelectedRangeIsNullException.cs" />
     <Compile Include="Exceptions\SelectedRangeJsonColumnNamesNotCorrectException.cs" />
     <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
+    <Compile Include="Interfaces\INetworkData.cs" />
     <Compile Include="Interfaces\IFileContent.cs" />
     <Compile Include="Models\Edge.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\SelectedRange.cs" />
     <Compile Include="NetworkAnalytics.cs" />
+    <Compile Include="NetworkFilteredData.cs" />
     <Compile Include="NetworkHtml.cs" />
     <Compile Include="NetworkIntegrityLog.cs" />
     <Compile Include="NetworkProperty\EdgeProperty.cs" />

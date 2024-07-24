@@ -3,12 +3,13 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using VisJsNetworkLibrary.Interfaces;
 using VisJsNetworkLibrary.Models;
 using VisJsNetworkLibrary.Validations;
 
 namespace VisJsNetworkLibrary
 {
-    public class NetworkData
+    public class NetworkData : INetworkData
     {
         private readonly List<string> _fromColumnValues;
         private readonly List<string> _toColumnValues;

@@ -34,9 +34,5 @@ namespace VisJsNetworkLibrary
                                _edges.Select(x => x.To).ToList()[i]);
             }
         }
-
-
-
-
     }
 }
