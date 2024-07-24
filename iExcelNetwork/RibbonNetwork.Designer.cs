@@ -37,12 +37,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RibbonNetwork));
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.groupAnalytics = this.Factory.CreateRibbonGroup();
             this.btn_SelectRange = this.Factory.CreateRibbonButton();
             this.btn_saveJson = this.Factory.CreateRibbonButton();
             this.btn_buildNetwork = this.Factory.CreateRibbonButton();
             this.btn_networkProperties = this.Factory.CreateRibbonButton();
             this.btn_howItWorks = this.Factory.CreateRibbonButton();
+            this.groupAnalytics = this.Factory.CreateRibbonGroup();
             this.btn_FindAllPathsDirected = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
@@ -66,12 +66,6 @@
             this.group1.Items.Add(this.btn_howItWorks);
             this.group1.Label = "Basic";
             this.group1.Name = "group1";
-            // 
-            // groupAnalytics
-            // 
-            this.groupAnalytics.Items.Add(this.btn_FindAllPathsDirected);
-            this.groupAnalytics.Label = "Analytics";
-            this.groupAnalytics.Name = "groupAnalytics";
             // 
             // btn_SelectRange
             // 
@@ -118,6 +112,12 @@
             this.btn_howItWorks.ShowImage = true;
             this.btn_howItWorks.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_howItWorks_Click);
             // 
+            // groupAnalytics
+            // 
+            this.groupAnalytics.Items.Add(this.btn_FindAllPathsDirected);
+            this.groupAnalytics.Label = "Analytics";
+            this.groupAnalytics.Name = "groupAnalytics";
+            // 
             // btn_FindAllPathsDirected
             // 
             this.btn_FindAllPathsDirected.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -125,6 +125,7 @@
             this.btn_FindAllPathsDirected.Label = "Find All Directed Paths";
             this.btn_FindAllPathsDirected.Name = "btn_FindAllPathsDirected";
             this.btn_FindAllPathsDirected.ShowImage = true;
+            this.btn_FindAllPathsDirected.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_FindAllPathsDirected_Click);
             // 
             // RibbonNetwork
             // 
