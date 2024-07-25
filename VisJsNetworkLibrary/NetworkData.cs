@@ -15,9 +15,6 @@ namespace VisJsNetworkLibrary
         private readonly List<string> _toColumnValues;
         private readonly List<string> _linksCount;
 
-        private readonly List<Node> NodesList = new List<Node>();
-        private readonly List<Edge> EdgesList = new List<Edge>();
-
         public NetworkData(DataRange dataRange)
         {
             _fromColumnValues = dataRange.GetFromColumnValues();
@@ -27,6 +24,8 @@ namespace VisJsNetworkLibrary
 
         public List<Node> GetNodes()
         {
+            List<Node> NodesList = new List<Node>();
+
             var nodesLabels = GetNodesLabels();
 
             for (int i = 0; i < nodesLabels.Count; i++)
@@ -45,9 +44,11 @@ namespace VisJsNetworkLibrary
 
         public List<Edge> GetEdges()
         {
-            var fromEdgeId = GetEdgesIds(_fromColumnValues, NodesList);
+            var EdgesList = new List<Edge>();
 
-            var toEdgeId = GetEdgesIds(_toColumnValues, NodesList);
+            var fromEdgeId = GetEdgesIds(_fromColumnValues, GetNodes());
+
+            var toEdgeId = GetEdgesIds(_toColumnValues, GetNodes());
 
             VisJsDataValidator.ValidateFromToEdgesIdsCount(fromEdgeId.Count, toEdgeId.Count);
 
