@@ -36,7 +36,7 @@ namespace VisJsNetworkLibrary.Validations
             }
         }
 
-        public static void ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(List<string> listOfIntegersAsStrings)
+        public static void ValidateIfCountFieldValuesContainsNonIntegerValue(List<string> listOfIntegersAsStrings)
         {
             if (listOfIntegersAsStrings.Any(value => !int.TryParse(value, out _)))
                 throw new ListOfIntegersAsStringsContainsNonIntegerValuesException(ExceptionMessage.NotAllValuesAreIntegersInCountColumn());
