@@ -48,6 +48,8 @@
     <Compile Include="Exceptions\ExceptionMessage.cs" />
     <Compile Include="Exceptions\FromNodesEdgeNodesCountNotEqualException.cs" />
     <Compile Include="Exceptions\ListOfIntegersAsStringsContainsNonIntegerValuesException.cs" />
+    <Compile Include="Exceptions\NodeIdNotFoundException.cs" />
+    <Compile Include="Exceptions\PathNotFoundException.cs" />
     <Compile Include="Exceptions\SelectedRangeIsNullException.cs" />
     <Compile Include="Exceptions\SelectedRangeJsonColumnNamesNotCorrectException.cs" />
     <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />

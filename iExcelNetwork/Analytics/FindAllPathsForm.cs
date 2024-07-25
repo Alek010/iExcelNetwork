@@ -7,6 +7,7 @@ using VisJsNetworkLibrary.Models;
 using VisJsNetworkLibrary;
 using GraphAlgorithmsLibrary;
 using VisJsNetworkLibrary.NetworkProperty;
+using System.Linq;
 
 namespace iExcelNetwork.Analytics
 {
@@ -26,13 +27,26 @@ namespace iExcelNetwork.Analytics
         {
             try
             {
-                FindAllPathsResultForm form = new FindAllPathsResultForm();
-                form.ShowDialog();
+                DataRange dataRange = new DataRange(JsonConvert.DeserializeObject<List<SelectedRange>>(_selectedRangeAsJSON));
+
+                var networkData = new NetworkData(dataRange);
+
+                NetworkAnalytics networkAnalytics = new NetworkAnalytics(networkData, new GraphDirectionalEdges());
+                var paths = networkAnalytics.FindAllPaths(txtBox_Node1.Text, txtBox_Node2.Text);
+
+                NetworkFilteredData networkFilteredData = new NetworkFilteredData(paths, networkData);
+
+                NetworkHtml networkHtml = new NetworkHtml(_networkProperties, networkFilteredData);
+
+                FileProcessor fileProcessor = new FileProcessor(networkHtml);
+                fileProcessor.WriteFile();
+                fileProcessor.OpenFile();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(ex.Message);
             }
+
         }
 
         private void btn_exchangeSourceDestination_Click(object sender, EventArgs e)

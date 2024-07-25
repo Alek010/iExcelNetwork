@@ -26,5 +26,15 @@
         {
             return "Selected Count column has non integers values! All values should to be whole numbers.";
         }
+
+        public static string PathBetweenNodesNotFound()
+        {
+            return "There are no path found between source node and destination node.";
+        }
+
+        public static string NodeIdNotFound(string nodeLabel)
+        {
+            return $"Node with value {nodeLabel} do not exists in data range. Check if you write it correctly.";
+        }
     }
 }

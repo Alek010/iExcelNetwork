@@ -2,6 +2,7 @@
 using System.Linq;
 using VisJsNetworkLibrary.Interfaces;
 using VisJsNetworkLibrary.Models;
+using VisJsNetworkLibrary.Validations;
 
 namespace VisJsNetworkLibrary
 {
@@ -13,6 +14,8 @@ namespace VisJsNetworkLibrary
 
         public NetworkFilteredData(List<List<int>> foundPaths, INetworkData networkData)
         {
+            VisJsDataValidator.ValidatePathIsFound(foundPaths);
+
             FoundPaths = foundPaths;
             NodesList = networkData.GetNodes();
             EdgesList = networkData.GetEdges();
