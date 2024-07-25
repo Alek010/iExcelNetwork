@@ -19,7 +19,7 @@ namespace VisJsNetworkLibrary
             }
             else
             {
-                VisJsDataValidator.ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(CountFieldValues(data));
+                VisJsDataValidator.ValidateIfCountFieldValuesContainsNonIntegerValue(CountFieldValues(data));
                 _data = GroupAndSumFromTo(data);
             }
         }
