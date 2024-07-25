@@ -9,11 +9,19 @@ namespace VisJsNetworkLibrary
 {
     public class DataRange
     {
-        private List<SelectedRange> _data = new List<SelectedRange>();
+        public List<SelectedRange> _data = new List<SelectedRange>();
 
         public DataRange(List<SelectedRange> data)
         {
-            _data = data;
+            if (CountFieldValuesAreEmptyStrings(CountFieldValues(data)))
+            {
+                _data = GroupAndCountFromTo(data);
+            }
+            else
+            {
+                VisJsDataValidator.ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(CountFieldValues(data));
+                _data = GroupAndSumFromTo(data);
+            }
         }
 
         public List<string> GetFromColumnValues()
@@ -33,27 +41,46 @@ namespace VisJsNetworkLibrary
             List<string> LinksCount = _data.Select(range => range.Count = string.IsNullOrWhiteSpace(range.Count) ? "" : range.Count)
                         .ToList();
 
-            if (LinksCountAreEmptyStrings(LinksCount))
-            {
-                LinksCount = GetFromToOccurrences();
-            }
-
-            VisJsDataValidator.ValidateIfListOfIntegersAsStringsContainsNonIntegerValue(LinksCount);
-
             return LinksCount;
         }
 
-        private List<string> GetFromToOccurrences()
+        private List<SelectedRange> GroupAndCountFromTo(List<SelectedRange> data)
         {
-            return _data
-                    .GroupBy(_fromToRangeList => new { _fromToRangeList.From, _fromToRangeList.To })
-                    .Select(group => group.Count().ToString())
-                    .ToList();
+           return data
+                .GroupBy(group => new { group.From, group.To })
+                .Select(range => new SelectedRange
+                {
+                    From = range.Key.From,
+                    To = range.Key.To,
+                    Count = range.Count().ToString()
+                })
+                .ToList();
         }
 
-        private bool LinksCountAreEmptyStrings(List<string> linksCount)
+        public List<SelectedRange> GroupAndSumFromTo(List<SelectedRange> data)
         {
-            var uniqueValues = linksCount.Distinct().ToList();
+            return data
+                .GroupBy(group => new { group.From, group.To })
+                .Select(range => new SelectedRange
+                {
+                    From = range.Key.From,
+                    To = range.Key.To,
+                    Count = range.Sum(group => int.Parse(group.Count)).ToString()
+                })
+                .ToList();
+        }
+
+        private List<string> CountFieldValues(List<SelectedRange> data)
+        {
+            return data
+            .Select(range => range.Count = string.IsNullOrWhiteSpace(range.Count) ? "" : range.Count)
+            .Distinct()
+            .ToList();
+        }
+
+        private bool CountFieldValuesAreEmptyStrings(List<string> countFieldValues)
+        {
+            var uniqueValues = countFieldValues.Distinct().ToList();
 
             return uniqueValues.Count == 1 && string.IsNullOrWhiteSpace(uniqueValues.FirstOrDefault());
         }
