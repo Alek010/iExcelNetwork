@@ -34,5 +34,14 @@ namespace iExcelNetwork.Analytics
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        private void btn_exchangeSourceDestination_Click(object sender, EventArgs e)
+        {
+            string Node1 = txtBox_Node2.Text;
+            string Node2 = txtBox_Node1.Text;
+
+            txtBox_Node1.Text = Node1;
+            txtBox_Node2.Text = Node2;
+        }
     }
 }
