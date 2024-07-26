@@ -32,7 +32,7 @@ namespace iExcelNetwork.Analytics
                 var networkData = new NetworkData(dataRange);
 
                 NetworkAnalytics networkAnalytics = new NetworkAnalytics(networkData, new GraphDirectionalEdges());
-                var paths = networkAnalytics.FindAllPaths(txtBox_Node1.Text, txtBox_Node2.Text);
+                var paths = networkAnalytics.FindAllPaths(txtBox_Node1.Text, txtBox_Node2.Text).Result;
 
                 NetworkFilteredData networkFilteredData = new NetworkFilteredData(paths, networkData);
 

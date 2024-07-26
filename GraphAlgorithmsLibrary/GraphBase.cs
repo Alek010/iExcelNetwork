@@ -15,14 +15,14 @@ namespace GraphAlgorithmsLibrary
 
         public abstract void AddEdge(int u, int v);
 
-        public List<List<int>> DFS_FindAllPaths(int src, int dst)
+        public async Task<List<List<int>>> DFS_FindAllPathsAsync(int src, int dst)
         {
             ConcurrentBag<List<int>> allPaths = new ConcurrentBag<List<int>>();
             int maxNode = GetMaxNode();
 
             bool[] visited = new bool[maxNode + 1];
 
-            void DFS(int current, List<int> path)
+            async Task DFSAsync(int current, List<int> path)
             {
                 visited[current] = true;
 
@@ -32,15 +32,17 @@ namespace GraphAlgorithmsLibrary
                 }
                 else if (graph.ContainsKey(current))
                 {
+                    var tasks = new List<Task>();
                     foreach (var neighbor in graph[current])
                     {
                         if (!visited[neighbor])
                         {
                             path.Add(neighbor);
-                            DFS(neighbor, path);
+                            tasks.Add(DFSAsync(neighbor, new List<int>(path)));
                             path.RemoveAt(path.Count - 1);
                         }
                     }
+                    await Task.WhenAll(tasks);
                 }
 
                 visited[current] = false;
@@ -49,18 +51,24 @@ namespace GraphAlgorithmsLibrary
             Stack<(int, List<int>)> stack = new Stack<(int, List<int>)>();
             stack.Push((src, new List<int> { src }));
 
+            var initialTasks = new List<Task>();
             while (stack.Count > 0)
             {
                 var (current, path) = stack.Pop();
-                Parallel.ForEach(graph[current], neighbor =>
+                if (graph.ContainsKey(current))
                 {
-                    if (!visited[neighbor])
+                    foreach (var neighbor in graph[current])
                     {
-                        var newPath = new List<int>(path) { neighbor };
-                        DFS(neighbor, newPath);
+                        if (!visited[neighbor])
+                        {
+                            var newPath = new List<int>(path) { neighbor };
+                            initialTasks.Add(DFSAsync(neighbor, newPath));
+                        }
                     }
-                });
+                }
             }
+
+            await Task.WhenAll(initialTasks);
 
             return allPaths.ToList();
         }

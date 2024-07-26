@@ -3,6 +3,7 @@ using GraphAlgorithmsLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using VisJsNetworkLibrary.Models;
 using VisJsNetworkLibrary.Validations;
 
@@ -21,11 +22,11 @@ namespace VisJsNetworkLibrary
             _graph = graph;
         }
 
-        public List<List<int>> FindAllPaths(string sourceNodeName, string destinationNodeName)
+        public Task<List<List<int>>> FindAllPaths(string sourceNodeName, string destinationNodeName)
         {
             AddEdgesToGraph();
 
-            return _graph.DFS_FindAllPaths(GetNodeId(sourceNodeName), GetNodeId(destinationNodeName));
+            return _graph.DFS_FindAllPathsAsync(GetNodeId(sourceNodeName), GetNodeId(destinationNodeName));
         }
 
         private void AddEdgesToGraph()
