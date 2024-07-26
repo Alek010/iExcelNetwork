@@ -22,7 +22,7 @@ namespace VisJsNetworkLibrary
             _graph = graph;
         }
 
-        public Task<List<List<int>>> FindAllPaths(string sourceNodeName, string destinationNodeName)
+        public Task<List<List<int>>> FindAllPathsAsync(string sourceNodeName, string destinationNodeName)
         {
             AddEdgesToGraph();
 
