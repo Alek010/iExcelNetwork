@@ -190,6 +190,10 @@ namespace iExcelNetwork
         {
             try
             {
+                VisJsDataValidator.JsonStringIsNotNull(_selectedRangeAsJSON);
+                VisJsDataValidator.JsonStringHasData(_selectedRangeAsJSON);
+                VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeAsJSON);
+
                 FindAllPathsForm form = new FindAllPathsForm(networkProperties, _selectedRangeAsJSON);
                 form.ShowDialog();
             }
