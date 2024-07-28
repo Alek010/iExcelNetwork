@@ -14,7 +14,7 @@ namespace GraphAlgorithmsLibrary.Algorithms
 
         public DeepFirstSearch(Dictionary<int, List<int>> graph)
         {
-            _graph = graph;   
+            _graph = graph;
         }
 
         // Recursive DFS function to find all paths
@@ -76,7 +76,7 @@ namespace GraphAlgorithmsLibrary.Algorithms
             };
 
             var partitioner = Partitioner.Create(initialTasks, EnumerablePartitionerOptions.NoBuffering);
-            var tasksParallel = new List<Task>();
+            var tasksParallel = new ConcurrentBag<Task>();
 
             Parallel.ForEach(partitioner, parallelOptions, initialTask =>
             {
@@ -93,7 +93,7 @@ namespace GraphAlgorithmsLibrary.Algorithms
         {
             if (maxNodeCache == null)
             {
-                maxNodeCache = _graph.Keys.DefaultIfEmpty(-1).Max();
+                maxNodeCache = _graph.Keys.Concat(_graph.Values.SelectMany(v => v)).DefaultIfEmpty(-1).Max();
             }
             return maxNodeCache.Value;
         }
