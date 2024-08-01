@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
 using VisJsNetworkLibrary.Models;
 using VisJsNetworkLibrary;
 using GraphAlgorithmsLibrary;
 using VisJsNetworkLibrary.NetworkProperty;
-using System.Linq;
+using iExcelNetwork.Validations;
 
 namespace iExcelNetwork.Analytics
 {
@@ -32,6 +31,9 @@ namespace iExcelNetwork.Analytics
                 var networkData = new NetworkData(dataRange);
 
                 NetworkAnalytics networkAnalytics = new NetworkAnalytics(networkData, new GraphDirectionalEdges());
+
+                GraphValidators.ValidateGraphCircularEdgesCount(circularEdgesFound: networkAnalytics.CountCircularEdges());
+
                 var paths = networkAnalytics.FindAllPathsAsync(txtBox_Node1.Text, txtBox_Node2.Text).Result;
 
                 NetworkFilteredData networkFilteredData = new NetworkFilteredData(paths, networkData);

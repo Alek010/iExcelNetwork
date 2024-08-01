@@ -21,5 +21,10 @@
         {
             return "You have selected a cell. Select a range of cells!";
         }
+
+        public static string GraphHasTooManyCircularEdges(int circularEdgesFound, int circularEdgesThreshold)
+        {
+            return $"Calculation is stopped. Graph has to many circular edges. Found {circularEdgesFound} circular edges, but threshold is {circularEdgesThreshold}.";
+        }
     }
 }

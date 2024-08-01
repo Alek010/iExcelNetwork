@@ -22,6 +22,13 @@ namespace GraphAlgorithmsLibrary
         {
             return graph;
         }
+
+        public int CountCircularEdges()
+        {
+            CircularEdgesCounter counter = new CircularEdgesCounter(graph);
+
+            return counter.CountCircularEdges();
+        }
     }   
     
 }

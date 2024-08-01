@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\CircularEdgesCounter.cs" />
     <Compile Include="Algorithms\DeepFirstSearch.cs" />
     <Compile Include="GraphDirectionalEdges.cs" />
     <Compile Include="GraphNonDirectionalEdges.cs" />

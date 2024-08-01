@@ -20,13 +20,18 @@ namespace VisJsNetworkLibrary
             _nodes = networkData.GetNodes();
             _edges = networkData.GetEdges();
             _graph = graph;
+
+            AddEdgesToGraph();
         }
 
         public Task<List<List<int>>> FindAllPathsAsync(string sourceNodeName, string destinationNodeName)
         {
-            AddEdgesToGraph();
-
             return _graph.DFS_FindAllPathsAsync(GetNodeId(sourceNodeName), GetNodeId(destinationNodeName));
+        }
+
+        public int CountCircularEdges()
+        {
+            return _graph.CountCircularEdges();
         }
 
         private void AddEdgesToGraph()
@@ -49,5 +54,7 @@ namespace VisJsNetworkLibrary
 
             return nodeId;
         }
+
+
     }
 }
