@@ -1,7 +1,7 @@
 # iExcelNetwork
-iExcelNetwork is an Excel VSTO add-in written in C# designed to build network visualizations using the [vis.js](https://visjs.org) network library.
-
-The iExcelNetwork does not require an internet connection and does not send data outside the local machine to build the network.
+* iExcelNetwork is an Excel VSTO add-in written in C# designed to build network visualizations using the [vis.js](https://visjs.org) network library.
+* iExcelNetwork does not require an internet connection and does not send data outside the local machine to build the network.
+* iExcelNetwork does not aim to compete with professional graph visualization and analytics software. Its main goal is to provide a lightweight solution for visualizing and gaining insights from graphs as a standalone tool for MS Excel users.
 
 ## iExcelNetwork Proof of Concept (PoC)
 The current PoC has basic functionality:
