@@ -35,7 +35,7 @@ namespace iExcelNetwork.SheetDataWriter
         {
             new string[] { "A. How to build a basic link network:"},
             new string[] { ""},
-            new string[] { "1. Select a range A1:B5. First row is column names."},
+            new string[] { "1. Select a range A1:B8. First row is column names."},
             new string[] { "    Column names always should have the same values and order."},
             new string[] { "2. Press the Select Range button." },
             new string[] { "3. Press the Build Network button." },
@@ -53,7 +53,7 @@ namespace iExcelNetwork.SheetDataWriter
         {
             new string[] { "B. How to build a basic link network:"},
             new string[] { ""},
-            new string[] { "1. Select a range A15:C21. First row is column names."},
+            new string[] { "1. Select a range A15:C22. First row is column names."},
             new string[] { "    Column names always should have the same values and order."},
             new string[] { "    User manually provides From/To pair count in Count column."},
             new string[] { "    Count column values should to be integers."},
