@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindAllPathsForm));
             this.btn_Find = new System.Windows.Forms.Button();
             this.txtBox_Node1 = new System.Windows.Forms.TextBox();
             this.txtBox_Node2 = new System.Windows.Forms.TextBox();
@@ -114,8 +115,8 @@
             this.Controls.Add(this.txtBox_Node2);
             this.Controls.Add(this.txtBox_Node1);
             this.Controls.Add(this.btn_Find);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FindAllPathsForm";
-            this.Text = "FindAllPaths";
             this.ResumeLayout(false);
             this.PerformLayout();
 
