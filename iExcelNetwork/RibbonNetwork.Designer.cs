@@ -42,14 +42,18 @@
             this.btn_buildNetwork = this.Factory.CreateRibbonButton();
             this.btn_networkProperties = this.Factory.CreateRibbonButton();
             this.btn_howItWorks = this.Factory.CreateRibbonButton();
+            this.groupAnalytics = this.Factory.CreateRibbonGroup();
+            this.btn_FindAllPathsDirected = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
+            this.groupAnalytics.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
             // 
             this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
             this.tab1.Groups.Add(this.group1);
+            this.tab1.Groups.Add(this.groupAnalytics);
             this.tab1.Label = "iExcelNetwork";
             this.tab1.Name = "tab1";
             // 
@@ -108,6 +112,21 @@
             this.btn_howItWorks.ShowImage = true;
             this.btn_howItWorks.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_howItWorks_Click);
             // 
+            // groupAnalytics
+            // 
+            this.groupAnalytics.Items.Add(this.btn_FindAllPathsDirected);
+            this.groupAnalytics.Label = "Analytics";
+            this.groupAnalytics.Name = "groupAnalytics";
+            // 
+            // btn_FindAllPathsDirected
+            // 
+            this.btn_FindAllPathsDirected.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.btn_FindAllPathsDirected.Image = global::iExcelNetwork.Properties.Resources.findAllDirectedPaths;
+            this.btn_FindAllPathsDirected.Label = "Find All Directed Paths";
+            this.btn_FindAllPathsDirected.Name = "btn_FindAllPathsDirected";
+            this.btn_FindAllPathsDirected.ShowImage = true;
+            this.btn_FindAllPathsDirected.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_FindAllPathsDirected_Click);
+            // 
             // RibbonNetwork
             // 
             this.Name = "RibbonNetwork";
@@ -118,6 +137,8 @@
             this.tab1.PerformLayout();
             this.group1.ResumeLayout(false);
             this.group1.PerformLayout();
+            this.groupAnalytics.ResumeLayout(false);
+            this.groupAnalytics.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -131,6 +152,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_buildNetwork;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_howItWorks;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_networkProperties;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup groupAnalytics;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_FindAllPathsDirected;
     }
 
     partial class ThisRibbonCollection

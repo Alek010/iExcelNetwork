@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iExcelNetwork", "iExcelNetw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisJsNetworkLibrary", "VisJsNetworkLibrary\VisJsNetworkLibrary.csproj", "{81843931-0E64-4AC5-9909-DB60239B6DC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphAlgorithmsLibrary", "GraphAlgorithmsLibrary\GraphAlgorithmsLibrary.csproj", "{F2B1B7B8-8E92-4BA4-8D1A-0D6329134633}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{81843931-0E64-4AC5-9909-DB60239B6DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81843931-0E64-4AC5-9909-DB60239B6DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81843931-0E64-4AC5-9909-DB60239B6DC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2B1B7B8-8E92-4BA4-8D1A-0D6329134633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2B1B7B8-8E92-4BA4-8D1A-0D6329134633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2B1B7B8-8E92-4BA4-8D1A-0D6329134633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2B1B7B8-8E92-4BA4-8D1A-0D6329134633}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

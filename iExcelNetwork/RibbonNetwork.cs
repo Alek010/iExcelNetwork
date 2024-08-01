@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using VisJsNetworkLibrary.Models;
 using System.Reflection;
+using iExcelNetwork.Analytics;
 
 namespace iExcelNetwork
 {
@@ -183,6 +184,23 @@ namespace iExcelNetwork
             var informationalVersionAttribute = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
 
             return informationalVersionAttribute?.InformationalVersion ?? "N/A";
+        }
+
+        private void btn_FindAllPathsDirected_Click(object sender, RibbonControlEventArgs e)
+        {
+            try
+            {
+                VisJsDataValidator.JsonStringIsNotNull(_selectedRangeAsJSON);
+                VisJsDataValidator.JsonStringHasData(_selectedRangeAsJSON);
+                VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeAsJSON);
+
+                FindAllPathsForm form = new FindAllPathsForm(networkProperties, _selectedRangeAsJSON);
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
     }
 }

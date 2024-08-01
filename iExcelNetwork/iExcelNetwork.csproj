@@ -188,7 +188,20 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Analytics\FindAllPathsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analytics\FindAllPathsForm.Designer.cs">
+      <DependentUpon>FindAllPathsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Analytics\FindAllPathsResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analytics\FindAllPathsResultForm.Designer.cs">
+      <DependentUpon>FindAllPathsResultForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
+    <Compile Include="Exceptions\TooManyCircularEdgesException.cs" />
     <Compile Include="Helpers\DataGenerator.cs" />
     <Compile Include="Helpers\ExcelWorkbook.cs" />
     <Compile Include="NetworkProperty\NetworkPropertiesForm.cs">
@@ -212,7 +225,11 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Validations\GraphValidator.cs" />
     <Compile Include="Validations\SelectedRangeValidator.cs" />
+    <EmbeddedResource Include="Analytics\FindAllPathsForm.resx">
+      <DependentUpon>FindAllPathsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NetworkProperty\NetworkPropertiesForm.resx">
       <DependentUpon>NetworkPropertiesForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -268,10 +285,20 @@
     <None Include="Resources\Network_Properties2.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GraphAlgorithmsLibrary\GraphAlgorithmsLibrary.csproj">
+      <Project>{F2B1B7B8-8E92-4BA4-8D1A-0D6329134633}</Project>
+      <Name>GraphAlgorithmsLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VisJsNetworkLibrary\VisJsNetworkLibrary.csproj">
       <Project>{81843931-0e64-4ac5-9909-db60239b6dc3}</Project>
       <Name>VisJsNetworkLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\findAllDirectedPaths.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exchange.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
