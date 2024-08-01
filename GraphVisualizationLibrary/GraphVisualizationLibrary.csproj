@@ -7,8 +7,8 @@
     <ProjectGuid>{81843931-0E64-4AC5-9909-DB60239B6DC3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VisJsNetworkLibrary</RootNamespace>
-    <AssemblyName>VisJsNetworkLibrary</AssemblyName>
+    <RootNamespace>GraphVisualizationLibrary</RootNamespace>
+    <AssemblyName>GraphVisualizationLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

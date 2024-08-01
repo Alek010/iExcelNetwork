@@ -23,9 +23,9 @@ namespace VisJsNetworkLibrary
 
         public string GenerateFileContent()
         {
-            string VisJsScript = GetEmbeddedResource("VisJsNetworkLibrary.Resources.vis-network.min.js");
+            string VisJsScript = GetEmbeddedResource("GraphVisualizationLibrary.Resources.vis-network.min.js");
 
-            string htmlTemplate = GetEmbeddedResource("VisJsNetworkLibrary.Resources.VisJsNetworkTemplate.html");
+            string htmlTemplate = GetEmbeddedResource("GraphVisualizationLibrary.Resources.VisJsNetworkTemplate.html");
 
             return htmlTemplate
                 .Replace("{{VisJsScript}}", VisJsScript)

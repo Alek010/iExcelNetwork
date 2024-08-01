@@ -289,7 +289,7 @@
       <Project>{F2B1B7B8-8E92-4BA4-8D1A-0D6329134633}</Project>
       <Name>GraphAlgorithmsLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VisJsNetworkLibrary\GraphVisualizationLibrary.csproj">
+    <ProjectReference Include="..\GraphVisualizationLibrary\GraphVisualizationLibrary.csproj">
       <Project>{81843931-0e64-4ac5-9909-db60239b6dc3}</Project>
       <Name>GraphVisualizationLibrary</Name>
     </ProjectReference>

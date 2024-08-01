@@ -5,9 +5,9 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iExcelNetwork", "iExcelNetwork\iExcelNetwork.csproj", "{24D661B1-51BF-42E1-981B-0AD27B3B9FAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphVisualizationLibrary", "VisJsNetworkLibrary\GraphVisualizationLibrary.csproj", "{81843931-0E64-4AC5-9909-DB60239B6DC3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphAlgorithmsLibrary", "GraphAlgorithmsLibrary\GraphAlgorithmsLibrary.csproj", "{F2B1B7B8-8E92-4BA4-8D1A-0D6329134633}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphVisualizationLibrary", "GraphVisualizationLibrary\GraphVisualizationLibrary.csproj", "{81843931-0E64-4AC5-9909-DB60239B6DC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{24D661B1-51BF-42E1-981B-0AD27B3B9FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24D661B1-51BF-42E1-981B-0AD27B3B9FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24D661B1-51BF-42E1-981B-0AD27B3B9FAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81843931-0E64-4AC5-9909-DB60239B6DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81843931-0E64-4AC5-9909-DB60239B6DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81843931-0E64-4AC5-9909-DB60239B6DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81843931-0E64-4AC5-9909-DB60239B6DC3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F2B1B7B8-8E92-4BA4-8D1A-0D6329134633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F2B1B7B8-8E92-4BA4-8D1A-0D6329134633}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2B1B7B8-8E92-4BA4-8D1A-0D6329134633}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2B1B7B8-8E92-4BA4-8D1A-0D6329134633}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81843931-0E64-4AC5-9909-DB60239B6DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81843931-0E64-4AC5-9909-DB60239B6DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81843931-0E64-4AC5-9909-DB60239B6DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81843931-0E64-4AC5-9909-DB60239B6DC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
