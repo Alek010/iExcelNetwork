@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using VisJsNetworkLibrary.Exceptions;
 using VisJsNetworkLibrary.Interfaces;
 using VisJsNetworkLibrary.NetworkProperty;
 
@@ -12,7 +14,7 @@ namespace VisJsNetworkLibrary
         private string _edgesJson { get; set; }
         private NetworkProperties _networkProperties { get; set; }
 
-        public NetworkHtml(NetworkProperties networkProperties, NetworkData NetworkData)
+        public NetworkHtml(NetworkProperties networkProperties, INetworkData NetworkData)
         {
             _nodesJson = JsonConvert.SerializeObject(NetworkData.GetNodes(), Formatting.Indented);
             _edgesJson = JsonConvert.SerializeObject(NetworkData.GetEdges(), Formatting.Indented);
@@ -21,9 +23,9 @@ namespace VisJsNetworkLibrary
 
         public string GenerateFileContent()
         {
-            string VisJsScript = GetEmbeddedResource("VisJsNetworkLibrary.Resources.vis-network.min.js");
+            string VisJsScript = GetEmbeddedResource("GraphVisualizationLibrary.Resources.vis-network.min.js");
 
-            string htmlTemplate = GetEmbeddedResource("VisJsNetworkLibrary.Resources.VisJsNetworkTemplate.html");
+            string htmlTemplate = GetEmbeddedResource("GraphVisualizationLibrary.Resources.VisJsNetworkTemplate.html");
 
             return htmlTemplate
                 .Replace("{{VisJsScript}}", VisJsScript)

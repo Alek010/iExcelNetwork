@@ -7,8 +7,8 @@
     <ProjectGuid>{81843931-0E64-4AC5-9909-DB60239B6DC3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VisJsNetworkLibrary</RootNamespace>
-    <AssemblyName>VisJsNetworkLibrary</AssemblyName>
+    <RootNamespace>GraphVisualizationLibrary</RootNamespace>
+    <AssemblyName>GraphVisualizationLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -48,13 +48,18 @@
     <Compile Include="Exceptions\ExceptionMessage.cs" />
     <Compile Include="Exceptions\FromNodesEdgeNodesCountNotEqualException.cs" />
     <Compile Include="Exceptions\ListOfIntegersAsStringsContainsNonIntegerValuesException.cs" />
+    <Compile Include="Exceptions\NodeIdNotFoundException.cs" />
+    <Compile Include="Exceptions\PathNotFoundException.cs" />
     <Compile Include="Exceptions\SelectedRangeIsNullException.cs" />
     <Compile Include="Exceptions\SelectedRangeJsonColumnNamesNotCorrectException.cs" />
     <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
+    <Compile Include="Interfaces\INetworkData.cs" />
     <Compile Include="Interfaces\IFileContent.cs" />
     <Compile Include="Models\Edge.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\SelectedRange.cs" />
+    <Compile Include="NetworkAnalytics.cs" />
+    <Compile Include="NetworkFilteredData.cs" />
     <Compile Include="NetworkHtml.cs" />
     <Compile Include="NetworkIntegrityLog.cs" />
     <Compile Include="NetworkProperty\EdgeProperty.cs" />
@@ -70,6 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GraphAlgorithmsLibrary\GraphAlgorithmsLibrary.csproj">
+      <Project>{f2b1b7b8-8e92-4ba4-8d1a-0d6329134633}</Project>
+      <Name>GraphAlgorithmsLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

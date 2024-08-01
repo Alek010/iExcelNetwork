@@ -42,6 +42,22 @@ namespace VisJsNetworkLibrary.Validations
                 throw new ListOfIntegersAsStringsContainsNonIntegerValuesException(ExceptionMessage.NotAllValuesAreIntegersInCountColumn());
         }
 
+        public static void ValidatePathIsFound(List<List<int>> foundPath)
+        {
+            if(foundPath.Count == 0)
+            {
+                throw new PathNotFoundException(ExceptionMessage.PathBetweenNodesNotFound());
+            }
+        }
+
+        public static void ValidateNodeIdIsFound(int nodeId, string nodeLabel)
+        {
+            if(nodeId == 0)
+            {
+                throw new NodeIdNotFoundException(ExceptionMessage.NodeIdNotFound(nodeLabel));
+            }
+        }
+
         private static readonly List<string> ValidFieldNames = new List<string>
         {
             "from",
