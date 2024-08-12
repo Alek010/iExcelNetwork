@@ -4,13 +4,13 @@
 * iExcelNetwork does not aim to compete with professional graph visualization and analytics software. Its main goal is to provide a lightweight solution for visualizing and gaining insights from graphs as a standalone tool for MS Excel users.
 
 ## iExcelNetwork Proof of Concept (PoC)
-The current PoC has basic functionality:
-* Select a range.
-* Save the range as a JSON file.
-* Build a network based on the selected range.
+The current PoC functionality:
+* Select a specific range of data or nodes.
+* Save the selected range as a JSON file.
+* Build a network from the selected range.
+* Modify and adjust the properties of the network to be built.
+* Identify all directed paths within the network created from the selected range.
   
-The capabilities of the iExecNetwork PoC can be extended. [See](https://visjs.github.io/vis-network/examples/) Vis.js Network examples.
-
 ![image](https://github.com/user-attachments/assets/f8df1dae-a51f-4733-8754-db6b6c5d570c)
 
 
