@@ -50,7 +50,7 @@ namespace GraphVisualizationLibrary
                 .Select(x => x.Id)
                 .FirstOrDefault();
 
-            VisJsDataValidator.ValidateNodeIdIsFound(nodeId, nodeLabel);
+            Validator.ValidateNodeIdIsFound(nodeId, nodeLabel);
 
             return nodeId;
         }

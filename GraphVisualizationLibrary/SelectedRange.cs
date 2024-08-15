@@ -25,7 +25,7 @@ namespace GraphVisualizationLibrary
             }
             else
             {
-                VisJsDataValidator.ValidateIfCountFieldValuesContainsNonIntegerValue(CountFieldValues(_data));
+                Validator.ValidateIfCountFieldValuesContainsNonIntegerValue(CountFieldValues(_data));
                 return GroupAndSumFromTo(_data);
             }
         }

@@ -97,9 +97,9 @@ namespace iExcelNetwork
         {
             try
             {
-                VisJsDataValidator.JsonStringIsNotNull(_selectedRangeAsJSON);
-                VisJsDataValidator.JsonStringHasData(_selectedRangeAsJSON);
-                VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeAsJSON);
+                Validator.ValidateJsonStringIsNotNull(_selectedRangeAsJSON);
+                Validator.ValidateJsonStringHasData(_selectedRangeAsJSON);
+                Validator.ValidateJsonFieldNamesAreValid(_selectedRangeAsJSON);
 
                 DataRange dataRange = new DataRange(new SelectedRange(_selectedRangeAsJSON));
 
@@ -190,9 +190,9 @@ namespace iExcelNetwork
         {
             try
             {
-                VisJsDataValidator.JsonStringIsNotNull(_selectedRangeAsJSON);
-                VisJsDataValidator.JsonStringHasData(_selectedRangeAsJSON);
-                VisJsDataValidator.JsonFieldNamesAreValid(_selectedRangeAsJSON);
+                Validator.ValidateJsonStringIsNotNull(_selectedRangeAsJSON);
+                Validator.ValidateJsonStringHasData(_selectedRangeAsJSON);
+                Validator.ValidateJsonFieldNamesAreValid(_selectedRangeAsJSON);
 
                 FindAllPathsForm form = new FindAllPathsForm(networkProperties, _selectedRangeAsJSON);
                 form.ShowDialog();
