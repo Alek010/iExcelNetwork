@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using VisJsNetworkLibrary.Interfaces;
-using VisJsNetworkLibrary.Models;
-using VisJsNetworkLibrary.Validations;
+using GraphVisualizationLibrary.Interfaces;
+using GraphVisualizationLibrary.Models;
+using GraphVisualizationLibrary.Validations;
 
-namespace VisJsNetworkLibrary
+namespace GraphVisualizationLibrary
 {
     public class NetworkFilteredData : INetworkData
     {

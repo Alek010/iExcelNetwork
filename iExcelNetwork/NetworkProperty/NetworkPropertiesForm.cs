@@ -1,4 +1,4 @@
-﻿using VisJsNetworkLibrary.NetworkProperty;
+﻿using GraphVisualizationLibrary.NetworkProperty;
 using System;
 using System.Windows.Forms;
 

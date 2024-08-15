@@ -1,5 +1,5 @@
 ﻿using System;
-namespace VisJsNetworkLibrary.Exceptions
+namespace GraphVisualizationLibrary.Exceptions
 {
     internal class ListOfIntegersAsStringsContainsNonIntegerValuesException : Exception
     {

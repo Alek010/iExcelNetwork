@@ -2,9 +2,9 @@
 using iExcelNetwork.NetworkProperty;
 using iExcelNetwork.SheetDataWriter;
 using iExcelNetwork.Validations;
-using VisJsNetworkLibrary;
-using VisJsNetworkLibrary.NetworkProperty;
-using VisJsNetworkLibrary.Validations;
+using GraphVisualizationLibrary;
+using GraphVisualizationLibrary.NetworkProperty;
+using GraphVisualizationLibrary.Validations;
 using Microsoft.Office.Tools.Ribbon;
 using Newtonsoft.Json;
 using System;
@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-using VisJsNetworkLibrary.Models;
+using GraphVisualizationLibrary.Models;
 using System.Reflection;
 using iExcelNetwork.Analytics;
 

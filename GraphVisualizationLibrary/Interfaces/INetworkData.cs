@@ -2,9 +2,9 @@
 
 
 using System.Collections.Generic;
-using VisJsNetworkLibrary.Models;
+using GraphVisualizationLibrary.Models;
 
-namespace VisJsNetworkLibrary.Interfaces
+namespace GraphVisualizationLibrary.Interfaces
 {
     public interface INetworkData
     {

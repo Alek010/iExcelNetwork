@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace VisJsNetworkLibrary.NetworkProperty
+namespace GraphVisualizationLibrary.NetworkProperty
 {
     public class NetworkProperties
     {

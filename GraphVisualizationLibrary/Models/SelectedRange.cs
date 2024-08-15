@@ -1,4 +1,4 @@
-﻿namespace VisJsNetworkLibrary.Models
+﻿namespace GraphVisualizationLibrary.Models
 {
     public class SelectedRange
     {

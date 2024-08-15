@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace VisJsNetworkLibrary.Models
+namespace GraphVisualizationLibrary.Models
 {
     public class Node
     {

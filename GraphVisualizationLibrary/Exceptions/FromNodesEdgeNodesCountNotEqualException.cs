@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VisJsNetworkLibrary.Exceptions
+namespace GraphVisualizationLibrary.Exceptions
 {
     public class FromNodesEdgeNodesCountNotEqualException : Exception
     {

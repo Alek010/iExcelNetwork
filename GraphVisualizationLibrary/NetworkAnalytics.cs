@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VisJsNetworkLibrary.Models;
-using VisJsNetworkLibrary.Validations;
+using GraphVisualizationLibrary.Models;
+using GraphVisualizationLibrary.Validations;
 
-namespace VisJsNetworkLibrary
+namespace GraphVisualizationLibrary
 {
     public class NetworkAnalytics
     {
