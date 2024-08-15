@@ -3,10 +3,10 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using VisJsNetworkLibrary.Interfaces;
-using VisJsNetworkLibrary.NetworkProperty;
+using GraphVisualizationLibrary.Interfaces;
+using GraphVisualizationLibrary.NetworkProperty;
 
-namespace VisJsNetworkLibrary
+namespace GraphVisualizationLibrary
 {
     public class NetworkIntegrityLog : IFileContent
     {

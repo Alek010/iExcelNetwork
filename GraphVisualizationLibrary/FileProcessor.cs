@@ -2,9 +2,9 @@
 
 using System.Diagnostics;
 using System.IO;
-using VisJsNetworkLibrary.Interfaces;
+using GraphVisualizationLibrary.Interfaces;
 
-namespace VisJsNetworkLibrary
+namespace GraphVisualizationLibrary
 {
     public class FileProcessor
     {

@@ -1,4 +1,4 @@
-﻿namespace VisJsNetworkLibrary.Interfaces
+﻿namespace GraphVisualizationLibrary.Interfaces
 {
     public interface IFileContent
     {

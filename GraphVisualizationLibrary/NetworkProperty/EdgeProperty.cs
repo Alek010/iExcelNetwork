@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace VisJsNetworkLibrary.NetworkProperty
+namespace GraphVisualizationLibrary.NetworkProperty
 {
     public class EdgeProperty
     {

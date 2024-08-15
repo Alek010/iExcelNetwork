@@ -2,10 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using VisJsNetworkLibrary.Models;
-using VisJsNetworkLibrary;
+using GraphVisualizationLibrary.Models;
+using GraphVisualizationLibrary;
 using GraphAlgorithmsLibrary;
-using VisJsNetworkLibrary.NetworkProperty;
+using GraphVisualizationLibrary.NetworkProperty;
 using iExcelNetwork.Validations;
 
 namespace iExcelNetwork.Analytics

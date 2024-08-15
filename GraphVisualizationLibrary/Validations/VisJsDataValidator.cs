@@ -3,10 +3,10 @@
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
-using VisJsNetworkLibrary.Exceptions;
+using GraphVisualizationLibrary.Exceptions;
 
 
-namespace VisJsNetworkLibrary.Validations
+namespace GraphVisualizationLibrary.Validations
 {
     public static class VisJsDataValidator
     {

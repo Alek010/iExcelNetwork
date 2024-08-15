@@ -1,4 +1,4 @@
-﻿namespace VisJsNetworkLibrary.Exceptions
+﻿namespace GraphVisualizationLibrary.Exceptions
 {
     public static class ExceptionMessage
     {

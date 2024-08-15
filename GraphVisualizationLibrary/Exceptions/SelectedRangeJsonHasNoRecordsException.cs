@@ -1,7 +1,7 @@
 ﻿// Ignore Spelling: Json
 using System;
 
-namespace VisJsNetworkLibrary.Exceptions
+namespace GraphVisualizationLibrary.Exceptions
 {
     public class SelectedRangeJsonHasNoRecordsException : Exception
     {

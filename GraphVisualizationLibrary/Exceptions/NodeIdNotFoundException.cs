@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VisJsNetworkLibrary.Exceptions
+namespace GraphVisualizationLibrary.Exceptions
 {
     internal class NodeIdNotFoundException : Exception
     {

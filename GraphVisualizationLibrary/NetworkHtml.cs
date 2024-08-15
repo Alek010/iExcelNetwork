@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using VisJsNetworkLibrary.Exceptions;
-using VisJsNetworkLibrary.Interfaces;
-using VisJsNetworkLibrary.NetworkProperty;
+using GraphVisualizationLibrary.Exceptions;
+using GraphVisualizationLibrary.Interfaces;
+using GraphVisualizationLibrary.NetworkProperty;
 
-namespace VisJsNetworkLibrary
+namespace GraphVisualizationLibrary
 {
     public class NetworkHtml : IFileContent
     {
