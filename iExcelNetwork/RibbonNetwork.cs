@@ -97,10 +97,6 @@ namespace iExcelNetwork
         {
             try
             {
-                Validator.ValidateJsonStringIsNotNull(_selectedRangeAsJSON);
-                Validator.ValidateJsonStringHasData(_selectedRangeAsJSON);
-                Validator.ValidateJsonFieldNamesAreValid(_selectedRangeAsJSON);
-
                 DataRange dataRange = new DataRange(new SelectedRange(_selectedRangeAsJSON));
 
                 NetworkHtml networkHtml = new NetworkHtml(networkProperties, new NetworkData(dataRange));
@@ -190,10 +186,6 @@ namespace iExcelNetwork
         {
             try
             {
-                Validator.ValidateJsonStringIsNotNull(_selectedRangeAsJSON);
-                Validator.ValidateJsonStringHasData(_selectedRangeAsJSON);
-                Validator.ValidateJsonFieldNamesAreValid(_selectedRangeAsJSON);
-
                 FindAllPathsForm form = new FindAllPathsForm(networkProperties, _selectedRangeAsJSON);
                 form.ShowDialog();
             }

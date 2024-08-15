@@ -14,6 +14,8 @@ namespace GraphVisualizationLibrary
 
         public SelectedRange(string selectedRangeAsJson)
         {
+            ValidateString(selectedRangeAsJson);
+
             _data = JsonConvert.DeserializeObject<List<Range>>(selectedRangeAsJson);
         }
 
@@ -28,6 +30,13 @@ namespace GraphVisualizationLibrary
                 Validator.ValidateIfCountFieldValuesContainsNonIntegerValue(CountFieldValues(_data));
                 return GroupAndSumFromTo(_data);
             }
+        }
+
+        private void ValidateString(string selectedRangeAsJson)
+        {
+            Validator.ValidateJsonStringIsNotNull(selectedRangeAsJson);
+            Validator.ValidateJsonStringHasData(selectedRangeAsJson);
+            Validator.ValidateJsonFieldNamesAreValid(selectedRangeAsJson);
         }
 
         private List<Range> GroupAndCountFromTo(List<Range> data)
