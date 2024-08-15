@@ -26,7 +26,7 @@ namespace iExcelNetwork.Analytics
         {
             try
             {
-                DataRange dataRange = new DataRange(JsonConvert.DeserializeObject<List<SelectedRange>>(_selectedRangeAsJSON));
+                DataRange dataRange = new DataRange(new SelectedRange(_selectedRangeAsJSON));
 
                 var networkData = new NetworkData(dataRange);
 
