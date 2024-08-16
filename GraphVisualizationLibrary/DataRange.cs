@@ -2,15 +2,16 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using GraphVisualizationLibrary.Interfaces;
 using GraphVisualizationLibrary.Models;
 
 namespace GraphVisualizationLibrary
 {
     public class DataRange
     {
-        public List<Range> _data = new List<Range>();
+        private List<Range> _data = new List<Range>();
 
-        public DataRange(SelectedRange selectedRange)
+        public DataRange(ISelectedRange selectedRange)
         {
             _data = selectedRange.GroupRangeByFromToDuplicates();
         }

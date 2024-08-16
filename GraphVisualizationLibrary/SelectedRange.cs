@@ -1,5 +1,6 @@
 ﻿// Ignore Spelling: Json
 
+using GraphVisualizationLibrary.Interfaces;
 using GraphVisualizationLibrary.Models;
 using GraphVisualizationLibrary.Validations;
 using Newtonsoft.Json;
@@ -8,7 +9,7 @@ using System.Linq;
 
 namespace GraphVisualizationLibrary
 {
-    public class SelectedRange
+    public class SelectedRange : ISelectedRange
     {
         private readonly List<Range> _data;
 

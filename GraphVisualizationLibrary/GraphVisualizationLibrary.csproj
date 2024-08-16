@@ -55,6 +55,7 @@
     <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
     <Compile Include="Interfaces\INetworkData.cs" />
     <Compile Include="Interfaces\IFileContent.cs" />
+    <Compile Include="Interfaces\ISelectedRange.cs" />
     <Compile Include="Models\Edge.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\Range.cs" />
