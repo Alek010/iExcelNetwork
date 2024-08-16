@@ -14,7 +14,7 @@ namespace GraphVisualizationLibrary
 
         public NetworkFilteredData(List<List<int>> foundPaths, INetworkData networkData)
         {
-            VisJsDataValidator.ValidatePathIsFound(foundPaths);
+            Validator.ValidatePathIsFound(foundPaths);
 
             FoundPaths = foundPaths;
             NodesList = networkData.GetNodes();

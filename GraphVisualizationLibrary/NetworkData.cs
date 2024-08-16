@@ -50,7 +50,7 @@ namespace GraphVisualizationLibrary
 
             var toEdgeId = GetEdgesIds(_toColumnValues, GetNodes());
 
-            VisJsDataValidator.ValidateFromToEdgesIdsCount(fromEdgeId.Count, toEdgeId.Count);
+            Validator.ValidateFromToEdgesIdsCount(fromEdgeId.Count, toEdgeId.Count);
 
             int count = _linksCount.Count;
 

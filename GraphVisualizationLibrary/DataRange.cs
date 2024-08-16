@@ -3,25 +3,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using GraphVisualizationLibrary.Models;
-using GraphVisualizationLibrary.Validations;
 
 namespace GraphVisualizationLibrary
 {
     public class DataRange
     {
-        public List<SelectedRange> _data = new List<SelectedRange>();
+        public List<Range> _data = new List<Range>();
 
-        public DataRange(List<SelectedRange> data)
+        public DataRange(SelectedRange selectedRange)
         {
-            if (CountFieldValuesAreEmptyStrings(CountFieldValues(data)))
-            {
-                _data = GroupAndCountFromTo(data);
-            }
-            else
-            {
-                VisJsDataValidator.ValidateIfCountFieldValuesContainsNonIntegerValue(CountFieldValues(data));
-                _data = GroupAndSumFromTo(data);
-            }
+            _data = selectedRange.GroupRangeByFromToDuplicates();
         }
 
         public List<string> GetFromColumnValues()
@@ -42,47 +33,6 @@ namespace GraphVisualizationLibrary
                         .ToList();
 
             return LinksCount;
-        }
-
-        private List<SelectedRange> GroupAndCountFromTo(List<SelectedRange> data)
-        {
-           return data
-                .GroupBy(group => new { group.From, group.To })
-                .Select(range => new SelectedRange
-                {
-                    From = range.Key.From,
-                    To = range.Key.To,
-                    Count = range.Count().ToString()
-                })
-                .ToList();
-        }
-
-        public List<SelectedRange> GroupAndSumFromTo(List<SelectedRange> data)
-        {
-            return data
-                .GroupBy(group => new { group.From, group.To })
-                .Select(range => new SelectedRange
-                {
-                    From = range.Key.From,
-                    To = range.Key.To,
-                    Count = range.Sum(group => int.Parse(group.Count)).ToString()
-                })
-                .ToList();
-        }
-
-        private List<string> CountFieldValues(List<SelectedRange> data)
-        {
-            return data
-            .Select(range => range.Count = string.IsNullOrWhiteSpace(range.Count) ? "" : range.Count)
-            .Distinct()
-            .ToList();
-        }
-
-        private bool CountFieldValuesAreEmptyStrings(List<string> countFieldValues)
-        {
-            var uniqueValues = countFieldValues.Distinct().ToList();
-
-            return uniqueValues.Count == 1 && string.IsNullOrWhiteSpace(uniqueValues.FirstOrDefault());
         }
     }
 }

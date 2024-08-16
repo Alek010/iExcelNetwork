@@ -57,7 +57,7 @@
     <Compile Include="Interfaces\IFileContent.cs" />
     <Compile Include="Models\Edge.cs" />
     <Compile Include="Models\Node.cs" />
-    <Compile Include="Models\SelectedRange.cs" />
+    <Compile Include="Models\Range.cs" />
     <Compile Include="NetworkAnalytics.cs" />
     <Compile Include="NetworkFilteredData.cs" />
     <Compile Include="NetworkHtml.cs" />
@@ -65,7 +65,8 @@
     <Compile Include="NetworkProperty\EdgeProperty.cs" />
     <Compile Include="NetworkProperty\NetworkProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validations\VisJsDataValidator.cs" />
+    <Compile Include="SelectedRange.cs" />
+    <Compile Include="Validations\Validator.cs" />
     <Compile Include="FileProcessor.cs" />
     <Compile Include="NetworkData.cs" />
   </ItemGroup>

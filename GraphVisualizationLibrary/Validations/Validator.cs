@@ -8,21 +8,21 @@ using GraphVisualizationLibrary.Exceptions;
 
 namespace GraphVisualizationLibrary.Validations
 {
-    public static class VisJsDataValidator
+    public static class Validator
     {
-        public static void JsonStringIsNotNull(string jsonString)
+        public static void ValidateJsonStringIsNotNull(string jsonString)
         {
             if (jsonString == null)
                 throw new JsonStringIsNullException(ExceptionMessage.RangeIsNotSelected());
         }
 
-        public static void JsonFieldNamesAreValid(string jsonString)
+        public static void ValidateJsonFieldNamesAreValid(string jsonString)
         {
             if (!HasValidFieldNames(jsonString))
                 throw new SelectedRangeJsonColumnNamesNotCorrectException(ExceptionMessage.RangeColumnNamesAreNotCorrect());
         }
 
-        public static void JsonStringHasData(string jsonString)
+        public static void ValidateJsonStringHasData(string jsonString)
         {
             if (!HasRecords(jsonString))
                 throw new SelectedRangeJsonHasNoRecordsException(ExceptionMessage.RangeHasNoRecords());

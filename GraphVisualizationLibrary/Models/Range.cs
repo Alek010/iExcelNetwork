@@ -1,6 +1,6 @@
 ﻿namespace GraphVisualizationLibrary.Models
 {
-    public class SelectedRange
+    public class Range
     {
         public string From { get; set; }
         public string To { get; set; }
