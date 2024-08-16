@@ -1,7 +1,7 @@
 ﻿using System;
 namespace GraphVisualizationLibrary.Exceptions
 {
-    internal class ListOfIntegersAsStringsContainsNonIntegerValuesException : Exception
+    public class ListOfIntegersAsStringsContainsNonIntegerValuesException : Exception
     {
         public ListOfIntegersAsStringsContainsNonIntegerValuesException()
         {
