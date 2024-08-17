@@ -6,11 +6,29 @@ namespace GraphVisualizationLibrary.Tests
 {
     public class DataRangeTests
     {
+        private Mock<ISelectedRange> MockedSelectedRange
+        {
+            get
+            {
+                var mockSelectedRange = new Mock<ISelectedRange>();
+
+                // Set up the mock to return a specific list of Range objects
+                mockSelectedRange.Setup(x => x.GroupRangeByFromToDuplicates())
+                                 .Returns(new List<Models.Range>
+                                 {
+                                 new Models.Range { From = "A", To = "B", Count = "5" },
+                                 new Models.Range { From = "C", To = "D", Count = "3" }
+                                 });
+
+                return mockSelectedRange;
+            }
+        }
+
         [Fact]
         public void GetFromColumnValues()
         {
             // Arrange
-            var mockSelectedRange = MockSelectedRange();
+            var mockSelectedRange = MockedSelectedRange;
 
             // Act
             var dataRange = new DataRange(mockSelectedRange.Object);
@@ -29,7 +47,7 @@ namespace GraphVisualizationLibrary.Tests
         public void GetToColumnValues()
         {
             // Arrange
-            var mockSelectedRange = MockSelectedRange();
+            var mockSelectedRange = MockedSelectedRange;
 
             // Act
             var dataRange = new DataRange(mockSelectedRange.Object);
@@ -48,7 +66,7 @@ namespace GraphVisualizationLibrary.Tests
         public void GetLinksCount()
         {
             // Arrange
-            var mockSelectedRange = MockSelectedRange();
+            var mockSelectedRange = MockedSelectedRange;
 
             // Act
             var dataRange = new DataRange(mockSelectedRange.Object);
@@ -61,21 +79,6 @@ namespace GraphVisualizationLibrary.Tests
 
             // Verify that GroupRangeByFromToDuplicates was called exactly once
             mockSelectedRange.Verify(x => x.GroupRangeByFromToDuplicates(), Times.Once);
-        }
-
-        private Mock<ISelectedRange> MockSelectedRange()
-        {
-            var mockSelectedRange = new Mock<ISelectedRange>();
-
-            // Set up the mock to return a specific list of Range objects
-            mockSelectedRange.Setup(x => x.GroupRangeByFromToDuplicates())
-                             .Returns(new List<Models.Range>
-                             {
-                                 new Models.Range { From = "A", To = "B", Count = "5" },
-                                 new Models.Range { From = "C", To = "D", Count = "3" }
-                             });
-
-            return mockSelectedRange;
         }
     }
 }

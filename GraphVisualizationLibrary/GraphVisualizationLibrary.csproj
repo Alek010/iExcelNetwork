@@ -53,6 +53,7 @@
     <Compile Include="Exceptions\SelectedRangeIsNullException.cs" />
     <Compile Include="Exceptions\SelectedRangeJsonColumnNamesNotCorrectException.cs" />
     <Compile Include="Exceptions\SelectedRangeJsonHasNoRecordsException.cs" />
+    <Compile Include="Interfaces\IDataRange.cs" />
     <Compile Include="Interfaces\INetworkData.cs" />
     <Compile Include="Interfaces\IFileContent.cs" />
     <Compile Include="Interfaces\ISelectedRange.cs" />

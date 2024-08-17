@@ -7,7 +7,7 @@ using GraphVisualizationLibrary.Models;
 
 namespace GraphVisualizationLibrary
 {
-    public class DataRange
+    public class DataRange : IDataRange
     {
         private List<Range> _data = new List<Range>();
 

@@ -15,7 +15,7 @@ namespace GraphVisualizationLibrary
         private readonly List<string> _toColumnValues;
         private readonly List<string> _linksCount;
 
-        public NetworkData(DataRange dataRange)
+        public NetworkData(IDataRange dataRange)
         {
             _fromColumnValues = dataRange.GetFromColumnValues();
             _toColumnValues = dataRange.GetToColumnValues();
