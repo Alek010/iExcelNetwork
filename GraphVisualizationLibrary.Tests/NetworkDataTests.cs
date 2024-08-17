@@ -24,7 +24,9 @@ namespace GraphVisualizationLibrary.Tests
         public void GetNodes_ShouldReturnCorrectNodesList()
         {
             // Arrange
-            NetworkData networkData = new NetworkData(MockedDataRange.Object);
+            var mockDataRange = MockedDataRange;
+
+            NetworkData networkData = new NetworkData(mockDataRange.Object);
 
             // Act
             List<Node> nodes = networkData.GetNodes();
@@ -43,13 +45,20 @@ namespace GraphVisualizationLibrary.Tests
 
             Assert.Equal(4, nodes[3].Id);
             Assert.Equal("D", nodes[3].Label);
+
+            // Verify that were called once
+            mockDataRange.Verify(dr => dr.GetFromColumnValues(), Times.Once);
+            mockDataRange.Verify(dr => dr.GetToColumnValues(), Times.Once);
+            mockDataRange.Verify(dr => dr.GetLinksCount(), Times.Once);
         }
 
         [Fact]
         public void GetEdges_ShouldReturnCorrectNodesList()
         {
             // Arrange
-            NetworkData networkData = new NetworkData(MockedDataRange.Object);
+            var mockDataRange = MockedDataRange;
+
+            NetworkData networkData = new NetworkData(mockDataRange.Object);
 
             // Act
             List<Edge> edges = networkData.GetEdges();
@@ -68,6 +77,11 @@ namespace GraphVisualizationLibrary.Tests
             Assert.Equal(3, edges[2].From);
             Assert.Equal(4, edges[2].To);
             Assert.Equal("1", edges[2].Count);
+
+            // Verify that were called once
+            mockDataRange.Verify(dr => dr.GetFromColumnValues(), Times.Once);
+            mockDataRange.Verify(dr => dr.GetToColumnValues(), Times.Once);
+            mockDataRange.Verify(dr => dr.GetLinksCount(), Times.Once);
         }
     }
 }
