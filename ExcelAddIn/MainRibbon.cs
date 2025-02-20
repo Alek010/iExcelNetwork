@@ -52,7 +52,8 @@ namespace ExcelAddIn
 
         private void btn_buildNetwork_Click(object sender, RibbonControlEventArgs e)
         {
-            NetworkHtmlContent htmlContent = new NetworkHtmlContent();
+            NetworkData networkData = new NetworkData(SelectedRangeAsDataTable);
+            NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
             FileProcessor processor = new FileProcessor(htmlContent);
             processor.WriteFile();
             processor.OpenFile();
