@@ -1,12 +1,12 @@
 ﻿// Ignore Spelling: Visjs
 
-using System;
+using VisjsNetworkLibrary.Interfaces;
 using System.IO;
 using System.Reflection;
 
 namespace VisjsNetworkLibrary
 {
-    public class NetworkHtmlContent
+    public class NetworkHtmlContent : IFileContent
     {
         private string _nodesJson { get; set; }
         private string _edgesJson { get; set; }

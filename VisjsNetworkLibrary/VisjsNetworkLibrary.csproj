@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileProcessor.cs" />
+    <Compile Include="Interfaces\IFileContent.cs" />
     <Compile Include="NetworkHtmlContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
