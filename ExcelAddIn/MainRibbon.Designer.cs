@@ -38,21 +38,23 @@
             this.group1 = this.Factory.CreateRibbonGroup();
             this.btn_SelectRange = this.Factory.CreateRibbonButton();
             this.btn_buildNetwork = this.Factory.CreateRibbonButton();
+            this.group_linkNetwork = this.Factory.CreateRibbonGroup();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
+            this.group_linkNetwork.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
             // 
             this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
             this.tab1.Groups.Add(this.group1);
+            this.tab1.Groups.Add(this.group_linkNetwork);
             this.tab1.Label = "TabAddIns";
             this.tab1.Name = "tab1";
             // 
             // group1
             // 
             this.group1.Items.Add(this.btn_SelectRange);
-            this.group1.Items.Add(this.btn_buildNetwork);
             this.group1.Label = "group1";
             this.group1.Name = "group1";
             // 
@@ -72,6 +74,12 @@
             this.btn_buildNetwork.ShowImage = true;
             this.btn_buildNetwork.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_buildNetwork_Click);
             // 
+            // group_linkNetwork
+            // 
+            this.group_linkNetwork.Items.Add(this.btn_buildNetwork);
+            this.group_linkNetwork.Label = "Link Network";
+            this.group_linkNetwork.Name = "group_linkNetwork";
+            // 
             // MainRibbon
             // 
             this.Name = "MainRibbon";
@@ -82,6 +90,8 @@
             this.tab1.PerformLayout();
             this.group1.ResumeLayout(false);
             this.group1.PerformLayout();
+            this.group_linkNetwork.ResumeLayout(false);
+            this.group_linkNetwork.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -92,6 +102,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_SelectRange;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_buildNetwork;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group_linkNetwork;
     }
 
     partial class ThisRibbonCollection
