@@ -8,8 +8,8 @@ namespace VisjsNetworkLibrary
 {
     public class NetworkHtmlContent : IFileContent
     {
-        private string _nodesJson { get; set; }
-        private string _edgesJson { get; set; }
+        private string _nodesJson { get; set; } = "[\r\n      { id: 1, label: 'Node 1' },\r\n      { id: 2, label: 'Node 2' },\r\n      { id: 3, label: 'Node 3' },\r\n      { id: 4, label: 'Node 4' },\r\n      { id: 5, label: 'Node 5' }\r\n    ]";
+        private string _edgesJson { get; set; } = "[\r\n      { from: 1, to: 2 },\r\n      { from: 1, to: 3 },\r\n      { from: 2, to: 4 },\r\n      { from: 2, to: 5 }\r\n    ]";
 
         public NetworkHtmlContent()
         {
