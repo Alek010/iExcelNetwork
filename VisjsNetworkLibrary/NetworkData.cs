@@ -18,7 +18,9 @@ namespace VisjsNetworkLibrary
 
         public List<Node> GetNodes()
         {
-            return GetNodesLabels()
+            return _dataTable.AsEnumerable()
+                    .SelectMany(row => new[] { row.Field<string>("from"), row.Field<string>("to") })
+                    .Distinct()
                     .Select((label, index) => new Node
                     {
                         Id = index + 1,
@@ -46,16 +48,6 @@ namespace VisjsNetworkLibrary
                 .ToList();
 
             return edgesList;
-        }
-
-        private List<string> GetNodesLabels()
-        {
-            var nodesLabels = _dataTable.AsEnumerable()
-                .SelectMany(row => new[] { row.Field<string>("from"), row.Field<string>("to") })
-                .Distinct()
-                .ToList();
-
-            return nodesLabels;
         }
     }
 }

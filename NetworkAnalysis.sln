@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelAddIn", "ExcelAddIn\Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisjsNetworkLibrary", "VisjsNetworkLibrary\VisjsNetworkLibrary.csproj", "{D875AFFA-685E-462B-A4AA-68DE101E4DD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisjsNetworkLibraryTests", "VisjsNetworkLibraryTests\VisjsNetworkLibraryTests.csproj", "{B6667E6B-BA55-435D-A8F1-50D8EDBA5D59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D875AFFA-685E-462B-A4AA-68DE101E4DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D875AFFA-685E-462B-A4AA-68DE101E4DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D875AFFA-685E-462B-A4AA-68DE101E4DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6667E6B-BA55-435D-A8F1-50D8EDBA5D59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6667E6B-BA55-435D-A8F1-50D8EDBA5D59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6667E6B-BA55-435D-A8F1-50D8EDBA5D59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6667E6B-BA55-435D-A8F1-50D8EDBA5D59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
