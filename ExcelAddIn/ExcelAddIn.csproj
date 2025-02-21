@@ -185,6 +185,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="ExcelRangeHelper.cs" />
     <Compile Include="MainRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
