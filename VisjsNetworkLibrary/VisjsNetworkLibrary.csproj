@@ -44,6 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\DataTableColumnsCountException.cs" />
+    <Compile Include="Exceptions\DataTableIsEmptyException.cs" />
+    <Compile Include="Exceptions\DataTableNullException.cs" />
+    <Compile Include="Exceptions\SelectedDataTableExceptionMessages.cs" />
     <Compile Include="FileProcessor.cs" />
     <Compile Include="Interfaces\IFileContent.cs" />
     <Compile Include="Models\Edge.cs" />

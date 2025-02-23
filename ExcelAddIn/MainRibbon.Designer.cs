@@ -37,8 +37,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainRibbon));
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group_data = this.Factory.CreateRibbonGroup();
-            this.group_linkNetwork = this.Factory.CreateRibbonGroup();
             this.btn_SelectRange = this.Factory.CreateRibbonButton();
+            this.group_linkNetwork = this.Factory.CreateRibbonGroup();
             this.btn_buildNetwork = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group_data.SuspendLayout();
@@ -59,12 +59,6 @@
             this.group_data.Label = "Data";
             this.group_data.Name = "group_data";
             // 
-            // group_linkNetwork
-            // 
-            this.group_linkNetwork.Items.Add(this.btn_buildNetwork);
-            this.group_linkNetwork.Label = "Link Network";
-            this.group_linkNetwork.Name = "group_linkNetwork";
-            // 
             // btn_SelectRange
             // 
             this.btn_SelectRange.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -73,6 +67,12 @@
             this.btn_SelectRange.Name = "btn_SelectRange";
             this.btn_SelectRange.ShowImage = true;
             this.btn_SelectRange.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_SelectRange_Click);
+            // 
+            // group_linkNetwork
+            // 
+            this.group_linkNetwork.Items.Add(this.btn_buildNetwork);
+            this.group_linkNetwork.Label = "Link Network";
+            this.group_linkNetwork.Name = "group_linkNetwork";
             // 
             // btn_buildNetwork
             // 
