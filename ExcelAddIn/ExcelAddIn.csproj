@@ -186,6 +186,10 @@
   -->
   <ItemGroup>
     <Compile Include="ExcelRangeHelper.cs" />
+    <Compile Include="Exceptions\SelectedCellNotRangeException.cs" />
+    <Compile Include="Exceptions\SelectedEmptyCellException.cs" />
+    <Compile Include="Exceptions\SelectedRangeExceptionsMessages.cs" />
+    <Compile Include="Exceptions\SelectedRangeIsNullException.cs" />
     <Compile Include="MainRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -216,6 +220,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Validations\SelectedRangeValidator.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>

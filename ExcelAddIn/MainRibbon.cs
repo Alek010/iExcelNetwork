@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Tools.Ribbon;
+﻿using ExcelAddIn.Validations;
+using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -34,6 +35,11 @@ namespace ExcelAddIn
                 else
                 {
                     selectedRange = (Excel.Range)result;
+
+                    SelectedRangeValidator selectedRangeValidator = new SelectedRangeValidator(selectedRange);
+                    selectedRangeValidator.ValidateRangeIsNotEmptyCell();
+                    selectedRangeValidator.ValidateRangeIsNotCell();
+                    selectedRangeValidator.ValidateSelectedRangeIsNotNull();
 
                     SelectedRangeAsDataTable = ExcelRangeHelper.GetDataTableFromRange(selectedRange);
                 }
