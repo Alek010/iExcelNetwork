@@ -3,11 +3,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using VisjsNetworkLibrary.Interfaces;
 using VisjsNetworkLibrary.Models;
 
 namespace VisjsNetworkLibrary
 {
-    public class NetworkData
+    public class NetworkData : INetworkData
     {
         private DataTable _dataTable;
 

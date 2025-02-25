@@ -49,6 +49,7 @@
     <Compile Include="Exceptions\DataTableNullException.cs" />
     <Compile Include="Exceptions\SelectedDataTableExceptionMessages.cs" />
     <Compile Include="FileProcessor.cs" />
+    <Compile Include="Interfaces\INetworkData.cs" />
     <Compile Include="Interfaces\IFileContent.cs" />
     <Compile Include="Models\Edge.cs" />
     <Compile Include="Models\Node.cs" />
