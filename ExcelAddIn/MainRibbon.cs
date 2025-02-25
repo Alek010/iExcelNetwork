@@ -1,8 +1,10 @@
-﻿using Microsoft.Office.Tools.Ribbon;
+﻿using ExcelAddIn.Validations;
+using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Data;
 using System.Windows.Forms;
 using VisjsNetworkLibrary;
+using VisjsNetworkLibrary.Validations;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ExcelAddIn
@@ -35,6 +37,11 @@ namespace ExcelAddIn
                 {
                     selectedRange = (Excel.Range)result;
 
+                    SelectedRangeValidator validator = new SelectedRangeValidator(selectedRange);
+                    validator.ValidateRangeIsNotEmptyCell();
+                    validator.ValidateRangeIsNotCell();
+                    validator.ValidateSelectedRangeIsNotNull();
+
                     SelectedRangeAsDataTable = ExcelRangeHelper.GetDataTableFromRange(selectedRange);
                 }
 
@@ -52,11 +59,25 @@ namespace ExcelAddIn
 
         private void btn_buildNetwork_Click(object sender, RibbonControlEventArgs e)
         {
-            NetworkData networkData = new NetworkData(SelectedRangeAsDataTable);
-            NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
-            FileProcessor processor = new FileProcessor(htmlContent);
-            processor.WriteFile();
-            processor.OpenFile();
+            try
+            {
+                SelectedDataTableValidator validator = new SelectedDataTableValidator(SelectedRangeAsDataTable);
+                validator.ValidateDataTableIsNotNull();
+                validator.ValidateDataTableHasRecords();
+                validator.ValidateDataTableHasTwoOrMoreColumns();
+
+                NetworkData networkData = new NetworkData(SelectedRangeAsDataTable);
+
+                NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
+
+                FileProcessor processor = new FileProcessor(htmlContent);
+                processor.WriteFile();
+                processor.OpenFile();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
     }
 }

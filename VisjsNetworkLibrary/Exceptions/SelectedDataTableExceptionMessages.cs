@@ -1,0 +1,22 @@
+﻿// Ignore Spelling: Visjs
+
+namespace VisjsNetworkLibrary.Exceptions
+{
+    public static class SelectedDataTableExceptionMessages
+    {
+        public static string SelectedDataTableIsNull()
+        {
+            return "Something went wrong. Selected table has null value.";
+        }
+
+        public static string SelectedDataTableHasNoRecords()
+        {
+            return "Selected data table has no records.";
+        }
+
+        public static string SelectedDataTableHasLessThanTwoColumns()
+        {
+            return "Selected data table has less than two columns.";
+        }
+    }
+}
