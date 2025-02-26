@@ -18,5 +18,10 @@ namespace VisjsNetworkLibrary.Exceptions
         {
             return "Selected data table has less than two columns.";
         }
+
+        public static string NotMatchPattern()
+        {
+            return "Selected table column structure not match any pattern.";
+        }
     }
 }
