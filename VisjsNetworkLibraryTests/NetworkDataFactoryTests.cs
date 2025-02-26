@@ -57,5 +57,57 @@ namespace VisjsNetworkLibraryTests
             var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
             Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
         }
+
+        [Fact]
+        public void CreateNetworkDataWithCount_WithValidData_ReturnsNetworkData()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("to");
+            dt.Columns.Add("count");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act
+            INetworkData result = factory.CreateNetworkData();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<NetworkDataWithCount>(result);
+        }
+
+        [Fact]
+        public void CreateNetworkDataWithCount_WithInvalidData_ThrowsDataTableStructureException()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("subject"); // Missing "to" column
+            dt.Columns.Add("count");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act & Assert
+            var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
+            Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
+        }
+
+        [Fact]
+        public void CreateNetworkDataWithCount_WithExtraColumns_ThrowsDataTableStructureException()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("to");
+            dt.Columns.Add("count");
+            dt.Columns.Add("extra"); // This extra column makes the column count != 2
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act & Assert
+            var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
+            Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
+        }
     }
 }
