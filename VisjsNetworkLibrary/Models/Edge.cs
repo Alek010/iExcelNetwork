@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿// Ignore Spelling: Visjs
+
+using Newtonsoft.Json;
 
 namespace VisjsNetworkLibrary.Models
 {
@@ -12,5 +14,8 @@ namespace VisjsNetworkLibrary.Models
 
         [JsonProperty("label")]
         public string Count { get; set; }
+
+        [JsonProperty("dashes")]
+        public bool LinkIsConfirmed { get; set; }
     }
 }

@@ -32,6 +32,10 @@ namespace VisjsNetworkLibrary
             {
                 return new NetworkDataWithCount(_dataTable);
             }
+            else if (_columnCount == 3 && _columnNames.Contains("from") && _columnNames.Contains("to") && _columnNames.Contains("linkisconfirmed"))
+            {
+                return new NetworkDataLinkIsConfirmed(_dataTable);
+            }
             else
             {
                 throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotMatchPattern());
