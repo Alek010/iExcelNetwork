@@ -12,7 +12,7 @@ namespace VisjsNetworkLibrary
         private string _nodesJson { get; set; }
         private string _edgesJson { get; set; }
 
-        public NetworkHtmlContent(NetworkData networkData)
+        public NetworkHtmlContent(INetworkData networkData)
         {
             _nodesJson = JsonConvert.SerializeObject(networkData.GetNodes(), Formatting.Indented);
             _edgesJson = JsonConvert.SerializeObject(networkData.GetEdges(), Formatting.Indented);

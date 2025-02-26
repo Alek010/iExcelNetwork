@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using VisjsNetworkLibrary;
+using VisjsNetworkLibrary.Interfaces;
 using VisjsNetworkLibrary.Validations;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -66,7 +67,10 @@ namespace ExcelAddIn
                 validator.ValidateDataTableHasRecords();
                 validator.ValidateDataTableHasTwoOrMoreColumns();
 
-                NetworkData networkData = new NetworkData(SelectedRangeAsDataTable);
+                //NetworkData networkData = new NetworkData(SelectedRangeAsDataTable);
+                NetworkDataFactory networkDataFactory = new NetworkDataFactory(SelectedRangeAsDataTable);
+
+                INetworkData networkData = networkDataFactory.CreateNetworkData();
 
                 NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
 
