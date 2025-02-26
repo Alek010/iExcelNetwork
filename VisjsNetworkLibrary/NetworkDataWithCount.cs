@@ -8,29 +8,13 @@ using VisjsNetworkLibrary.Models;
 
 namespace VisjsNetworkLibrary
 {
-    public class NetworkData : INetworkData
+    public class NetworkDataWithCount : NetworkData, INetworkData
     {
-        internal DataTable _dataTable;
-
-        public NetworkData(DataTable dataTable)
+        public NetworkDataWithCount(DataTable dataTable) : base(dataTable)
         {
-            _dataTable = dataTable;
         }
 
-        public virtual List<Node> GetNodes()
-        {
-            return _dataTable.AsEnumerable()
-                    .SelectMany(row => new[] { row.Field<string>("from"), row.Field<string>("to") })
-                    .Distinct()
-                    .Select((label, index) => new Node
-                    {
-                        Id = index + 1,
-                        Label = label
-                    })
-                    .ToList();
-        }
-
-        public virtual List<Edge> GetEdges()
+        public override List<Edge> GetEdges()
         {
             var nodeDict = GetNodes().ToDictionary(n => n.Label, n => n.Id);
 
@@ -44,7 +28,7 @@ namespace VisjsNetworkLibrary
                 {
                     From = nodeDict[g.Key.From],
                     To = nodeDict[g.Key.To],
-                    Count = g.Count().ToString()
+                    Count = g.Sum(row => int.Parse(row.Field<string>("count"))).ToString()
                 })
                 .ToList();
 
