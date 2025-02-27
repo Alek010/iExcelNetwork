@@ -45,13 +45,13 @@ namespace VisjsNetworkLibrary
         private bool ValidateCountColumnValuesAreIntegers()
         {
             return _dataTable.AsEnumerable()
-                            .All(row =>
-                            {
-                                var value = row["count"];
-                                if (value == DBNull.Value)
-                                    return false;
-                                return int.TryParse(value.ToString(), out _);
-                            });
+                .All(row =>
+                {
+                    var value = row["count"];
+                    if (value == DBNull.Value)
+                        return false;
+                    return int.TryParse(value.ToString(), out _);
+                });
         }
     }
 }
