@@ -23,5 +23,10 @@ namespace VisjsNetworkLibrary.Exceptions
         {
             return "Selected table column structure not match any pattern.";
         }
+
+        public static string NotAllCountColumnValuesAreIntegers()
+        {
+            return "Not all count column values are integers.";
+        }
     }
 }
