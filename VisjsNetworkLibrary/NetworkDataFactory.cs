@@ -36,6 +36,10 @@ namespace VisjsNetworkLibrary
             {
                 return new NetworkDataLinkIsConfirmed(_dataTable);
             }
+            else if (_columnCount == 4 && _columnNames.Contains("from") && _columnNames.Contains("fromicon") && _columnNames.Contains("to") && _columnNames.Contains("toicon"))
+            {
+                return new NetworkDataWithNodesIcons(_dataTable);
+            }
             else
             {
                 throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotMatchPattern());
