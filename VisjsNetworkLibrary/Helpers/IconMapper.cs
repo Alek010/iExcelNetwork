@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace VisjsNetworkLibrary
+namespace VisjsNetworkLibrary.Helpers
 {
     public static class IconMapper
     {

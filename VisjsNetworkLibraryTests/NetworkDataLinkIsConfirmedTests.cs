@@ -4,6 +4,7 @@ using System.Data;
 using VisjsNetworkLibrary.Exceptions;
 using VisjsNetworkLibrary.Models;
 using VisjsNetworkLibrary;
+using VisjsNetworkLibrary.NetworkDataClasses;
 
 namespace VisjsNetworkLibraryTests
 {

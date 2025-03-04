@@ -8,7 +8,7 @@ using VisjsNetworkLibrary.Exceptions;
 using VisjsNetworkLibrary.Interfaces;
 using VisjsNetworkLibrary.Models;
 
-namespace VisjsNetworkLibrary
+namespace VisjsNetworkLibrary.NetworkDataClasses
 {
     public class NetworkDataLinkIsConfirmed : NetworkData, INetworkData
     {

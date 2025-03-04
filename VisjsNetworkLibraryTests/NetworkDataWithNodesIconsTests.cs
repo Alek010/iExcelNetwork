@@ -5,6 +5,7 @@
 using System.Data;
 using VisjsNetworkLibrary.Models;
 using VisjsNetworkLibrary;
+using VisjsNetworkLibrary.NetworkDataClasses;
 
 namespace VisjsNetworkLibraryTests
 {

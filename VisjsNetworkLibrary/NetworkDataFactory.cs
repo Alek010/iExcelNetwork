@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using VisjsNetworkLibrary.Exceptions;
 using VisjsNetworkLibrary.Interfaces;
+using VisjsNetworkLibrary.NetworkDataClasses;
 
 namespace VisjsNetworkLibrary
 {

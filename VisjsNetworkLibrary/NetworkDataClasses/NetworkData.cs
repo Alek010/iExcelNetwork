@@ -6,7 +6,7 @@ using System.Linq;
 using VisjsNetworkLibrary.Interfaces;
 using VisjsNetworkLibrary.Models;
 
-namespace VisjsNetworkLibrary
+namespace VisjsNetworkLibrary.NetworkDataClasses
 {
     public class NetworkData : INetworkData
     {

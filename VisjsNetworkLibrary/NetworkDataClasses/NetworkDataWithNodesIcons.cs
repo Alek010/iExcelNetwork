@@ -4,10 +4,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using VisjsNetworkLibrary.Helpers;
 using VisjsNetworkLibrary.Interfaces;
 using VisjsNetworkLibrary.Models;
 
-namespace VisjsNetworkLibrary
+namespace VisjsNetworkLibrary.NetworkDataClasses
 {
     public class NetworkDataWithNodesIcons : NetworkData, INetworkData
     {
