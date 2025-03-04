@@ -1,8 +1,8 @@
 // Ignore Spelling: Visjs
 
 using System.Data;
-using VisjsNetworkLibrary;
 using VisjsNetworkLibrary.Models;
+using VisjsNetworkLibrary.NetworkDataClasses;
 
 namespace VisjsNetworkLibraryTests
 {
