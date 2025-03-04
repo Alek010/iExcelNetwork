@@ -9,5 +9,11 @@ namespace VisjsNetworkLibrary.Models
 
         [JsonProperty("label")]
         public string Label { get; set; }
+
+        [JsonProperty("shape")]
+        public string Shape { get; set; }
+
+        [JsonProperty("icon")]
+        public NodeIcon Icon { get; set; }
     }
 }

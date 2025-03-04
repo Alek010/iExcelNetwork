@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using VisjsNetworkLibrary.Exceptions;
 using VisjsNetworkLibrary.Interfaces;
+using VisjsNetworkLibrary.NetworkDataClasses;
 
 namespace VisjsNetworkLibrary
 {
@@ -35,6 +36,10 @@ namespace VisjsNetworkLibrary
             else if (_columnCount == 3 && _columnNames.Contains("from") && _columnNames.Contains("to") && _columnNames.Contains("linkisconfirmed"))
             {
                 return new NetworkDataLinkIsConfirmed(_dataTable);
+            }
+            else if (_columnCount == 4 && _columnNames.Contains("from") && _columnNames.Contains("fromicon") && _columnNames.Contains("to") && _columnNames.Contains("toicon"))
+            {
+                return new NetworkDataWithNodesIcons(_dataTable);
             }
             else
             {
