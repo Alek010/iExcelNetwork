@@ -109,5 +109,59 @@ namespace VisjsNetworkLibraryTests
             var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
             Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
         }
+
+        [Fact]
+        public void CreateNetworkDataWithNodesIcons_WithValidData_ReturnsNetworkData()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("fromicon");
+            dt.Columns.Add("to");
+            dt.Columns.Add("toicon");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act
+            INetworkData result = factory.CreateNetworkData();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<NetworkDataWithNodesIcons>(result);
+        }
+
+        [Fact]
+        public void CreateNetworkDataWithNodesIcons_WithMissingColumns_ThrowsDataTableStructureException()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("fromicon");
+            dt.Columns.Add("to");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act & Assert
+            var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
+            Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
+        }
+
+        [Fact]
+        public void CreateNetworkDataWithNodesIcons_WithExtraColumns_ThrowsDataTableStructureException()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("fromicon");
+            dt.Columns.Add("to");
+            dt.Columns.Add("toicon");
+            dt.Columns.Add("extraColumn");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act & Assert
+            var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
+            Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
+        }
     }
 }
