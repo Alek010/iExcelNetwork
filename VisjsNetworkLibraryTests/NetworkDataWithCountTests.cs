@@ -2,8 +2,8 @@
 
 using System.Data;
 using VisjsNetworkLibrary.Models;
-using VisjsNetworkLibrary;
 using VisjsNetworkLibrary.Exceptions;
+using VisjsNetworkLibrary.NetworkDataClasses;
 
 namespace VisjsNetworkLibraryTests
 {
