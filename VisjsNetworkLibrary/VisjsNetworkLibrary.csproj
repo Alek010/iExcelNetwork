@@ -50,6 +50,7 @@
     <Compile Include="Exceptions\DataTableStructureException.cs" />
     <Compile Include="Exceptions\SelectedDataTableExceptionMessages.cs" />
     <Compile Include="FileProcessor.cs" />
+    <Compile Include="Helpers\ColorMapper.cs" />
     <Compile Include="Helpers\IconMapper.cs" />
     <Compile Include="Interfaces\INetworkData.cs" />
     <Compile Include="Interfaces\IFileContent.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\NodeIcon.cs" />
     <Compile Include="NetworkDataClasses\NetworkData.cs" />
+    <Compile Include="NetworkDataClasses\NetworkDataWithNodesIconsInColor.cs" />
     <Compile Include="NetworkDataFactory.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataLinkIsConfirmed.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataWithCount.cs" />
