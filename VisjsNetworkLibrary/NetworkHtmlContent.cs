@@ -30,12 +30,15 @@ namespace VisjsNetworkLibrary
             // (You may need to add a call for each font file used in your CSS.)
             fontAwesomeCss = EmbedFontReferences(fontAwesomeCss);
 
+            string VisJsCss = GetEmbeddedResource("VisjsNetworkLibrary.Resources.vis-network.css");
+
             return htmlTemplate
                 .Replace("{{VisJsScript}}", VisJsScript)
                 .Replace("{{nodesJson}}", _nodesJson)
                 .Replace("{{edgesJson}}", _edgesJson)
                 .Replace("selectedEdgesDirection", "to")
-                .Replace("{{FontAwesomeCss}}", fontAwesomeCss);
+                .Replace("{{FontAwesomeCss}}", fontAwesomeCss)
+                .Replace("{{VisJsCss}}", VisJsCss);
         }
 
         public string GetFilePath()

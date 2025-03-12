@@ -45,6 +45,10 @@ namespace VisjsNetworkLibrary
             {
                 return new NetworkDataWithNodesIconsInColor(_dataTable);
             }
+            else if (_columnCount == 4 && _columnNames.Contains("from") && _columnNames.Contains("fromvalue") && _columnNames.Contains("to") && _columnNames.Contains("tovalue"))
+            {
+                return new NetworkDataScalingNodesAndEdges(_dataTable);
+            }
             else
             {
                 throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotMatchPattern());
