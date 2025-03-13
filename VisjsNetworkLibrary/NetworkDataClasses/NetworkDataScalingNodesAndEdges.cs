@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using VisjsNetworkLibrary.Exceptions;
-using VisjsNetworkLibrary.Helpers;
 using VisjsNetworkLibrary.Interfaces;
 using VisjsNetworkLibrary.Models;
 
@@ -39,7 +38,7 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
                 .Select(g => new
                 {
                     Label = g.Key,
-                    Value = g.FirstOrDefault(x => !string.IsNullOrEmpty(x.Value))?.Value ?? "1"
+                    Value = g.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.Value))?.Value ?? "1"
                 })
                 .ToList();
 
@@ -79,6 +78,15 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
                 .All(row =>
                 {
                     var value = row[columnName];
+
+                    if (value == null || value == DBNull.Value)
+                        return true;
+
+                    var strValue = value.ToString();
+
+                    if (string.IsNullOrWhiteSpace(strValue))
+                        return true;
+
                     if (value == DBNull.Value)
                         return false;
                     return int.TryParse(value.ToString(), out _);
