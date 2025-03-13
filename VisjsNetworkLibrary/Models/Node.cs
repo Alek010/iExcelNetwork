@@ -7,6 +7,9 @@ namespace VisjsNetworkLibrary.Models
         [JsonProperty("id")]
         public int Id { get; set; }
 
+        [JsonProperty("value")]
+        public int Value { get; set; }
+
         [JsonProperty("label")]
         public string Label { get; set; }
 

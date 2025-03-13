@@ -277,5 +277,62 @@ namespace VisjsNetworkLibraryTests
             var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
             Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
         }
+
+        [Fact]
+        public void CreateNetworkDataScalingNodesAndEdges_WithValidData_ReturnsNetworkData()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("to");
+            dt.Columns.Add("fromvalue");
+            dt.Columns.Add("tovalue");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act
+            INetworkData result = factory.CreateNetworkData();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<NetworkDataScalingNodesAndEdges>(result);
+        }
+
+        [Fact]
+        public void CreateNetworkDataScalingNodesAndEdges_WithMissingColumn_ThrowsDataTableStructureException()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("to");
+            dt.Columns.Add("fromvalue");
+            //dt.Columns.Add("tovalue"); missing column.
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act & Assert
+            var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
+            Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
+        }
+
+        [Fact]
+        public void CreateNetworkDataScalingNodesAndEdges_WithExtraColumn_ThrowsDataTableStructureException()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("to");
+            dt.Columns.Add("fromvalue");
+            dt.Columns.Add("tovalue");
+            dt.Columns.Add("extraColumn");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act & Assert
+            var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
+            Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
+        }
+
+
     }
 }

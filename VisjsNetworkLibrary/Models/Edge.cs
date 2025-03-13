@@ -12,8 +12,14 @@ namespace VisjsNetworkLibrary.Models
         [JsonProperty("to")]
         public int To { get; set; }
 
+        [JsonProperty("value")]
+        public int Value { get; set; }
+
         [JsonProperty("label")]
         public string Count { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
 
         [JsonProperty("dashes")]
         public bool LinkIsConfirmed { get; set; }
