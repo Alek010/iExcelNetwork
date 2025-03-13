@@ -33,5 +33,10 @@ namespace VisjsNetworkLibrary.Exceptions
         {
             return "Not all LinkIsConfirmed column values are booleans.";
         }
+
+        public static string NotAllColumnValuesAreIntegers(string columnName)
+        {
+            return $"Not all '{columnName}' column values are integers.";
+        }
     }
 }

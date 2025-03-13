@@ -1,8 +1,10 @@
 ﻿// Ignore Spelling: Visjs
 
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using VisjsNetworkLibrary.Exceptions;
 using VisjsNetworkLibrary.Helpers;
 using VisjsNetworkLibrary.Interfaces;
 using VisjsNetworkLibrary.Models;
@@ -17,6 +19,16 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
 
         public override List<Node> GetNodes()
         {
+            if (ValidateColumnValuesAreIntegers("fromvalue") == false)
+            {
+                throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotAllColumnValuesAreIntegers("fromvalue"));
+            }
+
+            if (ValidateColumnValuesAreIntegers("tovalue") == false)
+            {
+                throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotAllColumnValuesAreIntegers("tovalue"));
+            }
+
             var nodesLookup = _dataTable.AsEnumerable()
                 .SelectMany(row => new[]
                 {
@@ -60,5 +72,18 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
 
             return edgesList;
         }
+
+        private bool ValidateColumnValuesAreIntegers(string columnName)
+        {
+            return _dataTable.AsEnumerable()
+                .All(row =>
+                {
+                    var value = row[columnName];
+                    if (value == DBNull.Value)
+                        return false;
+                    return int.TryParse(value.ToString(), out _);
+                });
+        }
+
     }
 }
