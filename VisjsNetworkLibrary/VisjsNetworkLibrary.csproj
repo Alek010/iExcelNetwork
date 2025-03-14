@@ -59,6 +59,7 @@
     <Compile Include="Models\NodeIcon.cs" />
     <Compile Include="NetworkDataClasses\NetworkData.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataScalingNodesAndEdges.cs" />
+    <Compile Include="NetworkDataClasses\NetworkDataTableTemplates.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataWithNodesIconsInColor.cs" />
     <Compile Include="NetworkDataFactory.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataLinkIsConfirmed.cs" />
