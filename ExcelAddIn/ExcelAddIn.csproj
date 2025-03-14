@@ -185,6 +185,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="DataTableToExcelHelper.cs" />
     <Compile Include="ExcelRangeHelper.cs" />
     <Compile Include="Exceptions\SelectedCellNotRangeException.cs" />
     <Compile Include="Exceptions\SelectedEmptyCellException.cs" />
@@ -201,6 +202,7 @@
     </Compile>
     <EmbeddedResource Include="MainRibbon.resx">
       <DependentUpon>MainRibbon.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
