@@ -222,6 +222,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Validations\ExcelDataValidation.cs" />
     <Compile Include="Validations\SelectedRangeValidator.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
