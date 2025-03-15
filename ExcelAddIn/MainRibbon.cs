@@ -87,44 +87,89 @@ namespace ExcelAddIn
 
         private void btn_BasicNetworkData_Click(object sender, RibbonControlEventArgs e)
         {
-            NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
+            try
+            {
+                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
 
-            DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataTable(normalizeColumnNames:true));
+                DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataTable(normalizeColumnNames: true));
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_BasicTableWithCount_Click(object sender, RibbonControlEventArgs e)
         {
-            NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
+            try
+            {
+                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
 
-            DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataWithCountTable(normalizeColumnNames: true));
+                DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataWithCountTable(normalizeColumnNames: true));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void btn_NetworkDataLinkConfirmed_Click(object sender, RibbonControlEventArgs e)
         {
-            NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
+            try
+            {
+                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
 
-            DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataLinkIsConfirmedTable(normalizeColumnNames: true));
+                DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataLinkIsConfirmedTable(normalizeColumnNames: true));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_NetworkDataWithNodesIcons_Click(object sender, RibbonControlEventArgs e)
         {
-            NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
+            try
+            {
+                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
 
-            DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataWithNodesIconsTable(normalizeColumnNames: true));
+                DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataWithNodesIconsTable(normalizeColumnNames: true));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_NetworkDataWithNodesInColor_Click(object sender, RibbonControlEventArgs e)
         {
-            NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
+            try
+            {
+                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
 
-            DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataWithNodesIconsInColorTable(normalizeColumnNames: true));
+                DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataWithNodesIconsInColorTable(normalizeColumnNames: true));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_NetworkDataScalinNodesEdges_Click(object sender, RibbonControlEventArgs e)
         {
-            NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
+            try
+            {
+                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
 
-            DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.NetworkDataScalingNodesAndEdges(normalizeColumnNames: true));
+                DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.NetworkDataScalingNodesAndEdges(normalizeColumnNames: true));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
+
     }
 }
