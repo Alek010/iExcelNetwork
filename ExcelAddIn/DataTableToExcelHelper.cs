@@ -116,6 +116,8 @@ namespace ExcelAddIn
                 Excel.XlFormatConditionOperator.xlBetween,
                 allowedList,
                 Type.Missing);
+
+            validationRange.Validation.ShowError = false;
         }
     }
 }

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace VisjsNetworkLibrary.Helpers
 {
@@ -34,14 +35,37 @@ namespace VisjsNetworkLibrary.Helpers
 
         /// <summary>
         /// Gets the corresponding Unicode icon code for a given icon name.
-        /// Returns the default "person" icon if none is provided or found.
+        /// Returns the default "circle" icon if none is provided.
+        /// If the provided icon name is not found in the mapping and appears to be a hex value (e.g. "f025"),
+        /// it is converted to the corresponding Unicode character.
         /// </summary>
         public static string GetIconCode(string iconName)
         {
+            // Return default if null or whitespace.
             if (string.IsNullOrWhiteSpace(iconName))
                 return _iconMapping["circle"];
 
-            return _iconMapping.ContainsKey(iconName) ? _iconMapping[iconName] : iconName;
+            // If the icon name exists in the mapping, return its corresponding value.
+            if (_iconMapping.ContainsKey(iconName))
+                return _iconMapping[iconName];
+
+            // If the icon name does not start with "\u", then it is not a hex code; return default.
+            if (!iconName.Trim().StartsWith("\\u", StringComparison.OrdinalIgnoreCase))
+                return _iconMapping["circle"];
+
+            // At this point, we assume the icon name is a Unicode hex code starting with "\u".
+            // Remove the "\u" prefix.
+            string hexValue = iconName.Trim().Substring(2);
+
+            // Try to parse the remainder as a hex number.
+            if (int.TryParse(hexValue, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out int codePoint))
+            {
+                // Convert the code point to its corresponding Unicode character.
+                return char.ConvertFromUtf32(codePoint);
+            }
+
+            // If parsing fails, return the default icon.
+            return _iconMapping["circle"];
         }
     }
 
