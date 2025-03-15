@@ -12,11 +12,13 @@ namespace VisjsNetworkLibrary
     {
         private string _nodesJson { get; set; }
         private string _edgesJson { get; set; }
+        private bool NetworkDataIsScalable;
 
         public NetworkHtmlContent(INetworkData networkData)
         {
             _nodesJson = JsonConvert.SerializeObject(networkData.GetNodes(), Formatting.Indented);
             _edgesJson = JsonConvert.SerializeObject(networkData.GetEdges(), Formatting.Indented);
+            NetworkDataIsScalable = networkData.NodesEdgesAreScalable;
         }
 
         public string GenerateFileContent()
@@ -32,13 +34,20 @@ namespace VisjsNetworkLibrary
 
             string VisJsCss = GetEmbeddedResource("VisjsNetworkLibrary.Resources.vis-network.css");
 
-            return htmlTemplate
-                .Replace("{{VisJsScript}}", VisJsScript)
-                .Replace("{{nodesJson}}", _nodesJson)
-                .Replace("{{edgesJson}}", _edgesJson)
-                .Replace("selectedEdgesDirection", "to")
-                .Replace("{{FontAwesomeCss}}", fontAwesomeCss)
-                .Replace("{{VisJsCss}}", VisJsCss);
+            var result = htmlTemplate
+               .Replace("{{VisJsScript}}", VisJsScript)
+               .Replace("{{nodesJson}}", _nodesJson)
+               .Replace("{{edgesJson}}", _edgesJson)
+               .Replace("selectedEdgesDirection", "to")
+               .Replace("{{FontAwesomeCss}}", fontAwesomeCss)
+               .Replace("{{VisJsCss}}", VisJsCss);
+
+            if (NetworkDataIsScalable)
+            {
+                result = result.Replace("scaling: { min: 1, max: 1 },", "");
+            }
+
+            return result;
         }
 
         public string GetFilePath()
