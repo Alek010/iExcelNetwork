@@ -1,6 +1,7 @@
 ﻿using ExcelAddIn.Validations;
 using Microsoft.Office.Tools.Ribbon;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using VisjsNetworkLibrary;
@@ -120,7 +121,8 @@ namespace ExcelAddIn
             {
                 NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
 
-                DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataLinkIsConfirmedTable(normalizeColumnNames: true));
+                DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataLinkIsConfirmedTable(normalizeColumnNames: true),
+                                                             ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
             }
             catch (Exception ex)
             {
@@ -134,7 +136,8 @@ namespace ExcelAddIn
             {
                 NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
 
-                DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataWithNodesIconsTable(normalizeColumnNames: true));
+                DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataWithNodesIconsTable(normalizeColumnNames: true),
+                                                             ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
             }
             catch (Exception ex)
             {
@@ -148,7 +151,8 @@ namespace ExcelAddIn
             {
                 NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
 
-                DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataWithNodesIconsInColorTable(normalizeColumnNames: true));
+                DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataWithNodesIconsInColorTable(normalizeColumnNames: true),
+                                                             ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
             }
             catch (Exception ex)
             {
