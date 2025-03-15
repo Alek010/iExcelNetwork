@@ -53,7 +53,7 @@ namespace ExcelAddIn
                 string columnName;
                 if (hasHeader)
                 {
-                    columnName = values[1, col] != null ? values[1, col].ToString().ToLower().Trim() : $"Column{col}";
+                    columnName = values[1, col] != null ? values[1, col].ToString().ToLower().Trim().Replace(" ", "") : $"Column{col}";
                 }
                 else
                 {
