@@ -47,6 +47,7 @@
             this.btn_NetworkDataWithNodesIcons = this.Factory.CreateRibbonButton();
             this.btn_NetworkDataWithNodesInColor = this.Factory.CreateRibbonButton();
             this.btn_NetworkDataScalinNodesEdges = this.Factory.CreateRibbonButton();
+            this.btn_AllTablesWithSampleData = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group_data.SuspendLayout();
             this.group_linkNetwork.SuspendLayout();
@@ -99,6 +100,7 @@
             this.splitBtn_NetworkDataTables.Items.Add(this.btn_NetworkDataWithNodesIcons);
             this.splitBtn_NetworkDataTables.Items.Add(this.btn_NetworkDataWithNodesInColor);
             this.splitBtn_NetworkDataTables.Items.Add(this.btn_NetworkDataScalinNodesEdges);
+            this.splitBtn_NetworkDataTables.Items.Add(this.btn_AllTablesWithSampleData);
             this.splitBtn_NetworkDataTables.Label = "Network Data Tables";
             this.splitBtn_NetworkDataTables.Name = "splitBtn_NetworkDataTables";
             // 
@@ -144,6 +146,13 @@
             this.btn_NetworkDataScalinNodesEdges.ShowImage = true;
             this.btn_NetworkDataScalinNodesEdges.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_NetworkDataScalinNodesEdges_Click);
             // 
+            // btn_AllTablesWithSampleData
+            // 
+            this.btn_AllTablesWithSampleData.Label = "All Tables With Sample Data";
+            this.btn_AllTablesWithSampleData.Name = "btn_AllTablesWithSampleData";
+            this.btn_AllTablesWithSampleData.ShowImage = true;
+            this.btn_AllTablesWithSampleData.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_AllTablesWithSampleData_Click);
+            // 
             // MainRibbon
             // 
             this.Name = "MainRibbon";
@@ -174,6 +183,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_NetworkDataWithNodesInColor;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_NetworkDataScalinNodesEdges;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_BasicNetworkData;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_AllTablesWithSampleData;
     }
 
     partial class ThisRibbonCollection

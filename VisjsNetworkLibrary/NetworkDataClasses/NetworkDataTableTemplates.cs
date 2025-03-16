@@ -1,10 +1,11 @@
 ﻿// Ignore Spelling: Visjs
 
 using System.Data;
+using VisjsNetworkLibrary.Interfaces;
 
 namespace VisjsNetworkLibrary.NetworkDataClasses
 {
-    public class NetworkDataTableTemplates
+    public class NetworkDataTableTemplates : INetworkDataTableTemplates
     {
 
         public DataTable CreateNetworkDataTable(bool normalizeColumnNames = false)
@@ -83,7 +84,7 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
             return dt;
         }
 
-        public DataTable NetworkDataScalingNodesAndEdges(bool normalizeColumnNames = false)
+        public DataTable CreateNetworkDataScalingNodesAndEdges(bool normalizeColumnNames = false)
         {
             string colFrom = normalizeColumnNames ? "From" : "from";
             string colTo = normalizeColumnNames ? "To" : "to";
@@ -92,13 +93,11 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
 
             DataTable dt = new DataTable();
             dt.Columns.Add(colFrom, typeof(string));
-            dt.Columns.Add(colTo, typeof(string));
             dt.Columns.Add(colFromValue, typeof(string));
+            dt.Columns.Add(colTo, typeof(string));
             dt.Columns.Add(colToValue, typeof(string));
 
             return dt;
         }
-
-
     }
 }

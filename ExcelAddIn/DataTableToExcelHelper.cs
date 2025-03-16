@@ -8,15 +8,37 @@ namespace ExcelAddIn
 {
     public static class DataTableToExcelHelper
     {
-        public static void PasteDataTableToExcel(DataTable dt, Dictionary<string, string> columnValidationLists = null)
+        public static void PasteDataTableToExcel(DataTable dt,string cellReference = null, Dictionary<string, string> columnValidationLists = null, bool pasteIntoNewSheet = false)
         {
             // Get the current Excel application and active worksheet.
             Excel.Application excelApp = Globals.ThisAddIn.Application;
             Excel.Workbook workbook = excelApp.ActiveWorkbook;
-            Excel.Worksheet worksheet = workbook.ActiveSheet as Excel.Worksheet;
 
-            // Set the starting cell (e.g., A1) where you want to paste the data.
-            Excel.Range startCell = PromptForCell(excelApp);
+            // Create or use the worksheet based on pasteIntoNewSheet flag.
+            Excel.Worksheet worksheet;
+            if (pasteIntoNewSheet)
+            {
+                const string sheetName = "SampleData";
+                if (WorksheetExists(workbook, sheetName))
+                {
+                    worksheet = workbook.Worksheets[sheetName];
+                }
+                else
+                {
+                    // Create a new worksheet.
+                    worksheet = workbook.Worksheets.Add();
+                    // Optionally, give the new sheet a unique name.
+                    worksheet.Name = sheetName;
+                }
+            }
+            else
+            {
+                worksheet = workbook.ActiveSheet as Excel.Worksheet;
+            }
+
+            // If the starting cell is not provided, prompt the user for a cell.
+            Excel.Range startCell = GetExcelRange(cellReference, excelApp, worksheet);
+
             if (startCell == null)
             {
                 // Stop further processing if no cell was selected.
@@ -71,6 +93,33 @@ namespace ExcelAddIn
                     }
                 }
             }
+        }
+
+        private static Excel.Range GetExcelRange(string cellReference, Application excelApp, Worksheet worksheet)
+        {
+            if (cellReference == null)
+            {
+                return PromptForCell(excelApp);
+            }
+            else
+            {
+                return worksheet.Range[cellReference];
+            }
+        }
+
+        public static bool WorksheetExists(Excel.Workbook workbook, string sheetName)
+        {
+            if (workbook == null)
+                throw new ArgumentNullException(nameof(workbook));
+            if (string.IsNullOrWhiteSpace(sheetName))
+                throw new ArgumentException("Sheet name cannot be null or empty.", nameof(sheetName));
+
+            foreach (Excel.Worksheet sheet in workbook.Worksheets)
+            {
+                if (string.Equals(sheet.Name, sheetName, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+            return false;
         }
 
         private static Excel.Range PromptForCell(Excel.Application excelApp)
