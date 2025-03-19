@@ -6,6 +6,7 @@ using System.Data;
 using System.Windows.Forms;
 using VisjsNetworkLibrary;
 using VisjsNetworkLibrary.Interfaces;
+using VisjsNetworkLibrary.Models;
 using VisjsNetworkLibrary.NetworkDataClasses;
 using VisjsNetworkLibrary.Validations;
 using Excel = Microsoft.Office.Interop.Excel;

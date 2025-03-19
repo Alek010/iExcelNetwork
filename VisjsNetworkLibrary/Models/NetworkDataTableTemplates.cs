@@ -3,7 +3,7 @@
 using System.Data;
 using VisjsNetworkLibrary.Interfaces;
 
-namespace VisjsNetworkLibrary.NetworkDataClasses
+namespace VisjsNetworkLibrary.Models
 {
     public class NetworkDataTableTemplates : INetworkDataTableTemplates
     {

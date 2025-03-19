@@ -2,8 +2,9 @@
 
 using System.Data;
 using VisjsNetworkLibrary.Interfaces;
+using VisjsNetworkLibrary.Models;
 
-namespace VisjsNetworkLibrary.NetworkDataClasses
+namespace VisjsNetworkLibrary.Models
 {
     public class NetworkDataTableTemplatesWithSampleData : INetworkDataTableTemplates
     {
