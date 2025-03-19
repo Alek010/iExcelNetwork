@@ -60,8 +60,8 @@
     <Compile Include="Interfaces\INetworkDataTableTemplates.cs" />
     <Compile Include="NetworkDataClasses\NetworkData.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataScalingNodesAndEdges.cs" />
-    <Compile Include="NetworkDataClasses\NetworkDataTableTemplatesWithSampleData.cs" />
-    <Compile Include="NetworkDataClasses\NetworkDataTableTemplates.cs" />
+    <Compile Include="Models\NetworkDataTableTemplatesWithSampleData.cs" />
+    <Compile Include="Models\NetworkDataTableTemplates.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataWithNodesIconsInColor.cs" />
     <Compile Include="NetworkDataFactory.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataLinkIsConfirmed.cs" />

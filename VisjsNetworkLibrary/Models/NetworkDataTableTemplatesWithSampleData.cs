@@ -2,8 +2,9 @@
 
 using System.Data;
 using VisjsNetworkLibrary.Interfaces;
+using VisjsNetworkLibrary.Models;
 
-namespace VisjsNetworkLibrary.NetworkDataClasses
+namespace VisjsNetworkLibrary.Models
 {
     public class NetworkDataTableTemplatesWithSampleData : INetworkDataTableTemplates
     {
@@ -18,7 +19,7 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
         {
             var dt = _tableTemplate.CreateNetworkDataLinkIsConfirmedTable(normalizeColumnNames);
 
-            dt.Rows.Add("A", "B", "TRUE");
+            dt.Rows.Add("A", "B", "FALSE");
             dt.Rows.Add("A", "B", "FALSE");
             dt.Rows.Add("C", "B", "TRUE");
 

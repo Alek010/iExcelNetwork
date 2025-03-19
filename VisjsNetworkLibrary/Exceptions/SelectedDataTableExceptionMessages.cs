@@ -31,12 +31,17 @@ namespace VisjsNetworkLibrary.Exceptions
 
         public static string NotAllLinkIsConfirmedColumnValuesAreBoolean()
         {
-            return "Not all LinkIsConfirmed column values are booleans.";
+            return "Not all IsDashed column values are booleans.";
         }
 
         public static string NotAllColumnValuesAreIntegers(string columnName)
         {
             return $"Not all '{columnName}' column values are integers.";
+        }
+
+        public static string ThereAreSameEdgesWithDifferentValuesOfLinkIsConfirmed()
+        {
+            return "There are same link From-To with different values of 'Link Is Confirmed' column.";
         }
     }
 }
