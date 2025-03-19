@@ -22,6 +22,6 @@ namespace VisjsNetworkLibrary.Models
         public string Title { get; set; }
 
         [JsonProperty("dashes")]
-        public bool LinkIsConfirmed { get; set; }
+        public bool IsDashed { get; set; }
     }
 }

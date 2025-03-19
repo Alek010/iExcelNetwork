@@ -27,8 +27,8 @@ namespace VisjsNetworkLibraryTests
 
             Assert.Equal(2, edges.Count);
 
-            Assert.Equivalent(new Edge() { From = 1, To = 2, Count = "1", LinkIsConfirmed = false }, edges[0]);
-            Assert.Equivalent(new Edge() { From = 3, To = 2, Count = "1", LinkIsConfirmed = true }, edges[1]);
+            Assert.Equivalent(new Edge() { From = 1, To = 2, Count = "1", IsDashed = false }, edges[0]);
+            Assert.Equivalent(new Edge() { From = 3, To = 2, Count = "1", IsDashed = true }, edges[1]);
         }
 
         [Fact]
@@ -50,9 +50,9 @@ namespace VisjsNetworkLibraryTests
 
             Assert.Equal(3, edges.Count);
 
-            Assert.Equivalent(new Edge() { From = 1, To = 2, Count = "1", LinkIsConfirmed = false }, edges[0]);
-            Assert.Equivalent(new Edge() { From = 3, To = 2, Count = "1", LinkIsConfirmed = true }, edges[1]);
-            Assert.Equivalent(new Edge() { From = 4, To = 5, Count = "2", LinkIsConfirmed = true }, edges[2]);
+            Assert.Equivalent(new Edge() { From = 1, To = 2, Count = "1", IsDashed = false }, edges[0]);
+            Assert.Equivalent(new Edge() { From = 3, To = 2, Count = "1", IsDashed = true }, edges[1]);
+            Assert.Equivalent(new Edge() { From = 4, To = 5, Count = "2", IsDashed = true }, edges[2]);
         }
 
         [Fact]
@@ -87,7 +87,7 @@ namespace VisjsNetworkLibraryTests
             NetworkDataLinkIsConfirmed networkData = new NetworkDataLinkIsConfirmed(dt);
 
             var exception = Assert.Throws<DataTableStructureException>(() => networkData.GetEdges());
-            Assert.Equal("Not all LinkIsConfirmed column values are booleans.", exception.Message);
+            Assert.Equal("Not all IsDashed column values are booleans.", exception.Message);
         }
     }
 }

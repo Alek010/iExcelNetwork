@@ -41,7 +41,7 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
                     Count = g.Count().ToString(),
                     // Parse the linkisconfirmed value from the first row in the group.
                     // Invert the value since the JSON field "dashes" is the inverse of link confirmation.
-                    LinkIsConfirmed = !bool.Parse(g.First().Field<string>("linkisconfirmed"))
+                    IsDashed = !bool.Parse(g.First().Field<string>("linkisconfirmed"))
                 })
                 .ToList();
 

@@ -31,7 +31,7 @@ namespace VisjsNetworkLibrary.Exceptions
 
         public static string NotAllLinkIsConfirmedColumnValuesAreBoolean()
         {
-            return "Not all LinkIsConfirmed column values are booleans.";
+            return "Not all IsDashed column values are booleans.";
         }
 
         public static string NotAllColumnValuesAreIntegers(string columnName)
