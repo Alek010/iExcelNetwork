@@ -18,7 +18,7 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
         {
             var dt = _tableTemplate.CreateNetworkDataLinkIsConfirmedTable(normalizeColumnNames);
 
-            dt.Rows.Add("A", "B", "TRUE");
+            dt.Rows.Add("A", "B", "FALSE");
             dt.Rows.Add("A", "B", "FALSE");
             dt.Rows.Add("C", "B", "TRUE");
 

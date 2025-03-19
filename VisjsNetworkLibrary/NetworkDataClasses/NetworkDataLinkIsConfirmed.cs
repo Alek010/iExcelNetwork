@@ -23,16 +23,25 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
                 throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotAllLinkIsConfirmedColumnValuesAreBoolean());
             }
 
+            // Validate consistency of linkisconfirmed values for the same edge.
+            ValidateLinkIsConfirmedConsistency(_dataTable);
+
             var nodeDict = GetNodes().ToDictionary(n => n.Label, n => n.Id);
 
             var edgesList = _dataTable.AsEnumerable()
-                .Select(row => new Edge
+                .GroupBy(row => new
                 {
-                    From = nodeDict[row.Field<string>("from")],
-                    To = nodeDict[row.Field<string>("to")],
-                    // !bool as edge JSON field name is dashes with value true or false.
-                    // If link is confirmed than dashes are false and link is unconfirmed when dashes are true.
-                    LinkIsConfirmed = !bool.Parse(row.Field<string>("linkisconfirmed")) 
+                    From = row.Field<string>("from"),
+                    To = row.Field<string>("to")
+                })
+                .Select(g => new Edge
+                {
+                    From = nodeDict[g.Key.From],
+                    To = nodeDict[g.Key.To],
+                    Count = g.Count().ToString(),
+                    // Parse the linkisconfirmed value from the first row in the group.
+                    // Invert the value since the JSON field "dashes" is the inverse of link confirmation.
+                    LinkIsConfirmed = !bool.Parse(g.First().Field<string>("linkisconfirmed"))
                 })
                 .ToList();
 
@@ -49,6 +58,25 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
                         return false;
                     return bool.TryParse(value.ToString(), out _);
                 });
+        }
+
+        private static void ValidateLinkIsConfirmedConsistency(DataTable dt)
+        {
+            var inconsistentEdges = dt.AsEnumerable()
+                .GroupBy(row => new
+                {
+                    From = row.Field<string>("from"),
+                    To = row.Field<string>("to")
+                })
+                .Where(g => g.Select(row => row.Field<string>("linkisconfirmed"))
+                             .Distinct(StringComparer.OrdinalIgnoreCase)
+                             .Count() > 1)
+                .ToList();
+
+            if (inconsistentEdges.Any())
+            {
+                throw new DataTableStructureException(SelectedDataTableExceptionMessages.ThereAreSameEdgesWithDifferentValuesOfLinkIsConfirmed());
+            }
         }
     }
 }

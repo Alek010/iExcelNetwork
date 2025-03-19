@@ -38,5 +38,10 @@ namespace VisjsNetworkLibrary.Exceptions
         {
             return $"Not all '{columnName}' column values are integers.";
         }
+
+        public static string ThereAreSameEdgesWithDifferentValuesOfLinkIsConfirmed()
+        {
+            return "There are same link From-To with different values of 'Link Is Confirmed' column.";
+        }
     }
 }
