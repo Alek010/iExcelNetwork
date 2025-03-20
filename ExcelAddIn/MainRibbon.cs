@@ -218,17 +218,17 @@ namespace ExcelAddIn
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "E1");
+                                                             cellReference: "F1");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "E6");
+                                                             cellReference: "F6");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataScalingNodesAndEdges(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "E11");
+                                                             cellReference: "F11");
 
             }
             catch (Exception ex)
