@@ -1,4 +1,4 @@
-﻿// Ignore Spelling: Visjs Bools
+﻿// Ignore Spelling: Visjs
 
 using System;
 using System.Collections.Generic;
@@ -10,15 +10,20 @@ using VisjsNetworkLibrary.Models;
 
 namespace VisjsNetworkLibrary.NetworkDataClasses
 {
-    public class NetworkDataLinkIsConfirmed : NetworkData, INetworkData
+    public class NetworkDataWithCountAndLinkIsConfirmed : NetworkData, INetworkData
     {
-        public NetworkDataLinkIsConfirmed(DataTable dataTable) : base(dataTable)
+        public NetworkDataWithCountAndLinkIsConfirmed(DataTable dataTable) : base(dataTable)
         {
         }
 
         public override List<Edge> GetEdges()
         {
-            if(ValidateLinkIsConfirmedColumnAreBools() == false)
+            if (ValidateCountColumnValuesAreIntegers() == false)
+            {
+                throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotAllCountColumnValuesAreIntegers());
+            }
+
+            if (ValidateLinkIsConfirmedColumnAreBools() == false)
             {
                 throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotAllColumnValuesAreBoolean(columnName: "linkisconfirmed"));
             }
@@ -38,14 +43,24 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
                 {
                     From = nodeDict[g.Key.From],
                     To = nodeDict[g.Key.To],
-                    Count = g.Count().ToString(),
-                    // Parse the linkisconfirmed value from the first row in the group.
-                    // Invert the value since the JSON field "dashes" is the inverse of link confirmation.
+                    Count = g.Sum(row => int.Parse(row.Field<string>("count"))).ToString(),
                     IsDashed = !bool.Parse(g.First().Field<string>("linkisconfirmed"))
                 })
                 .ToList();
 
             return edgesList;
+        }
+
+        private bool ValidateCountColumnValuesAreIntegers()
+        {
+            return _dataTable.AsEnumerable()
+                .All(row =>
+                {
+                    var value = row["count"];
+                    if (value == DBNull.Value)
+                        return false;
+                    return int.TryParse(value.ToString(), out _);
+                });
         }
 
         private bool ValidateLinkIsConfirmedColumnAreBools()
@@ -78,5 +93,6 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
                 throw new DataTableStructureException(SelectedDataTableExceptionMessages.ThereAreSameEdgesWithDifferentValuesOfLinkIsConfirmed());
             }
         }
+
     }
 }
