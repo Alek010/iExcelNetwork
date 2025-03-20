@@ -48,6 +48,17 @@ namespace VisjsNetworkLibrary.Models
             return dt;
         }
 
+        public DataTable CreateNetworkDataWithCountAndLinkIsConfirmedTable(bool normalizeColumnNames = false)
+        {
+            var dt = _tableTemplate.CreateNetworkDataWithCountAndLinkIsConfirmedTable(normalizeColumnNames);
+
+            dt.Rows.Add("A", "B", "2", "TRUE");
+            dt.Rows.Add("A", "B", "1", "TRUE");
+            dt.Rows.Add("C", "B", "10","FALSE");
+
+            return dt;
+        }
+
         public DataTable CreateNetworkDataWithNodesIconsInColorTable(bool normalizeColumnNames = false)
         {
             var dt = _tableTemplate.CreateNetworkDataWithNodesIconsInColorTable(normalizeColumnNames);
