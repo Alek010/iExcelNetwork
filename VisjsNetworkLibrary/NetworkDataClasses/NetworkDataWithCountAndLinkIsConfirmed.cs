@@ -25,7 +25,7 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
 
             if (ValidateLinkIsConfirmedColumnAreBools() == false)
             {
-                throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotAllLinkIsConfirmedColumnValuesAreBoolean());
+                throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotAllColumnValuesAreBoolean(columnName: "linkisconfirmed"));
             }
 
             // Validate consistency of linkisconfirmed values for the same edge.

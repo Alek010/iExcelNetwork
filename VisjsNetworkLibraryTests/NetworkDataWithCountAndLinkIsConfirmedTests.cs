@@ -86,7 +86,7 @@ namespace VisjsNetworkLibraryTests
             NetworkDataWithCountAndLinkIsConfirmed networkData = new NetworkDataWithCountAndLinkIsConfirmed(dt);
 
             var exception = Assert.Throws<DataTableStructureException>(() => networkData.GetEdges());
-            Assert.Equal("Not all IsDashed column values are booleans.", exception.Message);
+            Assert.Equal("Not all 'linkisconfirmed' column values are booleans.", exception.Message);
         }
 
         [Fact]

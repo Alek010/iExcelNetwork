@@ -75,7 +75,7 @@ namespace VisjsNetworkLibraryTests
         }
 
         [Fact]
-        public void GetEdges_WithCountColumnValuesNonInteger_ThrowsDataTableStructureException()
+        public void GetEdges_WitLinkIsConfirmedColumnValuesNonBoolean_ThrowsDataTableStructureException()
         {
             DataTable dt = new DataTable();
             dt.Columns.Add("from", typeof(string));
@@ -87,7 +87,7 @@ namespace VisjsNetworkLibraryTests
             NetworkDataLinkIsConfirmed networkData = new NetworkDataLinkIsConfirmed(dt);
 
             var exception = Assert.Throws<DataTableStructureException>(() => networkData.GetEdges());
-            Assert.Equal("Not all IsDashed column values are booleans.", exception.Message);
+            Assert.Equal("Not all 'linkisconfirmed' column values are booleans.", exception.Message);
         }
     }
 }

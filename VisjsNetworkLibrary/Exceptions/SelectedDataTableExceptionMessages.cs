@@ -29,9 +29,9 @@ namespace VisjsNetworkLibrary.Exceptions
             return "Not all count column values are integers.";
         }
 
-        public static string NotAllLinkIsConfirmedColumnValuesAreBoolean()
+        public static string NotAllColumnValuesAreBoolean(string columnName)
         {
-            return "Not all IsDashed column values are booleans.";
+            return $"Not all '{columnName}' column values are booleans.";
         }
 
         public static string NotAllColumnValuesAreIntegers(string columnName)
