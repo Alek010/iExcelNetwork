@@ -12,6 +12,7 @@ namespace VisjsNetworkLibrary.Interfaces
         DataTable CreateNetworkDataWithCountAndLinkIsConfirmedTable(bool normalizeColumnNames = false);
         DataTable CreateNetworkDataWithNodesIconsInColorTable(bool normalizeColumnNames = false);
         DataTable CreateNetworkDataWithNodesIconsTable(bool normalizeColumnNames = false);
+        DataTable CreateNetworkDataWithNodesIconsAndLinkIsConfirmedTable(bool normalizeColumnNames = false);
         DataTable CreateNetworkDataScalingNodesAndEdges(bool normalizeColumnNames = false);
     }
 }

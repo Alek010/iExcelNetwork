@@ -81,6 +81,17 @@ namespace VisjsNetworkLibrary.Models
             return dt;
         }
 
+        public DataTable CreateNetworkDataWithNodesIconsAndLinkIsConfirmedTable(bool normalizeColumnNames = false)
+        {
+            var dt = _tableTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedTable(normalizeColumnNames);
+
+            dt.Rows.Add("+37128989924", "Cellphone", "B", "Person", "True");
+            dt.Rows.Add("XX123456", "ID-card", "B", "Person", "TRUE");
+            dt.Rows.Add("B", "Person", "C", "Group", "False");
+
+            return dt;
+        }
+
         public DataTable CreateNetworkDataScalingNodesAndEdges(bool normalizeColumnNames = false)
         {
             var dt = _tableTemplate.CreateNetworkDataScalingNodesAndEdges(normalizeColumnNames);
