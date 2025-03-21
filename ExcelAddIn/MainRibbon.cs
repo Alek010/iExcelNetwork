@@ -253,22 +253,22 @@ namespace ExcelAddIn
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "K1");
+                                                             cellReference: "F6");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsAndCountTable(normalizeColumnNames: true),
                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                              pasteIntoNewSheet: true,
-                                             cellReference: "Q1");
+                                             cellReference: "F11");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "F6");
+                                                             cellReference: "L1");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataScalingNodesAndEdges(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "F11");
+                                                             cellReference: "S1");
 
             }
             catch (Exception ex)
