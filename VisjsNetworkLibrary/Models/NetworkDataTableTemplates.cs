@@ -98,6 +98,24 @@ namespace VisjsNetworkLibrary.Models
             return dt;
         }
 
+        public DataTable CreateNetworkDataWithNodesIconsAndCountTable(bool normalizeColumnNames = false)
+        {
+            string colFrom = normalizeColumnNames ? "From" : "from";
+            string colTo = normalizeColumnNames ? "To" : "to";
+            string colFromIcon = normalizeColumnNames ? "From Icon" : "fromicon";
+            string colToIcon = normalizeColumnNames ? "To Icon" : "toicon";
+            string colCount = normalizeColumnNames ? "Count" : "count";
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add(colFrom, typeof(string));
+            dt.Columns.Add(colFromIcon, typeof(string));
+            dt.Columns.Add(colTo, typeof(string));
+            dt.Columns.Add(colToIcon, typeof(string));
+            dt.Columns.Add(colCount, typeof(string));
+
+            return dt;
+        }
+
         public DataTable CreateNetworkDataWithNodesIconsInColorTable(bool normalizeColumnNames = false)
         {
             string colFrom = normalizeColumnNames ? "From" : "from";
