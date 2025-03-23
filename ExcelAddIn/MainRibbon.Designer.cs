@@ -47,10 +47,10 @@
             this.btn_NetworkDataWithCountAndLinkIsConfirmed = this.Factory.CreateRibbonButton();
             this.btn_NetworkDataWithNodesIcons = this.Factory.CreateRibbonButton();
             this.btn_NetworkDataNodesWithIconsAndLinkIsConfirmed = this.Factory.CreateRibbonButton();
+            this.btn_NetwrokDatWithNodesIconsAndCount = this.Factory.CreateRibbonButton();
             this.btn_NetworkDataWithNodesInColor = this.Factory.CreateRibbonButton();
             this.btn_NetworkDataScalinNodesEdges = this.Factory.CreateRibbonButton();
             this.btn_AllTablesWithSampleData = this.Factory.CreateRibbonButton();
-            this.btn_NetwrokDatWithNodesIconsAndCount = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group_data.SuspendLayout();
             this.group_linkNetwork.SuspendLayout();
@@ -152,6 +152,13 @@
             this.btn_NetworkDataNodesWithIconsAndLinkIsConfirmed.ShowImage = true;
             this.btn_NetworkDataNodesWithIconsAndLinkIsConfirmed.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_NetworkDataNodesWithIconsAndLinkIsConfirmed_Click);
             // 
+            // btn_NetwrokDatWithNodesIconsAndCount
+            // 
+            this.btn_NetwrokDatWithNodesIconsAndCount.Label = "From-To-Icons-Count Table";
+            this.btn_NetwrokDatWithNodesIconsAndCount.Name = "btn_NetwrokDatWithNodesIconsAndCount";
+            this.btn_NetwrokDatWithNodesIconsAndCount.ShowImage = true;
+            this.btn_NetwrokDatWithNodesIconsAndCount.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_NetwrokDatWithNodesIconsAndCount_Click);
+            // 
             // btn_NetworkDataWithNodesInColor
             // 
             this.btn_NetworkDataWithNodesInColor.Label = "From-To-Icons in Color Table";
@@ -172,13 +179,6 @@
             this.btn_AllTablesWithSampleData.Name = "btn_AllTablesWithSampleData";
             this.btn_AllTablesWithSampleData.ShowImage = true;
             this.btn_AllTablesWithSampleData.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_AllTablesWithSampleData_Click);
-            // 
-            // btn_NetwrokDatWithNodesIconsAndCount
-            // 
-            this.btn_NetwrokDatWithNodesIconsAndCount.Label = "From-To-Icons-Count Table";
-            this.btn_NetwrokDatWithNodesIconsAndCount.Name = "btn_NetwrokDatWithNodesIconsAndCount";
-            this.btn_NetwrokDatWithNodesIconsAndCount.ShowImage = true;
-            this.btn_NetwrokDatWithNodesIconsAndCount.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_NetwrokDatWithNodesIconsAndCount_Click);
             // 
             // MainRibbon
             // 
