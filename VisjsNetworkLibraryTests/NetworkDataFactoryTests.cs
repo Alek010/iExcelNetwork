@@ -448,5 +448,68 @@ namespace VisjsNetworkLibraryTests
             Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
         }
 
+
+        [Fact]
+        public void CreateNetworkDataWithNodesIconsAndLinkIsConfirmedAndCount_WithValidData_ReturnsNetworkData()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("fromicon");
+            dt.Columns.Add("to");
+            dt.Columns.Add("toicon");
+            dt.Columns.Add("count");
+            dt.Columns.Add("linkisconfirmed");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act
+            INetworkData result = factory.CreateNetworkData();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount>(result);
+        }
+
+        [Fact]
+        public void CreateNetworkDataWithNodesIconsAndLinkIsConfirmedAndCount_WithMissingColumn_ThrowsDataTableStructureException()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("fromicon");
+            dt.Columns.Add("to");
+            dt.Columns.Add("toicon");
+            dt.Columns.Add("count");
+            //dt.Columns.Add("linkisconfirmed");
+            dt.Columns.Add("OtherColumn");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act & Assert
+            var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
+            Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
+        }
+
+        [Fact]
+        public void CreateNetworkDataWithNodesIconsAndLinkIsConfirmedAndCount_WithExtraColumn_ThrowsDataTableStructureException()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("fromicon");
+            dt.Columns.Add("to");
+            dt.Columns.Add("toicon");
+            dt.Columns.Add("count");
+            dt.Columns.Add("linkisconfirmed");
+            dt.Columns.Add("extraColumn");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act & Assert
+            var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
+            Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
+        }
+
     }
 }

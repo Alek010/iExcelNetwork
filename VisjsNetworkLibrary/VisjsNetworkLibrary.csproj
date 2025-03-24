@@ -65,6 +65,7 @@
     <Compile Include="NetworkDataClasses\NetworkDataWithCountAndLinkIsConfirmed.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataWithNodesIconsAndCount.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataWithNodesIconsAndLinkIsConfirmed.cs" />
+    <Compile Include="NetworkDataClasses\NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataWithNodesIconsInColor.cs" />
     <Compile Include="NetworkDataFactory.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataLinkIsConfirmed.cs" />
