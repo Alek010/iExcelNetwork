@@ -48,10 +48,11 @@
             this.btn_NetworkDataWithNodesIcons = this.Factory.CreateRibbonButton();
             this.btn_NetworkDataNodesWithIconsAndLinkIsConfirmed = this.Factory.CreateRibbonButton();
             this.btn_NetwrokDatWithNodesIconsAndCount = this.Factory.CreateRibbonButton();
+            this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount = this.Factory.CreateRibbonButton();
             this.btn_NetworkDataWithNodesInColor = this.Factory.CreateRibbonButton();
             this.btn_NetworkDataScalinNodesEdges = this.Factory.CreateRibbonButton();
             this.btn_AllTablesWithSampleData = this.Factory.CreateRibbonButton();
-            this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount = this.Factory.CreateRibbonButton();
+            this.btn_NetworkDataWithNodesInColorAndLinkIsConfirmed = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group_data.SuspendLayout();
             this.group_linkNetwork.SuspendLayout();
@@ -107,6 +108,7 @@
             this.splitBtn_NetworkDataTables.Items.Add(this.btn_NetwrokDatWithNodesIconsAndCount);
             this.splitBtn_NetworkDataTables.Items.Add(this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount);
             this.splitBtn_NetworkDataTables.Items.Add(this.btn_NetworkDataWithNodesInColor);
+            this.splitBtn_NetworkDataTables.Items.Add(this.btn_NetworkDataWithNodesInColorAndLinkIsConfirmed);
             this.splitBtn_NetworkDataTables.Items.Add(this.btn_NetworkDataScalinNodesEdges);
             this.splitBtn_NetworkDataTables.Items.Add(this.btn_AllTablesWithSampleData);
             this.splitBtn_NetworkDataTables.Label = "Network Data Tables";
@@ -161,6 +163,13 @@
             this.btn_NetwrokDatWithNodesIconsAndCount.ShowImage = true;
             this.btn_NetwrokDatWithNodesIconsAndCount.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_NetwrokDatWithNodesIconsAndCount_Click);
             // 
+            // btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount
+            // 
+            this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount.Label = "From-To-Icons-Count-LinkConfirmed Table";
+            this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount.Name = "btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount";
+            this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount.ShowImage = true;
+            this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount_Click);
+            // 
             // btn_NetworkDataWithNodesInColor
             // 
             this.btn_NetworkDataWithNodesInColor.Label = "From-To-Icons in Color Table";
@@ -182,12 +191,12 @@
             this.btn_AllTablesWithSampleData.ShowImage = true;
             this.btn_AllTablesWithSampleData.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_AllTablesWithSampleData_Click);
             // 
-            // btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount
+            // btn_NetworkDataWithNodesInColorAndLinkIsConfirmed
             // 
-            this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount.Label = "From-To-Icons-Count-LinkConfirmed Table";
-            this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount.Name = "btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount";
-            this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount.ShowImage = true;
-            this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount_Click);
+            this.btn_NetworkDataWithNodesInColorAndLinkIsConfirmed.Label = "From-To-Icons-LinConfirmed in Color Table";
+            this.btn_NetworkDataWithNodesInColorAndLinkIsConfirmed.Name = "btn_NetworkDataWithNodesInColorAndLinkIsConfirmed";
+            this.btn_NetworkDataWithNodesInColorAndLinkIsConfirmed.ShowImage = true;
+            this.btn_NetworkDataWithNodesInColorAndLinkIsConfirmed.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_NetworkDataWithNodesInColorAndLinkIsConfirmed_Click);
             // 
             // MainRibbon
             // 
@@ -224,6 +233,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_NetworkDataNodesWithIconsAndLinkIsConfirmed;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_NetwrokDatWithNodesIconsAndCount;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_NetworkDataWithNodesIconsAndLinkIsConfirmedAndCount;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_NetworkDataWithNodesInColorAndLinkIsConfirmed;
     }
 
     partial class ThisRibbonCollection
