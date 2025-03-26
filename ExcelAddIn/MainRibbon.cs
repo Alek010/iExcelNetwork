@@ -220,6 +220,21 @@ namespace ExcelAddIn
             }
         }
 
+        private void btn_NetworkDataWithNodesInColorAndLinkIsConfirmed_Click(object sender, RibbonControlEventArgs e)
+        {
+            try
+            {
+                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
+
+                DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndLinkIsConfirmedTable(normalizeColumnNames: true),
+                                                             columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void btn_NetworkDataScalinNodesEdges_Click(object sender, RibbonControlEventArgs e)
         {
             try
@@ -283,12 +298,17 @@ namespace ExcelAddIn
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "L1");
+                                                             cellReference: "M1");
+
+                DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndLinkIsConfirmedTable(normalizeColumnNames: true),
+                                                             columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
+                                                             pasteIntoNewSheet: true,
+                                                             cellReference: "M6");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataScalingNodesAndEdges(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "S1");
+                                                             cellReference: "U1");
 
             }
             catch (Exception ex)
