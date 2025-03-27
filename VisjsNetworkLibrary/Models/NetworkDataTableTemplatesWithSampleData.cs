@@ -92,6 +92,17 @@ namespace VisjsNetworkLibrary.Models
             return dt;
         }
 
+        public DataTable CreateNetworkDataWithNodesIconsInColorAndCountAndLinkIsConfirmedTable(bool normalizeColumnNames = false)
+        {
+            var dt = _tableTemplate.CreateNetworkDataWithNodesIconsInColorAndCountAndLinkIsConfirmedTable(normalizeColumnNames);
+
+            dt.Rows.Add("+37128989924", "Cellphone", "Green", "B", "Person", "Red", "1", "True");
+            dt.Rows.Add("XX123456", "ID-card", "Blue", "B", "Person", "Red", "1", "TRUE");
+            dt.Rows.Add("B", "Person", "Red", "C", "Group", "Black", "10", "False");
+
+            return dt;
+        }
+
         public DataTable CreateNetworkDataWithNodesIconsTable(bool normalizeColumnNames = false)
         {
             var dt = _tableTemplate.CreateNetworkDataWithNodesIconsTable(normalizeColumnNames);

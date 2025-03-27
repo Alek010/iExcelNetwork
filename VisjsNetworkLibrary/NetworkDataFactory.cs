@@ -69,6 +69,10 @@ namespace VisjsNetworkLibrary
             {
                 return new NetworkDataWithNodesIconsInColorAndCount(_dataTable);
             }
+            else if (_columnCount == 8 && _columnNames.Contains("from") && _columnNames.Contains("fromicon") && _columnNames.Contains("to") && _columnNames.Contains("toicon") && _columnNames.Contains("fromcolor") && _columnNames.Contains("tocolor") && _columnNames.Contains("count") && _columnNames.Contains("linkisconfirmed"))
+            {
+                return new NetworkDataWithNodesIconsInColorAndCountAndLinkIsConfirmed(_dataTable);
+            }
             else if (_columnCount == 4 && _columnNames.Contains("from") && _columnNames.Contains("fromvalue") && _columnNames.Contains("to") && _columnNames.Contains("tovalue"))
             {
                 return new NetworkDataScalingNodesAndEdges(_dataTable);
