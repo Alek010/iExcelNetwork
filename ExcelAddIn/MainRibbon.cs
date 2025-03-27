@@ -235,6 +235,21 @@ namespace ExcelAddIn
             }
         }
 
+        private void btn_NetworkDataWithNodesInColorAndCount_Click(object sender, RibbonControlEventArgs e)
+        {
+            try
+            {
+                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
+
+                DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable(normalizeColumnNames: true),
+                                                             columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void btn_NetworkDataScalinNodesEdges_Click(object sender, RibbonControlEventArgs e)
         {
             try
@@ -304,6 +319,11 @@ namespace ExcelAddIn
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
                                                              cellReference: "M6");
+
+                DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable(normalizeColumnNames: true),
+                                                             columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
+                                                             pasteIntoNewSheet: true,
+                                                             cellReference: "M11");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataScalingNodesAndEdges(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),

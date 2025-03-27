@@ -576,5 +576,70 @@ namespace VisjsNetworkLibraryTests
             Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
         }
 
+        [Fact]
+        public void CreateNetworkDataWithNodesIconsInColorAndCount_WithValidData_ReturnsNetworkData()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("to");
+            dt.Columns.Add("fromicon");
+            dt.Columns.Add("toicon");
+            dt.Columns.Add("fromcolor");
+            dt.Columns.Add("tocolor");
+            dt.Columns.Add("count");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act
+            INetworkData result = factory.CreateNetworkData();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<NetworkDataWithNodesIconsInColorAndCount>(result);
+        }
+
+        [Fact]
+        public void CreateNetworkDataWithNodesIconsInColorAndCount_WithExtraColumn_ThrowsDataTableStructureException()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("to");
+            dt.Columns.Add("fromicon");
+            dt.Columns.Add("toicon");
+            dt.Columns.Add("fromcolor");
+            dt.Columns.Add("tocolor");
+            dt.Columns.Add("count");
+            dt.Columns.Add("extraColumn");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act & Assert
+            var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
+            Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
+        }
+
+        [Fact]
+        public void CreateNetworkDataWithNodesIconsInColorAndCount_WithMissingColumn_ThrowsDataTableStructureException()
+        {
+            // Arrange
+            DataTable dt = new DataTable();
+            dt.Columns.Add("from");
+            dt.Columns.Add("to");
+            dt.Columns.Add("fromicon");
+            dt.Columns.Add("toicon");
+            dt.Columns.Add("fromcolor");
+            dt.Columns.Add("tocolor");
+            //dt.Columns.Add("count"); missing column
+            dt.Columns.Add("extraColumn");
+
+            var factory = new NetworkDataFactory(dt);
+
+            // Act & Assert
+            var exception = Assert.Throws<DataTableStructureException>(() => factory.CreateNetworkData());
+            Assert.Equal("Selected table column structure not match any pattern.", exception.Message);
+        }
+
     }
 }
