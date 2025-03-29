@@ -35,45 +35,75 @@ namespace ExcelAddIn
                 return dt;
             }
 
-            // Get all values from the range into a 2D array.
-            object[,] values = selectedRange.Value2 as object[,];
-            if (values == null)
+            // Attempt to get only visible cells.
+            Excel.Range visibleRange = null;
+            try
             {
-                MessageBox.Show("The selected range is empty.");
+                visibleRange = selectedRange.SpecialCells(Excel.XlCellType.xlCellTypeVisible);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("The selected range is empty or has no visible cells.");
                 return dt;
             }
 
-            int rowCount = values.GetLength(0);
-            int colCount = values.GetLength(1);
-            int dataStartRow = hasHeader ? 2 : 1;
+            // Get the worksheet from the selectedRange.
+            Excel.Worksheet worksheet = selectedRange.Worksheet as Excel.Worksheet;
+
+            // Determine the starting row and column of the selected range.
+            int startRow = selectedRange.Row;
+            int startColumn = selectedRange.Column;
+            int colCount = selectedRange.Columns.Count;
 
             // Create DataTable columns.
-            for (int col = 1; col <= colCount; col++)
+            if (hasHeader)
             {
-                string columnName;
-                if (hasHeader)
-                {
-                    columnName = values[1, col] != null ? values[1, col].ToString().ToLower().Trim().Replace(" ", "") : $"Column{col}";
-                }
-                else
-                {
-                    columnName = $"Column{col}";
-                }
-                dt.Columns.Add(columnName);
-            }
-
-            // Populate DataTable rows.
-            for (int row = dataStartRow; row <= rowCount; row++)
-            {
-                DataRow dataRow = dt.NewRow();
                 for (int col = 1; col <= colCount; col++)
                 {
-                    dataRow[col - 1] = values[row, col] ?? DBNull.Value;
+                    Excel.Range headerCell = selectedRange.Cells[1, col] as Excel.Range;
+                    string columnName = headerCell?.Value2?.ToString();
+                    if (string.IsNullOrWhiteSpace(columnName))
+                        columnName = $"Column{col}";
+                    else
+                        columnName = columnName.ToLower().Trim().Replace(" ", "");
+                    dt.Columns.Add(columnName);
                 }
-                dt.Rows.Add(dataRow);
+            }
+            else
+            {
+                for (int col = 1; col <= colCount; col++)
+                {
+                    dt.Columns.Add($"Column{col}");
+                }
+            }
+
+            // Iterate over each area in the visible range (if filtered, the visible cells might be discontinuous).
+            foreach (Excel.Range area in visibleRange.Areas)
+            {
+                // Determine the area rows.
+                int areaStartRow = area.Row;
+                int areaEndRow = area.Row + area.Rows.Count - 1;
+
+                for (int r = areaStartRow; r <= areaEndRow; r++)
+                {
+                    // If headers exist and this row is the header row, skip it.
+                    if (hasHeader && r == startRow)
+                        continue;
+
+                    // Create a new DataRow.
+                    DataRow dataRow = dt.NewRow();
+                    for (int c = 1; c <= colCount; c++)
+                    {
+                        // Get the cell in the worksheet corresponding to the column in the selected range.
+                        Excel.Range cell = worksheet.Cells[r, startColumn + c - 1] as Excel.Range;
+                        dataRow[c - 1] = cell?.Value2 ?? DBNull.Value;
+                    }
+                    dt.Rows.Add(dataRow);
+                }
             }
 
             return dt;
         }
+
     }
 }
