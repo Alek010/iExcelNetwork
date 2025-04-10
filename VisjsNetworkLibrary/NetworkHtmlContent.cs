@@ -13,12 +13,14 @@ namespace VisjsNetworkLibrary
         private string _nodesJson { get; set; }
         private string _edgesJson { get; set; }
         private bool NetworkDataIsScalable;
+        private bool NetworkDataLinksHasTitles;
 
         public NetworkHtmlContent(INetworkData networkData)
         {
             _nodesJson = JsonConvert.SerializeObject(networkData.GetNodes(), Formatting.Indented);
             _edgesJson = JsonConvert.SerializeObject(networkData.GetEdges(), Formatting.Indented);
             NetworkDataIsScalable = networkData.NodesEdgesAreScalable;
+            NetworkDataLinksHasTitles = networkData.EdgesLinksHasTitle;
         }
 
         public string GenerateFileContent()
@@ -45,6 +47,11 @@ namespace VisjsNetworkLibrary
             if (NetworkDataIsScalable)
             {
                 result = result.Replace("scaling: { min: 1, max: 1 },", "");
+            }
+
+            if (NetworkDataLinksHasTitles)
+            {
+                result = result.Replace(".vis-tooltip { display: none !important; }", "");
             }
 
             return result;

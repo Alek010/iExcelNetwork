@@ -15,6 +15,7 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
         public NetworkDataScalingNodesAndEdges(DataTable dataTable) : base(dataTable)
         {
             base.NodesEdgesAreScalable = true;
+            base.EdgesLinksHasTitle = true;
         }
 
         public override List<Node> GetNodes()

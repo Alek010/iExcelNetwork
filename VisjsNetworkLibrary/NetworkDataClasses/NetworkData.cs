@@ -14,6 +14,8 @@ namespace VisjsNetworkLibrary.NetworkDataClasses
 
         public bool NodesEdgesAreScalable { get; set; } = false;
 
+        public bool EdgesLinksHasTitle { get; set; } = false;
+
         public NetworkData(DataTable dataTable)
         {
             _dataTable = dataTable;
