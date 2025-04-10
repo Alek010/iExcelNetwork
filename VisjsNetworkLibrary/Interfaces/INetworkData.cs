@@ -10,5 +10,6 @@ namespace VisjsNetworkLibrary.Interfaces
         List<Edge> GetEdges();
         List<Node> GetNodes();
         bool NodesEdgesAreScalable { get; set; }
+        bool EdgesLinksHasTitle { get; set; }
     }
 }
