@@ -11,10 +11,10 @@ namespace VisjsNetworkLibrary
         private string _fileContent { get; set; }
         private string _filePath { get; set; }
 
-        public FileProcessor(IFileContent fileContent)
+        public FileProcessor(IFileContent fileContent, string filePath)
         {
             _fileContent = fileContent.GenerateFileContent();
-            _filePath = fileContent.GetFilePath();
+            _filePath = filePath;
         }
 
         public void WriteFile()

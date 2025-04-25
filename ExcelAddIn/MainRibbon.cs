@@ -3,6 +3,7 @@ using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 using VisjsNetworkLibrary;
 using VisjsNetworkLibrary.Interfaces;
@@ -76,7 +77,7 @@ namespace ExcelAddIn
 
                 NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
 
-                FileProcessor processor = new FileProcessor(htmlContent);
+                FileProcessor processor = new FileProcessor(htmlContent, Path.Combine(Path.GetTempPath(), "VisjsNetwork") + ".html");
                 processor.WriteFile();
                 processor.OpenFile();
             }
