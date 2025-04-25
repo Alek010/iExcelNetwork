@@ -9,7 +9,14 @@ namespace ExcelAddIn
         {
             string value = ConfigurationManager.AppSettings["OutputFolderPath"];
 
-            return value == "null" ? Path.GetTempPath() : value;
+            return value == "default" ? Path.GetTempPath() : value;
+        }
+
+        public static string GetNetworkFileName()
+        {
+            string value = ConfigurationManager.AppSettings["NetworkFileName"];
+
+            return value == "default" ? "VisjsNetwork.html" : value;
         }
     }
 }
