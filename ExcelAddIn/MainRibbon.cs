@@ -77,7 +77,7 @@ namespace ExcelAddIn
 
                 NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
 
-                FileProcessor processor = new FileProcessor(htmlContent, Path.Combine(Path.GetTempPath(), "VisjsNetwork") + ".html");
+                FileProcessor processor = new FileProcessor(htmlContent, Path.Combine(ConfigManager.GetOutputFolderPath(), "VisjsNetwork") + ".html");
                 processor.WriteFile();
                 processor.OpenFile();
             }

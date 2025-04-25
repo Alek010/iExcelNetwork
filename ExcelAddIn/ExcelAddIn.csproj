@@ -102,6 +102,7 @@
   <ItemGroup>
     <Reference Include="Accessibility" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -185,6 +186,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="ConfigManager.cs" />
     <Compile Include="DataTableToExcelHelper.cs" />
     <Compile Include="ExcelRangeHelper.cs" />
     <Compile Include="Exceptions\SelectedCellNotRangeException.cs" />
@@ -213,6 +215,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="App.config" />
     <None Include="ExcelAddIn_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
