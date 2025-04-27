@@ -233,6 +233,7 @@
             this.btn_SetOutputFolder.Label = "Output Folder";
             this.btn_SetOutputFolder.Name = "btn_SetOutputFolder";
             this.btn_SetOutputFolder.ShowImage = true;
+            this.btn_SetOutputFolder.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_SetOutputFolder_Click);
             // 
             // MainRibbon
             // 

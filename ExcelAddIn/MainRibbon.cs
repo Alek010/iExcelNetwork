@@ -357,5 +357,21 @@ namespace ExcelAddIn
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btn_SetOutputFolder_Click(object sender, RibbonControlEventArgs e)
+        {
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+            {
+                folderDialog.Description = "Select a folder";
+                folderDialog.ShowNewFolderButton = true;
+                folderDialog.SelectedPath = ConfigManager.GetOutputFolderPath();
+
+                DialogResult result = folderDialog.ShowDialog();
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderDialog.SelectedPath))
+                {
+                    ConfigManager.SaveOutputFolderPath(folderDialog.SelectedPath);
+                }
+            }
+        }
     }
 }
