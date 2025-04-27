@@ -1,8 +1,10 @@
-﻿using ExcelAddIn.Validations;
+﻿using ExcelAddIn.Forms;
+using ExcelAddIn.Validations;
 using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 using VisjsNetworkLibrary;
 using VisjsNetworkLibrary.Interfaces;
@@ -76,7 +78,7 @@ namespace ExcelAddIn
 
                 NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
 
-                FileProcessor processor = new FileProcessor(htmlContent);
+                FileProcessor processor = new FileProcessor(htmlContent, Path.Combine(ConfigManager.GetOutputFolderPath(), ConfigManager.GetNetworkFileName()) + ".html");
                 processor.WriteFile();
                 processor.OpenFile();
             }
@@ -355,6 +357,30 @@ namespace ExcelAddIn
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btn_SetOutputFolder_Click(object sender, RibbonControlEventArgs e)
+        {
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+            {
+                folderDialog.Description = "Select a folder";
+                folderDialog.ShowNewFolderButton = true;
+                folderDialog.SelectedPath = ConfigManager.GetOutputFolderPath();
+
+                DialogResult result = folderDialog.ShowDialog();
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderDialog.SelectedPath))
+                {
+                    ConfigManager.SaveOutputFolderPath(folderDialog.SelectedPath);
+                }
+            }
+        }
+
+        private void btn_ChangeNetworkFileName_Click(object sender, RibbonControlEventArgs e)
+        {
+            var name = ConfigManager.GetNetworkFileName();
+            ChangeFileNameForm form =new ChangeFileNameForm(name);
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.ShowDialog();
         }
     }
 }

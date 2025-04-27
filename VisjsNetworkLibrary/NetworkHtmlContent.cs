@@ -57,11 +57,6 @@ namespace VisjsNetworkLibrary
             return result;
         }
 
-        public string GetFilePath()
-        {
-            return Path.Combine(Path.GetTempPath(), "VisjsNetwork") + ".html";
-        }
-
         private string GetEmbeddedResource(string resourceName)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
