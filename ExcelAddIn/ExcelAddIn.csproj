@@ -193,6 +193,12 @@
     <Compile Include="Exceptions\SelectedEmptyCellException.cs" />
     <Compile Include="Exceptions\SelectedRangeExceptionsMessages.cs" />
     <Compile Include="Exceptions\SelectedRangeIsNullException.cs" />
+    <Compile Include="Forms\ChangeFileNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangeFileNameForm.Designer.cs">
+      <DependentUpon>ChangeFileNameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="Forms\ChangeFileNameForm.resx">
+      <DependentUpon>ChangeFileNameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainRibbon.resx">
       <DependentUpon>MainRibbon.cs</DependentUpon>
       <SubType>Designer</SubType>

@@ -57,6 +57,8 @@
             this.btn_AllTablesWithSampleData = this.Factory.CreateRibbonButton();
             this.group_Settings = this.Factory.CreateRibbonGroup();
             this.btn_SetOutputFolder = this.Factory.CreateRibbonButton();
+            this.splitBtn_NetworkSettings = this.Factory.CreateRibbonSplitButton();
+            this.btn_ChangeNetworkFileName = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group_data.SuspendLayout();
             this.group_linkNetwork.SuspendLayout();
@@ -223,6 +225,7 @@
             // group_Settings
             // 
             this.group_Settings.Items.Add(this.btn_SetOutputFolder);
+            this.group_Settings.Items.Add(this.splitBtn_NetworkSettings);
             this.group_Settings.Label = "Settings";
             this.group_Settings.Name = "group_Settings";
             // 
@@ -234,6 +237,19 @@
             this.btn_SetOutputFolder.Name = "btn_SetOutputFolder";
             this.btn_SetOutputFolder.ShowImage = true;
             this.btn_SetOutputFolder.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_SetOutputFolder_Click);
+            // 
+            // splitBtn_NetworkSettings
+            // 
+            this.splitBtn_NetworkSettings.Items.Add(this.btn_ChangeNetworkFileName);
+            this.splitBtn_NetworkSettings.Label = "Network Settings";
+            this.splitBtn_NetworkSettings.Name = "splitBtn_NetworkSettings";
+            // 
+            // btn_ChangeNetworkFileName
+            // 
+            this.btn_ChangeNetworkFileName.Label = "Network File Name";
+            this.btn_ChangeNetworkFileName.Name = "btn_ChangeNetworkFileName";
+            this.btn_ChangeNetworkFileName.ShowImage = true;
+            this.btn_ChangeNetworkFileName.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_ChangeNetworkFileName_Click);
             // 
             // MainRibbon
             // 
@@ -277,6 +293,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_NetworkDataWithNodesIconsInColorAndCountAndLinkIsConfirmed;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group_Settings;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_SetOutputFolder;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSplitButton splitBtn_NetworkSettings;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_ChangeNetworkFileName;
     }
 
     partial class ThisRibbonCollection

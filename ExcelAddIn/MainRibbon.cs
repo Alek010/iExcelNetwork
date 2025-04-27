@@ -1,4 +1,5 @@
-﻿using ExcelAddIn.Validations;
+﻿using ExcelAddIn.Forms;
+using ExcelAddIn.Validations;
 using Microsoft.Office.Tools.Ribbon;
 using System;
 using System.Collections.Generic;
@@ -77,7 +78,7 @@ namespace ExcelAddIn
 
                 NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
 
-                FileProcessor processor = new FileProcessor(htmlContent, Path.Combine(ConfigManager.GetOutputFolderPath(), ConfigManager.GetNetworkFileName()));
+                FileProcessor processor = new FileProcessor(htmlContent, Path.Combine(ConfigManager.GetOutputFolderPath(), ConfigManager.GetNetworkFileName()) + ".html");
                 processor.WriteFile();
                 processor.OpenFile();
             }
@@ -372,6 +373,14 @@ namespace ExcelAddIn
                     ConfigManager.SaveOutputFolderPath(folderDialog.SelectedPath);
                 }
             }
+        }
+
+        private void btn_ChangeNetworkFileName_Click(object sender, RibbonControlEventArgs e)
+        {
+            var name = ConfigManager.GetNetworkFileName();
+            ChangeFileNameForm form =new ChangeFileNameForm(name);
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.ShowDialog();
         }
     }
 }

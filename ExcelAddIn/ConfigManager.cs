@@ -41,7 +41,25 @@ namespace ExcelAddIn
         {
             string value = ConfigurationManager.AppSettings["NetworkFileName"];
 
-            return value == "default" ? "VisjsNetwork.html" : value;
+            return value == "default" ? "VisjsNetwork" : value;
+        }
+
+        public static void SaveNetworkFileName(string fileName)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            KeyValueConfigurationCollection settings = config.AppSettings.Settings;
+
+            if (settings["NetworkFileName"] == null)
+            {
+                settings.Add("NetworkFileName", fileName);
+            }
+            else
+            {
+                settings["NetworkFileName"].Value = fileName;
+            }
+
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
         }
     }
 }
