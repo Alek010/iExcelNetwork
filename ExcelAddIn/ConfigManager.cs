@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.IO;
+using System.Reflection;
 
 namespace ExcelAddIn
 {
@@ -60,6 +61,11 @@ namespace ExcelAddIn
 
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
+        }
+
+        public static string GetAddInVersion()
+        {
+            return ConfigurationManager.AppSettings["AddInVersion"];
         }
     }
 }

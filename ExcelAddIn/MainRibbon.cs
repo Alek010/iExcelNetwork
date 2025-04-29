@@ -78,9 +78,18 @@ namespace ExcelAddIn
 
                 NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
 
-                FileProcessor processor = new FileProcessor(htmlContent, Path.Combine(ConfigManager.GetOutputFolderPath(), ConfigManager.GetNetworkFileName()) + ".html");
-                processor.WriteFile();
-                processor.OpenFile();
+                string filePath = Path.Combine(ConfigManager.GetOutputFolderPath(), ConfigManager.GetNetworkFileName());
+
+                string networkFile = filePath + ".html";
+                FileProcessor networkFileProcessor = new FileProcessor(htmlContent, networkFile);
+                networkFileProcessor.WriteFile();
+                networkFileProcessor.OpenFile();
+
+                string integrityFilePath = filePath + ".txt";
+                IntegrityLogContent integrityLogContent = new IntegrityLogContent(networkFile, iExcelNetworkVersion: ConfigManager.GetAddInVersion());
+                FileProcessor networkIntegrityFileProcessor = new FileProcessor(integrityLogContent, integrityFilePath);
+                networkIntegrityFileProcessor.WriteFile();
+
             }
             catch(Exception ex)
             {
