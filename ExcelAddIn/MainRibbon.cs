@@ -19,9 +19,11 @@ namespace ExcelAddIn
     {
         private DataTable SelectedRangeAsDataTable { get; set; }
 
+        private Action ActivateAddInsTab;
+
         private void MainRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-
+            ActivateAddInsTab = () => e?.RibbonUI?.ActivateTabMso("TabAddIns");
         }
 
         private void btn_SelectRange_Click(object sender, RibbonControlEventArgs e)
@@ -104,6 +106,8 @@ namespace ExcelAddIn
                 NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
 
                 DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataTable(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch(Exception ex)
             {
@@ -118,6 +122,8 @@ namespace ExcelAddIn
                 NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
 
                 DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataWithCountTable(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
@@ -134,6 +140,8 @@ namespace ExcelAddIn
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataLinkIsConfirmedTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
@@ -149,6 +157,8 @@ namespace ExcelAddIn
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithCountAndLinkIsConfirmedTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
@@ -164,6 +174,8 @@ namespace ExcelAddIn
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
@@ -179,6 +191,8 @@ namespace ExcelAddIn
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
@@ -194,6 +208,8 @@ namespace ExcelAddIn
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsAndCountTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
@@ -209,6 +225,8 @@ namespace ExcelAddIn
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedAndCountTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
@@ -224,6 +242,8 @@ namespace ExcelAddIn
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
@@ -239,6 +259,8 @@ namespace ExcelAddIn
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndLinkIsConfirmedTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
@@ -254,6 +276,8 @@ namespace ExcelAddIn
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
@@ -269,6 +293,8 @@ namespace ExcelAddIn
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndCountAndLinkIsConfirmedTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
@@ -283,6 +309,8 @@ namespace ExcelAddIn
                 NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
 
                 DataTableToExcelHelper.PasteDataTableToExcel(networkDataTemplate.CreateNetworkDataScalingNodesAndEdges(normalizeColumnNames: true));
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
@@ -361,6 +389,7 @@ namespace ExcelAddIn
                                                              pasteIntoNewSheet: true,
                                                              cellReference: "U1");
 
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
             catch (Exception ex)
             {
