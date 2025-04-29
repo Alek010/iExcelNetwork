@@ -75,6 +75,7 @@
     <Compile Include="NetworkDataClasses\NetworkDataWithCount.cs" />
     <Compile Include="NetworkDataClasses\NetworkDataWithNodesIcons.cs" />
     <Compile Include="NetworkHtmlContent.cs" />
+    <Compile Include="IntegrityLogContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validations\SelectedDataTableValidator.cs" />
   </ItemGroup>
