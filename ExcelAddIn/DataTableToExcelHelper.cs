@@ -8,7 +8,7 @@ namespace ExcelAddIn
 {
     public static class DataTableToExcelHelper
     {
-        public static void PasteDataTableToExcel(DataTable dt,string cellReference = null, Dictionary<string, string> columnValidationLists = null, bool pasteIntoNewSheet = false)
+        public static void PasteDataTableToExcel(DataTable dt,string cellReference = null, Dictionary<string, string> columnValidationLists = null, bool pasteIntoNewSheet = false, string tableStyleName = "TableStyleMedium2")
         {
             // Get the current Excel application and active worksheet.
             Excel.Application excelApp = Globals.ThisAddIn.Application;
@@ -77,6 +77,9 @@ namespace ExcelAddIn
                 SourceType: XlListObjectSourceType.xlSrcRange,
                 Source: writeRange,
                 XlListObjectHasHeaders: XlYesNoGuess.xlYes);
+
+            // Apply style
+            excelTable.TableStyle = tableStyleName;
 
             // Apply data validation lists for specified columns.
             if (columnValidationLists != null)
