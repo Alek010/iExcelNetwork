@@ -347,47 +347,56 @@ namespace ExcelAddIn
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "F1");
+                                                             cellReference: "F1",
+                                                             tableStyleName: "TableStyleMedium3");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "F6");
+                                                             cellReference: "F6",
+                                                             tableStyleName: "TableStyleMedium3");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsAndCountTable(normalizeColumnNames: true),
                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                              pasteIntoNewSheet: true,
-                                             cellReference: "F11");
+                                             cellReference: "F11",
+                                             tableStyleName: "TableStyleMedium3");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedAndCountTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "F16");
+                                                             cellReference: "F16", 
+                                                             tableStyleName: "TableStyleMedium3");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "M1");
+                                                             cellReference: "M1",
+                                                             tableStyleName: "TableStyleMedium7");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndLinkIsConfirmedTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "M6");
+                                                             cellReference: "M6",
+                                                             tableStyleName: "TableStyleMedium7");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "M11");
+                                                             cellReference: "M11",
+                                                             tableStyleName: "TableStyleMedium7");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndCountAndLinkIsConfirmedTable(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "M16");
+                                                             cellReference: "M16",
+                                                             tableStyleName: "TableStyleMedium7");
 
                 DataTableToExcelHelper.PasteDataTableToExcel(dt: networkDataTemplate.CreateNetworkDataScalingNodesAndEdges(normalizeColumnNames: true),
                                                              columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                              pasteIntoNewSheet: true,
-                                                             cellReference: "U1");
+                                                             cellReference: "U1",
+                                                             tableStyleName: "TableStyleMedium1");
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
