@@ -15,19 +15,17 @@ namespace ExcelAddIn
         private readonly Excel.Application _excelApp;
         private readonly Excel.Workbook _workbook;
         private readonly Excel.Worksheet _worksheet;
-        private readonly DataTable _dataTable;
 
-        public DataTableToExcel(Excel.Application excelApp, DataTable dataTable, bool pasteIntoNewSheet = false)
+        public DataTableToExcel(Excel.Application excelApp, bool pasteIntoNewSheet = false)
         {
             _excelApp = excelApp ?? throw new ArgumentNullException(nameof(excelApp));
             _workbook = _excelApp.ActiveWorkbook;
             _worksheet = SetActiveExcelWorksheet(pasteIntoNewSheet);
-            _dataTable = dataTable;
         }
 
-        public void PasteAsExcelTable(string cellReference = null, Dictionary<string, string> columnValidationLists = null, string tableStyleName = "TableStyleMedium2")
+        public void PasteAsExcelTable(DataTable dataTable, string cellReference = null, Dictionary<string, string> columnValidationLists = null, string tableStyleName = "TableStyleMedium2")
         {
-            DataTableDimensions dtDimensions = new DataTableDimensions(_dataTable);
+            DataTableDimensions dtDimensions = new DataTableDimensions(dataTable);
             var dimensions = dtDimensions.GetDataTableDimensions();
 
             Excel.Range startCell = GetSelectedExcelRangeStartCell(cellReference);
@@ -38,7 +36,7 @@ namespace ExcelAddIn
 
             ApplyStyleToExcelTable(tableStyleName, excelTable);
 
-            ApplyDataValidationListsToExcelTable(_dataTable, columnValidationLists, dimensions.rowCount, dimensions.columnCount, startCell);
+            ApplyDataValidationListsToExcelTable(dataTable, columnValidationLists, dimensions.rowCount, dimensions.columnCount, startCell);
         }
 
         private Excel.Worksheet SetActiveExcelWorksheet(bool pasteIntoNewSheet)
