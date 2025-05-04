@@ -189,7 +189,6 @@
     <Compile Include="ConfigManager.cs" />
     <Compile Include="DataTableDimensions.cs" />
     <Compile Include="DataTableToExcel.cs" />
-    <Compile Include="DataTableToExcelHelper.cs" />
     <Compile Include="ExcelRangeHelper.cs" />
     <Compile Include="Exceptions\SelectedCellNotRangeException.cs" />
     <Compile Include="Exceptions\SelectedEmptyCellException.cs" />
