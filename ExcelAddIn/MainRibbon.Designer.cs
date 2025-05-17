@@ -71,7 +71,7 @@
             this.tab1.Groups.Add(this.group_data);
             this.tab1.Groups.Add(this.group_linkNetwork);
             this.tab1.Groups.Add(this.group_Settings);
-            this.tab1.Label = "TabAddIns";
+            this.tab1.Label = "iExcelNetwork";
             this.tab1.Name = "tab1";
             // 
             // group_data
