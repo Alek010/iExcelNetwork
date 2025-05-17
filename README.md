@@ -1,3 +1,5 @@
+# Abandoned branch
+
 # iExcelNetwork
 * iExcelNetwork is an Excel VSTO add-in written in C# designed to build network visualizations using the [vis.js](https://visjs.org) network library.
 * iExcelNetwork does not require an internet connection and does not send data outside the local machine to build the network.
