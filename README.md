@@ -4,4 +4,4 @@
 * iExcelNetwork is not intended to compete with professional graph visualization or analytics software. Its primary goal is to offer a lightweight, standalone solution for MS Excel users to visualize and explore network data.
 
 # Wiki
-More about iExcelNetworkusecase check [wiki](https://github.com/Alek010/iExcelNetwork/wiki)
+More about iExcelNetwork use cases check [wiki](https://github.com/Alek010/iExcelNetwork/wiki)
