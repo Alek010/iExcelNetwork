@@ -40,7 +40,6 @@ namespace VisjsNetworkLibrary
                .Replace("{{VisJsScript}}", VisJsScript)
                .Replace("{{nodesJson}}", _nodesJson)
                .Replace("{{edgesJson}}", _edgesJson)
-               .Replace("selectedEdgesDirection", "to")
                .Replace("{{FontAwesomeCss}}", fontAwesomeCss)
                .Replace("{{VisJsCss}}", VisJsCss);
 
