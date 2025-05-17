@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35728.132
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelAddIn", "ExcelAddIn\ExcelAddIn.csproj", "{00EA6DE3-A40A-46C2-8834-750AF9034F70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iExcelNetwork AddIn for Excel", "ExcelAddIn\iExcelNetwork AddIn for Excel.csproj", "{00EA6DE3-A40A-46C2-8834-750AF9034F70}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisjsNetworkLibrary", "VisjsNetworkLibrary\VisjsNetworkLibrary.csproj", "{D875AFFA-685E-462B-A4AA-68DE101E4DD2}"
 EndProject
