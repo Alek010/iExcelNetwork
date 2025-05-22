@@ -36,7 +36,7 @@ namespace ExcelAddIn
 
             ApplyStyleToExcelTable(tableStyleName, excelTable);
 
-            ApplyDataValidationListsToExcelTable(dataTable, columnValidationLists, dimensions.rowCount, dimensions.columnCount, startCell);
+            ApplyDataValidationListsToExcelTable(dataTable, columnValidationLists, dimensions.rowCount + 1, dimensions.columnCount, startCell);
         }
 
         private Excel.Worksheet SetActiveExcelWorksheet(bool pasteIntoNewSheet)
