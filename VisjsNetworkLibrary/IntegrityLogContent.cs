@@ -28,7 +28,9 @@ namespace VisjsNetworkLibrary
             $"SHA256: {ComputeSha256HashFromFile()}\n" +
             "\n" +
             "iExcelNetwork is open source project under MIT license.\n" +
-            "Project source code is available: https://github.com/Alek010/iExcelNetwork";
+            "Project source code is available: https://github.com/Alek010/iExcelNetwork\n" +
+            "\n" +
+            "Project wiki is available: https://github.com/Alek010/iExcelNetwork/wiki";
 
             return content;
         }
