@@ -17,7 +17,12 @@ namespace VisjsNetworkLibrary
 
         public NetworkHtmlContent(INetworkData networkData)
         {
-            _nodesJson = JsonConvert.SerializeObject(networkData.GetNodes(), Formatting.Indented);
+            var settings = new JsonSerializerSettings
+            {
+                StringEscapeHandling = StringEscapeHandling.EscapeNonAscii
+            };
+
+            _nodesJson = JsonConvert.SerializeObject(networkData.GetNodes(), Formatting.Indented, settings);
             _edgesJson = JsonConvert.SerializeObject(networkData.GetEdges(), Formatting.Indented);
             NetworkDataIsScalable = networkData.NodesEdgesAreScalable;
             NetworkDataLinksHasTitles = networkData.EdgesLinksHasTitle;
