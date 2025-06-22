@@ -65,6 +65,11 @@ namespace ExcelAddIn
             }
         }
 
+        private void splitButton_BuildNetwrok_Click(object sender, RibbonControlEventArgs e)
+        {
+            btn_buildNetwork_Click(sender, e);
+        }
+
         private void btn_buildNetwork_Click(object sender, RibbonControlEventArgs e)
         {
             try
@@ -92,6 +97,11 @@ namespace ExcelAddIn
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        private void btn_BuildFinTrxNetwork_Click(object sender, RibbonControlEventArgs e)
+        {
+            MessageBox.Show("I create Financial Transactions Network.");
         }
 
         private void btn_BasicNetworkData_Click(object sender, RibbonControlEventArgs e)
@@ -440,16 +450,6 @@ namespace ExcelAddIn
             ChangeFileNameForm form =new ChangeFileNameForm(name);
             form.StartPosition = FormStartPosition.CenterScreen;
             form.ShowDialog();
-        }
-
-        private void splitButton_BuildNetwrok_Click(object sender, RibbonControlEventArgs e)
-        {
-            btn_buildNetwork_Click(sender, e);
-        }
-
-        private void btn_BuildFinTrxNetwork_Click(object sender, RibbonControlEventArgs e)
-        {
-            MessageBox.Show("I create Financial Transactions Network.");
         }
     }
 }
