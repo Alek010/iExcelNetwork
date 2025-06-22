@@ -446,5 +446,10 @@ namespace ExcelAddIn
             form.StartPosition = FormStartPosition.CenterScreen;
             form.ShowDialog();
         }
+
+        private void splitButton_BuildNetwrok_Click(object sender, RibbonControlEventArgs e)
+        {
+            btn_buildNetwork_Click(sender, e);
+        }
     }
 }

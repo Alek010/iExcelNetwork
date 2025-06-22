@@ -37,8 +37,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainRibbon));
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group_data = this.Factory.CreateRibbonGroup();
-            this.btn_SelectRange = this.Factory.CreateRibbonButton();
             this.group_linkNetwork = this.Factory.CreateRibbonGroup();
+            this.group_Settings = this.Factory.CreateRibbonGroup();
+            this.btn_SelectRange = this.Factory.CreateRibbonButton();
+            this.splitButton_BuildNetwrok = this.Factory.CreateRibbonSplitButton();
             this.btn_buildNetwork = this.Factory.CreateRibbonButton();
             this.splitBtn_NetworkDataTables = this.Factory.CreateRibbonSplitButton();
             this.btn_BasicNetworkData = this.Factory.CreateRibbonButton();
@@ -55,7 +57,6 @@
             this.btn_NetworkDataWithNodesIconsInColorAndCountAndLinkIsConfirmed = this.Factory.CreateRibbonButton();
             this.btn_NetworkDataScalinNodesEdges = this.Factory.CreateRibbonButton();
             this.btn_AllTablesWithSampleData = this.Factory.CreateRibbonButton();
-            this.group_Settings = this.Factory.CreateRibbonGroup();
             this.btn_SetOutputFolder = this.Factory.CreateRibbonButton();
             this.splitBtn_NetworkSettings = this.Factory.CreateRibbonSplitButton();
             this.btn_ChangeNetworkFileName = this.Factory.CreateRibbonButton();
@@ -80,6 +81,20 @@
             this.group_data.Label = "Data";
             this.group_data.Name = "group_data";
             // 
+            // group_linkNetwork
+            // 
+            this.group_linkNetwork.Items.Add(this.splitButton_BuildNetwrok);
+            this.group_linkNetwork.Items.Add(this.splitBtn_NetworkDataTables);
+            this.group_linkNetwork.Label = "Link Network";
+            this.group_linkNetwork.Name = "group_linkNetwork";
+            // 
+            // group_Settings
+            // 
+            this.group_Settings.Items.Add(this.btn_SetOutputFolder);
+            this.group_Settings.Items.Add(this.splitBtn_NetworkSettings);
+            this.group_Settings.Label = "Settings";
+            this.group_Settings.Name = "group_Settings";
+            // 
             // btn_SelectRange
             // 
             this.btn_SelectRange.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -89,17 +104,17 @@
             this.btn_SelectRange.ShowImage = true;
             this.btn_SelectRange.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_SelectRange_Click);
             // 
-            // group_linkNetwork
+            // splitButton_BuildNetwrok
             // 
-            this.group_linkNetwork.Items.Add(this.btn_buildNetwork);
-            this.group_linkNetwork.Items.Add(this.splitBtn_NetworkDataTables);
-            this.group_linkNetwork.Label = "Link Network";
-            this.group_linkNetwork.Name = "group_linkNetwork";
+            this.splitButton_BuildNetwrok.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.splitButton_BuildNetwrok.Image = ((System.Drawing.Image)(resources.GetObject("splitButton_BuildNetwrok.Image")));
+            this.splitButton_BuildNetwrok.Items.Add(this.btn_buildNetwork);
+            this.splitButton_BuildNetwrok.Label = "Build Netwrok";
+            this.splitButton_BuildNetwrok.Name = "splitButton_BuildNetwrok";
+            this.splitButton_BuildNetwrok.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.splitButton_BuildNetwrok_Click);
             // 
             // btn_buildNetwork
             // 
-            this.btn_buildNetwork.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.btn_buildNetwork.Image = ((System.Drawing.Image)(resources.GetObject("btn_buildNetwork.Image")));
             this.btn_buildNetwork.Label = "Build Network";
             this.btn_buildNetwork.Name = "btn_buildNetwork";
             this.btn_buildNetwork.ShowImage = true;
@@ -222,13 +237,6 @@
             this.btn_AllTablesWithSampleData.ShowImage = true;
             this.btn_AllTablesWithSampleData.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_AllTablesWithSampleData_Click);
             // 
-            // group_Settings
-            // 
-            this.group_Settings.Items.Add(this.btn_SetOutputFolder);
-            this.group_Settings.Items.Add(this.splitBtn_NetworkSettings);
-            this.group_Settings.Label = "Settings";
-            this.group_Settings.Name = "group_Settings";
-            // 
             // btn_SetOutputFolder
             // 
             this.btn_SetOutputFolder.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -295,6 +303,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_SetOutputFolder;
         internal Microsoft.Office.Tools.Ribbon.RibbonSplitButton splitBtn_NetworkSettings;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_ChangeNetworkFileName;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSplitButton splitButton_BuildNetwrok;
     }
 
     partial class ThisRibbonCollection
