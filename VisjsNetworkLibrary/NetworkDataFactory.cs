@@ -7,25 +7,35 @@ using System.Linq;
 using VisjsNetworkLibrary.Exceptions;
 using VisjsNetworkLibrary.Interfaces;
 using VisjsNetworkLibrary.NetworkDataClasses;
+using VisjsNetworkLibrary.Validations;
 
 namespace VisjsNetworkLibrary
 {
     public class NetworkDataFactory
     {
         private readonly DataTable _dataTable;
-        private readonly int _columnCount;
-        private readonly List<string> _columnNames;
+        private int _columnCount;
+        private List<string> _columnNames;
 
         public NetworkDataFactory(DataTable dataTable)
         {
             _dataTable = dataTable;
-            _columnCount = GetColumnCount(dataTable);
-            _columnNames = GetColumnNames(dataTable);
+        }
+
+        public void ValidateDataTable()
+        {
+            SelectedDataTableValidator validator = new SelectedDataTableValidator(_dataTable);
+            validator.ValidateDataTableIsNotNull();
+            validator.ValidateDataTableHasRecords();
+            validator.ValidateDataTableHasTwoOrMoreColumns();
         }
 
         public INetworkData CreateNetworkData()
         {
-            if(_columnCount == 2 && _columnNames.Contains("from") && _columnNames.Contains("to"))
+            _columnCount = GetColumnCount(_dataTable);
+            _columnNames = GetColumnNames(_dataTable);
+
+            if (_columnCount == 2 && _columnNames.Contains("from") && _columnNames.Contains("to"))
             {
                 return new NetworkData(_dataTable);
             }

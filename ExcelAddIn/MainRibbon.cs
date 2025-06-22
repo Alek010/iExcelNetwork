@@ -69,13 +69,8 @@ namespace ExcelAddIn
         {
             try
             {
-                SelectedDataTableValidator validator = new SelectedDataTableValidator(SelectedRangeAsDataTable);
-                validator.ValidateDataTableIsNotNull();
-                validator.ValidateDataTableHasRecords();
-                validator.ValidateDataTableHasTwoOrMoreColumns();
-
                 NetworkDataFactory networkDataFactory = new NetworkDataFactory(SelectedRangeAsDataTable);
-
+                networkDataFactory.ValidateDataTable();
                 INetworkData networkData = networkDataFactory.CreateNetworkData();
 
                 NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
