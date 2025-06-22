@@ -60,6 +60,7 @@
             this.btn_SetOutputFolder = this.Factory.CreateRibbonButton();
             this.splitBtn_NetworkSettings = this.Factory.CreateRibbonSplitButton();
             this.btn_ChangeNetworkFileName = this.Factory.CreateRibbonButton();
+            this.btn_BuildFinTrxNetwork = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group_data.SuspendLayout();
             this.group_linkNetwork.SuspendLayout();
@@ -109,6 +110,7 @@
             this.splitButton_BuildNetwrok.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.splitButton_BuildNetwrok.Image = ((System.Drawing.Image)(resources.GetObject("splitButton_BuildNetwrok.Image")));
             this.splitButton_BuildNetwrok.Items.Add(this.btn_buildNetwork);
+            this.splitButton_BuildNetwrok.Items.Add(this.btn_BuildFinTrxNetwork);
             this.splitButton_BuildNetwrok.Label = "Build Netwrok";
             this.splitButton_BuildNetwrok.Name = "splitButton_BuildNetwrok";
             this.splitButton_BuildNetwrok.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.splitButton_BuildNetwrok_Click);
@@ -259,6 +261,13 @@
             this.btn_ChangeNetworkFileName.ShowImage = true;
             this.btn_ChangeNetworkFileName.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_ChangeNetworkFileName_Click);
             // 
+            // btn_BuildFinTrxNetwork
+            // 
+            this.btn_BuildFinTrxNetwork.Label = "Build Financial Transactions Network";
+            this.btn_BuildFinTrxNetwork.Name = "btn_BuildFinTrxNetwork";
+            this.btn_BuildFinTrxNetwork.ShowImage = true;
+            this.btn_BuildFinTrxNetwork.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_BuildFinTrxNetwork_Click);
+            // 
             // MainRibbon
             // 
             this.Name = "MainRibbon";
@@ -304,6 +313,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonSplitButton splitBtn_NetworkSettings;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_ChangeNetworkFileName;
         internal Microsoft.Office.Tools.Ribbon.RibbonSplitButton splitButton_BuildNetwrok;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_BuildFinTrxNetwork;
     }
 
     partial class ThisRibbonCollection

@@ -451,5 +451,10 @@ namespace ExcelAddIn
         {
             btn_buildNetwork_Click(sender, e);
         }
+
+        private void btn_BuildFinTrxNetwork_Click(object sender, RibbonControlEventArgs e)
+        {
+            MessageBox.Show("I create Financial Transactions Network.");
+        }
     }
 }
