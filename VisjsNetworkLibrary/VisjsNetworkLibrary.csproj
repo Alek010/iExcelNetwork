@@ -50,6 +50,7 @@
     <Compile Include="Exceptions\DataTableStructureException.cs" />
     <Compile Include="Exceptions\SelectedDataTableExceptionMessages.cs" />
     <Compile Include="FileProcessor.cs" />
+    <Compile Include="FinancialTransactionsNetworkDataFactory.cs" />
     <Compile Include="Helpers\ColorMapper.cs" />
     <Compile Include="Helpers\IconMapper.cs" />
     <Compile Include="Interfaces\INetworkData.cs" />

@@ -28,13 +28,13 @@ namespace VisjsNetworkLibrary
             validator.ValidateDataTableIsNotNull();
             validator.ValidateDataTableHasRecords();
             validator.ValidateDataTableHasTwoOrMoreColumns();
-        }
 
-        public INetworkData CreateNetworkData()
-        {
             _columnCount = GetColumnCount(_dataTable);
             _columnNames = GetColumnNames(_dataTable);
+        }
 
+        public virtual INetworkData CreateNetworkData()
+        {
             if (_columnCount == 2 && _columnNames.Contains("from") && _columnNames.Contains("to"))
             {
                 return new NetworkData(_dataTable);
