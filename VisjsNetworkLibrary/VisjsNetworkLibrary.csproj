@@ -51,6 +51,7 @@
     <Compile Include="Exceptions\SelectedDataTableExceptionMessages.cs" />
     <Compile Include="FileProcessor.cs" />
     <Compile Include="FinancialTransactionsNetworkDataFactory.cs" />
+    <Compile Include="FinancialTransactionsNetworkData\FinancialNetworkDataWithCount.cs" />
     <Compile Include="Helpers\ColorMapper.cs" />
     <Compile Include="Helpers\IconMapper.cs" />
     <Compile Include="Interfaces\INetworkData.cs" />
@@ -101,5 +102,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\vis-network.css" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,8 @@
 ﻿// Ignore Spelling: Visjs
 
 using System.Data;
+using VisjsNetworkLibrary.Exceptions;
+using VisjsNetworkLibrary.FinancialTransactionsNetworkData;
 using VisjsNetworkLibrary.Interfaces;
 
 namespace VisjsNetworkLibrary
@@ -13,7 +15,14 @@ namespace VisjsNetworkLibrary
 
         public override INetworkData CreateNetworkData()
         {
-            return base.CreateNetworkData();
+            if (_columnCount == 3 && _columnNames.Contains("from") && _columnNames.Contains("to") && _columnNames.Contains("count"))
+            {
+                return new FinancialNetworkDataWithCount(_dataTable);
+            }
+            else
+            {
+                throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotMatchPattern());
+            }
         }
     }
 }

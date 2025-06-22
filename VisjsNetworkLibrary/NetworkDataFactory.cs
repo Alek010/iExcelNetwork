@@ -13,9 +13,9 @@ namespace VisjsNetworkLibrary
 {
     public class NetworkDataFactory
     {
-        private readonly DataTable _dataTable;
-        private int _columnCount;
-        private List<string> _columnNames;
+        protected readonly DataTable _dataTable;
+        protected int _columnCount;
+        protected List<string> _columnNames;
 
         public NetworkDataFactory(DataTable dataTable)
         {
