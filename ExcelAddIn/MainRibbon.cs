@@ -74,24 +74,8 @@ namespace ExcelAddIn
         {
             try
             {
-                NetworkDataFactory networkDataFactory = new NetworkDataFactory(SelectedRangeAsDataTable);
-                networkDataFactory.ValidateDataTable();
-                INetworkData networkData = networkDataFactory.CreateNetworkData();
-
-                NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
-
-                string filePath = Path.Combine(ConfigManager.GetOutputFolderPath(), ConfigManager.GetNetworkFileName());
-
-                string networkFile = filePath + ".html";
-                FileProcessor networkFileProcessor = new FileProcessor(htmlContent, networkFile);
-                networkFileProcessor.WriteFile();
-                networkFileProcessor.OpenFile();
-
-                string integrityFilePath = filePath + ".txt";
-                IntegrityLogContent integrityLogContent = new IntegrityLogContent(networkFile, iExcelNetworkVersion: ConfigManager.GetAddInVersion());
-                FileProcessor networkIntegrityFileProcessor = new FileProcessor(integrityLogContent, integrityFilePath);
-                networkIntegrityFileProcessor.WriteFile();
-
+                VisjsNetwork visjsNetwork = new VisjsNetwork(new NetworkDataFactory(SelectedRangeAsDataTable));
+                visjsNetwork.BuildNetwork();
             }
             catch(Exception ex)
             {
@@ -101,7 +85,15 @@ namespace ExcelAddIn
 
         private void btn_BuildFinTrxNetwork_Click(object sender, RibbonControlEventArgs e)
         {
-            MessageBox.Show("I create Financial Transactions Network.");
+            try
+            {
+                VisjsNetwork visjsNetwork = new VisjsNetwork(new FinancialTransactionsNetworkDataFactory(SelectedRangeAsDataTable));
+                visjsNetwork.BuildNetwork();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void btn_BasicNetworkData_Click(object sender, RibbonControlEventArgs e)
