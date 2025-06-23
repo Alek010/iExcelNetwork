@@ -1,8 +1,10 @@
 ﻿// Ignore Spelling: Visjs
 
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using VisjsNetworkLibrary.Models;
 
 namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
 {
@@ -10,94 +12,125 @@ namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
     {
         public static DataTable CalculateEdgeStats(DataTable inputTable)
         {
-            // Step 1: Group by edges and calculate raw stats
-            var grouped = inputTable.AsEnumerable()
-                .GroupBy(row => new
-                {
-                    From = row.Field<string>("from"),
-                    To = row.Field<string>("to")
-                })
-                .Select(g =>
-                {
-                    var values = g.Select(r => Convert.ToDouble(r.Field<string>("count"))).ToList();
-                    double avg = values.Average();
-                    double stdDev = values.Count > 1
-                        ? Math.Sqrt(values.Average(v => Math.Pow(v - avg, 2)))
-                        : 0.0;
+            var grouped = GroupEdgesAndCalculateStats(inputTable);
 
-                    return new
-                    {
-                        From = g.Key.From,
-                        To = g.Key.To,
-                        Count = values.Count,
-                        Sum = values.Sum(),
-                        Avg = avg,
-                        Max = values.Max(),
-                        Min = values.Min(),
-                        StdDev = stdDev
-                    };
-                })
-                .ToList();
+            var minMax = CalculateMinMax(grouped);
 
-            // Step 2: Compute min-max for normalization
-            double Normalize(double value, double min, double max) =>
-                (max == min) ? 1.0 : (value - min) / (max - min);
+            var result = CreateEdgeStatsTable();
 
-            double minCount = grouped.Min(x => x.Count);
-            double maxCount = grouped.Max(x => x.Count);
-            double minSum = grouped.Min(x => x.Sum);
-            double maxSum = grouped.Max(x => x.Sum);
-            double minAvg = grouped.Min(x => x.Avg);
-            double maxAvg = grouped.Max(x => x.Avg);
-            double minMax = grouped.Min(x => x.Max);
-            double maxMax = grouped.Max(x => x.Max);
-            double minMin = grouped.Min(x => x.Min);
-            double maxMin = grouped.Max(x => x.Min);
-            double minStd = grouped.Min(x => x.StdDev);
-            double maxStd = grouped.Max(x => x.StdDev);
-
-            // Step 3: Prepare result table
-            var result = new DataTable();
-            result.Columns.Add("From", typeof(string));
-            result.Columns.Add("To", typeof(string));
-            result.Columns.Add("Count", typeof(int));
-            result.Columns.Add("Sum", typeof(double));
-            result.Columns.Add("Avg", typeof(double));
-            result.Columns.Add("Min", typeof(double));
-            result.Columns.Add("Max", typeof(double));
-            result.Columns.Add("StdDev", typeof(double));
-            result.Columns.Add("Weight", typeof(double));
-            result.Columns.Add("Title", typeof(string));
-
-            // Step 4: Calculate normalized values and final weight
             foreach (var e in grouped)
             {
-                double normCount = Normalize(e.Count, minCount, maxCount);
-                double normSum = Normalize(e.Sum, minSum, maxSum);
-                double normAvg = Normalize(e.Avg, minAvg, maxAvg);
-                double normMax = Normalize(e.Max, minMax, maxMax);
-                double normMin = Normalize(e.Min, minMin, maxMin);
-                double normStd = Normalize(e.StdDev, minStd, maxStd);
-
-                double weight = 0.3 * normCount +
-                                0.3 * normSum +
-                                0.1 * normAvg +
-                                0.1 * normMax +
-                                0.1 * normMin +
-                                0.1 * (1 - normStd); // More consistency = higher weight
-
-                string title = $"Count: {e.Count}\n" +
-                               $"Sum: {e.Sum:F2}\n" +
-                               $"Average: {e.Avg:F2}\n" +
-                               $"Min: {e.Min:F2}\n" +
-                               $"Max: {e.Max:F2}\n" +
-                               $"Std.Dev: {e.StdDev:F2}\n" +
-                               $"Weight: {weight:F2}";
+                double weight = CalculateWeight(e, minMax);
+                string title = BuildTitle(e, weight);
 
                 result.Rows.Add(e.From, e.To, e.Count, e.Sum, e.Avg, e.Min, e.Max, e.StdDev, weight, title);
             }
 
             return result;
         }
+
+        // --- Grouping and aggregation ---
+
+        private static List<EdgeAggregate> GroupEdgesAndCalculateStats(DataTable inputTable)
+        {
+            return inputTable.AsEnumerable()
+                .GroupBy(row => new
+                {
+                    From = row.Field<string>("from"),
+                    To = row.Field<string>("to")
+                })
+                .Select(g => AggregateEdge(g))
+                .ToList();
+        }
+
+        private static EdgeAggregate AggregateEdge(IGrouping<object, DataRow> group)
+        {
+            var values = group.Select(r => Convert.ToDouble(r.Field<string>("count"))).ToList();
+            double avg = values.Average();
+            double stdDev = values.Count > 1
+                ? Math.Sqrt(values.Average(v => Math.Pow(v - avg, 2)))
+                : 0.0;
+
+            return new EdgeAggregate
+            {
+                From = group.Key.GetType().GetProperty("From")?.GetValue(group.Key)?.ToString(),
+                To = group.Key.GetType().GetProperty("To")?.GetValue(group.Key)?.ToString(),
+                Count = values.Count,
+                Sum = values.Sum(),
+                Avg = avg,
+                Max = values.Max(),
+                Min = values.Min(),
+                StdDev = stdDev
+            };
+        }
+
+        // --- Weight and title generation ---
+
+        private static double CalculateWeight(EdgeAggregate e, (double min, double max)[] minMax)
+        {
+            double normCount = Normalize(e.Count, minMax[0].min, minMax[0].max);
+            double normSum = Normalize(e.Sum, minMax[1].min, minMax[1].max);
+            double normAvg = Normalize(e.Avg, minMax[2].min, minMax[2].max);
+            double normMax = Normalize(e.Max, minMax[3].min, minMax[3].max);
+            double normMin = Normalize(e.Min, minMax[4].min, minMax[4].max);
+            double normStd = Normalize(e.StdDev, minMax[5].min, minMax[5].max);
+
+            return 0.3 * normCount +
+                   0.3 * normSum +
+                   0.1 * normAvg +
+                   0.1 * normMax +
+                   0.1 * normMin +
+                   0.1 * (1 - normStd);
+        }
+
+        private static string BuildTitle(EdgeAggregate e, double weight)
+        {
+            return $"Count: {e.Count}\n" +
+                   $"Sum: {e.Sum:F2}\n" +
+                   $"Average: {e.Avg:F2}\n" +
+                   $"Min: {e.Min:F2}\n" +
+                   $"Max: {e.Max:F2}\n" +
+                   $"Std.Dev: {e.StdDev:F2}\n" +
+                   "---------\n" +
+                   $"EdgeWeight: {weight:F2}";
+        }
+
+        // --- Helpers ---
+
+        private static double Normalize(double value, double min, double max)
+        {
+            return (max == min) ? 1.0 : (value - min) / (max - min);
+        }
+
+        private static (double min, double max)[] CalculateMinMax(List<EdgeAggregate> grouped)
+        {
+            return new[]
+            {
+            (grouped.Min(x => (double)x.Count), grouped.Max(x => (double)x.Count)),
+            (grouped.Min(x => x.Sum), grouped.Max(x => x.Sum)),
+            (grouped.Min(x => x.Avg), grouped.Max(x => x.Avg)),
+            (grouped.Min(x => x.Max), grouped.Max(x => x.Max)),
+            (grouped.Min(x => x.Min), grouped.Max(x => x.Min)),
+            (grouped.Min(x => x.StdDev), grouped.Max(x => x.StdDev))
+        };
+        }
+
+        private static DataTable CreateEdgeStatsTable()
+        {
+            var table = new DataTable();
+            table.Columns.Add("From", typeof(string));
+            table.Columns.Add("To", typeof(string));
+            table.Columns.Add("Count", typeof(int));
+            table.Columns.Add("Sum", typeof(double));
+            table.Columns.Add("Avg", typeof(double));
+            table.Columns.Add("Min", typeof(double));
+            table.Columns.Add("Max", typeof(double));
+            table.Columns.Add("StdDev", typeof(double));
+            table.Columns.Add("EdgeWeight", typeof(double));
+            table.Columns.Add("Title", typeof(string));
+            return table;
+        }
     }
+
+
 }
