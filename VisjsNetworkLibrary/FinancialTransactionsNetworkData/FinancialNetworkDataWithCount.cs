@@ -26,22 +26,17 @@ namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
                 throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotAllCountColumnValuesAreIntegers());
             }
 
+            DataTable edgesStatsTable = EdgeStats.CalculateEdgeStats(_dataTable);
+
             var nodeDict = GetNodes().ToDictionary(n => n.Label, n => n.Id);
 
-            var edgesList = _dataTable.AsEnumerable()
-                .GroupBy(row => new
-                {
-                    From = row.Field<string>("from"),
-                    To = row.Field<string>("to")
-                })
-                .Select(g => new Edge
-                {
-                    From = nodeDict[g.Key.From],
-                    To = nodeDict[g.Key.To],
-                    Count = g.Sum(row => int.Parse(row.Field<string>("count"))).ToString(),
-                    Title = g.Sum(row => int.Parse(row.Field<string>("count"))).ToString()
-                })
-                .ToList();
+            var edgesList = edgesStatsTable.AsEnumerable().Select(row => new Edge
+            {
+                From = nodeDict[row.Field<string>("From")],
+                To = nodeDict[row.Field<string>("To")],
+                Count = row.Field<double>("Sum").ToString(),
+                Title = row.Field<string>("Title")
+            }).ToList();
 
             return edgesList;
         }
