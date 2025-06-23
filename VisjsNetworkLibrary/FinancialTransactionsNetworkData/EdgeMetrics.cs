@@ -8,9 +8,9 @@ using VisjsNetworkLibrary.Models;
 
 namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
 {
-    public class EdgeStats
+    public class EdgeMetrics
     {
-        public static DataTable CalculateEdgeStats(DataTable inputTable)
+        public static DataTable GenerateEdgeStatisticsTable(DataTable inputTable)
         {
             var grouped = GroupEdgesAndCalculateStats(inputTable);
 
@@ -31,7 +31,7 @@ namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
 
         // --- Grouping and aggregation ---
 
-        private static List<EdgeAggregate> GroupEdgesAndCalculateStats(DataTable inputTable)
+        private static List<EdgeStatistics> GroupEdgesAndCalculateStats(DataTable inputTable)
         {
             return inputTable.AsEnumerable()
                 .GroupBy(row => new
@@ -43,7 +43,7 @@ namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
                 .ToList();
         }
 
-        private static EdgeAggregate AggregateEdge(IGrouping<object, DataRow> group)
+        private static EdgeStatistics AggregateEdge(IGrouping<object, DataRow> group)
         {
             var values = group.Select(r => Convert.ToDouble(r.Field<string>("count"))).ToList();
             double avg = values.Average();
@@ -51,7 +51,7 @@ namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
                 ? Math.Sqrt(values.Average(v => Math.Pow(v - avg, 2)))
                 : 0.0;
 
-            return new EdgeAggregate
+            return new EdgeStatistics
             {
                 From = group.Key.GetType().GetProperty("From")?.GetValue(group.Key)?.ToString(),
                 To = group.Key.GetType().GetProperty("To")?.GetValue(group.Key)?.ToString(),
@@ -66,7 +66,7 @@ namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
 
         // --- Weight and title generation ---
 
-        private static double CalculateWeight(EdgeAggregate e, (double min, double max)[] minMax)
+        private static double CalculateWeight(EdgeStatistics e, (double min, double max)[] minMax)
         {
             double normCount = Normalize(e.Count, minMax[0].min, minMax[0].max);
             double normSum = Normalize(e.Sum, minMax[1].min, minMax[1].max);
@@ -83,7 +83,7 @@ namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
                    0.1 * (1 - normStd);
         }
 
-        private static string BuildTitle(EdgeAggregate e, double weight)
+        private static string BuildTitle(EdgeStatistics e, double weight)
         {
             return $"Count: {e.Count}\n" +
                    $"Sum: {e.Sum:F2}\n" +
@@ -102,7 +102,7 @@ namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
             return (max == min) ? 1.0 : (value - min) / (max - min);
         }
 
-        private static (double min, double max)[] CalculateMinMax(List<EdgeAggregate> grouped)
+        private static (double min, double max)[] CalculateMinMax(List<EdgeStatistics> grouped)
         {
             return new[]
             {

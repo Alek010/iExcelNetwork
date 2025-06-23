@@ -26,7 +26,7 @@ namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
                 throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotAllCountColumnValuesAreIntegers());
             }
 
-            DataTable edgesStatsTable = EdgeStats.CalculateEdgeStats(_dataTable);
+            DataTable edgesStatsTable = EdgeMetrics.GenerateEdgeStatisticsTable(_dataTable);
 
             var nodeDict = GetNodes().ToDictionary(n => n.Label, n => n.Id);
 

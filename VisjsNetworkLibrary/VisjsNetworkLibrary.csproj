@@ -51,14 +51,14 @@
     <Compile Include="Exceptions\SelectedDataTableExceptionMessages.cs" />
     <Compile Include="FileProcessor.cs" />
     <Compile Include="FinancialTransactionsNetworkDataFactory.cs" />
-    <Compile Include="FinancialTransactionsNetworkData\EdgeStats.cs" />
+    <Compile Include="FinancialTransactionsNetworkData\EdgeMetrics.cs" />
     <Compile Include="FinancialTransactionsNetworkData\FinancialNetworkDataWithCount.cs" />
     <Compile Include="Helpers\ColorMapper.cs" />
     <Compile Include="Helpers\IconMapper.cs" />
     <Compile Include="Interfaces\INetworkData.cs" />
     <Compile Include="Interfaces\IFileContent.cs" />
     <Compile Include="Models\Edge.cs" />
-    <Compile Include="Models\EdgeAggregate.cs" />
+    <Compile Include="Models\EdgeStatistics.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\NodeIcon.cs" />
     <Compile Include="Interfaces\INetworkDataTableTemplates.cs" />
