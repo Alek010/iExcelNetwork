@@ -53,6 +53,7 @@
     <Compile Include="FinancialTransactionsNetworkDataFactory.cs" />
     <Compile Include="FinancialTransactionsNetworkData\EdgeMetrics.cs" />
     <Compile Include="FinancialTransactionsNetworkData\FinancialNetworkDataWithCount.cs" />
+    <Compile Include="FinancialTransactionsNetworkData\FinancialNetworkDataWithNodesIconsAndCount.cs" />
     <Compile Include="Helpers\ColorMapper.cs" />
     <Compile Include="Helpers\IconMapper.cs" />
     <Compile Include="Interfaces\INetworkData.cs" />
