@@ -7,7 +7,7 @@ using VisjsNetworkLibrary.Interfaces;
 using VisjsNetworkLibrary.Models;
 using VisjsNetworkLibrary.NetworkDataClasses;
 
-namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
+namespace VisjsNetworkLibrary.FinancialNetworkData
 {
     public class FinancialNetworkDataWithCount : NetworkData, INetworkData
     {

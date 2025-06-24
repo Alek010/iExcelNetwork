@@ -6,7 +6,7 @@ using System.Linq;
 using VisjsNetworkLibrary.Exceptions;
 using VisjsNetworkLibrary.Models;
 
-namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
+namespace VisjsNetworkLibrary.FinancialNetworkData
 {
     public static class FinancialNetworkEdgesList
     {

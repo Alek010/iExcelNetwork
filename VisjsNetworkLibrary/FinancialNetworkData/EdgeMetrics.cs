@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using VisjsNetworkLibrary.Models;
 
-namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
+namespace VisjsNetworkLibrary.FinancialNetworkData
 {
     public class EdgeMetrics
     {

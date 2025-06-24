@@ -2,15 +2,14 @@
 
 using System.Data;
 using VisjsNetworkLibrary.Exceptions;
-using VisjsNetworkLibrary.FinancialTransactionsNetworkData;
+using VisjsNetworkLibrary.FinancialNetworkData;
 using VisjsNetworkLibrary.Interfaces;
-using VisjsNetworkLibrary.NetworkDataClasses;
 
 namespace VisjsNetworkLibrary
 {
-    public class FinancialTransactionsNetworkDataFactory : NetworkDataFactory
+    public class FinancialNetworkDataFactory : NetworkDataFactory
     {
-        public FinancialTransactionsNetworkDataFactory(DataTable dataTable) : base(dataTable)
+        public FinancialNetworkDataFactory(DataTable dataTable) : base(dataTable)
         {
         }
 

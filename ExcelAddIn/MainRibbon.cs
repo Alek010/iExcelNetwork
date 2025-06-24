@@ -87,7 +87,7 @@ namespace ExcelAddIn
         {
             try
             {
-                VisjsNetwork visjsNetwork = new VisjsNetwork(new FinancialTransactionsNetworkDataFactory(SelectedRangeAsDataTable));
+                VisjsNetwork visjsNetwork = new VisjsNetwork(new FinancialNetworkDataFactory(SelectedRangeAsDataTable));
                 visjsNetwork.BuildNetwork();
             }
             catch (Exception ex)

@@ -1,16 +1,14 @@
 ﻿// Ignore Spelling: Visjs
 
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using VisjsNetworkLibrary.Exceptions;
 using VisjsNetworkLibrary.Helpers;
 using VisjsNetworkLibrary.Interfaces;
 using VisjsNetworkLibrary.Models;
 using VisjsNetworkLibrary.NetworkDataClasses;
 
-namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
+namespace VisjsNetworkLibrary.FinancialNetworkData
 {
     public class FinancialNetworkDataWithNodesIconsInColorAndCount : NetworkData, INetworkData
     {
