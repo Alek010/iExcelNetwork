@@ -13,7 +13,7 @@ namespace VisjsNetworkLibrary.Models
         public int To { get; set; }
 
         [JsonProperty("value")]
-        public int Value { get; set; }
+        public double Value { get; set; }
 
         [JsonProperty("label")]
         public string Count { get; set; }

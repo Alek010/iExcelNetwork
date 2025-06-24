@@ -50,7 +50,7 @@ namespace VisjsNetworkLibrary
 
             if (NetworkDataIsScalable)
             {
-                result = result.Replace("scaling: { min: 1, max: 1 },", "");
+                result = result.Replace("scaling: { min: 1, max: 1 },", "scaling: { min: 0, max: 5 },");
             }
 
             if (NetworkDataLinksHasTitles)

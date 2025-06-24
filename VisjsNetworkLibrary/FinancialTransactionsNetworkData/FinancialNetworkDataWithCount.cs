@@ -17,6 +17,7 @@ namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
         public FinancialNetworkDataWithCount(DataTable dataTable) : base(dataTable)
         {
             base.EdgesLinksHasTitle = true;
+            base.NodesEdgesAreScalable = true;
         }
 
         public override List<Edge> GetEdges()
@@ -35,7 +36,10 @@ namespace VisjsNetworkLibrary.FinancialTransactionsNetworkData
                 From = nodeDict[row.Field<string>("From")],
                 To = nodeDict[row.Field<string>("To")],
                 Count = row.Field<double>("Sum").ToString(),
-                Title = row.Field<string>("Title")
+                Title = row.Field<string>("Title"),
+                Value = row.Field<double>("EdgeWeight") * 5 
+                // Number 5 is multiplier to EdgeWeight (min 0 and max 1) in order to adjust edge scaling from 0 to 5.
+                // Scaling is set in NetworkHtmlContent class.
             }).ToList();
 
             return edgesList;
