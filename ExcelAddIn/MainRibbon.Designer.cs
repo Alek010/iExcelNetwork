@@ -150,6 +150,7 @@
             this.splitBtn_NetworkDataTables.Items.Add(this.btn_NetworkDataScalinNodesEdges);
             this.splitBtn_NetworkDataTables.Label = "Data Tables";
             this.splitBtn_NetworkDataTables.Name = "splitBtn_NetworkDataTables";
+            this.splitBtn_NetworkDataTables.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.splitBtn_NetworkDataTables_Click);
             // 
             // btn_BasicNetworkData
             // 

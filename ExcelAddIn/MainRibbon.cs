@@ -448,5 +448,10 @@ namespace ExcelAddIn
         {
             btn_AllTablesWithSampleData_Click(sender, e);
         }
+
+        private void splitBtn_NetworkDataTables_Click(object sender, RibbonControlEventArgs e)
+        {
+            btn_BasicNetworkData_Click(sender, e);
+        }
     }
 }
