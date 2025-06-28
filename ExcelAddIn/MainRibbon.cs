@@ -443,5 +443,10 @@ namespace ExcelAddIn
             form.StartPosition = FormStartPosition.CenterScreen;
             form.ShowDialog();
         }
+
+        private void splitBtn_SampleData_Click(object sender, RibbonControlEventArgs e)
+        {
+            btn_AllTablesWithSampleData_Click(sender, e);
+        }
     }
 }
