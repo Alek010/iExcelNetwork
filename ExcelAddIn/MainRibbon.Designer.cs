@@ -134,6 +134,7 @@
             // splitBtn_NetworkDataTables
             // 
             this.splitBtn_NetworkDataTables.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.splitBtn_NetworkDataTables.Image = ((System.Drawing.Image)(resources.GetObject("splitBtn_NetworkDataTables.Image")));
             this.splitBtn_NetworkDataTables.Items.Add(this.btn_BasicNetworkData);
             this.splitBtn_NetworkDataTables.Items.Add(this.btn_BasicTableWithCount);
             this.splitBtn_NetworkDataTables.Items.Add(this.btn_NetworkDataLinkConfirmed);
@@ -244,6 +245,7 @@
             // splitBtn_SampleData
             // 
             this.splitBtn_SampleData.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.splitBtn_SampleData.Image = ((System.Drawing.Image)(resources.GetObject("splitBtn_SampleData.Image")));
             this.splitBtn_SampleData.Items.Add(this.btn_AllTablesWithSampleData);
             this.splitBtn_SampleData.Label = "Sample Data";
             this.splitBtn_SampleData.Name = "splitBtn_SampleData";
