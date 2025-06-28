@@ -16,7 +16,7 @@ namespace VisjsNetworkLibraryTests
             {
                 DataTable dt = CreateFinancialNetwrokDataWithNodesIconsAndCountTable();
 
-                dt.Rows.Add("A", "B", "person", "group", "red", "green", "2");
+                dt.Rows.Add("A", "person", "red", "B",  "group", "green", "2");
 
                 FinancialNetworkDataWithNodesIconsInColorAndCount networkData = new FinancialNetworkDataWithNodesIconsInColorAndCount(dt);
 
@@ -33,7 +33,7 @@ namespace VisjsNetworkLibraryTests
             {
                 DataTable dt = CreateFinancialNetwrokDataWithNodesIconsAndCountTable();
 
-                dt.Rows.Add("A", "B", "person", "", "red", "", "1");
+                dt.Rows.Add("A", "person", "red", "B",  "", "", "1");
 
                 FinancialNetworkDataWithNodesIconsInColorAndCount networkData = new FinancialNetworkDataWithNodesIconsInColorAndCount(dt);
 
@@ -144,16 +144,7 @@ namespace VisjsNetworkLibraryTests
 
             private DataTable CreateFinancialNetwrokDataWithNodesIconsAndCountTable()
             {
-                DataTable dt = new DataTable();
-                dt.Columns.Add("from", typeof(string));
-                dt.Columns.Add("to", typeof(string));
-                dt.Columns.Add("fromicon", typeof(string));
-                dt.Columns.Add("toicon", typeof(string));
-                dt.Columns.Add("fromcolor", typeof(string));
-                dt.Columns.Add("tocolor", typeof(string));
-                dt.Columns.Add("count", typeof(string));
-
-                return dt;
+                return new NetworkDataTableTemplates().CreateNetworkDataWithNodesIconsInColorAndCountTable();
             }
         }
     }

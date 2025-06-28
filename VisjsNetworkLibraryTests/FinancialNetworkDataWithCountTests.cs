@@ -12,11 +12,7 @@ namespace VisjsNetworkLibraryTests
         [Fact]
         public void GetEdges_WithMultipleUniqueRowsTable_ExtractsCorrectEdges()
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("from", typeof(string));
-            dt.Columns.Add("to", typeof(string));
-            dt.Columns.Add("count", typeof(string));
-
+            DataTable dt = CreateFinancialNetworkDataWithCountTable();
             dt.Rows.Add("A", "B", "1");
             dt.Rows.Add("C", "B", "2");
 
@@ -53,10 +49,7 @@ namespace VisjsNetworkLibraryTests
         [Fact]
         public void GetEdges_WithDuplicateRowsTable_ExtractsCorrectEdges()
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("from", typeof(string));
-            dt.Columns.Add("to", typeof(string));
-            dt.Columns.Add("count", typeof(string));
+            DataTable dt = CreateFinancialNetworkDataWithCountTable();
 
             dt.Rows.Add("C", "B", "5");
             dt.Rows.Add("A", "B", "1");
@@ -115,6 +108,11 @@ namespace VisjsNetworkLibraryTests
         {
             return $"Count: {titleValues[0]}\nSum: {titleValues[1]:F2}\nAverage: {titleValues[2]:F2}\nMin: {titleValues[3]:F2}\n" +
                    $"Max: {titleValues[4]:F2}\nStd.Dev: {titleValues[5]:F2}\n---------\nEdgeWeight: {titleValues[6]:F2}";
+        }
+
+        private DataTable CreateFinancialNetworkDataWithCountTable()
+        {
+            return new NetworkDataTableTemplates().CreateNetworkDataWithCountTable();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace VisjsNetworkLibraryTests
         {
             DataTable dt = CreateFinancialNetwrokDataWithNodesIconsAndCountTable();
 
-            dt.Rows.Add("A", "B", "person", "group", "2");
+            dt.Rows.Add("A", "person", "B", "group", "2");
 
             FinancialNetworkDataWithNodesIconsAndCount networkData = new FinancialNetworkDataWithNodesIconsAndCount(dt);
 
@@ -31,7 +31,7 @@ namespace VisjsNetworkLibraryTests
         {
             DataTable dt = CreateFinancialNetwrokDataWithNodesIconsAndCountTable();
 
-            dt.Rows.Add("A", "B", "person", "", "2");
+            dt.Rows.Add("A", "person", "B",  "", "2");
 
             FinancialNetworkDataWithNodesIconsAndCount networkData = new FinancialNetworkDataWithNodesIconsAndCount(dt);
 
@@ -48,8 +48,8 @@ namespace VisjsNetworkLibraryTests
         {
             DataTable dt = CreateFinancialNetwrokDataWithNodesIconsAndCountTable();
 
-            dt.Rows.Add("A", "B", "person", "group", "1");
-            dt.Rows.Add("C", "B", "home", "group", "2");
+            dt.Rows.Add("A", "person", "B",  "group", "1");
+            dt.Rows.Add("C", "home", "B",  "group", "2");
 
             FinancialNetworkDataWithNodesIconsAndCount networkData = new FinancialNetworkDataWithNodesIconsAndCount(dt);
 
@@ -86,9 +86,9 @@ namespace VisjsNetworkLibraryTests
         {
             DataTable dt = CreateFinancialNetwrokDataWithNodesIconsAndCountTable();
 
-            dt.Rows.Add("C", "B", "person", "group", "5");
-            dt.Rows.Add("A", "B", "car", "group", "1");
-            dt.Rows.Add("C", "B", "person", "group", "5");
+            dt.Rows.Add("C", "person", "B",  "group", "5");
+            dt.Rows.Add("A", "car", "B",  "group", "1");
+            dt.Rows.Add("C", "person", "B", "group", "5");
 
 
             FinancialNetworkDataWithNodesIconsAndCount networkData = new FinancialNetworkDataWithNodesIconsAndCount(dt);
@@ -142,14 +142,7 @@ namespace VisjsNetworkLibraryTests
 
         private DataTable CreateFinancialNetwrokDataWithNodesIconsAndCountTable()
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("from", typeof(string));
-            dt.Columns.Add("to", typeof(string));
-            dt.Columns.Add("fromicon", typeof(string));
-            dt.Columns.Add("toicon", typeof(string));
-            dt.Columns.Add("count", typeof(string));
-
-            return dt;
+            return new NetworkDataTableTemplates().CreateNetworkDataWithNodesIconsAndCountTable();
         }
     }
 }
