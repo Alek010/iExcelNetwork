@@ -346,71 +346,8 @@ namespace ExcelAddIn
         {
             try
             {
-                NetworkDataTableTemplatesWithSampleData networkDataTemplate = new NetworkDataTableTemplatesWithSampleData(new NetworkDataTableTemplates());
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(excelApp: Globals.ThisAddIn.Application,
-                                                                         pasteIntoNewSheet: true);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "A1");
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataLinkIsConfirmedTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "A6");
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithCountTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "A11");
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithCountAndLinkIsConfirmedTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "A16");
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "F1",
-                                                   tableStyleName: "TableStyleMedium3");
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "F6",
-                                                   tableStyleName: "TableStyleMedium3");
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsAndCountTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "F11",
-                                                   tableStyleName: "TableStyleMedium3");
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedAndCountTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "F16",
-                                                   tableStyleName: "TableStyleMedium3");
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "M1",
-                                                   tableStyleName: "TableStyleMedium7");
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndLinkIsConfirmedTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "M6",
-                                                   tableStyleName: "TableStyleMedium7");
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "M11",
-                                                   tableStyleName: "TableStyleMedium7");
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndCountAndLinkIsConfirmedTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "M16",
-                                                   tableStyleName: "TableStyleMedium7");
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataScalingNodesAndEdges(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
-                                                   cellReference: "U1",
-                                                   tableStyleName: "TableStyleMedium1");
+                SampleData sampleData = new SampleData(excelApp: Globals.ThisAddIn.Application);
+                sampleData.PasteAllTables();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
