@@ -16,15 +16,20 @@ namespace ExcelAddIn
 
         private Action ActivateAddInsTab;
 
-        private DataTableTemplateToExcel _dataTableTemplate { get; set; }
+        private DataTableTemplateToExcel DataTableTemplate { get; set; }
+        private DataTableWithSampleDataToExcel DataTableSampleData { get; set; }
 
         private void MainRibbon_Load(object sender, RibbonUIEventArgs e)
         {
             ActivateAddInsTab = () => e?.RibbonUI?.ActivateTabMso("TabAddIns");
 
-            _dataTableTemplate = new DataTableTemplateToExcel(
-                new DataTableToExcel(Globals.ThisAddIn.Application),
+            DataTableTemplate = new DataTableTemplateToExcel(
+                new DataTableToExcel(excelApp: Globals.ThisAddIn.Application),
                 new NetworkDataTableTemplates());
+
+            DataTableSampleData = new DataTableWithSampleDataToExcel(
+                new DataTableToExcel(excelApp: Globals.ThisAddIn.Application, pasteIntoNewSheet: true),
+                new NetworkDataTableTemplatesWithSampleData(new NetworkDataTableTemplates()));
         }
 
         private void btn_SelectRange_Click(object sender, RibbonControlEventArgs e)
@@ -101,7 +106,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateBasicNetworkDataTable();
+                DataTableTemplate.CreateBasicNetworkDataTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -115,7 +120,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateNetworkDataWithCountTable();
+                DataTableTemplate.CreateNetworkDataWithCountTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -130,7 +135,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateNetworkDataLinkIsConfirmedTable();
+                DataTableTemplate.CreateNetworkDataLinkIsConfirmedTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -144,7 +149,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateNetworkDataWithCountAndLinkIsConfirmedTable();
+                DataTableTemplate.CreateNetworkDataWithCountAndLinkIsConfirmedTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -158,7 +163,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateNetworkDataWithNodesIconsTable();
+                DataTableTemplate.CreateNetworkDataWithNodesIconsTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -172,7 +177,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedTable();
+                DataTableTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -186,7 +191,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateNetworkDataWithNodesIconsAndCountTable();
+                DataTableTemplate.CreateNetworkDataWithNodesIconsAndCountTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -200,7 +205,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedAndCountTable();
+                DataTableTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedAndCountTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -214,7 +219,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateNetworkDataWithNodesIconsInColorTable();
+                DataTableTemplate.CreateNetworkDataWithNodesIconsInColorTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -228,7 +233,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateNetworkDataWithNodesIconsInColorAndLinkIsConfirmedTable();
+                DataTableTemplate.CreateNetworkDataWithNodesIconsInColorAndLinkIsConfirmedTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -242,7 +247,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable();
+                DataTableTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -256,7 +261,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateNetworkDataWithNodesIconsInColorAndCountAndLinkIsConfirmedTable();
+                DataTableTemplate.CreateNetworkDataWithNodesIconsInColorAndCountAndLinkIsConfirmedTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -270,7 +275,7 @@ namespace ExcelAddIn
         {
             try
             {
-                _dataTableTemplate.CreateNetworkDataScalingNodesAndEdgesTable();
+                DataTableTemplate.CreateNetworkDataScalingNodesAndEdgesTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -284,8 +289,7 @@ namespace ExcelAddIn
         {
             try
             {
-                DataTableWithSampleData sampleData = new DataTableWithSampleData(excelApp: Globals.ThisAddIn.Application);
-                sampleData.PasteAllTables();
+                DataTableSampleData.PasteAllTables();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }

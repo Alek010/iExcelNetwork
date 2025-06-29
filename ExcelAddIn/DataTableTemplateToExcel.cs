@@ -2,14 +2,11 @@
 
 using ExcelAddIn.Validations;
 using VisjsNetworkLibrary.Models;
-using Excel = Microsoft.Office.Interop.Excel;
-
 
 namespace ExcelAddIn
 {
     public class DataTableTemplateToExcel
     {
-        private readonly Excel.Application _excelApp;
         private readonly NetworkDataTableTemplates _networkDataTablesTemplate;
         private readonly DataTableToExcel _dataTableToExcel;
 
