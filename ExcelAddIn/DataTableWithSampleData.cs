@@ -6,12 +6,12 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ExcelAddIn
 {
-    public class SampleData
+    public class DataTableWithSampleData
     {
         private readonly Excel.Application _excelApp;
         private readonly NetworkDataTableTemplatesWithSampleData _networkDataTemplate = new NetworkDataTableTemplatesWithSampleData(new NetworkDataTableTemplates());
 
-        public SampleData(Excel.Application excelApp)
+        public DataTableWithSampleData(Excel.Application excelApp)
         {
             _excelApp = excelApp;
         }

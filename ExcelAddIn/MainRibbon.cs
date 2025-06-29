@@ -2,15 +2,10 @@
 using ExcelAddIn.Validations;
 using Microsoft.Office.Tools.Ribbon;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Windows.Forms;
 using VisjsNetworkLibrary;
-using VisjsNetworkLibrary.Interfaces;
 using VisjsNetworkLibrary.Models;
-using VisjsNetworkLibrary.NetworkDataClasses;
-using VisjsNetworkLibrary.Validations;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ExcelAddIn
@@ -21,9 +16,15 @@ namespace ExcelAddIn
 
         private Action ActivateAddInsTab;
 
+        private DataTableTemplateToExcel _dataTableTemplate { get; set; }
+
         private void MainRibbon_Load(object sender, RibbonUIEventArgs e)
         {
             ActivateAddInsTab = () => e?.RibbonUI?.ActivateTabMso("TabAddIns");
+
+            _dataTableTemplate = new DataTableTemplateToExcel(
+                new DataTableToExcel(Globals.ThisAddIn.Application),
+                new NetworkDataTableTemplates());
         }
 
         private void btn_SelectRange_Click(object sender, RibbonControlEventArgs e)
@@ -100,11 +101,7 @@ namespace ExcelAddIn
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataTable(normalizeColumnNames: true));
+                _dataTableTemplate.CreateBasicNetworkDataTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -118,11 +115,7 @@ namespace ExcelAddIn
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithCountTable(normalizeColumnNames: true));
+                _dataTableTemplate.CreateNetworkDataWithCountTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -137,12 +130,7 @@ namespace ExcelAddIn
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataLinkIsConfirmedTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+                _dataTableTemplate.CreateNetworkDataLinkIsConfirmedTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -156,13 +144,7 @@ namespace ExcelAddIn
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithCountAndLinkIsConfirmedTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
-
+                _dataTableTemplate.CreateNetworkDataWithCountAndLinkIsConfirmedTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -176,12 +158,7 @@ namespace ExcelAddIn
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+                _dataTableTemplate.CreateNetworkDataWithNodesIconsTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -195,12 +172,7 @@ namespace ExcelAddIn
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+                _dataTableTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -214,12 +186,7 @@ namespace ExcelAddIn
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsAndCountTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+                _dataTableTemplate.CreateNetworkDataWithNodesIconsAndCountTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -233,12 +200,7 @@ namespace ExcelAddIn
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedAndCountTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+                _dataTableTemplate.CreateNetworkDataWithNodesIconsAndLinkIsConfirmedAndCountTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -248,16 +210,11 @@ namespace ExcelAddIn
             }
         }
 
-        private void btn_NetworkDataWithNodesInColor_Click(object sender, RibbonControlEventArgs e)
+        private void btn_NetworkDataWithNodesIconsInColor_Click(object sender, RibbonControlEventArgs e)
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+                _dataTableTemplate.CreateNetworkDataWithNodesIconsInColorTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -267,16 +224,11 @@ namespace ExcelAddIn
             }
         }
 
-        private void btn_NetworkDataWithNodesInColorAndLinkIsConfirmed_Click(object sender, RibbonControlEventArgs e)
+        private void btn_NetworkDataWithNodesIconsInColorAndLinkIsConfirmed_Click(object sender, RibbonControlEventArgs e)
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndLinkIsConfirmedTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+                _dataTableTemplate.CreateNetworkDataWithNodesIconsInColorAndLinkIsConfirmedTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -286,16 +238,11 @@ namespace ExcelAddIn
             }
         }
 
-        private void btn_NetworkDataWithNodesInColorAndCount_Click(object sender, RibbonControlEventArgs e)
+        private void btn_NetworkDataWithNodesIconsInColorAndCount_Click(object sender, RibbonControlEventArgs e)
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+                _dataTableTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -309,12 +256,7 @@ namespace ExcelAddIn
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(dataTable: networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndCountAndLinkIsConfirmedTable(normalizeColumnNames: true),
-                                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true));
+                _dataTableTemplate.CreateNetworkDataWithNodesIconsInColorAndCountAndLinkIsConfirmedTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -328,11 +270,7 @@ namespace ExcelAddIn
         {
             try
             {
-                NetworkDataTableTemplates networkDataTemplate = new NetworkDataTableTemplates();
-
-                DataTableToExcel dataTableToExcel = new DataTableToExcel(Globals.ThisAddIn.Application);
-
-                dataTableToExcel.PasteAsExcelTable(networkDataTemplate.CreateNetworkDataScalingNodesAndEdges(normalizeColumnNames: true));
+                _dataTableTemplate.CreateNetworkDataScalingNodesAndEdgesTable();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
             }
@@ -346,7 +284,7 @@ namespace ExcelAddIn
         {
             try
             {
-                SampleData sampleData = new SampleData(excelApp: Globals.ThisAddIn.Application);
+                DataTableWithSampleData sampleData = new DataTableWithSampleData(excelApp: Globals.ThisAddIn.Application);
                 sampleData.PasteAllTables();
 
                 Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();

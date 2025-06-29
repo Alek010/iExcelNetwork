@@ -13,18 +13,22 @@ namespace ExcelAddIn
         private const string sheetName = "SampleData";
 
         private readonly Excel.Application _excelApp;
-        private readonly Excel.Workbook _workbook;
-        private readonly Excel.Worksheet _worksheet;
+        private bool _pasteIntoNewSheet;
+        private Excel.Workbook _workbook { get; set; }
+        private Excel.Worksheet _worksheet { get; set; }
+
 
         public DataTableToExcel(Excel.Application excelApp, bool pasteIntoNewSheet = false)
         {
             _excelApp = excelApp ?? throw new ArgumentNullException(nameof(excelApp));
-            _workbook = _excelApp.ActiveWorkbook;
-            _worksheet = SetActiveExcelWorksheet(pasteIntoNewSheet);
+            _pasteIntoNewSheet = pasteIntoNewSheet;
         }
 
         public void PasteAsExcelTable(DataTable dataTable, string cellReference = null, Dictionary<string, string> columnValidationLists = null, string tableStyleName = "TableStyleMedium2")
         {
+            _workbook = _excelApp.ActiveWorkbook;
+            _worksheet = SetActiveExcelWorksheet();
+
             DataTableDimensions dtDimensions = new DataTableDimensions(dataTable);
             var dimensions = dtDimensions.GetDataTableDimensions();
 
@@ -39,9 +43,9 @@ namespace ExcelAddIn
             ApplyDataValidationListsToExcelTable(dataTable, columnValidationLists, dimensions.rowCount + 1, dimensions.columnCount, startCell);
         }
 
-        private Excel.Worksheet SetActiveExcelWorksheet(bool pasteIntoNewSheet)
+        private Excel.Worksheet SetActiveExcelWorksheet()
         {
-            if (pasteIntoNewSheet)
+            if (_pasteIntoNewSheet)
             {
                 if (WorksheetExists(_workbook, sheetName))
                 {

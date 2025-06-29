@@ -211,6 +211,7 @@
   <ItemGroup>
     <Compile Include="ConfigManager.cs" />
     <Compile Include="DataTableDimensions.cs" />
+    <Compile Include="DataTableTemplateToExcel.cs" />
     <Compile Include="DataTableToExcel.cs" />
     <Compile Include="ExcelRangeHelper.cs" />
     <Compile Include="Exceptions\SelectedCellNotRangeException.cs" />
@@ -229,7 +230,7 @@
     <Compile Include="MainRibbon.Designer.cs">
       <DependentUpon>MainRibbon.cs</DependentUpon>
     </Compile>
-    <Compile Include="SampleData.cs" />
+    <Compile Include="DataTableWithSampleData.cs" />
     <Compile Include="VisjsNetwork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
