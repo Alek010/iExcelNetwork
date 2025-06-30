@@ -62,6 +62,7 @@
             this.btn_SetOutputFolder = this.Factory.CreateRibbonButton();
             this.splitBtn_NetworkSettings = this.Factory.CreateRibbonSplitButton();
             this.btn_ChangeNetworkFileName = this.Factory.CreateRibbonButton();
+            this.btn_FinancialTransactionsSampleDataTables = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group_data.SuspendLayout();
             this.group_linkNetwork.SuspendLayout();
@@ -241,6 +242,7 @@
             this.splitBtn_SampleData.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.splitBtn_SampleData.Image = ((System.Drawing.Image)(resources.GetObject("splitBtn_SampleData.Image")));
             this.splitBtn_SampleData.Items.Add(this.btn_AllTablesWithSampleData);
+            this.splitBtn_SampleData.Items.Add(this.btn_FinancialTransactionsSampleDataTables);
             this.splitBtn_SampleData.Label = "Sample Data";
             this.splitBtn_SampleData.Name = "splitBtn_SampleData";
             this.splitBtn_SampleData.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.splitBtn_SampleData_Click);
@@ -280,6 +282,13 @@
             this.btn_ChangeNetworkFileName.Name = "btn_ChangeNetworkFileName";
             this.btn_ChangeNetworkFileName.ShowImage = true;
             this.btn_ChangeNetworkFileName.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_ChangeNetworkFileName_Click);
+            // 
+            // btn_FinancialTransactionsSampleDataTables
+            // 
+            this.btn_FinancialTransactionsSampleDataTables.Label = "Financial Transactions Tables";
+            this.btn_FinancialTransactionsSampleDataTables.Name = "btn_FinancialTransactionsSampleDataTables";
+            this.btn_FinancialTransactionsSampleDataTables.ShowImage = true;
+            this.btn_FinancialTransactionsSampleDataTables.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btn_FinancialTransactionsSampleDataTables_Click);
             // 
             // MainRibbon
             // 
@@ -328,6 +337,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_BuildFinTrxNetwork;
         internal Microsoft.Office.Tools.Ribbon.RibbonSplitButton splitBtn_SampleData;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_AllTablesWithSampleData;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btn_FinancialTransactionsSampleDataTables;
     }
 
     partial class ThisRibbonCollection

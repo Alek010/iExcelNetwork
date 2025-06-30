@@ -80,6 +80,21 @@ namespace ExcelAddIn
                                                tableStyleName: "TableStyleMedium1");
         }
 
+        public void PasteFinancialTransactionsTables()
+        {
+            _dataTableToExcel.PasteAsExcelTable(dataTable: _networkDataTemplate.CreateNetworkDataWithCountTable(normalizeColumnNames: true),
+                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
+                                   cellReference: "A1");
 
+            _dataTableToExcel.PasteAsExcelTable(dataTable: _networkDataTemplate.CreateNetworkDataWithNodesIconsAndCountTable(normalizeColumnNames: true),
+                                               columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
+                                               cellReference: "E1",
+                                               tableStyleName: "TableStyleMedium3");
+
+            _dataTableToExcel.PasteAsExcelTable(dataTable: _networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable(normalizeColumnNames: true),
+                                   columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
+                                   cellReference: "K1",
+                                   tableStyleName: "TableStyleMedium7");
+        }
     }
 }

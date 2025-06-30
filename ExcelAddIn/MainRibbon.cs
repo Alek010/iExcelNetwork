@@ -299,6 +299,20 @@ namespace ExcelAddIn
             }
         }
 
+        private void btn_FinancialTransactionsSampleDataTables_Click(object sender, RibbonControlEventArgs e)
+        {
+            try
+            {
+                DataTableSampleData.PasteFinancialTransactionsTables();
+
+                Globals.Ribbons.MainRibbon.ActivateAddInsTab?.Invoke();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void btn_SetOutputFolder_Click(object sender, RibbonControlEventArgs e)
         {
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
