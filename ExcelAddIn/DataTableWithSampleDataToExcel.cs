@@ -18,6 +18,8 @@ namespace ExcelAddIn
 
         public void PasteAllTables()
         {
+            _dataTableToExcel.DeleteSampleDataSheetIfExists();
+
             _dataTableToExcel.PasteAsExcelTable(dataTable: _networkDataTemplate.CreateNetworkDataTable(normalizeColumnNames: true),
                                                columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                cellReference: "A1");
@@ -82,6 +84,8 @@ namespace ExcelAddIn
 
         public void PasteFinancialTransactionsTables()
         {
+            _dataTableToExcel.DeleteSampleDataSheetIfExists();
+
             _dataTableToExcel.PasteAsExcelTable(dataTable: _networkDataTemplate.CreateNetworkDataWithCountTable(normalizeColumnNames: true),
                                    columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                    cellReference: "A1");

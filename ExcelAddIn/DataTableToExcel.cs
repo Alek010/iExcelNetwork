@@ -24,10 +24,44 @@ namespace ExcelAddIn
             _pasteIntoNewSheet = pasteIntoNewSheet;
         }
 
-        public void PasteAsExcelTable(DataTable dataTable, string cellReference = null, Dictionary<string, string> columnValidationLists = null, string tableStyleName = "TableStyleMedium2")
+        private void SetActiveWorkbook()
         {
             _workbook = _excelApp.ActiveWorkbook;
+        }
+
+        private void SetActiveWorksheet()
+        {
             _worksheet = SetActiveExcelWorksheet();
+        }
+
+        public void DeleteSampleDataSheetIfExists()
+        {
+            SetActiveWorkbook();
+
+            foreach (Excel.Worksheet sheet in _workbook.Worksheets)
+            {
+                if (string.Equals(sheet.Name, sheetName, StringComparison.OrdinalIgnoreCase))
+                {
+                    var originalDisplayAlerts = _workbook.Application.DisplayAlerts;
+                    try
+                    {
+                        _workbook.Application.DisplayAlerts = false; // Prevents Excel's delete confirmation
+                        sheet.Delete();
+                        SetActiveWorksheet();
+                    }
+                    finally
+                    {
+                        _workbook.Application.DisplayAlerts = originalDisplayAlerts;
+                    }
+                    break; // Only one worksheet of a given name exists
+                }
+            }
+        }
+
+        public void PasteAsExcelTable(DataTable dataTable, string cellReference = null, Dictionary<string, string> columnValidationLists = null, string tableStyleName = "TableStyleMedium2")
+        {
+            SetActiveWorkbook();
+            SetActiveWorksheet();
 
             DataTableDimensions dtDimensions = new DataTableDimensions(dataTable);
             var dimensions = dtDimensions.GetDataTableDimensions();
