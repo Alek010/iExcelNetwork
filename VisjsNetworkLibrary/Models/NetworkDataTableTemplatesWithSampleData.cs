@@ -15,6 +15,8 @@ namespace VisjsNetworkLibrary.Models
             _tableTemplate = networkDataTableTemplates;
         }
 
+        #region SampleData NetworkData
+
         public DataTable CreateNetworkDataLinkIsConfirmedTable(bool normalizeColumnNames = false)
         {
             var dt = _tableTemplate.CreateNetworkDataLinkIsConfirmedTable(normalizeColumnNames);
@@ -30,9 +32,9 @@ namespace VisjsNetworkLibrary.Models
         {
             var dt = _tableTemplate.CreateNetworkDataTable(normalizeColumnNames);
 
-            dt.Rows.Add("A", "B" );
-            dt.Rows.Add("A", "B" );
-            dt.Rows.Add("C", "B" );
+            dt.Rows.Add("A", "B");
+            dt.Rows.Add("A", "B");
+            dt.Rows.Add("C", "B");
 
             return dt;
         }
@@ -54,7 +56,7 @@ namespace VisjsNetworkLibrary.Models
 
             dt.Rows.Add("A", "B", "2", "TRUE");
             dt.Rows.Add("A", "B", "1", "TRUE");
-            dt.Rows.Add("C", "B", "10","FALSE");
+            dt.Rows.Add("C", "B", "10", "FALSE");
 
             return dt;
         }
@@ -157,5 +159,43 @@ namespace VisjsNetworkLibrary.Models
 
             return dt;
         }
+        #endregion
+
+        #region SampleData FinancialNetwork
+
+        public DataTable CreateFinancialNetworkDataWithCountTable(bool normalizeColumnNames = false)
+        {
+            var dt = _tableTemplate.CreateNetworkDataWithCountTable(normalizeColumnNames);
+
+            dt.Rows.Add("A", "B", "2");
+            dt.Rows.Add("A", "B", "1");
+            dt.Rows.Add("C", "B", "100");
+
+            return dt;
+        }
+
+        public DataTable CreateFinancialNetworkDataWithNodesIconsAndCountTable(bool normalizeColumnNames = false)
+        {
+            var dt = _tableTemplate.CreateNetworkDataWithNodesIconsAndCountTable(normalizeColumnNames);
+
+            dt.Rows.Add("A", "phone", "B", "person", "2");
+            dt.Rows.Add("A", "phone", "B", "person", "1");
+            dt.Rows.Add("C", "gun", "B", "person", "10");
+
+            return dt;
+        }
+
+        public DataTable CreateFinancialNetworkDataWithNodesIconsInColorAndCountTable(bool normalizeColumnNames = false)
+        {
+            var dt = _tableTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable(normalizeColumnNames);
+
+            dt.Rows.Add("+37128989924", "Cellphone", "Green", "B", "Person", "Red", "1");
+            dt.Rows.Add("XX123456", "ID-card", "Blue", "B", "Person", "Red", "1");
+            dt.Rows.Add("B", "Person", "Red", "C", "Group", "Black", "10");
+
+            return dt;
+        }
+
+        #endregion
     }
 }

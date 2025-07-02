@@ -86,16 +86,16 @@ namespace ExcelAddIn
         {
             _dataTableToExcel.DeleteSampleDataSheetIfExists();
 
-            _dataTableToExcel.PasteAsExcelTable(dataTable: _networkDataTemplate.CreateNetworkDataWithCountTable(normalizeColumnNames: true),
+            _dataTableToExcel.PasteAsExcelTable(dataTable: _networkDataTemplate.CreateFinancialNetworkDataWithCountTable(normalizeColumnNames: true),
                                    columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                    cellReference: "A1");
 
-            _dataTableToExcel.PasteAsExcelTable(dataTable: _networkDataTemplate.CreateNetworkDataWithNodesIconsAndCountTable(normalizeColumnNames: true),
+            _dataTableToExcel.PasteAsExcelTable(dataTable: _networkDataTemplate.CreateFinancialNetworkDataWithNodesIconsAndCountTable(normalizeColumnNames: true),
                                                columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                                cellReference: "E1",
                                                tableStyleName: "TableStyleMedium3");
 
-            _dataTableToExcel.PasteAsExcelTable(dataTable: _networkDataTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable(normalizeColumnNames: true),
+            _dataTableToExcel.PasteAsExcelTable(dataTable: _networkDataTemplate.CreateFinancialNetworkDataWithNodesIconsInColorAndCountTable(normalizeColumnNames: true),
                                    columnValidationLists: ExcelDataValidation.GetColumnValidationListsDictionary(normalizeColumnNames: true),
                                    cellReference: "K1",
                                    tableStyleName: "TableStyleMedium7");
