@@ -167,9 +167,9 @@ namespace VisjsNetworkLibrary.Models
         {
             var dt = _tableTemplate.CreateNetworkDataWithCountTable(normalizeColumnNames);
 
-            dt.Rows.Add("A", "B", "2");
+            dt.Rows.Add("A", "B", "2.5");
             dt.Rows.Add("A", "B", "1");
-            dt.Rows.Add("C", "B", "100");
+            dt.Rows.Add("C", "B", "10.5");
 
             return dt;
         }

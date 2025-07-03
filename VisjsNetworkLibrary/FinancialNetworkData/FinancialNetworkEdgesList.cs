@@ -13,7 +13,7 @@ namespace VisjsNetworkLibrary.FinancialNetworkData
 
         public static List<Edge> GetList(DataTable dt, List<Node> nodesList)
         {
-            if (ValidateCountColumnValuesAreIntegers(dt) == false)
+            if (ValidateCountColumnValuesAreNumeric(dt) == false)
             {
                 throw new DataTableStructureException(SelectedDataTableExceptionMessages.NotAllCountColumnValuesAreIntegers());
             }
@@ -36,7 +36,7 @@ namespace VisjsNetworkLibrary.FinancialNetworkData
             return edgesList;
         }
 
-        private static bool ValidateCountColumnValuesAreIntegers(DataTable dt)
+        private static bool ValidateCountColumnValuesAreNumeric(DataTable dt)
         {
             return dt.AsEnumerable()
                 .All(row =>
@@ -44,8 +44,10 @@ namespace VisjsNetworkLibrary.FinancialNetworkData
                     var value = row["count"];
                     if (value == DBNull.Value)
                         return false;
-                    return int.TryParse(value.ToString(), out _);
+                    string str = value.ToString();
+                    return int.TryParse(str, out _) || double.TryParse(str, out _);
                 });
         }
+
     }
 }
