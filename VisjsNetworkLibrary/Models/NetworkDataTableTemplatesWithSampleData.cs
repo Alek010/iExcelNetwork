@@ -169,7 +169,13 @@ namespace VisjsNetworkLibrary.Models
 
             dt.Rows.Add("A", "B", "2.5");
             dt.Rows.Add("A", "B", "1");
+            dt.Rows.Add("B", "D", "7");
             dt.Rows.Add("C", "B", "10.5");
+            dt.Rows.Add("B", "A", "5");
+            dt.Rows.Add("B", "D", "1");
+            dt.Rows.Add("D", "F", "3");
+            dt.Rows.Add("F", "A", "7.5");
+            dt.Rows.Add("F", "X", "6.3");
 
             return dt;
         }
@@ -178,9 +184,15 @@ namespace VisjsNetworkLibrary.Models
         {
             var dt = _tableTemplate.CreateNetworkDataWithNodesIconsAndCountTable(normalizeColumnNames);
 
-            dt.Rows.Add("A", "phone", "B", "person", "2");
-            dt.Rows.Add("A", "phone", "B", "person", "1");
-            dt.Rows.Add("C", "gun", "B", "person", "10");
+            dt.Rows.Add("A", "Bank account", "B", "Bank account", "2.5");
+            dt.Rows.Add("A", "Bank account", "B", "Bank account", "1");
+            dt.Rows.Add("B", "Bank account", "D", "Bank account", "7");
+            dt.Rows.Add("C", "Bank account", "B", "Bank account", "10.5");
+            dt.Rows.Add("B", "Bank account", "A", "Bank account", "5");
+            dt.Rows.Add("B", "Bank account", "D", "Bank account", "1");
+            dt.Rows.Add("D", "Bank account", "F", "Bank account", "3");
+            dt.Rows.Add("F", "Bank account", "A", "Bank account", "7.5");
+            dt.Rows.Add("F", "Bank account", "X", "Bank account", "6.3");
 
             return dt;
         }
@@ -189,9 +201,15 @@ namespace VisjsNetworkLibrary.Models
         {
             var dt = _tableTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable(normalizeColumnNames);
 
-            dt.Rows.Add("+37128989924", "Cellphone", "Green", "B", "Person", "Red", "1");
-            dt.Rows.Add("XX123456", "ID-card", "Blue", "B", "Person", "Red", "1");
-            dt.Rows.Add("B", "Person", "Red", "C", "Group", "Black", "10");
+            dt.Rows.Add("A", "Bank account", "blue", "B", "Bank account", "red", "2.5");
+            dt.Rows.Add("A", "Bank account", "blue", "B", "Bank account", "red", "1");
+            dt.Rows.Add("B", "Bank account", "red", "D", "Bank account", "", "7");
+            dt.Rows.Add("C", "Bank account", "", "B", "Bank account", "red", "10.5");
+            dt.Rows.Add("B", "Bank account", "red", "A", "Bank account", "blue", "5");
+            dt.Rows.Add("B", "Bank account", "red", "D", "Bank account", "", "1");
+            dt.Rows.Add("D", "Bank account", "", "F", "Bank account", "orange", "3");
+            dt.Rows.Add("F", "Bank account", "orange", "A", "Bank account", "", "7.5");
+            dt.Rows.Add("F", "Bank account", "orange", "X", "Bank account", "", "6.3");
 
             return dt;
         }
