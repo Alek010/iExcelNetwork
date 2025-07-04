@@ -68,13 +68,16 @@ namespace ExcelAddIn
 
             Excel.Range startCell = GetSelectedExcelRangeStartCell(cellReference);
 
-            Range writeRange = WriteDataToExcelRange(startCell, dimensions);
+            if (startCell != null)
+            {
+                Range writeRange = WriteDataToExcelRange(startCell, dimensions);
 
-            ListObject excelTable = ConvertExcelRangeToExcelTable(writeRange);
+                ListObject excelTable = ConvertExcelRangeToExcelTable(writeRange);
 
-            ApplyStyleToExcelTable(tableStyleName, excelTable);
+                ApplyStyleToExcelTable(tableStyleName, excelTable);
 
-            ApplyDataValidationListsToExcelTable(dataTable, columnValidationLists, dimensions.rowCount + 1, dimensions.columnCount, startCell);
+                ApplyDataValidationListsToExcelTable(dataTable, columnValidationLists, dimensions.rowCount + 1, dimensions.columnCount, startCell);
+            }
         }
 
         private Excel.Worksheet SetActiveExcelWorksheet()
