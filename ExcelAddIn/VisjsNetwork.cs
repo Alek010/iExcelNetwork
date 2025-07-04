@@ -15,11 +15,11 @@ namespace ExcelAddIn
         {
              _networkDataFactory = networkDataFactory;
         }
+
         public void BuildNetwork()
         {
-            NetworkDataFactory networkDataFactory = _networkDataFactory;
-            networkDataFactory.ValidateDataTable();
-            INetworkData networkData = networkDataFactory.CreateNetworkData();
+            _networkDataFactory.ValidateDataTable();
+            INetworkData networkData = _networkDataFactory.CreateNetworkData();
 
             NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
 
