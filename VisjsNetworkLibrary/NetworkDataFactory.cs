@@ -20,8 +20,6 @@ namespace VisjsNetworkLibrary
         public NetworkDataFactory(DataTable dataTable)
         {
             _dataTable = dataTable;
-            _columnCount = GetColumnCount(_dataTable);
-            _columnNames = GetColumnNames(_dataTable);
         }
 
         public void ValidateDataTable()
@@ -30,6 +28,9 @@ namespace VisjsNetworkLibrary
             validator.ValidateDataTableIsNotNull();
             validator.ValidateDataTableHasRecords();
             validator.ValidateDataTableHasTwoOrMoreColumns();
+
+            _columnCount = GetColumnCount(_dataTable);
+            _columnNames = GetColumnNames(_dataTable);
         }
 
         public virtual INetworkData CreateNetworkData()
