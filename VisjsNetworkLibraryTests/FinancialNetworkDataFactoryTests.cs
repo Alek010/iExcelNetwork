@@ -24,6 +24,7 @@ namespace VisjsNetworkLibraryTests
 
             var factory = new FinancialNetworkDataFactory(dt);
 
+
             // Act
             INetworkData result = factory.CreateNetworkData();
 
