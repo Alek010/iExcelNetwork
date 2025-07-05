@@ -81,7 +81,7 @@ namespace ExcelAddIn
             try
             {
                 VisjsNetwork visjsNetwork = new VisjsNetwork(new NetworkDataFactory(SelectedRangeAsDataTable));
-                visjsNetwork.BuildNetwork();
+                visjsNetwork.BuildNetwork(removeEdgesData: toggleBtn_RemoveNetworkEdgesData.Checked);
             }
             catch(Exception ex)
             {
@@ -94,7 +94,7 @@ namespace ExcelAddIn
             try
             {
                 VisjsNetwork visjsNetwork = new VisjsNetwork(new FinancialNetworkDataFactory(SelectedRangeAsDataTable));
-                visjsNetwork.BuildNetwork();
+                visjsNetwork.BuildNetwork(removeEdgesData: toggleBtn_RemoveNetworkEdgesData.Checked);
             }
             catch (Exception ex)
             {

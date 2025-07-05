@@ -15,7 +15,7 @@ namespace VisjsNetworkLibrary
         private bool NetworkDataIsScalable;
         private bool NetworkDataLinksHasTitles;
 
-        public bool RemoveEdgesDataFromHtml { get; set; } = true;
+        public bool RemoveEdgesDataFromHtml { get; set; } = false;
 
         public NetworkHtmlContent(INetworkData networkData)
         {

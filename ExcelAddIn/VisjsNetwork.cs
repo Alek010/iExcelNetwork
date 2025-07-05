@@ -1,6 +1,5 @@
 ﻿// Ignore Spelling: Visjs
 
-using System.Data;
 using System.IO;
 using VisjsNetworkLibrary;
 using VisjsNetworkLibrary.Interfaces;
@@ -16,12 +15,13 @@ namespace ExcelAddIn
              _networkDataFactory = networkDataFactory;
         }
 
-        public void BuildNetwork()
+        public void BuildNetwork(bool removeEdgesData = false)
         {
             _networkDataFactory.ValidateDataTable();
             INetworkData networkData = _networkDataFactory.CreateNetworkData();
 
             NetworkHtmlContent htmlContent = new NetworkHtmlContent(networkData);
+            htmlContent.RemoveEdgesDataFromHtml = removeEdgesData;
 
             string filePath = Path.Combine(ConfigManager.GetOutputFolderPath(), ConfigManager.GetNetworkFileName());
 
