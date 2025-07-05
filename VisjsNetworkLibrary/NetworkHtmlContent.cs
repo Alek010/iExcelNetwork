@@ -15,6 +15,8 @@ namespace VisjsNetworkLibrary
         private bool NetworkDataIsScalable;
         private bool NetworkDataLinksHasTitles;
 
+        public bool RemoveEdgesDataFromHtml { get; set; } = true;
+
         public NetworkHtmlContent(INetworkData networkData)
         {
             var settings = new JsonSerializerSettings
@@ -46,7 +48,8 @@ namespace VisjsNetworkLibrary
                .Replace("{{nodesJson}}", _nodesJson)
                .Replace("{{edgesJson}}", _edgesJson)
                .Replace("{{FontAwesomeCss}}", fontAwesomeCss)
-               .Replace("{{VisJsCss}}", VisJsCss);
+               .Replace("{{VisJsCss}}", VisJsCss)
+               .Replace("RemoveEdgesDataFromHtml", RemoveEdgesDataFromHtml.ToString());
 
             if (NetworkDataIsScalable)
             {

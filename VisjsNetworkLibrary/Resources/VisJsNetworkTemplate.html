@@ -30,6 +30,14 @@
         var nodes = new vis.DataSet({{nodesJson}});
         var edges = new vis.DataSet({{edgesJson}});
 
+        if(String("RemoveEdgesDataFromHtml").toLowerCase() === "true"){
+            edges.forEach(function (edge) {
+            edge.label = "";
+            edge.title = "";
+            });
+        };
+
+        
         // Create Vis.js network graph
         var container = document.getElementById('networkContainer');
         var data = { nodes: nodes, edges: edges };
