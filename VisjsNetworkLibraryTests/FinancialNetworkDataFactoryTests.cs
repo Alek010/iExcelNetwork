@@ -22,7 +22,11 @@ namespace VisjsNetworkLibraryTests
             dt.Columns.Add("to");
             dt.Columns.Add("count");
 
+            dt.Rows.Add("A", "B", "1");
+            dt.Rows.Add("C", "B", "2");
+
             var factory = new FinancialNetworkDataFactory(dt);
+            factory.ValidateDataTable();
 
             // Act
             INetworkData result = factory.CreateNetworkData();
@@ -74,12 +78,15 @@ namespace VisjsNetworkLibraryTests
             // Arrange
             DataTable dt = new DataTable();
             dt.Columns.Add("from");
-            dt.Columns.Add("to");
             dt.Columns.Add("fromicon");
+            dt.Columns.Add("to");
             dt.Columns.Add("toicon");
             dt.Columns.Add("count");
 
+            dt.Rows.Add("A", "person", "B", "group", "2");
+
             var factory = new FinancialNetworkDataFactory(dt);
+            factory.ValidateDataTable();
 
             // Act
             INetworkData result = factory.CreateNetworkData();
@@ -140,14 +147,17 @@ namespace VisjsNetworkLibraryTests
             // Arrange
             DataTable dt = new DataTable();
             dt.Columns.Add("from");
-            dt.Columns.Add("to");
             dt.Columns.Add("fromicon");
-            dt.Columns.Add("toicon");
             dt.Columns.Add("fromcolor");
+            dt.Columns.Add("to");
+            dt.Columns.Add("toicon");
             dt.Columns.Add("tocolor");
             dt.Columns.Add("count");
 
+            dt.Rows.Add("A", "person", "red", "B", "group", "green", "2");
+
             var factory = new FinancialNetworkDataFactory(dt);
+            factory.ValidateDataTable();
 
             // Act
             INetworkData result = factory.CreateNetworkData();
