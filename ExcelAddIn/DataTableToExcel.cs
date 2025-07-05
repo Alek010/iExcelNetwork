@@ -13,35 +13,76 @@ namespace ExcelAddIn
         private const string sheetName = "SampleData";
 
         private readonly Excel.Application _excelApp;
-        private readonly Excel.Workbook _workbook;
-        private readonly Excel.Worksheet _worksheet;
+        private bool _pasteIntoNewSheet;
+        private Excel.Workbook _workbook { get; set; }
+        private Excel.Worksheet _worksheet { get; set; }
+
 
         public DataTableToExcel(Excel.Application excelApp, bool pasteIntoNewSheet = false)
         {
             _excelApp = excelApp ?? throw new ArgumentNullException(nameof(excelApp));
+            _pasteIntoNewSheet = pasteIntoNewSheet;
+        }
+
+        private void SetActiveWorkbook()
+        {
             _workbook = _excelApp.ActiveWorkbook;
-            _worksheet = SetActiveExcelWorksheet(pasteIntoNewSheet);
+        }
+
+        private void SetActiveWorksheet()
+        {
+            _worksheet = SetActiveExcelWorksheet();
+        }
+
+        public void DeleteSampleDataSheetIfExists()
+        {
+            SetActiveWorkbook();
+
+            foreach (Excel.Worksheet sheet in _workbook.Worksheets)
+            {
+                if (string.Equals(sheet.Name, sheetName, StringComparison.OrdinalIgnoreCase))
+                {
+                    var originalDisplayAlerts = _workbook.Application.DisplayAlerts;
+                    try
+                    {
+                        _workbook.Application.DisplayAlerts = false; // Prevents Excel's delete confirmation
+                        sheet.Delete();
+                        SetActiveWorksheet();
+                    }
+                    finally
+                    {
+                        _workbook.Application.DisplayAlerts = originalDisplayAlerts;
+                    }
+                    break; // Only one worksheet of a given name exists
+                }
+            }
         }
 
         public void PasteAsExcelTable(DataTable dataTable, string cellReference = null, Dictionary<string, string> columnValidationLists = null, string tableStyleName = "TableStyleMedium2")
         {
+            SetActiveWorkbook();
+            SetActiveWorksheet();
+
             DataTableDimensions dtDimensions = new DataTableDimensions(dataTable);
             var dimensions = dtDimensions.GetDataTableDimensions();
 
             Excel.Range startCell = GetSelectedExcelRangeStartCell(cellReference);
 
-            Range writeRange = WriteDataToExcelRange(startCell, dimensions);
+            if (startCell != null)
+            {
+                Range writeRange = WriteDataToExcelRange(startCell, dimensions);
 
-            ListObject excelTable = ConvertExcelRangeToExcelTable(writeRange);
+                ListObject excelTable = ConvertExcelRangeToExcelTable(writeRange);
 
-            ApplyStyleToExcelTable(tableStyleName, excelTable);
+                ApplyStyleToExcelTable(tableStyleName, excelTable);
 
-            ApplyDataValidationListsToExcelTable(dataTable, columnValidationLists, dimensions.rowCount + 1, dimensions.columnCount, startCell);
+                ApplyDataValidationListsToExcelTable(dataTable, columnValidationLists, dimensions.rowCount + 1, dimensions.columnCount, startCell);
+            }
         }
 
-        private Excel.Worksheet SetActiveExcelWorksheet(bool pasteIntoNewSheet)
+        private Excel.Worksheet SetActiveExcelWorksheet()
         {
-            if (pasteIntoNewSheet)
+            if (_pasteIntoNewSheet)
             {
                 if (WorksheetExists(_workbook, sheetName))
                 {

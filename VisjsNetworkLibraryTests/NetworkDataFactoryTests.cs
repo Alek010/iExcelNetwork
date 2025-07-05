@@ -18,8 +18,10 @@ namespace VisjsNetworkLibraryTests
             dt.Columns.Add("from");
             dt.Columns.Add("to");
 
-            var factory = new NetworkDataFactory(dt);
+            dt.Rows.Add("A", "B");
 
+            var factory = new NetworkDataFactory(dt);
+            factory.ValidateDataTable();
             // Act
             INetworkData result = factory.CreateNetworkData();
 
@@ -68,8 +70,10 @@ namespace VisjsNetworkLibraryTests
             dt.Columns.Add("to");
             dt.Columns.Add("count");
 
-            var factory = new NetworkDataFactory(dt);
+            dt.Rows.Add("A", "B", 1);
 
+            var factory = new NetworkDataFactory(dt);
+            factory.ValidateDataTable();
             // Act
             INetworkData result = factory.CreateNetworkData();
 
@@ -121,8 +125,10 @@ namespace VisjsNetworkLibraryTests
             dt.Columns.Add("to");
             dt.Columns.Add("toicon");
 
-            var factory = new NetworkDataFactory(dt);
+            dt.Rows.Add("A", "person", "B", "group");
 
+            var factory = new NetworkDataFactory(dt);
+            factory.ValidateDataTable();
             // Act
             INetworkData result = factory.CreateNetworkData();
 
@@ -174,8 +180,10 @@ namespace VisjsNetworkLibraryTests
             dt.Columns.Add("to");
             dt.Columns.Add("linkisconfirmed");
 
-            var factory = new NetworkDataFactory(dt);
+            dt.Rows.Add("A", "B", "TRUE");
 
+            var factory = new NetworkDataFactory(dt);
+            factory.ValidateDataTable();
             // Act
             INetworkData result = factory.CreateNetworkData();
 
@@ -229,8 +237,10 @@ namespace VisjsNetworkLibraryTests
             dt.Columns.Add("fromcolor");
             dt.Columns.Add("tocolor");
 
-            var factory = new NetworkDataFactory(dt);
+            dt.Rows.Add("A", "B", "person", "group", "green", "red");
 
+            var factory = new NetworkDataFactory(dt);
+            factory.ValidateDataTable();
             // Act
             INetworkData result = factory.CreateNetworkData();
 
@@ -284,12 +294,14 @@ namespace VisjsNetworkLibraryTests
             // Arrange
             DataTable dt = new DataTable();
             dt.Columns.Add("from");
-            dt.Columns.Add("to");
             dt.Columns.Add("fromvalue");
+            dt.Columns.Add("to");
             dt.Columns.Add("tovalue");
 
-            var factory = new NetworkDataFactory(dt);
+            dt.Rows.Add("A", 1, "B", 1);
 
+            var factory = new NetworkDataFactory(dt);
+            factory.ValidateDataTable();
             // Act
             INetworkData result = factory.CreateNetworkData();
 
@@ -343,8 +355,10 @@ namespace VisjsNetworkLibraryTests
             dt.Columns.Add("count");
             dt.Columns.Add("linkisconfirmed");
 
-            var factory = new NetworkDataFactory(dt);
+            dt.Rows.Add("A", "B", 1, "FALSE");
 
+            var factory = new NetworkDataFactory(dt);
+            factory.ValidateDataTable();
             // Act
             INetworkData result = factory.CreateNetworkData();
 
@@ -399,9 +413,10 @@ namespace VisjsNetworkLibraryTests
             dt.Columns.Add("to");
             dt.Columns.Add("toicon");
             dt.Columns.Add("linkisconfirmed");
+            dt.Rows.Add("A", "person", "B", "group", "TRUE");
 
             var factory = new NetworkDataFactory(dt);
-
+            factory.ValidateDataTable();
             // Act
             INetworkData result = factory.CreateNetworkData();
 
@@ -461,8 +476,10 @@ namespace VisjsNetworkLibraryTests
             dt.Columns.Add("count");
             dt.Columns.Add("linkisconfirmed");
 
-            var factory = new NetworkDataFactory(dt);
+            dt.Rows.Add("A", "person", "B", "group", 1, "TRUE");
 
+            var factory = new NetworkDataFactory(dt);
+            factory.ValidateDataTable();
             // Act
             INetworkData result = factory.CreateNetworkData();
 
@@ -524,8 +541,10 @@ namespace VisjsNetworkLibraryTests
             dt.Columns.Add("tocolor");
             dt.Columns.Add("linkisconfirmed");
 
-            var factory = new NetworkDataFactory(dt);
+            dt.Rows.Add("A", "B", "", "", "", "", "FALSE");
 
+            var factory = new NetworkDataFactory(dt);
+            factory.ValidateDataTable();
             // Act
             INetworkData result = factory.CreateNetworkData();
 
@@ -589,8 +608,10 @@ namespace VisjsNetworkLibraryTests
             dt.Columns.Add("tocolor");
             dt.Columns.Add("count");
 
-            var factory = new NetworkDataFactory(dt);
+            dt.Rows.Add("A", "B", "", "", "", "", 1);
 
+            var factory = new NetworkDataFactory(dt);
+            factory.ValidateDataTable();
             // Act
             INetworkData result = factory.CreateNetworkData();
 
@@ -655,8 +676,10 @@ namespace VisjsNetworkLibraryTests
             dt.Columns.Add("count");
             dt.Columns.Add("linkisconfirmed");
 
-            var factory = new NetworkDataFactory(dt);
+            dt.Rows.Add("A", "B", "", "", "", "", 1, "FALSE");
 
+            var factory = new NetworkDataFactory(dt);
+            factory.ValidateDataTable();
             // Act
             INetworkData result = factory.CreateNetworkData();
 

@@ -15,6 +15,8 @@ namespace VisjsNetworkLibrary.Models
             _tableTemplate = networkDataTableTemplates;
         }
 
+        #region SampleData NetworkData
+
         public DataTable CreateNetworkDataLinkIsConfirmedTable(bool normalizeColumnNames = false)
         {
             var dt = _tableTemplate.CreateNetworkDataLinkIsConfirmedTable(normalizeColumnNames);
@@ -30,9 +32,9 @@ namespace VisjsNetworkLibrary.Models
         {
             var dt = _tableTemplate.CreateNetworkDataTable(normalizeColumnNames);
 
-            dt.Rows.Add("A", "B" );
-            dt.Rows.Add("A", "B" );
-            dt.Rows.Add("C", "B" );
+            dt.Rows.Add("A", "B");
+            dt.Rows.Add("A", "B");
+            dt.Rows.Add("C", "B");
 
             return dt;
         }
@@ -54,7 +56,7 @@ namespace VisjsNetworkLibrary.Models
 
             dt.Rows.Add("A", "B", "2", "TRUE");
             dt.Rows.Add("A", "B", "1", "TRUE");
-            dt.Rows.Add("C", "B", "10","FALSE");
+            dt.Rows.Add("C", "B", "10", "FALSE");
 
             return dt;
         }
@@ -157,5 +159,61 @@ namespace VisjsNetworkLibrary.Models
 
             return dt;
         }
+        #endregion
+
+        #region SampleData FinancialNetwork
+
+        public DataTable CreateFinancialNetworkDataWithCountTable(bool normalizeColumnNames = false)
+        {
+            var dt = _tableTemplate.CreateNetworkDataWithCountTable(normalizeColumnNames);
+
+            dt.Rows.Add("A", "B", "2.5");
+            dt.Rows.Add("A", "B", "1");
+            dt.Rows.Add("B", "D", "7");
+            dt.Rows.Add("C", "B", "10.5");
+            dt.Rows.Add("B", "A", "5");
+            dt.Rows.Add("B", "D", "1");
+            dt.Rows.Add("D", "F", "3");
+            dt.Rows.Add("F", "A", "7.5");
+            dt.Rows.Add("F", "X", "6.3");
+
+            return dt;
+        }
+
+        public DataTable CreateFinancialNetworkDataWithNodesIconsAndCountTable(bool normalizeColumnNames = false)
+        {
+            var dt = _tableTemplate.CreateNetworkDataWithNodesIconsAndCountTable(normalizeColumnNames);
+
+            dt.Rows.Add("A", "Bank account", "B", "Bank account", "2.5");
+            dt.Rows.Add("A", "Bank account", "B", "Bank account", "1");
+            dt.Rows.Add("B", "Bank account", "D", "Bank account", "7");
+            dt.Rows.Add("C", "Bank account", "B", "Bank account", "10.5");
+            dt.Rows.Add("B", "Bank account", "A", "Bank account", "5");
+            dt.Rows.Add("B", "Bank account", "D", "Bank account", "1");
+            dt.Rows.Add("D", "Bank account", "F", "Bank account", "3");
+            dt.Rows.Add("F", "Bank account", "A", "Bank account", "7.5");
+            dt.Rows.Add("F", "Bank account", "X", "Bank account", "6.3");
+
+            return dt;
+        }
+
+        public DataTable CreateFinancialNetworkDataWithNodesIconsInColorAndCountTable(bool normalizeColumnNames = false)
+        {
+            var dt = _tableTemplate.CreateNetworkDataWithNodesIconsInColorAndCountTable(normalizeColumnNames);
+
+            dt.Rows.Add("A", "Bank account", "blue", "B", "Bank account", "red", "2.5");
+            dt.Rows.Add("A", "Bank account", "blue", "B", "Bank account", "red", "1");
+            dt.Rows.Add("B", "Bank account", "red", "D", "Bank account", "", "7");
+            dt.Rows.Add("C", "Bank account", "", "B", "Bank account", "red", "10.5");
+            dt.Rows.Add("B", "Bank account", "red", "A", "Bank account", "blue", "5");
+            dt.Rows.Add("B", "Bank account", "red", "D", "Bank account", "", "1");
+            dt.Rows.Add("D", "Bank account", "", "F", "Bank account", "orange", "3");
+            dt.Rows.Add("F", "Bank account", "orange", "A", "Bank account", "", "7.5");
+            dt.Rows.Add("F", "Bank account", "orange", "X", "Bank account", "", "6.3");
+
+            return dt;
+        }
+
+        #endregion
     }
 }

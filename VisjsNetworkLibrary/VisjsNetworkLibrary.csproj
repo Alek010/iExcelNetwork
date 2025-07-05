@@ -50,11 +50,18 @@
     <Compile Include="Exceptions\DataTableStructureException.cs" />
     <Compile Include="Exceptions\SelectedDataTableExceptionMessages.cs" />
     <Compile Include="FileProcessor.cs" />
+    <Compile Include="FinancialNetworkDataFactory.cs" />
+    <Compile Include="FinancialNetworkData\EdgeMetrics.cs" />
+    <Compile Include="FinancialNetworkData\FinancialNetworkDataWithCount.cs" />
+    <Compile Include="FinancialNetworkData\FinancialNetworkDataWithNodesIconsAndCount.cs" />
+    <Compile Include="FinancialNetworkData\FinancialNetworkDataWithNodesIconsInColorAndCount.cs" />
+    <Compile Include="FinancialNetworkData\FinancialNetworkEdgesList.cs" />
     <Compile Include="Helpers\ColorMapper.cs" />
     <Compile Include="Helpers\IconMapper.cs" />
     <Compile Include="Interfaces\INetworkData.cs" />
     <Compile Include="Interfaces\IFileContent.cs" />
     <Compile Include="Models\Edge.cs" />
+    <Compile Include="Models\EdgeStatistics.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\NodeIcon.cs" />
     <Compile Include="Interfaces\INetworkDataTableTemplates.cs" />
@@ -100,5 +107,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\vis-network.css" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
