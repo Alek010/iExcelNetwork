@@ -4,7 +4,7 @@
 * iExcelNetwork is not intended to compete with professional graph visualization or analytics software. Its primary goal is to offer a lightweight, standalone solution for MS Excel users to visualize and explore network data.
 
 # Version 
-* 1.0.0
+* 1.1.0
 # Wiki
 More about iExcelNetwork use cases check [wiki](https://github.com/Alek010/iExcelNetwork/wiki)
 
@@ -28,4 +28,5 @@ More about iExcelNetwork use cases check [wiki](https://github.com/Alek010/iExce
 
 9. Launch Microsoft Excel. The iExcelNetwork tab should now be visible in the ribbon interface.
 
-![image](https://github.com/user-attachments/assets/07bbfef9-56e1-48b3-9ffc-082bd8ad3c52)
+![image](https://github.com/user-attachments/assets/585a76b9-0986-49cd-8c78-d00736c43298)
+
