@@ -9,8 +9,8 @@
 More about iExcelNetwork use cases check [wiki](https://github.com/Alek010/iExcelNetwork/wiki)
 
 # How to install
-1. Download the ZIP file from the latest release section: [iExcelNetwork AddIn Install ver 1.0.0.zip](https://github.com/Alek010/iExcelNetwork/releases/download/v1.0.0/iExcelNetwork.AddIn.Install.ver.1.0.0.zip)
-2. ZIP file SHA-256 checksum: 81a8d9846e06afe75e1f213153df88a84ceff6e441879b9869e16ec3b92a3f63
+1. Download the ZIP file from the latest release section: [iExcelNetwork.AddIn.Installer.ver.1.1.0.zip](https://github.com/Alek010/iExcelNetwork/releases/download/v.1.1.0/iExcelNetwork.AddIn.Installer.ver.1.1.0.zip)
+2. ZIP file SHA-256 checksum: a70c9fad17fc7d1462aa6b37ad68cdf0248143c982e5eb844264f3dd51094470
 3. Unpack the ZIP file.
 4. It includes the following:
    * setup.exe
