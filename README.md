@@ -10,14 +10,13 @@ More about iExcelNetwork use cases check [wiki](https://github.com/Alek010/iExce
 
 # How to install
 1. Download the ZIP file from the latest release section: [iExcelNetwork.AddIn.Installer.ver.1.1.0.zip](https://github.com/Alek010/iExcelNetwork/releases/download/v.1.1.0/iExcelNetwork.AddIn.Installer.ver.1.1.0.zip)
-2. ZIP file SHA-256 checksum: a70c9fad17fc7d1462aa6b37ad68cdf0248143c982e5eb844264f3dd51094470
-3. Unpack the ZIP file.
-4. It includes the following:
+2. Unpack the ZIP file.
+3. It includes the following:
    * setup.exe
    * ExcelAddIn.vsto
    * Application Files folder
-5. Double-click on setup.exe.
-6. An installation window will pop up.
+4. Double-click on setup.exe.
+5. An installation window will pop up.
 
 ![image](https://github.com/user-attachments/assets/422374ca-d18c-47d4-ab3a-f51916f0169a)
 
